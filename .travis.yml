@@ -1,12 +1,8 @@
 language: php
 php:
   - 7.2
-  - hhvm
 env:
   - APP_ENV=development CC_TEST_REPORTER_ID=ab61a5c56b985202585f5eaaf424337c82776ba7bf6b66660ebbea55eeff13b5
-matrix:
-  allow_failures:
-    - php: hhvm
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source

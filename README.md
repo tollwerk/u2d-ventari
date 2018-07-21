@@ -46,8 +46,8 @@ Copyright © 2018 [Philip Saa][author-url] / philip@tollwerk.de. Licensed under 
 [coveralls-url]: https://coveralls.io/github/tollwerk/u2d-ventari?branch=master
 [scrutinizer-image]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/badges/quality-score.png?b=master
 [scrutinizer-url]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/?branch=master
-[codeclimate-image]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/badges/quality-score.png?b=master
-[codeclimate-url]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/?branch=master
+[codeclimate-image]: https://lima.codeclimate.com/github/tollwerk/u2d-ventari/badges/gpa.svg
+[codeclimate-url]: https://lima.codeclimate.com/github/tollwerk/u2d-ventari
 
 [clear-architecture-image]: https://img.shields.io/badge/Clear%20Architecture-%E2%9C%94-brightgreen.svg
 [clear-architecture-url]: https://github.com/jkphl/clear-architecture
