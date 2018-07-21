@@ -1,0 +1,27 @@
+{
+  "generator-clearphp": {
+    "run": 27,
+    "github": {
+      "ssh": "git@github.com:tollwerk/u2d-ventari.git",
+      "https": "https://github.com/tollwerk/u2d-ventari"
+    },
+    "codeclimate": "",
+    "scrutinizer": true,
+    "coverage": true,
+    "docs": false,
+    "apidocs": false,
+    "year": 2018,
+    "vendor": "tollwerk",
+    "project": "u2d-ventari",
+    "description": "U2D Ventari client",
+    "website": "https://github.com/tollwerk/u2d-ventari",
+    "license": "MIT",
+    "stability": "RC",
+    "namespace": "Tollwerk",
+    "module": "Ventari",
+    "php": ">=7.2",
+    "authorName": "Philip Saa",
+    "authorEmail": "philip@tollwerk.de",
+    "authorWebsite": "https://tollwerk.de"
+  }
+}
