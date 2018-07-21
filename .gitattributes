@@ -13,3 +13,5 @@
 /README.md export-ignore
 /src/Ventari/Tests export-ignore
 /.scrutinizer.yml export-ignore
+/.codeclimate.yml export-ignore
+/phpmd.xml export-ignore

@@ -1,6 +1,6 @@
 # tollwerk/u2d-ventari
 
-[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]   [![Clear architecture][clear-architecture-image]][clear-architecture-url]
+[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url] [![Code Climate][codeclimate-image]][codeclimate-url]  [![Clear architecture][clear-architecture-image]][clear-architecture-url]
 
 > U2D Ventari client
 
@@ -46,6 +46,8 @@ Copyright © 2018 [Philip Saa][author-url] / philip@tollwerk.de. Licensed under 
 [coveralls-url]: https://coveralls.io/github/tollwerk/u2d-ventari?branch=master
 [scrutinizer-image]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/badges/quality-score.png?b=master
 [scrutinizer-url]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/?branch=master
+[codeclimate-image]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/badges/quality-score.png?b=master
+[codeclimate-url]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/?branch=master
 
 [clear-architecture-image]: https://img.shields.io/badge/Clear%20Architecture-%E2%9C%94-brightgreen.svg
 [clear-architecture-url]: https://github.com/jkphl/clear-architecture

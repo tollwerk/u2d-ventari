@@ -1,10 +1,9 @@
 language: php
 php:
-  - 5.6
-  - 7
+  - 7.2
   - hhvm
 env:
-  - APP_ENV=development
+  - APP_ENV=development CC_TEST_REPORTER_ID=ab61a5c56b985202585f5eaaf424337c82776ba7bf6b66660ebbea55eeff13b5
 matrix:
   allow_failures:
     - php: hhvm
@@ -19,6 +18,9 @@ before_script:
     if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then echo 'date.timezone =
     Europe/Berlin' >> ~/.phpenv/versions/$(phpenv
     version-name)/etc/conf.d/travis.ini; fi;
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - >-
     bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then vendor/bin/phpunit;
@@ -36,3 +38,6 @@ after_script:
   - >-
     bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php
     vendor/bin/coveralls -v; fi;'
+  - >-
+    bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then
+    vendor/bin/test-reporter; fi;'

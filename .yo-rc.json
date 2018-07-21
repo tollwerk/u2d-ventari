@@ -1,11 +1,11 @@
 {
   "generator-clearphp": {
-    "run": 27,
+    "run": 31,
     "github": {
       "ssh": "git@github.com:tollwerk/u2d-ventari.git",
       "https": "https://github.com/tollwerk/u2d-ventari"
     },
-    "codeclimate": "",
+    "codeclimate": "ab61a5c56b985202585f5eaaf424337c82776ba7bf6b66660ebbea55eeff13b5",
     "scrutinizer": true,
     "coverage": true,
     "docs": false,
