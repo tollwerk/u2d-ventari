@@ -43,7 +43,7 @@ Copyright © 2018 [Philip Saa][author-url] / philip@tollwerk.de. Licensed under 
 
 [travis-image]: https://secure.travis-ci.org/tollwerk/u2d-ventari.svg
 [travis-url]: https://travis-ci.org/tollwerk/u2d-ventari
-[coveralls-image]: https://coveralls.io/repos/tollwerk/u2d-ventari/badge.svg?branch=master&service=github
+[coveralls-image]: https://coveralls.io/repos/github/tollwerk/u2d-ventari/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/tollwerk/u2d-ventari?branch=master
 [scrutinizer-image]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/badges/quality-score.png?b=master
 [scrutinizer-url]: https://scrutinizer-ci.com/g/tollwerk/u2d-ventari/?branch=master
