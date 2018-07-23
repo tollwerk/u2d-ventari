@@ -3,6 +3,9 @@ php:
   - 7.2
 env:
   - APP_ENV=development CC_TEST_REPORTER_ID=ab61a5c56b985202585f5eaaf424337c82776ba7bf6b66660ebbea55eeff13b5
+install:
+ - curl -s http://getcomposer.org | php
+ - php composer.phar install --dev --no-interaction
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
@@ -32,4 +35,4 @@ after_script:
   - >-
     bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/bin/test-reporter; fi;'
 after_success:
-  - vendor/php-coveralls -v; fi;
+  - travis_retry php vendor/bin/php-coveralls -v
