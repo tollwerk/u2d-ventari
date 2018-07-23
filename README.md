@@ -1,6 +1,7 @@
 # tollwerk/u2d-ventari
 
-[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url] [![Code Climate][codeclimate-image]][codeclimate-url]  [![Clear architecture][clear-architecture-image]][clear-architecture-url]
+[![Build Status][travis-image]][travis-url] [![Coverage Status](https://coveralls.io/repos/github/tollwerk/u2d-ventari/badge.svg?branch=master)](https://coveralls.io/github/tollwerk/u2d-ventari?branch=master)
+ [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url] [![Code Climate][codeclimate-image]][codeclimate-url]  [![Clear architecture][clear-architecture-image]][clear-architecture-url]
 
 > U2D Ventari client
 
