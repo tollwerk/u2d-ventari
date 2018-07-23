@@ -32,6 +32,7 @@ class DemoTest extends AbstractTestBase
         $this->assertEquals($property2, $demo->getProperty());
 
 //        $this->assertEquals([1], [2]);
+
         $this->assertJsonStringEqualsJsonFile( dirname(__DIR__).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'result.json', '{"foo":"bar"}');
     }
 }
