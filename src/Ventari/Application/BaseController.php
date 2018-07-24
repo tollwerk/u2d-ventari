@@ -26,8 +26,6 @@ class BaseController
     public function init()
     {
         $REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
-
-        print_r($REST_API);
     }
 
     public function sanitizePath(string $path)

@@ -46,9 +46,9 @@ XML;
 
         $expectedXML = new \SimpleXMLElement($xmlString);
         $expectedXML->saveXML();
-        $actualXML = $baseController->configuration;
-
         $this->assertFileExists($baseController->config_file);
+
+        $actualXML = $baseController->configuration;
         $this->assertXmlStringEqualsXmlString($expectedXML->asXML(), $actualXML->asXML());
 
         return $baseController;
