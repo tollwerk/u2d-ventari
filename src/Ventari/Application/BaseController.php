@@ -12,14 +12,32 @@ class BaseController
 
     public function __construct(string $project_name)
     {
-//		New Way
+        $config_file        = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'../config.xml';
         $this->project_name = (isset($project_name)) ? $project_name : "Ventari";
-
-        $this->config_file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'../config.xml';
-//		$this->configuration = (file_exists($this->config_file)) ? simplexml_load_file($this->config_file) : new \DOMElement('<config/>');
+        $this->config_file  = $config_file;
 
         if (file_exists($this->config_file)) {
             $this->configuration = simplexml_load_file($this->config_file);
         }
+
+        $this->init();
+    }
+
+    public function init()
+    {
+        $REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
+
+        print_r($REST_API);
+    }
+
+    public function sanitizePath(string $path)
+    {
+        if (preg_match('/^\//', $path)) {
+            $sanitized_path = $path;
+        } else {
+            $sanitized_path = "/".$path;
+        }
+
+        return $sanitized_path;
     }
 }

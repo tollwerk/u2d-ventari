@@ -36,11 +36,46 @@ class BaseControllerTest extends AbstractTestBase
     {
         $this->assertNotEmpty($baseController);
 
-        $expectedXML = new \SimpleXMLElement('<config clientId="U2D Ventari" type="REST"><protocol>http</protocol><uri>events.nueww.de</uri><path>/events</path></config>');
+        $xmlString = <<<XML
+<config clientId="U2D Ventari" type="REST">
+    <protocol>http</protocol>
+    <uri>events.nueww.de</uri>
+    <path>/events</path>
+</config>
+XML;
+
+        $expectedXML = new \SimpleXMLElement($xmlString);
         $expectedXML->saveXML();
         $actualXML = $baseController->configuration;
 
         $this->assertFileExists($baseController->config_file);
         $this->assertXmlStringEqualsXmlString($expectedXML->asXML(), $actualXML->asXML());
+
+        return $baseController;
     }
+
+    /**
+     * Test Initiation Function
+     * @depends testConstructor
+     *
+     * @param $baseController
+     */
+    public function testInitiation($baseController)
+    {
+        $this->assertNotEmpty($baseController->REST_API);
+    }
+
+    /**
+     * Test Sanitize Path
+     * @depends testConstructor
+     *
+     * @param $baseController
+     */
+    public function testSanitizePath($path)
+    {
+        $this->assertNotEmpty($path);
+
+
+    }
+
 }
