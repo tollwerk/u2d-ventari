@@ -10,6 +10,8 @@ class BaseController
     public $config_file;
     public $configuration;
 
+    public $REST_API;
+
     public function __construct(string $project_name)
     {
         $config_file        = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'../config.xml';
@@ -25,7 +27,8 @@ class BaseController
 
     public function init()
     {
-        $REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
+        $this->REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
+        print_r($this->REST_API);
     }
 
     public function sanitizePath(string $path)

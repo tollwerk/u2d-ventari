@@ -74,8 +74,8 @@ XML;
     public function testSanitizePath($path)
     {
         $this->assertNotEmpty($path);
-
-
+//        Looking for a double slash to be accidently entered into string 'http://events.nueww.de//events'
+        $this->assertEquals($path, 'http://events.nueww.de/events');
     }
 
 }
