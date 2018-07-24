@@ -32,12 +32,7 @@ class BaseController
 
     public function sanitizePath(string $path)
     {
-        if (preg_match('/^\//', $path)) {
-            $sanitized_path = $path;
-        } else {
-            $sanitized_path = "/".$path;
-        }
-
+        $sanitized_path = (preg_match('/^\//', $path)) ? $path : "/".$path;
         return $sanitized_path;
     }
 }
