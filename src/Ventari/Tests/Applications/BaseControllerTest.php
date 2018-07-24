@@ -63,19 +63,6 @@ XML;
     public function testInitiation($baseController)
     {
         $this->assertNotEmpty($baseController->REST_API);
+        $this->assertEquals('http://events.nueww.de/events', $baseController->REST_API);
     }
-
-    /**
-     * Test Sanitize Path
-     * @depends testConstructor
-     *
-     * @param $baseController
-     */
-    public function testSanitizePath($path)
-    {
-        $this->assertNotEmpty($path);
-//        Looking for a double slash to be accidently entered into string 'http://events.nueww.de//events'
-        $this->assertEquals($path, 'http://events.nueww.de/events');
-    }
-
 }
