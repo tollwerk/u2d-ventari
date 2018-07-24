@@ -8,11 +8,11 @@ class BaseController {
 
 	public function __construct(string $project_name) {
 		$this->project_name = $project_name;
-//		if (isset($project_name)){
-//			$this->project_name = $project_name;
-//		} else {
-//			$this->project_name = 'Ventari';
-//		}
+		if (isset($project_name)){
+			$this->project_name = $project_name;
+		} else {
+			$this->project_name = 'Ventari';
+		}
 	}
 
 }
