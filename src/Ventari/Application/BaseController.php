@@ -10,7 +10,7 @@ class BaseController
 
     public function __construct(string $projectName)
     {
-        $configFile       = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'../config.xml';
+        $configFile        = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'../config.xml';
         $this->projectName = (isset($projectName)) ? $projectName : "Ventari";
         $this->configFile  = $configFile;
 
@@ -24,10 +24,14 @@ class BaseController
     public function init()
     {
         /**
-         * REST_API SHOULD ONLY be a local variable. As it will be used to initiate the Resource. Only needed once.
+         * $restAPI: SHOULD ONLY be a local variable. As it will be used to initiate the Resource. Only needed once.
          */
+        $protocol = $this->configuration->protocol."://";
+        $url      = $this->configuration->uri;
         $path     = $this->sanitizePath($this->configuration->path);
-        $REST_API = $this->configuration->protocol."://".$this->configuration->uri.$path;
+        $restAPI  = $protocol.$url.$path;
+
+
     }
 
     public function sanitizePath(string $path)
