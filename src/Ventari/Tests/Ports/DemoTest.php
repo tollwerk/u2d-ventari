@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tollwerk
- * Date: 21.07.2018
- * Time: 18:50
- */
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
