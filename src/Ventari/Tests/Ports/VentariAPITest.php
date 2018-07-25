@@ -12,11 +12,6 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
  */
 class VentariAPITest extends AbstractTestBase
 {
-    /**
-     * Test Class
-     *
-     * @var
-     */
     public static $testClass;
 
     public static function setUpBeforeClass()/* The :void return type declaration that should be here would cause a BC issue */
@@ -28,7 +23,6 @@ class VentariAPITest extends AbstractTestBase
     public function testClass()
     {
         $this->assertInstanceOf(VentariAPI::class, self::$testClass);
-
         return self::$testClass;
     }
 

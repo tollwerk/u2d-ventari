@@ -17,14 +17,7 @@ class VentariAPI
 
     public function getStatusIds(array $statusIds)
     {
-        $queryString = '?statusIds=';
-        foreach ($statusIds as $statusId) {
-            $queryString .= $statusId;
-            if (next($statusIds) == true) {
-                $queryString .= ",";
-            }
-        }
-
+        $queryString = '?statusIds='.implode(',', array_filter($statusIds));
         return $queryString;
 //        return '?statusIds=1,2,6';
     }
@@ -43,14 +36,7 @@ class VentariAPI
 
     public function getPersonIds(array $personIds)
     {
-        $queryString = '?personIds=';
-        foreach ($personIds as $personId) {
-            $queryString .= $personId;
-            if (next($personIds) == true) {
-                $queryString .= ',';
-            }
-        }
-
+        $queryString = '?personIds='.implode(',', array_filter($personIds));
         return $queryString;
 //        return '?personIds=1,31';
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Wed Jul 25 14:02:45 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+  <build time="Wed Jul 25 14:51:53 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
     <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
     <driver name="xdebug" version="2.6.0"/>
   </build>
@@ -21,7 +21,7 @@
     </tests>
     <directory name="/">
       <totals>
-        <lines total="171" comments="37" code="134" executable="40" executed="40" percent="100.00"/>
+        <lines total="151" comments="37" code="114" executable="28" executed="28" percent="100.00"/>
         <methods count="12" tested="12" percent="100.00"/>
         <functions count="0" tested="0" percent="0"/>
         <classes count="3" tested="3" percent="100.00"/>
@@ -65,7 +65,7 @@
       </directory>
       <directory name="Ports">
         <totals>
-          <lines total="113" comments="34" code="79" executable="26" executed="26" percent="100.00"/>
+          <lines total="93" comments="34" code="59" executable="14" executed="14" percent="100.00"/>
           <methods count="9" tested="9" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="2" tested="2" percent="100.00"/>
@@ -82,7 +82,7 @@
         </file>
         <file name="VentariAPI.php" href="Ports/VentariAPI.php.xml">
           <totals>
-            <lines total="73" comments="18" code="55" executable="21" executed="21" percent="100.00"/>
+            <lines total="53" comments="18" code="35" executable="9" executed="9" percent="100.00"/>
             <methods count="6" tested="6" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="1" tested="1" percent="100.00"/>
