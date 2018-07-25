@@ -19,9 +19,9 @@ class BaseControllerTest extends AbstractTestBase
     public function testConstructor()
     {
         $baseController = new BaseController('Ventari');
-        $this->assertClassHasAttribute('project_name', BaseController::class);
+        $this->assertClassHasAttribute('projectName', BaseController::class);
         $this->assertInstanceOf(BaseController::class, $baseController);
-        $this->assertEquals('Ventari', $baseController->project_name);
+        $this->assertEquals('Ventari', $baseController->projectName);
 
         return $baseController;
     }
@@ -46,25 +46,13 @@ XML;
 
         $expectedXML = new \SimpleXMLElement($xmlString);
         $expectedXML->saveXML();
-        $this->assertFileExists($baseController->config_file);
+        $this->assertFileExists($baseController->configFile);
 
         $actualXML = $baseController->configuration;
         $this->assertXmlStringEqualsXmlString($expectedXML->asXML(), $actualXML->asXML());
 
         return $baseController;
     }
-
-    /**
-     * Test Initiation Function
-     * @depends testConstructor
-     *
-     * @param $baseController
-     */
-//    public function testInitiation($baseController)
-//    {
-//        $this->assertNotEmpty($baseController->REST_API);
-//        $this->assertEquals('http://events.nueww.de/events', $baseController->REST_API);
-//    }
 
     /**
      * Test Sanitizer Function
@@ -74,9 +62,9 @@ XML;
     {
         $this->assertNotEmpty($path);
         $baseController = new BaseController('ASDF');
-        $sanitized_path = $baseController->sanitizePath($path);
-        $this->assertStringStartsWith('/', $sanitized_path);
-        $this->assertStringStartsNotWith('//', $sanitized_path);
+        $sanitizedPath = $baseController->sanitizePath($path);
+        $this->assertStringStartsWith('/', $sanitizedPath);
+        $this->assertStringStartsNotWith('//', $sanitizedPath);
     }
 
     public function sanitizerProvider()

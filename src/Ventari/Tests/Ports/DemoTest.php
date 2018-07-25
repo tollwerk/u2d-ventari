@@ -21,9 +21,10 @@ class DemoTest extends AbstractTestBase
     /**
      * Test the demo class
      */
-    public function testDemo() {
+    public function testDemo()
+    {
         $property = md5(rand());
-        $demo = new Demo($property);
+        $demo     = new Demo($property);
         $this->assertInstanceOf(Demo::class, $demo);
         $this->assertEquals($property, $demo->getProperty());
 
@@ -31,8 +32,7 @@ class DemoTest extends AbstractTestBase
         $demo->setProperty($property2);
         $this->assertEquals($property2, $demo->getProperty());
 
-//        $this->assertEquals([1], [2]);
-
-        $this->assertJsonStringEqualsJsonFile( dirname(__DIR__).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'result.json', '{"foo":"bar"}');
+        $expectedFile = dirname(__DIR__).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'result.json';
+        $this->assertJsonStringEqualsJsonFile($expectedFile, '{"foo":"bar"}');
     }
 }

@@ -2,13 +2,13 @@
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
   <file name="Demo.php" path="/Ports">
     <totals>
-      <lines total="39" comments="15" code="24" executable="5" executed="5" percent="100.00"/>
+      <lines total="39" comments="16" code="23" executable="5" executed="5" percent="100.00"/>
       <methods count="3" tested="3" percent="100.00"/>
       <functions count="0" tested="0" percent="0"/>
       <classes count="1" tested="1" percent="100.00"/>
       <traits count="0" tested="0" percent="0"/>
     </totals>
-    <class name="Tollwerk\Ventari\Ports\Demo" start="6" executable="5" executed="5" crap="3">
+    <class name="Tollwerk\Ventari\Ports\Demo" start="5" executable="5" executed="5" crap="3">
       <package full="" name="" sub="" category=""/>
       <namespace name="Tollwerk\Ventari\Ports"/>
       <method name="__construct" signature="__construct(string $property)" start="19" end="22" crap="1" executable="2" executed="2" coverage="100"/>
@@ -48,45 +48,47 @@
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="4"/>
-      <line no="5"/>
-      <line no="6">
+      <line no="5">
         <token name="T_CLASS">class</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_STRING">Demo</token>
       </line>
-      <line no="7">
+      <line no="6">
         <token name="T_OPEN_CURLY">{</token>
       </line>
-      <line no="8">
+      <line no="7">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="9">
+      <line no="8">
         <token name="T_DOC_COMMENT">     * Demo property</token>
       </line>
-      <line no="10">
+      <line no="9">
         <token name="T_DOC_COMMENT">     *</token>
       </line>
-      <line no="11">
+      <line no="10">
         <token name="T_DOC_COMMENT">     * @var string</token>
       </line>
-      <line no="12">
+      <line no="11">
         <token name="T_DOC_COMMENT">     */</token>
       </line>
-      <line no="13">
+      <line no="12">
         <token name="T_WHITESPACE">    </token>
         <token name="T_PROTECTED">protected</token>
         <token name="T_WHITESPACE"> </token>
         <token name="T_VARIABLE">$property</token>
         <token name="T_SEMICOLON">;</token>
       </line>
-      <line no="14"/>
-      <line no="15">
+      <line no="13"/>
+      <line no="14">
         <token name="T_WHITESPACE">    </token>
         <token name="T_DOC_COMMENT">/**</token>
       </line>
-      <line no="16">
+      <line no="15">
         <token name="T_DOC_COMMENT">     * Demo constructor.</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT">     *</token>
       </line>
       <line no="17">
         <token name="T_DOC_COMMENT">     * @param string $property</token>

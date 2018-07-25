@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-
 class Demo
 {
     /**
@@ -14,6 +13,7 @@ class Demo
 
     /**
      * Demo constructor.
+     *
      * @param string $property
      */
     public function __construct(string $property)
