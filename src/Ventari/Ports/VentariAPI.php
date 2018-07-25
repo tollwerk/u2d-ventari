@@ -10,14 +10,7 @@ class VentariAPI
 
     public function getEventIds(array $events)
     {
-        $queryString = '?eventIds=';
-        foreach ($events as $event) {
-            $queryString .= $event;
-            if (next($events) == true) {
-                $queryString .= ",";
-            }
-        }
-
+        $queryString = '?eventIds='.implode(',', array_filter($events));
         return $queryString;
 //        return '?eventIds=1800,1845,1860';
     }

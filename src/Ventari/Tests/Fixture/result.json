@@ -1,1 +1,50 @@
-{"foo": "bar"}
+{
+    "responseData": {
+        "Events": [
+            {
+                "eventName": "Test VA 5",
+                "eventstart": "2017-04-11",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1812",
+                "eventId": 1812
+            },
+            {
+                "eventName": "Musterevent",
+                "eventstart": "2020-03-20",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1860",
+                "eventId": 1860
+            },
+            {
+                "eventName": "Test    Passwort 3",
+                "eventstart": "2018-07-30",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1905",
+                "eventId": 1905
+            },
+            {
+                "eventName": "Test Logincode 3",
+                "eventstart": "2018-08-20",
+                "frontendLink": "https://    ventari.kraft.dev/tms/frontend/frontend.cfm?l=1906",
+                "eventId": 1906
+            },
+            {
+                "eventName": "Test 1812",
+                "eventstart": "2020-05-25",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1907",
+                "eventId": 1907
+            },
+            {
+                "eventName": "Test",
+                "eventstart": "2024-11-21",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=818CEA947381B753B59584EACEFE9A2F",
+                "eventId": 1943
+            },
+            {
+                "eventName": "Test-VA    mnroth 2016-03-    15T13:57:07.021Z",
+                "eventstart": "2020-03-15",
+                "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=FB61EF577CA5FC249E6809D6313B1EC2",
+                "eventId": 1951
+            }
+        ],
+        "resultCount": 7
+    },
+    "responseStatus": 200
+}
