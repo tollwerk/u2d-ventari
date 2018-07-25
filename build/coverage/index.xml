@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Wed Jul 25 13:45:34 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+  <build time="Wed Jul 25 14:02:45 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
     <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
     <driver name="xdebug" version="2.6.0"/>
   </build>
   <project source="/Users/philipsaa/Sites/tollwerk/u2d-ventari/src/Ventari">
     <tests>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\DemoTest::testDemo" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testClass" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetStatusIds with data set #0" size="unknown" result="0" status="PASSED"/>
@@ -16,26 +21,26 @@
     </tests>
     <directory name="/">
       <totals>
-        <lines total="171" comments="37" code="134" executable="49" executed="21" percent="42.86"/>
-        <methods count="12" tested="6" percent="50.00"/>
+        <lines total="171" comments="37" code="134" executable="40" executed="40" percent="100.00"/>
+        <methods count="12" tested="12" percent="100.00"/>
         <functions count="0" tested="0" percent="0"/>
-        <classes count="3" tested="1" percent="33.33"/>
+        <classes count="3" tested="3" percent="100.00"/>
         <traits count="0" tested="0" percent="0"/>
       </totals>
       <directory name="Application">
         <totals>
-          <lines total="43" comments="3" code="40" executable="19" executed="0" percent="0.00"/>
-          <methods count="3" tested="0" percent="0.00"/>
+          <lines total="43" comments="3" code="40" executable="14" executed="14" percent="100.00"/>
+          <methods count="3" tested="3" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="1" tested="0" percent="0.00"/>
+          <classes count="1" tested="1" percent="100.00"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <file name="BaseController.php" href="Application/BaseController.php.xml">
           <totals>
-            <lines total="43" comments="3" code="40" executable="19" executed="0" percent="0.00"/>
-            <methods count="3" tested="0" percent="0.00"/>
+            <lines total="43" comments="3" code="40" executable="14" executed="14" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
-            <classes count="1" tested="0" percent="0.00"/>
+            <classes count="1" tested="1" percent="100.00"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
         </file>
@@ -60,18 +65,18 @@
       </directory>
       <directory name="Ports">
         <totals>
-          <lines total="113" comments="34" code="79" executable="30" executed="21" percent="70.00"/>
-          <methods count="9" tested="6" percent="66.67"/>
+          <lines total="113" comments="34" code="79" executable="26" executed="26" percent="100.00"/>
+          <methods count="9" tested="9" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="2" tested="1" percent="50.00"/>
+          <classes count="2" tested="2" percent="100.00"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <file name="Demo.php" href="Ports/Demo.php.xml">
           <totals>
-            <lines total="40" comments="16" code="24" executable="9" executed="0" percent="0.00"/>
-            <methods count="3" tested="0" percent="0.00"/>
+            <lines total="40" comments="16" code="24" executable="5" executed="5" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
-            <classes count="1" tested="0" percent="0.00"/>
+            <classes count="1" tested="1" percent="100.00"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
         </file>
