@@ -10,7 +10,6 @@ class BaseController
     public $config_file;
     public $configuration;
 
-//    public $REST_API;
 
     public function __construct(string $project_name)
     {
@@ -30,20 +29,12 @@ class BaseController
         /**
          * REST_API SHOULD ONLY be a local variable. As it will be used to initiate the Resource. Only needed once.
          */
-//        $this->REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
         $REST_API = $this->configuration->protocol."://".$this->configuration->uri.$this->sanitizePath($this->configuration->path);
     }
 
     public function sanitizePath(string $path)
     {
-//        $sanitized_path = (preg_match('/^\//', $path)) ? $path : '/'.$path;
-//        return $sanitized_path;
-
-        if (preg_match('/^\/[aA-zZ]*/', $path)) {
-            $sanitized_path = $path;
-        } else {
-            $sanitized_path = '/'.$path;
-        }
+        $sanitized_path = (preg_match('/^\/[aA-zZ]*/', $path)) ? $path : '/'.$path;
 
         return $sanitized_path;
     }

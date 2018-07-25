@@ -1,0 +1,420 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="BaseController.php" path="/Application">
+    <totals>
+      <lines total="49" comments="11" code="38" executable="13" executed="13" percent="100.00"/>
+      <methods count="3" tested="3" percent="100.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="1" percent="100.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Tollwerk\Ventari\Application\BaseController" start="5" executable="13" executed="13" crap="6">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Tollwerk\Ventari\Application"/>
+      <method name="__construct" signature="__construct(string $project_name)" start="15" end="26" crap="3" executable="7" executed="7" coverage="100"/>
+      <method name="init" signature="init()" start="28" end="35" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="sanitizePath" signature="sanitizePath(string $path)" start="37" end="49" crap="2" executable="4" executed="4" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="17">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="18">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="19">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="21">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="22">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="25">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="26">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="34">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="35">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="42">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="43">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+      <line nr="45">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+      </line>
+      <line nr="48">
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1"/>
+        <covered by="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Tollwerk</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Ventari</token>
+        <token name="T_NS_SEPARATOR">\</token>
+        <token name="T_STRING">Application</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">BaseController</token>
+      </line>
+      <line no="6">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="7"/>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$project_name</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9"/>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config_file</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$configuration</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_COMMENT">//    public $REST_API;</token>
+      </line>
+      <line no="14"/>
+      <line no="15">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$project_name</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$config_file</token>
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_DOT">.</token>
+        <token name="T_STRING">DIRECTORY_SEPARATOR</token>
+        <token name="T_DOT">.</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'..'</token>
+        <token name="T_DOT">.</token>
+        <token name="T_STRING">DIRECTORY_SEPARATOR</token>
+        <token name="T_DOT">.</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'../config.xml'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">project_name</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$project_name</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$project_name</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Ventari"</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">config_file</token>
+        <token name="T_WHITESPACE">  </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$config_file</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20"/>
+      <line no="21">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">file_exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">config_file</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">configuration</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">simplexml_load_file</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">config_file</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="24"/>
+      <line no="25">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">init</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="27"/>
+      <line no="28">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">init</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT">         * REST_API SHOULD ONLY be a local variable. As it will be used to initiate the Resource. Only needed once.</token>
+      </line>
+      <line no="32">
+        <token name="T_DOC_COMMENT">         */</token>
+      </line>
+      <line no="33">
+        <token name="T_COMMENT">//        $this-&gt;REST_API = $this-&gt;configuration-&gt;protocol."://".$this-&gt;configuration-&gt;uri.$this-&gt;sanitizePath($this-&gt;configuration-&gt;path);</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$REST_API</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">configuration</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">protocol</token>
+        <token name="T_DOT">.</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"://"</token>
+        <token name="T_DOT">.</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">configuration</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">uri</token>
+        <token name="T_DOT">.</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">sanitizePath</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">configuration</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">path</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="36"/>
+      <line no="37">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">sanitizePath</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="39">
+        <token name="T_COMMENT">//        $sanitized_path = (preg_match('/^\//', $path)) ? $path : '/'.$path;</token>
+      </line>
+      <line no="40">
+        <token name="T_COMMENT">//        return $sanitized_path;</token>
+      </line>
+      <line no="41"/>
+      <line no="42">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">preg_match</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/^\/[aA-zZ]*/'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$sanitized_path</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELSE">else</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$sanitized_path</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/'</token>
+        <token name="T_DOT">.</token>
+        <token name="T_VARIABLE">$path</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="47"/>
+      <line no="48">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$sanitized_path</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="50">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+    </source>
+  </file>
+</phpunit>

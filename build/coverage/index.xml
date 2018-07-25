@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Jul 25 9:07:50 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+    <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
+    <driver name="xdebug" version="2.6.0"/>
+  </build>
+  <project source="/Users/philipsaa/Sites/tollwerk/u2d-ventari/src/Ventari">
+    <tests>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testConstructor" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\DemoTest::testDemo" size="unknown" result="0" status="PASSED"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="88" comments="26" code="62" executable="18" executed="18" percent="100.00"/>
+        <methods count="6" tested="6" percent="100.00"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="2" tested="2" percent="100.00"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <directory name="Application">
+        <totals>
+          <lines total="49" comments="11" code="38" executable="13" executed="13" percent="100.00"/>
+          <methods count="3" tested="3" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="BaseController.php" href="Application/BaseController.php.xml">
+          <totals>
+            <lines total="49" comments="11" code="38" executable="13" executed="13" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Ports">
+        <totals>
+          <lines total="39" comments="15" code="24" executable="5" executed="5" percent="100.00"/>
+          <methods count="3" tested="3" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="Demo.php" href="Ports/Demo.php.xml">
+          <totals>
+            <lines total="39" comments="15" code="24" executable="5" executed="5" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+    </directory>
+  </project>
+</phpunit>
