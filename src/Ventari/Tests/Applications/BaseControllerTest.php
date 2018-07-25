@@ -62,7 +62,7 @@ XML;
     {
         $this->assertNotEmpty($path);
         $baseController = new BaseController('ASDF');
-        $sanitizedPath = $baseController->sanitizePath($path);
+        $sanitizedPath  = $baseController->sanitizePath($path);
         $this->assertStringStartsWith('/', $sanitizedPath);
         $this->assertStringStartsNotWith('//', $sanitizedPath);
     }

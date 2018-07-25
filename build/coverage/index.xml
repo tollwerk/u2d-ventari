@@ -1,21 +1,27 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Wed Jul 25 12:02:50 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+  <build time="Wed Jul 25 13:30:37 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
     <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
     <driver name="xdebug" version="2.6.0"/>
   </build>
   <project source="/Users/philipsaa/Sites/tollwerk/u2d-ventari/src/Ventari">
     <tests>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testClass" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #0" size="unknown" result="0" status="PASSED"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #1" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #2" size="unknown" result="3" status="FAILURE"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetStatusIds with data set #0" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterStartDate with data set #0" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterStartDate with data set #1" size="unknown" result="3" status="FAILURE"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterEndDate with data set #0" size="unknown" result="3" status="FAILURE"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterEndDate with data set #1" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetPersonIds with data set #0" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetPage with data set #0" size="unknown" result="0" status="PASSED"/>
     </tests>
     <directory name="/">
       <totals>
-        <lines total="168" comments="53" code="115" executable="38" executed="5" percent="13.16"/>
-        <methods count="12" tested="1" percent="8.33"/>
+        <lines total="171" comments="37" code="134" executable="49" executed="21" percent="42.86"/>
+        <methods count="12" tested="6" percent="50.00"/>
         <functions count="0" tested="0" percent="0"/>
-        <classes count="3" tested="0" percent="0.00"/>
+        <classes count="3" tested="1" percent="33.33"/>
         <traits count="0" tested="0" percent="0"/>
       </totals>
       <directory name="Application">
@@ -56,10 +62,10 @@
       </directory>
       <directory name="Ports">
         <totals>
-          <lines total="110" comments="50" code="60" executable="19" executed="5" percent="26.32"/>
-          <methods count="9" tested="1" percent="11.11"/>
+          <lines total="113" comments="34" code="79" executable="30" executed="21" percent="70.00"/>
+          <methods count="9" tested="6" percent="66.67"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="2" tested="0" percent="0.00"/>
+          <classes count="2" tested="1" percent="50.00"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <file name="Demo.php" href="Ports/Demo.php.xml">
@@ -73,10 +79,10 @@
         </file>
         <file name="VentariAPI.php" href="Ports/VentariAPI.php.xml">
           <totals>
-            <lines total="70" comments="34" code="36" executable="10" executed="5" percent="50.00"/>
-            <methods count="6" tested="1" percent="16.67"/>
+            <lines total="73" comments="18" code="55" executable="21" executed="21" percent="100.00"/>
+            <methods count="6" tested="6" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
-            <classes count="1" tested="0" percent="0.00"/>
+            <classes count="1" tested="1" percent="100.00"/>
             <traits count="0" tested="0" percent="0"/>
           </totals>
         </file>
