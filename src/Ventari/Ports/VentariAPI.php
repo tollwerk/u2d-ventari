@@ -8,7 +8,7 @@ class VentariAPI
      * [GET] Functions
      */
 
-    static function getEventIds(array $events)
+    public function getEventIds(array $events)
     {
         $queryString = '?eventIds=';
         foreach ($events as $event) {
