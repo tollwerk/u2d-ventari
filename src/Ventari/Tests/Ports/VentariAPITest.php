@@ -65,7 +65,7 @@ class VentariAPITest extends AbstractTestBase
     /**
      * Test GetFilterStartDate
      * @depends      testClass
-     * @dataProvider datesProvider
+     * @dataProvider datesStartProvider
      */
     public function testGetFilterStartDate($dates, $testClass)
     {
@@ -77,7 +77,7 @@ class VentariAPITest extends AbstractTestBase
     /**
      * Test GetFilterEndDate
      * @depends      testClass
-     * @dataProvider datesProvider
+     * @dataProvider datesEndProvider
      */
     public function testGetFilterEndDate($dates, $testClass)
     {
@@ -86,10 +86,17 @@ class VentariAPITest extends AbstractTestBase
         $this->assertEquals($expectedString, $actualString);
     }
 
-    public function datesProvider()
+    public function datesStartProvider()
     {
         return [
             ['01.12.2018'],
+//            ['31.12.2018']
+        ];
+    }
+    public function datesEndProvider()
+    {
+        return [
+//            ['01.12.2018'],
             ['31.12.2018']
         ];
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Wed Jul 25 13:30:37 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+  <build time="Wed Jul 25 13:35:25 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
     <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
     <driver name="xdebug" version="2.6.0"/>
   </build>
@@ -10,9 +10,7 @@
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetStatusIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterStartDate with data set #0" size="unknown" result="0" status="PASSED"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterStartDate with data set #1" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterEndDate with data set #0" size="unknown" result="3" status="FAILURE"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterEndDate with data set #1" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterEndDate with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetPersonIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetPage with data set #0" size="unknown" result="0" status="PASSED"/>
     </tests>
