@@ -60,9 +60,32 @@ XML;
      *
      * @param $baseController
      */
-    public function testInitiation($baseController)
+//    public function testInitiation($baseController)
+//    {
+//        $this->assertNotEmpty($baseController->REST_API);
+//        $this->assertEquals('http://events.nueww.de/events', $baseController->REST_API);
+//    }
+
+    /**
+     * Test Sanitizer Function
+     * @dataProvider sanitizerProvider
+     */
+    public function testSanitizePath($path)
     {
-        $this->assertNotEmpty($baseController->REST_API);
-        $this->assertEquals('http://events.nueww.de/events', $baseController->REST_API);
+        $this->assertNotEmpty($path);
+        $baseController = new BaseController('ASDF');
+        $sanitized_path = $baseController->sanitizePath($path);
+        $this->assertStringStartsWith('/', $sanitized_path);
+        $this->assertStringStartsNotWith('//', $sanitized_path);
+    }
+
+    public function sanitizerProvider()
+    {
+        return [
+            ['/link'],
+            ['link'],
+//            ['//link'],
+            ['/path/to/api']
+        ];
     }
 }
