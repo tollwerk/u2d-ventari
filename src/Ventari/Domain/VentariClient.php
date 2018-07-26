@@ -10,6 +10,7 @@ use Tollwerk\Ventari\Ports\VentariAPI;
 class VentariClient implements RestClient
 {
     protected $API;
+
     /**
      * HTTP client
      *
@@ -20,17 +21,18 @@ class VentariClient implements RestClient
 
     public function __construct(ControllerInterface $config, HttpClientInterface $client)
     {
-        $config        = new BaseController('Ventari');
-        $this->restAPI = $config->restAPI;
-        $this->API     = new VentariAPI();
-        $this->client  = $client;
+//        $config        = new BaseController('Ventari');
+//        $this->restAPI = $config->restAPI;
+//        $this->API     = new VentariAPI();
+//        $this->client  = $client;
     }
 
     public function get(array $request)
     {
-        $method    = 'get'.ucfirst($request['method']);
-        $apiMethod = $this->API->$method($request['data']);
-
+        // TODO: Implement get() method.
+//        $method    = 'get'.ucfirst($request['method']);
+//        $apiMethod = $this->API->$method($request['data']);
+//
 //        try {
 //            $response = $this->client->request('GET', $this->restAPI.$apiMethod, [
 //                'auth' => ['user', 'pass']
@@ -41,8 +43,8 @@ class VentariClient implements RestClient
 //            $responseBodyAsString = $response->getBody()->getContents();
 //        }
 //        print_r($response);
-
-        return $apiMethod;
+//
+//        return $apiMethod;
     }
 
     public function put(array $request)
@@ -64,4 +66,5 @@ class VentariClient implements RestClient
     {
         // TODO: Implement delete() method.
     }
+
 }
