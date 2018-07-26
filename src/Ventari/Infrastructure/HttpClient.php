@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: philipsaa
- * Date: 7/26/18
- * Time: 11:44
- */
 
 namespace Tollwerk\Ventari\Infrastructure;
 
@@ -23,7 +17,6 @@ class HttpClient implements HttpClientInterface
 
     /**
      * HttpClient constructor.
-     *
      *
      */
     public function __construct()

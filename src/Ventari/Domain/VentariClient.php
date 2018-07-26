@@ -7,7 +7,7 @@ use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 use Tollwerk\Ventari\Ports\VentariAPI;
 
-class VentariClient implements ClientRest
+class VentariClient implements RestClient
 {
     protected $API;
     /**
@@ -31,16 +31,16 @@ class VentariClient implements ClientRest
         $method    = 'get'.ucfirst($request['method']);
         $apiMethod = $this->API->$method($request['data']);
 
-        try {
-            $response = $this->client->request('GET', $this->restAPI.$apiMethod, [
-                'auth' => ['user', 'pass']
-            ]);
-        }
-        catch (GuzzleHttp\Exception\ClientException $e) {
-            $response = $e->getResponse();
-            $responseBodyAsString = $response->getBody()->getContents();
-        }
-        print_r($response);
+//        try {
+//            $response = $this->client->request('GET', $this->restAPI.$apiMethod, [
+//                'auth' => ['user', 'pass']
+//            ]);
+//        }
+//        catch (GuzzleHttp\Exception\ClientException $e) {
+//            $response = $e->getResponse();
+//            $responseBodyAsString = $response->getBody()->getContents();
+//        }
+//        print_r($response);
 
         return $apiMethod;
     }

@@ -11,7 +11,7 @@ class VentariClientTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
-        self::$testClass = new VentariClient();
+        self::$testClass = new VentariClient('');
     }
 
     /**

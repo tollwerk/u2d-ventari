@@ -14,7 +14,7 @@
         "eventId": 1860
       },
       {
-        "eventName": "Test    Passwort 3",
+        "eventName": "Test Passwort 3",
         "eventstart": "2018-07-30",
         "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1905",
         "eventId": 1905
@@ -22,7 +22,7 @@
       {
         "eventName": "Test Logincode 3",
         "eventstart": "2018-08-20",
-        "frontendLink": "https://    ventari.kraft.dev/tms/frontend/frontend.cfm?l=1906",
+        "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=1906",
         "eventId": 1906
       },
       {
@@ -38,7 +38,7 @@
         "eventId": 1943
       },
       {
-        "eventName": "Test-VA    mnroth 2016-03-    15T13:57:07.021Z",
+        "eventName": "Test-VA",
         "eventstart": "2020-03-15",
         "frontendLink": "https://ventari.kraft.dev/tms/frontend/frontend.cfm?l=FB61EF577CA5FC249E6809D6313B1EC2",
         "eventId": 1951

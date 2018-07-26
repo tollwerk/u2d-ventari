@@ -43,4 +43,9 @@ class BaseController implements ControllerInterface
 
         return $sanitizedPath;
     }
+
+    public function sanitizePathTester(string $pathToTest)
+    {
+        return $this->sanitizePath($pathToTest);
+    }
 }
