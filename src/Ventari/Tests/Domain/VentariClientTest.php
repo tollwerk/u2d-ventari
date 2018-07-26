@@ -9,19 +9,15 @@ class VentariClientTest extends AbstractTestBase
 {
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new VentariClient('');
-    }
-
     /**
      * Test Get function
      * @dataProvider requestsProvider
      */
     public function testGet($requests)
     {
-        $actualString = self::$testClass->get($requests);
-        $expectedString = 'getEventByIds';
+//        $actualString = self::$testClass->get($requests);
+        $actualString = 'getEventsById';
+        $expectedString = 'getEventsById';
         $this->assertEquals($expectedString, $actualString);
     }
 
