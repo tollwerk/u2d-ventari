@@ -14,7 +14,7 @@ class VentariAPITest extends AbstractTestBase
 {
     public static $testClass;
 
-    public static function setUpBeforeClass()/* The :void return type declaration that should be here would cause a BC issue */
+    public static function setUpBeforeClass()
     {
         self::$testClass = new VentariAPI();
     }
