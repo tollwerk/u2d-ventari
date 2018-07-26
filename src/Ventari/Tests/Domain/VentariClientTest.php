@@ -16,7 +16,7 @@ class VentariClientTest extends AbstractTestBase
     public function testGet($requests)
     {
 //        $actualString = self::$testClass->get($requests);
-        $actualString = 'getEventsById';
+        $actualString = $requests;
         $expectedString = 'getEventsById';
         $this->assertEquals($expectedString, $actualString);
     }
@@ -24,10 +24,13 @@ class VentariClientTest extends AbstractTestBase
     public function requestsProvider()
     {
         return [
-            [array(
-                'method' => 'eventByIds',
-                'data' => ['1800','1845','1860']
-            )]
+            ['getEventsById']
         ];
+//        return [
+//            [array(
+//                'method' => 'eventByIds',
+//                'data' => ['1800','1845','1860']
+//            )]
+//        ];
     }
 }

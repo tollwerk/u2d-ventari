@@ -1,0 +1,110 @@
+{
+  "responseData": {
+    "resultCount": 3,
+    "participants": [
+      {
+        "static_fields": {
+          "personId": "",
+          "changeDate": "April, 01 2015 10:43:33",
+          "statusId": 0,
+          "groupId": "",
+          "RowNum": 1,
+          "parentParticipantId": "",
+          "languageId": 1,
+          "createDate": "March, 12 2015 13:14:47",
+          "originId": 1,
+          "eventId": 1881,
+          "createdBy": "Nießen, Stefan",
+          "changedBy": "Nießen, Stefan"
+        },
+        "dynamic_fields": [
+          {
+            "mapping_token": "pa_email",
+            "pv_value": "e.schwahn@mail.de",
+            "anz_param_id": 7
+          },
+          {
+            "mapping_token": "pa_salutation",
+            "pv_value": 15,
+            "anz_param_id": 51
+          },
+          {
+            "mapping_token": "pa_surname",
+            "pv_value": "Schwahn",
+            "anz_param_id": 1
+          }
+        ],
+        "id": 42940
+      },
+      {
+        "static_fields": {
+          "personId": "",
+          "changeDate": "April, 01 2015 10:36:15",
+          "statusId": 0,
+          "groupId": "",
+          "RowNum": 2,
+          "parentParticipantId": "",
+          "languageId": 1,
+          "createDate": "March, 12 2015 13:14:52",
+          "originId": 1,
+          "eventId": 1881,
+          "createdBy": "Nießen, Stefan",
+          "changedBy": "Nießen, Stefan"
+        },
+        "dynamic_fields": [
+          {
+            "mapping_token": "pa_email",
+            "pv_value": "s.nuss@mail.de",
+            "anz_param_id": 7
+          },
+          {
+            "mapping_token": "pa_salutation",
+            "pv_value": 15,
+            "anz_param_id": 51
+          },
+          {
+            "mapping_token": "pa_surname",
+            "pv_value": "Nuss",
+            "anz_param_id": 1
+          }
+        ],
+        "id": 42970
+      },
+      {
+        "static_fields": {
+          "personId": "",
+          "changeDate": "April, 01 2015 10:35:48",
+          "statusId": 0,
+          "groupId": "",
+          "RowNum": 3,
+          "parentParticipantId": "",
+          "languageId": 1,
+          "createDate": "March, 12 2015 13:15:12",
+          "originId": 1,
+          "eventId": 1881,
+          "createdBy": "Nießen, Stefan",
+          "changedBy": "Nießen, Stefan"
+        },
+        "dynamic_fields": [
+          {
+            "mapping_token": "pa_email",
+            "pv_value": "s.ottweil@mail.it",
+            "anz_param_id": 7
+          },
+          {
+            "mapping_token": "pa_salutation",
+            "pv_value": 15,
+            "anz_param_id": 51
+          },
+          {
+            "mapping_token": "pa_surname",
+            "pv_value": "Ottweil",
+            "anz_param_id": 1
+          }
+        ],
+        "id": 43106
+      }
+    ]
+  },
+  "responseStatus": 200
+}

@@ -1,0 +1,162 @@
+{
+  "responseData": {
+    "resultCount": 22,
+    "mailMerge": [
+      {
+        "RowNum": 1,
+        "scope": "Seriendruck",
+        "description": "Teilnehmerliste Hochformat",
+        "id": 3,
+        "name": "Teilnehmerliste_Hochformat"
+      },
+      {
+        "RowNum": 2,
+        "scope": "Seriendruck",
+        "description": "Teilnehmerliste Querformat mit QR-Code",
+        "id": 4,
+        "name": "Teilnehmerliste_Querformat"
+      },
+      {
+        "RowNum": 3,
+        "scope": "Veranstaltung",
+        "description": "Teilnehmerliste Hochformat",
+        "id": 5,
+        "name": "Teilnehmerliste_Hoch"
+      },
+      {
+        "RowNum": 4,
+        "scope": "Seriendruck",
+        "description": "Anmeldebestäti gung",
+        "id": 12,
+        "name": "Anmeldebestaetigung"
+      },
+      {
+        "RowNum": 5,
+        "scope": "Seriendruck",
+        "description": "Beschreibung des Hotels des TN",
+        "id": 16,
+        "name": "Ihr_Hotel"
+      },
+      {
+        "RowNum": 6,
+        "scope": "Seriendruck",
+        "description": "Liste aller Hotels",
+        "id": 17,
+        "name": "Hotelliste"
+      },
+      {
+        "RowNum": 7,
+        "scope": "Veranstaltung",
+        "description": "Teilnehmer QRCode",
+        "id": 23,
+        "name": "TN_QR_Code"
+      },
+      {
+        "RowNum": 8,
+        "scope": "Veranstaltung",
+        "description": "Teilnehmer Barcode",
+        "id": 24,
+        "name": "TN_Barcode"
+      },
+      {
+        "RowNum": 9,
+        "scope": "Veranstaltung",
+        "description": "Teilnehmer KomplettListe",
+        "id": 25,
+        "name": "TN_Komplett_Liste"
+      },
+      {
+        "RowNum": 10,
+        "scope": "Seriendruck",
+        "description": "Einladung_Test",
+        "id": 31,
+        "name": "Einladung_Test"
+      },
+      {
+        "RowNum": 11,
+        "scope": "Seriendruck",
+        "description": "Variablen der Rechnungsdaten",
+        "id": 40,
+        "name": "Rechnungsdaten"
+      },
+      {
+        "RowNum": 12,
+        "scope": "Seriendruck",
+        "description": "Hauptvorlage 1",
+        "id": 51,
+        "name": "Hauptvorlage_1"
+      },
+      {
+        "RowNum": 13,
+        "scope": "Seriendruck",
+        "description": "Anhang",
+        "id": 53,
+        "name": "Anhang"
+      },
+      {
+        "RowNum": 14,
+        "scope": "Seriendruck",
+        "description": "Teilnehmer mit Bild",
+        "id": 60,
+        "name": "Teilnehmer_-Bild"
+      },
+      {
+        "RowNum": 15,
+        "scope": "Seriendruck",
+        "description": "TN-Seriendruck komplett",
+        "id": 64,
+        "name": "TN_Komplett"
+      },
+      {
+        "RowNum": 16,
+        "scope": "Seriendruck",
+        "description": "Bild, Hotel, Rechnung, Barcode, QRCode",
+        "id": 65,
+        "name": "Zugesagte"
+      },
+      {
+        "RowNum": 17,
+        "scope": "Seriendruck",
+        "description": "Leistungen",
+        "id": 73,
+        "name": "Leistungen"
+      },
+      {
+        "RowNum": 18,
+        "scope": "Rechnung",
+        "description": "Rechnung mit MwStBlock",
+        "id": 81,
+        "name": "Rechung"
+      },
+      {
+        "RowNum": 19,
+        "scope": "Rechnung",
+        "description": "Stornorechnung",
+        "id": 82,
+        "name": "Stornorechnung"
+      },
+      {
+        "RowNum": 20,
+        "scope": "Rechnung",
+        "description": "Mahnung zur Vorlage Rechnung",
+        "id": 84,
+        "name": "Mahnung"
+      },
+      {
+        "RowNum": 21,
+        "scope": "Seriendruck",
+        "description": "Teilnehmerliste Hochformat mit neuem PDF-Generator 2",
+        "id": 1096,
+        "name": "Teilnehmerliste_Hochformat_neu_2"
+      },
+      {
+        "RowNum": 22,
+        "scope": "Seriendruck",
+        "description": "Teilnehmerliste Querformat mit neuem PDF-Generator",
+        "id": 1097,
+        "name": "Teilnehmerliste_Querformat_neu"
+      }
+    ]
+  },
+  "responseStatus": 200
+}

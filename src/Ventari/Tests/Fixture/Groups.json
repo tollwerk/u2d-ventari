@@ -1,0 +1,165 @@
+{
+  "responseData": {
+    "groups": [
+      {
+        "fields": [
+          {
+            "elements": [],
+            "regex": [
+              "^-?1)$"
+            ],
+            "length": null,
+            "required": 0,
+            "id": 17,
+            "translation": [
+              {
+                "value": "ID",
+                "iso2": "de"
+              },
+              {
+                "value": "ID",
+                "iso2": "en"
+              }
+            ],
+            "token": "id",
+            "type": "text"
+          },
+          {
+            "elements": [],
+            "regex": [
+              "^[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}\\s]*$"
+            ],
+            "length": 255,
+            "required": 1,
+            "id": 1,
+            "translation": [
+              {
+                "value": "Vorname",
+                "iso2": "de"
+              },
+              {
+                "value": "Firstname",
+                "iso2": "en"
+              }
+            ],
+            "token": "firstname",
+            "type": "text"
+          },
+          {
+            "elements": [],
+            "regex": [
+              "^[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}\\s]*$"
+            ],
+            "length": 255,
+            "required": 1,
+            "id": 2,
+            "translation": [
+              {
+                "value": "Nachname",
+                "iso2": "de"
+              },
+              {
+                "value": "Lastname",
+                "iso2": "en"
+              }
+            ],
+            "token": "lastname",
+            "type": "textarea"
+          },
+          {
+            "elements": [],
+            "regex": [
+              "(?i)^['_a-z0-9-\\+~]+(\\.['_a-z0-9-\\+~]+)*@([a-z_0-9-]+\\.)+([a-z]{2,9})$"
+            ],
+            "length": 255,
+            "required": 0,
+            "id": 3,
+            "translation": [
+              {
+                "value": "EMail",
+                "iso2": "de"
+              },
+              {
+                "value": "Email",
+                "iso2": "en"
+              }
+            ],
+            "token": "email",
+            "type": "email"
+          },
+          {
+            "elements": [
+              {
+                "id": 10354,
+                "translation": [
+                  {
+                    "value": "Gruppe A",
+                    "iso2": "de"
+                  },
+                  {
+                    "value": "Gruppe A",
+                    "iso2": "en"
+                  }
+                ]
+              },
+              {
+                "id": 15620,
+                "translation": [
+                  {
+                    "value": "A",
+                    "iso2": "de"
+                  },
+                  {
+                    "value": "A",
+                    "iso2": "en"
+                  }
+                ]
+              },
+              {
+                "id": 16653,
+                "translation": [
+                  {
+                    "value": "Gruppe B",
+                    "iso2": "de"
+                  },
+                  {
+                    "value": "Gruppe B",
+                    "iso2": "en"
+                  }
+                ]
+              }
+            ],
+            "regex": [],
+            "length": null,
+            "required": 0,
+            "id": 1038,
+            "translation": [
+              {
+                "value": "Gruppenkoordinator_Gruppe",
+                "iso2": "de"
+              },
+              {
+                "value": "Groupcoordinator_group",
+                "iso2": "en"
+              }
+            ],
+            "token": "groupcoordinator_group",
+            "type": "dropdown"
+          }
+        ],
+        "id": 1,
+        "translation": [
+          {
+            "value": "Eck daten",
+            "iso2": "de"
+          },
+          {
+            "value": "Basic data",
+            "iso2": "en"
+          }
+        ]
+      }
+    ]
+  },
+  "responseStatus": 200
+}
