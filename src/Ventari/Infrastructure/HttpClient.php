@@ -24,5 +24,8 @@ class HttpClient implements HttpClientInterface
         $this->guzzle = new Client();
     }
 
-
+    public function getGuzzle()
+    {
+        return $this->guzzle;
+    }
 }

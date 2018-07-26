@@ -16,8 +16,10 @@ class HttpClientTest extends AbstractTestBase
 
     public function test__construct()
     {
+//        $expectedClass = self::$HttpClient->getGuzzle();
+
         $this->assertInstanceOf(HttpClient::class, self::$HttpClient);
-        $this->assertInstanceOf(self::$HttpClient->guzzle, \GuzzleHttp\Client::class);
+//        $this->assertInstanceOf($expectedClass, \GuzzleHttp\Client::class);
     }
 
 }
