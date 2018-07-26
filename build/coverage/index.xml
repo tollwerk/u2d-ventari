@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
-  <build time="Wed Jul 25 14:51:53 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
+  <build time="Thu Jul 26 9:00:01 GMT+0000 2018" phpunit="7.2.7" coverage="6.0.7">
     <runtime name="PHP" version="7.2.6" url="https://secure.php.net/"/>
     <driver name="xdebug" version="2.6.0"/>
   </build>
@@ -10,8 +10,8 @@
       <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #1" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Applications\BaseControllerTest::testSanitizePath with data set #2" size="unknown" result="0" status="PASSED"/>
+      <test name="Tollwerk\Ventari\Tests\Domain\VentariClientTest::testGet with data set #0" size="unknown" result="3" status="FAILURE"/>
       <test name="Tollwerk\Ventari\Tests\Ports\DemoTest::testDemo" size="unknown" result="0" status="PASSED"/>
-      <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testClass" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetEventIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetStatusIds with data set #0" size="unknown" result="0" status="PASSED"/>
       <test name="Tollwerk\Ventari\Tests\Ports\VentariAPITest::testGetFilterStartDate with data set #0" size="unknown" result="0" status="PASSED"/>
@@ -21,15 +21,15 @@
     </tests>
     <directory name="/">
       <totals>
-        <lines total="151" comments="37" code="114" executable="28" executed="28" percent="100.00"/>
-        <methods count="12" tested="12" percent="100.00"/>
+        <lines total="215" comments="45" code="170" executable="46" executed="34" percent="73.91"/>
+        <methods count="18" tested="12" percent="66.67"/>
         <functions count="0" tested="0" percent="0"/>
-        <classes count="3" tested="3" percent="100.00"/>
+        <classes count="4" tested="3" percent="75.00"/>
         <traits count="0" tested="0" percent="0"/>
       </totals>
       <directory name="Application">
         <totals>
-          <lines total="43" comments="3" code="40" executable="14" executed="14" percent="100.00"/>
+          <lines total="44" comments="3" code="41" executable="14" executed="14" percent="100.00"/>
           <methods count="3" tested="3" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="1" tested="1" percent="100.00"/>
@@ -37,7 +37,7 @@
         </totals>
         <file name="BaseController.php" href="Application/BaseController.php.xml">
           <totals>
-            <lines total="43" comments="3" code="40" executable="14" executed="14" percent="100.00"/>
+            <lines total="44" comments="3" code="41" executable="14" executed="14" percent="100.00"/>
             <methods count="3" tested="3" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="1" tested="1" percent="100.00"/>
@@ -47,10 +47,10 @@
       </directory>
       <directory name="Domain">
         <totals>
-          <lines total="15" comments="0" code="15" executable="0" executed="0" percent="0"/>
-          <methods count="0" tested="0" percent="0"/>
+          <lines total="74" comments="8" code="66" executable="18" executed="6" percent="33.33"/>
+          <methods count="6" tested="0" percent="0.00"/>
           <functions count="0" tested="0" percent="0"/>
-          <classes count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
           <traits count="0" tested="0" percent="0"/>
         </totals>
         <file name="ClientRest.php" href="Domain/ClientRest.php.xml">
@@ -62,10 +62,19 @@
             <traits count="0" tested="0" percent="0"/>
           </totals>
         </file>
+        <file name="VentariClient.php" href="Domain/VentariClient.php.xml">
+          <totals>
+            <lines total="59" comments="8" code="51" executable="18" executed="6" percent="33.33"/>
+            <methods count="6" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
       </directory>
       <directory name="Ports">
         <totals>
-          <lines total="93" comments="34" code="59" executable="14" executed="14" percent="100.00"/>
+          <lines total="97" comments="34" code="63" executable="14" executed="14" percent="100.00"/>
           <methods count="9" tested="9" percent="100.00"/>
           <functions count="0" tested="0" percent="0"/>
           <classes count="2" tested="2" percent="100.00"/>
@@ -82,7 +91,7 @@
         </file>
         <file name="VentariAPI.php" href="Ports/VentariAPI.php.xml">
           <totals>
-            <lines total="53" comments="18" code="35" executable="9" executed="9" percent="100.00"/>
+            <lines total="57" comments="18" code="39" executable="9" executed="9" percent="100.00"/>
             <methods count="6" tested="6" percent="100.00"/>
             <functions count="0" tested="0" percent="0"/>
             <classes count="1" tested="1" percent="100.00"/>

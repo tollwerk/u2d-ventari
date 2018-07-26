@@ -2,11 +2,15 @@
 
 namespace Tollwerk\Ventari\Application;
 
-class BaseController
+use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
+
+class BaseController implements ControllerInterface
 {
     public $projectName;
     public $configFile;
     public $configuration;
+
+    public $restAPI;
 
     public function __construct(string $projectName)
     {
@@ -21,20 +25,19 @@ class BaseController
         $this->init();
     }
 
-    public function init()
+    protected function init()
     {
         /**
          * $restAPI: SHOULD ONLY be a local variable. As it will be used to initiate the Resource. Only needed once.
          */
-        $protocol = $this->configuration->protocol."://";
-        $url      = $this->configuration->uri;
-        $path     = $this->sanitizePath($this->configuration->path);
-        $restAPI  = $protocol.$url.$path;
-
+        $protocol      = $this->configuration->protocol."://";
+        $url           = $this->configuration->uri;
+        $path          = $this->sanitizePath($this->configuration->path);
+        $this->restAPI = $protocol.$url.$path;
 
     }
 
-    public function sanitizePath(string $path)
+    protected function sanitizePath(string $path)
     {
         $sanitizedPath = (preg_match('/^\/[aA-zZ]*/', $path)) ? $path : '/'.$path;
 

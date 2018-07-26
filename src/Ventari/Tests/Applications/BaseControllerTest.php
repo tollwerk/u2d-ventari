@@ -28,8 +28,8 @@ class BaseControllerTest extends AbstractTestBase
 
     /**
      * Test the Configuration XML file
-     * @depends testConstructor
      *
+     * @depends testConstructor
      * @param $baseController
      */
     public function testConfiguration($baseController)
@@ -40,7 +40,7 @@ class BaseControllerTest extends AbstractTestBase
 <config clientId="U2D Ventari" type="REST">
     <protocol>http</protocol>
     <uri>events.nueww.de</uri>
-    <path>/events</path>
+    <path>/rest/events</path>
 </config>
 XML;
 

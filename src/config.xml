@@ -2,5 +2,5 @@
 <config clientId="U2D Ventari" type="REST">
     <protocol>http</protocol>
     <uri>events.nueww.de</uri>
-    <path>/events</path>
+    <path>/rest/events</path>
 </config>

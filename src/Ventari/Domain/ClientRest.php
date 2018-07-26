@@ -4,13 +4,13 @@ namespace Tollwerk\Ventari\Domain;
 
 interface ClientRest
 {
-    public function get($token, $request);
+    public function get(array $request);
 
-    public function put($token, $request);
+    public function put(array $request);
 
-    public function patch($token, $request);
+    public function patch(array $request);
 
-    public function post($token, $request);
+    public function post(array $request);
 
-    public function delete($token, $request);
+    public function delete(array $request);
 }
