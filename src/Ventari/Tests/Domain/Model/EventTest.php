@@ -75,6 +75,6 @@ class EventTest extends AbstractTestBase
 
     }
 
-
 }
+
 

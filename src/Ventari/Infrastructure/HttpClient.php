@@ -32,4 +32,5 @@ class HttpClient implements HttpClientInterface
     {
         return $this->guzzle;
     }
+
 }
