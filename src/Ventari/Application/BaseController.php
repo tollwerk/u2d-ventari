@@ -34,7 +34,6 @@ class BaseController implements ControllerInterface
         $url           = $this->configuration->uri;
         $path          = $this->sanitizePath($this->configuration->path);
         $this->restAPI = $protocol.$url.$path;
-
     }
 
     protected function sanitizePath(string $path)

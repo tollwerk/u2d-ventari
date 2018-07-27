@@ -17,6 +17,7 @@ class EventTest extends AbstractTestBase
     public function event()
     {
         $this->assertInstanceOf(Event::class, self::$event);
+
         return self::$event;
     }
 
@@ -28,8 +29,9 @@ class EventTest extends AbstractTestBase
         $event = $this->event();
         $event->setEventId('1234');
         $expectedString = $event->getEventId();
-        $actualString = '1234';
+        $actualString   = '1234';
         $this->assertEquals($expectedString, $actualString);
+
         return $event;
     }
 
@@ -42,8 +44,9 @@ class EventTest extends AbstractTestBase
         $eventName = 'Event Name';
         $event->setEventName($eventName);
         $expectedString = $event->getEventName();
-        $actualString = $eventName;
+        $actualString   = $eventName;
         $this->assertEquals($expectedString, $actualString);
+
         return $event;
     }
 
@@ -56,8 +59,9 @@ class EventTest extends AbstractTestBase
         $eventDate = '2018-12-10';
         $event->setEventDate($eventDate);
         $expectedString = $event->getEventDate();
-        $actualString = $eventDate;
+        $actualString   = $eventDate;
         $this->assertEquals($expectedString, $actualString);
+
         return $event;
     }
 
@@ -70,11 +74,7 @@ class EventTest extends AbstractTestBase
         $eventLink = 'https://www.nueww.de/event/link.php?id=1234';
         $event->setEventLink($eventLink);
         $expectedString = $event->getEventLink();
-        $actualString = $eventLink;
+        $actualString   = $eventLink;
         $this->assertEquals($expectedString, $actualString);
-
     }
-
 }
-
-

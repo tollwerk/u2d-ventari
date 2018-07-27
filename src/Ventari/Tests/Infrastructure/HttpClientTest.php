@@ -22,5 +22,4 @@ class HttpClientTest extends AbstractTestBase
         $expectedClass = $HttpClient->getGuzzle();
         $this->assertEquals(get_class($expectedClass), \GuzzleHttp\Client::class);
     }
-
 }

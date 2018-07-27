@@ -45,25 +45,30 @@ class VentariClient implements RestClient
 //        print_r($response);
 //
 //        return $apiMethod;
+        return $request;
     }
 
     public function put(array $request)
     {
         // TODO: Implement put() method.
+        return $request;
     }
 
     public function patch(array $request)
     {
         // TODO: Implement patch() method.
+        return $request;
     }
 
     public function post(array $request)
     {
         // TODO: Implement post() method.
+        return $request;
     }
 
     public function delete(array $request)
     {
         // TODO: Implement delete() method.
+        return $request;
     }
 }

@@ -30,4 +30,3 @@ class DemoTest extends AbstractTestBase
         $this->assertJsonStringEqualsJsonFile($expectedFile, '{"foo":"bar"}');
     }
 }
-
