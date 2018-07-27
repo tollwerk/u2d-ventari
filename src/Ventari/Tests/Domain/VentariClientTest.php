@@ -2,6 +2,8 @@
 
 namespace Tollwerk\Ventari\Tests\Domain;
 
+use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
+use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 use Tollwerk\Ventari\Domain\VentariClient;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -10,27 +12,16 @@ class VentariClientTest extends AbstractTestBase
     public static $testClass;
 
     /**
-     * Test Get function
-     * @dataProvider requestsProvider
+     * Test Constructor
      */
-    public function testGet($requests)
+    public function testConstructor()
     {
-//        $actualString = self::$testClass->get($requests);
-        $actualString = $requests;
-        $expectedString = 'getEventsById';
-        $this->assertEquals($expectedString, $actualString);
-    }
+        $config = $this->createMock(ControllerInterface::class);
+        $client = $this->createMock(HttpClientInterface::class);
 
-    public function requestsProvider()
-    {
-        return [
-            ['getEventsById']
-        ];
-//        return [
-//            [array(
-//                'method' => 'eventByIds',
-//                'data' => ['1800','1845','1860']
-//            )]
-//        ];
+        $ventariClient = new VentariClient($config, $client);
+
+        $this->assertClassHasAttribute('config', get_class($ventariClient));
+        $this->assertClassHasAttribute('client', get_class($ventariClient));
     }
 }
