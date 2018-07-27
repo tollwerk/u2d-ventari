@@ -24,11 +24,6 @@ class VentariClientTest extends AbstractTestBase
      */
     public function testConstructor()
     {
-//        $config = $this->createMock(ControllerInterface::class);
-//        $client = $this->createMock(HttpClientInterface::class);
-//
-//        $this->testClass = new VentariClient($config, $client);
-
         $this->assertClassHasAttribute('config', get_class($this->testClass));
         $this->assertClassHasAttribute('client', get_class($this->testClass));
     }
