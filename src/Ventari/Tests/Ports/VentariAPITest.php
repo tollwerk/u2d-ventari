@@ -19,125 +19,84 @@ class VentariAPITest extends AbstractTestBase
         self::$testClass = new VentariAPI();
     }
 
-    public function testClass()
-    {
-        $this->assertInstanceOf(VentariAPI::class, self::$testClass);
-        return self::$testClass;
-    }
-
     /**
      * Test GetEventIds
-     * @depends      testClass
-     * @dataProvider eventIdsProvider
+     * @dataProvider integerIdsProvider
      */
-    public function testGetEventIds($events, $testClass)
+    public function testGetEventIds($events)
     {
-
-        $actualString = $testClass->getEventByIds($events);
-        $expectedString = '?eventIds=1800,1845,1860';
+        $actualString = self::$testClass->getEventByIds($events);
+        $expectedString = '?eventIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
-    }
-
-    public function eventIdsProvider()
-    {
-        return [
-            [array('1800', '1845', '1860')],
-//            [array('1999', '2017', '1306')] // for the fail
-        ];
     }
 
     /**
      * Test GetStatusIds
-     * @depends      testClass
-     * @dataProvider statusIdsProvider
+     * @dataProvider integerIdsProvider
      */
-    public function testGetStatusIds($statusIds, $testClass)
+    public function testGetStatusIds($statusIds)
     {
-        $actualString = $testClass->getEventsByStatusIds($statusIds);
-        $expectedString = '?statusIds=1,2,6';
+        $actualString = self::$testClass->getEventsByStatusIds($statusIds);
+        $expectedString = '?statusIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
-    }
-
-    public function statusIdsProvider()
-    {
-        return [
-            [array('1', '2', '6')],
-//            [array('1', '2', '3', '5', '8', '13', '21', '34')] // for the fail
-        ];
     }
 
     /**
      * Test GetFilterStartDate
-     * @depends      testClass
-     * @dataProvider datesStartProvider
+     * @dataProvider datesProvider
      */
-    public function testGetFilterStartDate($dates, $testClass)
+    public function testGetFilterStartDate($dates)
     {
-        $actualString = $testClass->getEventsByFilterStartDate($dates);
+        $actualString = self::$testClass->getEventsByFilterStartDate($dates);
         $expectedString = '?filterStarDate=01.12.2018';
         $this->assertEquals($expectedString, $actualString);
     }
 
     /**
      * Test GetFilterEndDate
-     * @depends      testClass
-     * @dataProvider datesEndProvider
+     * @dataProvider datesProvider
      */
-    public function testGetFilterEndDate($dates, $testClass)
+    public function testGetFilterEndDate($dates)
     {
-        $actualString = $testClass->getEventsByFilterEndDate($dates);
-        $expectedString = '?filterEndDate=31.12.2018';
+        $actualString = self::$testClass->getEventsByFilterEndDate($dates);
+        $expectedString = '?filterEndDate=01.12.2018';
         $this->assertEquals($expectedString, $actualString);
-    }
-
-    public function datesStartProvider()
-    {
-        return [
-            ['01.12.2018'],
-//            ['31.12.2018']
-        ];
-    }
-
-    public function datesEndProvider()
-    {
-        return [
-//            ['01.12.2018'],
-            ['31.12.2018']
-        ];
     }
 
     /**
      * Test GetPersonIds
-     * @depends      testClass
-     * @dataProvider personIdsProvider
+     * @dataProvider integerIdsProvider
      */
-    public function testGetPersonIds($personIds, $testClass)
+    public function testGetPersonIds($personIds)
     {
-        $actualString = $testClass->getEventsByPersonIds($personIds);
-        $expectedString = '?personIds=1,31';
+        $actualString = self::$testClass->getEventsByPersonIds($personIds);
+        $expectedString = '?personIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
-    }
-
-    public function personIdsProvider()
-    {
-        return [
-            [array('1', '31')],
-//            [array('31', '1')] // for the fail
-        ];
     }
 
     /**
      * Test GetPage
-     * @depends      testClass
      * @dataProvider pageIdsProvider
      */
-    public function testGetPage($pageIds, $testClass)
+    public function testGetPage($pageIds)
     {
-        $actualString = $testClass->getEventsByPage($pageIds);
+        $actualString = self::$testClass->getEventsByPage($pageIds);
         $expectedString = '?page=1';
         $this->assertEquals($expectedString, $actualString);
     }
 
+    public function integerIdsProvider()
+    {
+        return [
+            [array('1', '2', '3', '5', '8', '13')]
+        ];
+    }
+    public function datesProvider()
+    {
+        return [
+            ['01.12.2018'],
+        ];
+    }
     public function pageIdsProvider()
     {
         return [

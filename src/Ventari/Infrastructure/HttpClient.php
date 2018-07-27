@@ -24,6 +24,10 @@ class HttpClient implements HttpClientInterface
         $this->guzzle = new Client();
     }
 
+    /**
+     * Public Function to access guzzle attribute; For Testing Purposes Only
+     * @return Client|ClientInterface
+     */
     public function getGuzzle()
     {
         return $this->guzzle;

@@ -16,15 +16,11 @@ class HttpClientTest extends AbstractTestBase
          */
         $this->assertClassHasAttribute('guzzle', get_class($HttpClient));
 
-
         /**
          * Testing Class name as String and not as Instance
          */
         $expectedClass = $HttpClient->getGuzzle();
         $this->assertEquals(get_class($expectedClass), \GuzzleHttp\Client::class);
-
-
-
     }
 
 }
