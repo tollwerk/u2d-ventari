@@ -7,20 +7,24 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class HttpClientTest extends AbstractTestBase
 {
-    public static $HttpClient;
-
-    public static function setUpBeforeClass()
-    {
-        self::$HttpClient = new HttpClient();
-    }
 
     public function test__construct()
     {
+        $HttpClient = new HttpClient();
+        /**
+         * Testing the Constructor
+         */
+        $this->assertClassHasAttribute('guzzle', get_class($HttpClient));
+
+
         /**
          * Testing Class name as String and not as Instance
          */
-        $expectedClass = self::$HttpClient->getGuzzle();
+        $expectedClass = $HttpClient->getGuzzle();
         $this->assertEquals(get_class($expectedClass), \GuzzleHttp\Client::class);
+
+
+
     }
 
 }
