@@ -11,15 +11,23 @@ class VentariClientTest extends AbstractTestBase
 {
     public $testClass;
 
-    /**
-     * Test Constructor
-     */
-    public function testConstructor()
+    protected function setUp()
     {
         $config = $this->createMock(ControllerInterface::class);
         $client = $this->createMock(HttpClientInterface::class);
 
         $this->testClass = new VentariClient($config, $client);
+    }
+
+    /**
+     * Test Constructor
+     */
+    public function testConstructor()
+    {
+//        $config = $this->createMock(ControllerInterface::class);
+//        $client = $this->createMock(HttpClientInterface::class);
+//
+//        $this->testClass = new VentariClient($config, $client);
 
         $this->assertClassHasAttribute('config', get_class($this->testClass));
         $this->assertClassHasAttribute('client', get_class($this->testClass));
@@ -62,4 +70,11 @@ class VentariClientTest extends AbstractTestBase
         $stub->method('doSomething')->will($this->returnSelf());
         $this->assertSame($stub, $stub->doSomething());
     }
+
+//    public function testGetPersonal()
+//    {
+//        $reflector = new \ReflectionObject($this->testClass);
+//        $method    = $reflector->getMethod('myMethod');
+//        $this->assertTrue($method);
+//    }
 }
