@@ -37,4 +37,3 @@ class Demo
         $this->property = $property;
     }
 }
-
