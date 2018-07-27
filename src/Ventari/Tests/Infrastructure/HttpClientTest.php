@@ -8,7 +8,7 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class HttpClientTest extends AbstractTestBase
 {
 
-    public function test__construct()
+    public function testConstructor()
     {
         $HttpClient = new HttpClient();
         /**
