@@ -26,4 +26,20 @@ class VentariClient
         $this->config = $config;
         $this->client = $client;
     }
+
+    public function getPersonal()
+    {
+        // Return Something
+    }
+
+    public function doSomething()
+    {
+        // Do Something
+    }
+
+    public function doSomethingWithValue($value)
+    {
+        // Return Modified Array
+        return array('foo' => $value);
+    }
 }
