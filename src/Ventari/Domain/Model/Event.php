@@ -83,6 +83,4 @@ class Event
         $this->eventLink = $eventLink;
         return $this;
     }
-
-
 }
