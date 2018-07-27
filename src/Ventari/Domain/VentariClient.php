@@ -66,5 +66,4 @@ class VentariClient implements RestClient
     {
         // TODO: Implement delete() method.
     }
-
 }

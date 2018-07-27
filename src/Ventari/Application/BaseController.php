@@ -49,4 +49,3 @@ class BaseController implements ControllerInterface
         return $this->sanitizePath($pathToTest);
     }
 }
-

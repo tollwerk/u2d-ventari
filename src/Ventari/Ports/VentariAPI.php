@@ -49,11 +49,7 @@ class VentariAPI
         return '?page='.$pageId;
 //        return '?page=1';
     }
-
-
     /**
      * TODO: define functions for | order,direction | num | count |
      */
-
 }
-
