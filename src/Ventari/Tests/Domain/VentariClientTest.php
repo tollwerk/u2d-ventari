@@ -39,8 +39,8 @@ class VentariClientTest extends AbstractTestBase
         /**
          * 1. Test the Stub
          */
-        $stub->method('getPersonal')->will($this->returnSelf());
-        $this->assertSame($stub, $stub->getPersonal());
+//        $stub->method('getPersonal')->will($this->returnSelf());
+//        $this->assertSame($stub, $stub->getPersonal());
 
         /**
          * 2. Test the Stub's Method

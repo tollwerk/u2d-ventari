@@ -27,11 +27,6 @@ class VentariClient
         $this->client = $client;
     }
 
-    public function getPersonal()
-    {
-        // Return Something
-    }
-
     public function doSomething()
     {
         // Do Something
