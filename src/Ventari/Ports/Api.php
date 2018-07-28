@@ -2,13 +2,8 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-class VentariAPI
+class Api
 {
-    /**
-     * [GET] Functions
-     *
-     */
-
     public function getEventByIds(array $events)
     {
         $queryString = '?eventIds='.implode(',', array_filter($events));

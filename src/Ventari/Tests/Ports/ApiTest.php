@@ -2,23 +2,20 @@
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
-use Tollwerk\Ventari\Ports\VentariAPI;
+use Tollwerk\Ventari\Ports\Api;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 /**
- * VentariAPI test
- *
+ * Class ApiTest
  * @package Tollwerk\Ventari\Tests\Ports
  */
-class VentariAPITest extends AbstractTestBase
+class ApiTest extends AbstractTestBase
 {
     public static $testClass;
-
     public static function setUpBeforeClass()
     {
-        self::$testClass = new VentariAPI();
+        self::$testClass = new Api();
     }
-
     /**
      * Test GetEventIds
      * @dataProvider integerIdsProvider
@@ -29,7 +26,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?eventIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * Test GetStatusIds
      * @dataProvider integerIdsProvider
@@ -40,7 +36,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?statusIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * Test GetFilterStartDate
      * @dataProvider datesProvider
@@ -51,7 +46,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?filterStarDate=01.12.2018';
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * Test GetFilterEndDate
      * @dataProvider datesProvider
@@ -62,7 +56,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?filterEndDate=01.12.2018';
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * Test GetPersonIds
      * @dataProvider integerIdsProvider
@@ -73,7 +66,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?personIds=1,2,3,5,8,13';
         $this->assertEquals($expectedString, $actualString);
     }
-
     /**
      * Test GetPage
      * @dataProvider pageIdsProvider
@@ -84,7 +76,6 @@ class VentariAPITest extends AbstractTestBase
         $expectedString = '?page=1';
         $this->assertEquals($expectedString, $actualString);
     }
-
     public function integerIdsProvider()
     {
         return [

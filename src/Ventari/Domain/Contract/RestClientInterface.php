@@ -2,7 +2,7 @@
 
 namespace Tollwerk\Ventari\Domain;
 
-interface RestClient
+interface RestClientInterface
 {
     public function get(array $request);
 
