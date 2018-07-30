@@ -2,111 +2,81 @@
 
 namespace Tollwerk\Ventari\Domain\Model;
 
+use Tollwerk\Ventari\Domain\Contract\EventInterface;
+
 /**
  * Class Event
  * @package Tollwerk\Ventari\Domain\Model
  */
-class Event extends AbstractModel
+class Event extends AbstractModel implements EventInterface
 {
     /**
-     * @var integer
-     */
-    protected $eventId;
-
-    /**
+     * Event name
+     *
      * @var string
      */
     protected $eventName;
 
     /**
-     * @var string
-     * TODO: Update Date Variable Type - Should be 'date object'
+     * Event date
+     *
+     * @var \DateTimeInterface
      */
     protected $eventDate;
 
     /**
+     * Event link
+     *
      * @var string
-     * TODO: Update FE link Variable Type - Should be 'link string'
      */
     protected $eventLink;
-
-
-    /***************************************************************
-     * GET Functions
-     **************************************************************/
-    /**
-     * @return int
-     */
-    public function getEventId()
-    {
-        return $this->eventId;
-    }
 
     /**
      * @return string
      */
-    public function getEventName()
+    public function getEventName(): string
     {
         return $this->eventName;
     }
 
     /**
-     * @return string
+     * @param string $eventName
      */
-    public function getEventDate()
+    public function setEventName(string $eventName): void
+    {
+        $this->eventName = $eventName;
+    }
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getEventDate(): \DateTimeInterface
     {
         return $this->eventDate;
     }
 
     /**
+     * @param \DateTimeInterface $eventDate
+     */
+    public function setEventDate(\DateTimeInterface $eventDate): void
+    {
+        $this->eventDate = $eventDate;
+    }
+
+    /**
      * @return string
      */
-    public function getEventLink()
+    public function getEventLink(): string
     {
         return $this->eventLink;
     }
 
-    /***************************************************************
-     * SET Functions
-     **************************************************************/
-
     /**
-     * @param $eventId
-     * @return $this
+     * @param string $eventLink
      */
-    public function setEventId($eventId)
-    {
-        $this->eventId = $eventId;
-        return $this;
-    }
-
-    /**
-     * @param $eventName
-     * @return $this
-     */
-    public function setEventName($eventName)
-    {
-        $this->eventName = $eventName;
-        return $this;
-    }
-
-    /**
-     * @param $eventDate
-     * @return $this
-     */
-    public function setEventDate($eventDate)
-    {
-        $this->eventDate = $eventDate;
-        return $this;
-    }
-
-    /**
-     * @param $eventLink
-     * @return $this
-     */
-    public function setEventLink($eventLink)
+    public function setEventLink(string $eventLink): void
     {
         $this->eventLink = $eventLink;
-        return $this;
     }
+
 }

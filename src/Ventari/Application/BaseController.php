@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Application;
 
 use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
+use Tollwerk\Ventari\Domain\Model\Event;
 
 class BaseController implements ControllerInterface
 {
@@ -31,5 +32,20 @@ class BaseController implements ControllerInterface
         return self::$instance;
     }
 
+    public function getEvents()
+    {
+        $events = [];
+
+        $event = new Event();
+        /**
+         * REQUEST DATA
+         *
+         * CONSUME IT
+         *
+         * REGURGITATE
+         */
+
+        return $events;
+    }
 
 }

@@ -50,4 +50,10 @@ class App
     {
         $this->baseController = BaseController::instance();
     }
+
+    public function requestAllEvents()
+    {
+        $events = $this->baseController->getEvents();
+        return $events;
+    }
 }
