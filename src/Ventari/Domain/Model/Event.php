@@ -6,59 +6,73 @@ namespace Tollwerk\Ventari\Domain\Model;
  * Class Event
  * @package Tollwerk\Ventari\Domain\Model
  */
-class Event
+class Event extends AbstractModel
 {
     /**
-     * Event Id
-     * @var Integer
+     * @var integer
      */
     protected $eventId;
 
     /**
-     * Event Name
-     * @var String
+     * @var string
      */
     protected $eventName;
 
     /**
-     * Event Start Date
-     * @var String
+     * @var string
      * TODO: Update Date Variable Type - Should be 'date object'
      */
     protected $eventDate;
 
     /**
-     * Event FE Link
-     * @var String
+     * @var string
      * TODO: Update FE link Variable Type - Should be 'link string'
      */
     protected $eventLink;
 
+
+    /***************************************************************
+     * GET Functions
+     **************************************************************/
     /**
-     * [GET] Function
+     * @return int
      */
     public function getEventId()
     {
         return $this->eventId;
     }
 
+    /**
+     * @return string
+     */
     public function getEventName()
     {
         return $this->eventName;
     }
 
+    /**
+     * @return string
+     */
     public function getEventDate()
     {
         return $this->eventDate;
     }
 
+    /**
+     * @return string
+     */
     public function getEventLink()
     {
         return $this->eventLink;
     }
 
+    /***************************************************************
+     * SET Functions
+     **************************************************************/
+
     /**
-     * [SET] Function
+     * @param $eventId
+     * @return $this
      */
     public function setEventId($eventId)
     {
@@ -66,18 +80,30 @@ class Event
         return $this;
     }
 
+    /**
+     * @param $eventName
+     * @return $this
+     */
     public function setEventName($eventName)
     {
         $this->eventName = $eventName;
         return $this;
     }
 
+    /**
+     * @param $eventDate
+     * @return $this
+     */
     public function setEventDate($eventDate)
     {
         $this->eventDate = $eventDate;
         return $this;
     }
 
+    /**
+     * @param $eventLink
+     * @return $this
+     */
     public function setEventLink($eventLink)
     {
         $this->eventLink = $eventLink;
