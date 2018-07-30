@@ -2,7 +2,7 @@
 
 namespace Tollwerk\Ventari\Tests\Applications;
 
-use Tollwerk\Ventari\Application\BaseController;
+use Tollwerk\Ventari\Application\DispatchController;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 /**
@@ -16,7 +16,7 @@ class BaseControllerTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
-        self::$testClass = BaseController::instance();
+        self::$testClass = DispatchController::instance();
     }
 
     /**
@@ -25,7 +25,7 @@ class BaseControllerTest extends AbstractTestBase
     public function testConstructor()
     {
         $baseController = self::$testClass;
-        $this->assertInstanceOf(BaseController::class, $baseController);
+        $this->assertInstanceOf(DispatchController::class, $baseController);
     }
 
     public function testInstance()

@@ -2,7 +2,7 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-use Tollwerk\Ventari\Application\BaseController;
+use Tollwerk\Ventari\Application\DispatchController;
 
 /**
  * Class App
@@ -48,7 +48,7 @@ class App
      */
     public function Initialize()
     {
-        $this->baseController = BaseController::instance();
+        $this->baseController = DispatchController::instance();
     }
 
     public function requestAllEvents()

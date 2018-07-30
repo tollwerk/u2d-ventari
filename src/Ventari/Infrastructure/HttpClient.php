@@ -22,4 +22,16 @@ class HttpClient implements HttpClientInterface
     {
         $this->guzzle = new Client();
     }
+
+    public function dispatchRequest(string $method, string $domain)
+    {
+        /**
+         * TODO: hook up the real REST Service
+         */
+//        $res = $this->guzzle->request($method, $domain);
+//        return $res->getBody();
+
+        $devJSON = file_get_contents(dirname(__DIR__).DIRECTORY_SEPARATOR.'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json');
+        return json_decode($devJSON);
+    }
 }

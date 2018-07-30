@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <config clientId="U2D Ventari" type="REST">
+    <method>GET</method>
     <protocol>http</protocol>
     <domain>events.nueww.de</domain>
     <path>rest</path>

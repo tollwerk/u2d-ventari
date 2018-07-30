@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tollwerk
- * Date: 30.07.2018
- * Time: 16:31
- */
 
 namespace Tollwerk\Ventari\Application\Factory;
 
@@ -33,19 +27,25 @@ class EventFactory
      * @return EventInterface Event
      * @throws \Exception
      */
-    public static function createFromJson(\stdClass $json): EventInterface
+    public static function createEventsFromJson($json)
     {
+        $events = [];
         $event = new Event();
 
         // Run through all JSON properties
-        foreach ($json as $property => $value) {
+        foreach ($json as $prop) {
+            $property = key($prop);
+            $value = $prop->{key($prop)};
+
             $setter = 'set'.ucfirst($property);
             if (is_callable([$event, $setter])) {
-                $event->$setter(self::refineValue($property, $value));
+                $event->$setter($property, $value);
             }
+
+            array_push($events, $event);
         }
 
-        return $event;
+        return $events;
     }
 
     /**
