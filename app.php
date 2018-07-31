@@ -21,12 +21,16 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                 unset($params['function']);
 
 
-                $App = new Tollwerk\Ventari\Ports\Client();
+                $App    = new Tollwerk\Ventari\Ports\Client();
                 $Events = $App->makeRequest($function, $params);
 
-                echo '<pre>';
-                var_dump($Events);
-                echo '</pre>';
+                foreach ($Events as $event) {
+                    echo '<h1>'.$event->getEventName().'</h1>';
+                    echo '<blockquote>';
+                    echo '<p>Event Id: '.$event->getEventId().'</p>';
+                    echo '</blockquote>';
+                }
+
             } else { ?>
                 <div class="content">
                     <a href="app.php?function=events&eventId=1080">Run it!</a>

@@ -2,8 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Applications;
 
-use phpDocumentor\Reflection\Types\Array_;
-use PHPUnit\Util\Json;
 use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Infrastructure\DispatchController;
 use Tollwerk\Ventari\Tests\AbstractTestBase;

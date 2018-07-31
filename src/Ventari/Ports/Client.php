@@ -26,16 +26,18 @@ class Client
     public function __construct()
     {
         self::$rootDirectory = dirname(dirname(dirname(__DIR__))).DIRECTORY_SEPARATOR;
-        $configFile         = self::$rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-config.xml";
-        $configFileContents = file_get_contents($configFile);
-        self::$restConfig   = simplexml_load_string($configFileContents);
+        $configFile          = self::$rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-config.xml";
+        $configFileContents  = file_get_contents($configFile);
+        self::$restConfig    = simplexml_load_string($configFileContents);
 
     }
 
-    public function makeRequest(string $function, array $params)
+    public function makeRequest($function, $params)
     {
-        $httpClient = new HttpClient();
-        $httpClientResponse = $httpClient->dispatchRequest(self::$restConfig->method, self::$restConfig->domain);
+        $method             = self::$restConfig->method->__toString();
+        $base_uri           = self::$restConfig->domain->__toString();
+        $httpClient         = new HttpClient($method, $base_uri);
+        $httpClientResponse = $httpClient->dispatchRequest($function, $params);
 
         $dispatcher = new DispatchController();
         $dispatchResponse = $dispatcher($httpClientResponse->responseData);

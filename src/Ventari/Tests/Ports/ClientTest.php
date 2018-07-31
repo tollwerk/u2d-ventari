@@ -19,13 +19,16 @@ class ClientTest extends AbstractTestBase
 
     /**
      * Test Make Request
+     * @var $function string
+     * @var $params array
+     *
      * @dataProvider requestProvider
      */
     public function testMakeRequest($function, $params)
     {
         $client  = new Client();
         $request = $client->makeRequest($function, $params);
-
+        $this->assertInternalType('array', $request);
         foreach ($request as $item) {
             $this->assertInstanceOf(Event::class, $item);
         }

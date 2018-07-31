@@ -26,7 +26,9 @@ class DispatchController implements ControllerInterface
         switch(key($JSON_Object)){
             case 'Events':
                 $factory = new EventFactory();
-                $object[] = $factory->createEventsFromJson($JSON_Object->Events);
+                foreach($JSON_Object->Events as $event){
+                    array_push($object, $factory->createEventsFromJson($event));
+                }
                 break;
             default:
                 break;

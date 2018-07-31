@@ -5,13 +5,23 @@ namespace Tollwerk\Ventari\Tests\Infrastructure;
 use Tollwerk\Ventari\Infrastructure\HttpClient;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
+/**
+ * Class HttpClientTest
+ * @package Tollwerk\Ventari\Tests\Infrastructure
+ */
 class HttpClientTest extends AbstractTestBase
 {
+    /**
+     * @var
+     */
     public static $testClass;
 
+    /**
+     *
+     */
     public static function setUpBeforeClass()
     {
-        self::$testClass = new HttpClient();
+        self::$testClass = new HttpClient('GET', 'localhost');
     }
 
     /**
@@ -23,27 +33,35 @@ class HttpClientTest extends AbstractTestBase
         /**
          * Testing the Constructor
          */
+        $this->assertClassHasAttribute('method', get_class($httpClient));
         $this->assertClassHasAttribute('guzzle', get_class($httpClient));
     }
 
     /**
      * Test Dispatch Request
+     *
+     * @param string $request
+     * @param array $params
+     *
      * @dataProvider requestProvider
      */
-    public function testDispatchRequest($method, $domain)
+    public function testDispatchRequest(string $request, array $params)
     {
-        $this->assertEquals($method, 'GET');
-        $this->assertNotEmpty($domain);
+        $this->assertEquals($request, 'Events');
+        $this->assertArrayHasKey('eventId', $params);
 
         $httpClient = self::$testClass;
-        $request = $httpClient->dispatchRequest($method, $domain);
+        $request    = $httpClient->dispatchRequest($request, $params);
         $this->assertInstanceOf('stdClass', $request);
     }
 
+    /**
+     * @return array
+     */
     public function requestProvider()
     {
         return [
-            ['GET', 'events.nueww.de']
+            ['Events', array('eventId' => 1080)]
         ];
     }
 
