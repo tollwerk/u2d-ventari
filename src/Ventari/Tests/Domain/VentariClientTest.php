@@ -28,48 +28,4 @@ class VentariClientTest extends AbstractTestBase
         $this->assertClassHasAttribute('client', get_class($this->testClass));
     }
 
-    /**
-     * Test Stub
-     */
-    public function testStub()
-    {
-        $stub = $this->createMock(VentariClient::class);
-        $expectedArray = array('foo' => 'bar');
-
-        /**
-         * 1. Test the Stub
-         */
-//        $stub->method('getPersonal')->will($this->returnSelf());
-//        $this->assertSame($stub, $stub->getPersonal());
-
-        /**
-         * 2. Test the Stub's Method
-         */
-        $stub->method('doSomething')->willReturn($expectedArray);
-        $this->assertSame($expectedArray, $stub->doSomething());
-
-        /**
-         * 3. Test the Stub's other Method with Parameter
-         */
-        $stub->method('doSomethingWithValue')->willReturn($expectedArray);
-        $this->assertSame($expectedArray, $stub->doSomethingWithValue('bar'));
-
-    }
-
-    public function testStubReflection()
-    {
-        /**
-         * So methods are only overwritten when inside a scope of another testMethod. Got it!
-         */
-        $stub = $this->createMock(VentariClient::class);
-        $stub->method('doSomething')->will($this->returnSelf());
-        $this->assertSame($stub, $stub->doSomething());
-    }
-
-//    public function testGetPersonal()
-//    {
-//        $reflector = new \ReflectionObject($this->testClass);
-//        $method    = $reflector->getMethod('myMethod');
-//        $this->assertTrue($method);
-//    }
 }

@@ -2,7 +2,7 @@
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
-use Tollwerk\Ventari\Ports\Api;
+use Tollwerk\Ventari\Ports\Client;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 /**
@@ -14,7 +14,7 @@ class ApiTest extends AbstractTestBase
     public static $testClass;
     public static function setUpBeforeClass()
     {
-        self::$testClass = new Api();
+        self::$testClass = new Client();
     }
     /**
      * Test GetEventIds

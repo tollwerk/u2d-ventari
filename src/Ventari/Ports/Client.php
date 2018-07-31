@@ -34,37 +34,13 @@ class Client
 
     public function makeRequest(string $function, array $params)
     {
-        echo '<pre>';
-        echo '1. Initializing your Request: <br><br>';
-
-        echo '2. Requesting the JSON Object<br>';
         $httpClient = new HttpClient();
         $httpClientResponse = $httpClient->dispatchRequest(self::$restConfig->method, self::$restConfig->domain);
-//        var_dump($httpClientResponse); // TODO: remove;
-        echo '<br>';
 
-        echo '3. Dispatching your JSON Ingestion<br>';
-        echo '<blockquote><code>';
         $dispatcher = new DispatchController();
         $dispatchResponse = $dispatcher($httpClientResponse->responseData);
-        print_r($dispatchResponse);
-        echo '</code></blockquote>';
 
-        echo '4. Returning Data In Our Entity form not as JSON<br>';
-        echo '<table border="1"><small>';
-        foreach($dispatchResponse as $event){
-            echo '<tr>';
-            echo '<td>EventId: '.$event->getEventId().'</td>';
-            echo '<td>EventName: '.$event->getEventName().'</td>';
-            echo '<td>Eventstart: ';
-            var_dump($event->getEventstart());
-            echo '</td>';
-            echo '<td>frontendLink: '.$event->getFrontendLink().'</td>';
-            echo '</tr>';
-        }
-        echo '</small></table>';
-
-        echo '</pre>';
+        return $dispatchResponse;
     }
 
 }

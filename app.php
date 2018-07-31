@@ -22,7 +22,11 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
 
 
                 $App = new Tollwerk\Ventari\Ports\Client();
-                $App->makeRequest($function, $params);
+                $Events = $App->makeRequest($function, $params);
+
+                echo '<pre>';
+                var_dump($Events);
+                echo '</pre>';
             } else { ?>
                 <div class="content">
                     <a href="app.php?function=events&eventId=1080">Run it!</a>

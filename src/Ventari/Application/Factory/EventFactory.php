@@ -32,7 +32,7 @@ class EventFactory
         $event = new Event();
 
         // Run through all JSON properties
-        foreach ($json as $prop){
+        foreach ($json as $prop) {
             foreach ($prop as $key => $value) {
                 $setter = 'set'.ucfirst($key);
                 if (is_callable([$event, $setter])) {
@@ -64,5 +64,10 @@ class EventFactory
         }
 
         return $refinedValue;
+    }
+
+    public function accessRefineValue(string $prop, $val)
+    {
+        return $this->refineValue($prop, $val);
     }
 }
