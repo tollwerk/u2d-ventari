@@ -22,14 +22,20 @@ class Event extends AbstractModel implements EventInterface
      *
      * @var \DateTimeInterface
      */
-    protected $eventDate;
+    protected $eventStart;
 
     /**
      * Event link
      *
      * @var string
      */
-    protected $eventLink;
+    protected $frontendLink;
+
+    /**
+     * Event id
+     * @var int
+     */
+    protected $eventId;
 
     /**
      * @return string
@@ -50,33 +56,48 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @return \DateTimeInterface
      */
-    public function getEventDate(): \DateTimeInterface
+    public function getEventStart(): \DateTimeInterface
     {
-        return $this->eventDate;
+        return $this->eventStart;
     }
 
     /**
-     * @param \DateTimeInterface $eventDate
+     * @param \DateTimeInterface $eventStart
      */
-    public function setEventDate(\DateTimeInterface $eventDate): void
+    public function setEventStart(\DateTimeInterface $eventStart): void
     {
-        $this->eventDate = $eventDate;
+        $this->eventStart = $eventStart;
     }
 
     /**
      * @return string
      */
-    public function getEventLink(): string
+    public function getFrontendLink(): string
     {
-        return $this->eventLink;
+        return $this->frontendLink;
     }
 
     /**
-     * @param string $eventLink
+     * @param string $frontendLink
      */
-    public function setEventLink(string $eventLink): void
+    public function setFrontendLink(string $frontendLink): void
     {
-        $this->eventLink = $eventLink;
+        $this->frontendLink = $frontendLink;
     }
 
+    /**
+     * @return int
+     */
+    public function getEventId(): int
+    {
+        return $this->eventId;
+    }
+
+    /**
+     * @param int $eventId
+     */
+    public function setEventId(int $eventId): void
+    {
+        $this->eventId = $eventId;
+    }
 }

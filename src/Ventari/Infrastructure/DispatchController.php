@@ -22,16 +22,16 @@ class DispatchController implements ControllerInterface
         echo 'Sending JSON to Corresponding Factory<br>';
 
         /**
-         *
+         * TODO: Add SWITCH CASE for other Factories
          */
         switch(key($JSON_Object)){
             case 'Events':
-                echo 'Using \'Event\' Factory<br>';
+                echo ' - Using \'Event\' Factory<br>';
                 $factory = new EventFactory();
                 $object[] = $factory->createEventsFromJson($JSON_Object->Events);
                 break;
             default:
-                echo 'No Factory for your JSON Object<br>';
+                echo ' - No Factory for your JSON Object<br>';
                 break;
         }
 

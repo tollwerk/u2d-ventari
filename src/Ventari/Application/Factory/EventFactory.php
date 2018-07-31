@@ -17,7 +17,7 @@ class EventFactory
      *
      * @var string[]
      */
-    protected static $dateProperties = ['createDate'];
+    protected static $dateProperties = ['eventstart'];
 
     /**
      * Create an event from a JSON object
@@ -29,23 +29,19 @@ class EventFactory
      */
     public static function createEventsFromJson($json)
     {
-        $events = [];
         $event = new Event();
 
         // Run through all JSON properties
-        foreach ($json as $prop) {
-            $property = key($prop);
-            $value = $prop->{key($prop)};
-
-            $setter = 'set'.ucfirst($property);
-            if (is_callable([$event, $setter])) {
-                $event->$setter($property, $value);
+        foreach ($json as $prop){
+            foreach ($prop as $key => $value) {
+                $setter = 'set'.ucfirst($key);
+                if (is_callable([$event, $setter])) {
+                    $event->$setter(self::refineValue($key, $value));
+                }
             }
-
-            array_push($events, $event);
         }
 
-        return $events;
+        return $event;
     }
 
     /**
@@ -57,11 +53,12 @@ class EventFactory
      * @return mixed Refined property value
      * @throws \Exception If a date property cannot get parsed
      */
-    protected static function refineValue(string $property, $value): mixed
+    protected static function refineValue(string $property, $value)
     {
         $refinedValue = $value;
 
         // Convert date based properties
+
         if (in_array($property, self::$dateProperties)) {
             $refinedValue = new \DateTimeImmutable($value);
         }

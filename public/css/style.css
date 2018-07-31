@@ -1,0 +1,43 @@
+body {
+    background-color: rebeccapurple;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+pre {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: lawngreen;
+}
+blockquote {
+    color: white;
+    background-color:black;
+    line-height: 0.8;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: thin solid red;*/
+}
+
+.content {
+    position: relative;
+    font-size: 2em;
+    font-weight: bolder;
+    /*border: thin solid red;*/
+    top: 10em;
+}
+
+
+a {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    border: thick solid white;
+}
+
+a:hover {
+    color: rebeccapurple;
+    background-color: white;
+    border: thick solid rebeccapurple;
+}
