@@ -32,7 +32,6 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                     echo '<p>Event Id: '.$event->getEventId().'</p>';
                     echo '</blockquote>';
                 }
-
             } else { ?>
                 <div class="content">
                     <a href="app.php?function=events&eventId=1080">Run it!</a>
