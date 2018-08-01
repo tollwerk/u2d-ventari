@@ -10,7 +10,7 @@ class HttpClient implements HttpClientInterface
     /**
      * Guzzle Client
      *
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\Client $guzzle
      */
     protected $guzzle;
 
