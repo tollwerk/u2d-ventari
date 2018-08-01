@@ -12,7 +12,7 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class HttpClientTest extends AbstractTestBase
 {
     /**
-     * @var
+     * @var HttpClient $testClass
      */
     public static $testClass;
 
@@ -64,5 +64,4 @@ class HttpClientTest extends AbstractTestBase
             ['Events', array('eventId' => 1080)]
         ];
     }
-
 }

@@ -20,7 +20,7 @@ class ClientTest extends AbstractTestBase
     /**
      * Test Make Request
      * @var $function string
-     * @var $params array
+     * @var $params   array
      *
      * @dataProvider requestProvider
      */

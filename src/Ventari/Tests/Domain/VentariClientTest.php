@@ -9,6 +9,9 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class VentariClientTest extends AbstractTestBase
 {
+    /**
+     * @var VentariClient $testClass
+     */
     public $testClass;
 
     protected function setUp()

@@ -13,6 +13,9 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
  */
 class DispatchControllerTest extends AbstractTestBase
 {
+    /**
+     * @var DispatchController $testClass
+     */
     public static $testClass;
 
     public static function setUpBeforeClass()

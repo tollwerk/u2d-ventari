@@ -3,11 +3,13 @@
 namespace Tollwerk\Ventari\Tests\Applications\Factory;
 
 use Tollwerk\Ventari\Application\Factory\EventFactory;
-use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class EventFactoryTest extends AbstractTestBase
 {
+    /**
+     * @var EventFactory $testClass
+     */
     public static $testClass;
 
     public static function setUpBeforeClass()

@@ -7,6 +7,9 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class EventTest extends AbstractTestBase
 {
+    /**
+     * @var Event $event
+     */
     public static $event;
 
     public static function setUpBeforeClass()
