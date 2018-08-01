@@ -13,19 +13,15 @@ blockquote {
     background-color:black;
     line-height: 0.8;
 }
-.container {
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*border: thin solid red;*/
-}
 
 .content {
-    position: relative;
     font-size: 2em;
-    font-weight: bolder;
-    /*border: thin solid red;*/
+}
+
+.launch {
+    position: relative;
     top: 10em;
+    left: 45%;
 }
 
 a {

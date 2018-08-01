@@ -13,7 +13,7 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
         <link rel="stylesheet" href="public/css/style.css">
     </head>
     <body>
-        <div class="container">
+        <div class="content">
             <?php
             if (isset($_GET['function'])) {
                 $function = $_GET['function'];
@@ -33,7 +33,7 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                     echo '</blockquote>';
                 }
             } else { ?>
-                <div class="content">
+                <div class="launch">
                     <a href="app.php?function=events&eventId=1080">Run it!</a>
                 </div>
             <?php } ?>
