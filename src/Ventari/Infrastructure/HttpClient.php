@@ -34,7 +34,7 @@ class HttpClient implements HttpClientInterface
      */
     public function __construct($method, $baseUrl)
     {
-        $this->guzzle  = new Client(['base_uri' => $baseUrl]);
+        $this->guzzle  = new \GuzzleHttp\Client(['base_uri' => $baseUrl]);
         $this->method  = $method;
         $this->baseUrl = $baseUrl;
     }
