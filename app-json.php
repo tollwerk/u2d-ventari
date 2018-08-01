@@ -1,12 +1,14 @@
 <pre>
 <?php
-$file = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Ventari'.DIRECTORY_SEPARATOR.'Tests'.DIRECTORY_SEPARATOR."Fixture".DIRECTORY_SEPARATOR.'Events.json';
+$sourcePath = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Ventari';
+$filePath   = 'Tests'.DIRECTORY_SEPARATOR."Fixture".DIRECTORY_SEPARATOR.'Events.json';
 
-echo file_get_contents($file);
-
+echo '<h1>'.$filePath.'</h1>';
+echo file_get_contents($sourcePath.DIRECTORY_SEPARATOR.$filePath);
 
 echo '<br><br><br>';
 
+echo '<h1>Json Encoded Array</h1>';
 echo json_encode(array(
     'responseData' => array(
         'Events' => array(

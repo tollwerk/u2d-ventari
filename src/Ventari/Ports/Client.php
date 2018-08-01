@@ -35,8 +35,8 @@ class Client
     public function makeRequest($function, $params)
     {
         $method             = self::$restConfig->method->__toString();
-        $base_uri           = self::$restConfig->domain->__toString();
-        $httpClient         = new HttpClient($method, $base_uri);
+        $baseUrl           = self::$restConfig->domain->__toString();
+        $httpClient         = new HttpClient($method, $baseUrl);
         $httpClientResponse = $httpClient->dispatchRequest($function, $params);
 
         $dispatcher       = new DispatchController();

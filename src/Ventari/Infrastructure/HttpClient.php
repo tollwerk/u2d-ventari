@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
-use GuzzleHttp\Client;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 
 class HttpClient implements HttpClientInterface
@@ -10,7 +9,7 @@ class HttpClient implements HttpClientInterface
     /**
      * Guzzle Client
      *
-     * @var Client::class
+     * @var Client
      */
     protected $guzzle;
 
@@ -34,7 +33,7 @@ class HttpClient implements HttpClientInterface
      */
     public function __construct($method, $baseUrl)
     {
-        $this->guzzle  = new Client(['base_uri' => $baseUrl]);
+        $this->guzzle  = new \GuzzleHttp\Client(['base_uri' => $baseUrl]);
         $this->method  = $method;
         $this->baseUrl = $baseUrl;
     }
@@ -50,10 +49,12 @@ class HttpClient implements HttpClientInterface
      */
     public function dispatchRequest(string $request, array $params)
     {
-        $fixture = dirname(__DIR__).DIRECTORY_SEPARATOR.'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json';
+        $rootDirectory = dirname(__DIR__);
+        $fixtureJson       = 'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json';
 
+//        $query = http_build_query($params, '', '&amp;');
 //        try {
-//            $res = $this->guzzle->request($this->method, $this->baseUrl.DIRECTORY_SEPARATOR.'?');
+//            $res = $this->guzzle->request($this->method, $this->baseUrl.DIRECTORY_SEPARATOR.$request.DIRECTORY_SEPARATOR.'?'.$query);
 //
 //        } catch (RequestException $e) {
 //            echo Psr7\str($e->getRequest());
@@ -63,8 +64,8 @@ class HttpClient implements HttpClientInterface
 //        }
 
 //        return $res->getBody();
-        $devJSON = file_get_contents($fixture);
+        $devJson = file_get_contents($rootDirectory.DIRECTORY_SEPARATOR.$fixtureJson);
 
-        return json_decode($devJSON);
+        return json_decode($devJson);
     }
 }
