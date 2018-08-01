@@ -30,10 +30,10 @@ class EventTest extends AbstractTestBase
     public function testEventId()
     {
         $event = $this->event();
-        $event->setEventId('1234');
+        $event->setEventId(1234);
         $expectedString = $event->getEventId();
         $actualString   = '1234';
-        $this->assertEquals($expectedString, $actualString);
+        $this->assertEquals($expectedString, intval($actualString));
 
         return $event;
     }

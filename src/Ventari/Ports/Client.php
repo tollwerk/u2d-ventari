@@ -29,7 +29,6 @@ class Client
         $configFile          = self::$rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-config.xml";
         $configFileContents  = file_get_contents($configFile);
         self::$restConfig    = simplexml_load_string($configFileContents);
-
     }
 
     public function makeRequest($function, $params)

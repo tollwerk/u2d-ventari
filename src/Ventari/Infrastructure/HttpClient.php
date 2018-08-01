@@ -2,6 +2,7 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
+use GuzzleHttp\Client;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 
 class HttpClient implements HttpClientInterface
@@ -9,7 +10,7 @@ class HttpClient implements HttpClientInterface
     /**
      * Guzzle Client
      *
-     * @var Client
+     * @var \GuzzleHttp\Client
      */
     protected $guzzle;
 
@@ -33,7 +34,7 @@ class HttpClient implements HttpClientInterface
      */
     public function __construct($method, $baseUrl)
     {
-        $this->guzzle  = new \GuzzleHttp\Client(['base_uri' => $baseUrl]);
+        $this->guzzle  = new Client(['base_uri' => $baseUrl]);
         $this->method  = $method;
         $this->baseUrl = $baseUrl;
     }
@@ -54,7 +55,7 @@ class HttpClient implements HttpClientInterface
 
 //        $query = http_build_query($params, '', '&amp;');
 //        try {
-//            $res = $this->guzzle->request($this->method, $this->baseUrl.DIRECTORY_SEPARATOR.$request.DIRECTORY_SEPARATOR.'?'.$query);
+//            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.'?'.$query);
 //
 //        } catch (RequestException $e) {
 //            echo Psr7\str($e->getRequest());

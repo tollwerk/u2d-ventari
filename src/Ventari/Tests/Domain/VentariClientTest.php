@@ -30,5 +30,4 @@ class VentariClientTest extends AbstractTestBase
         $this->assertClassHasAttribute('config', get_class($this->testClass));
         $this->assertClassHasAttribute('client', get_class($this->testClass));
     }
-
 }
