@@ -14,7 +14,7 @@ blockquote {
     line-height: 0.8;
 }
 .container {
-    display: flex;
+    /*display: flex;*/
     /*align-items: center;*/
     /*justify-content: center;*/
     /*border: thin solid red;*/

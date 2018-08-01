@@ -27,6 +27,8 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                 foreach ($Events as $event) {
                     echo '<h1>'.$event->getEventName().'</h1>';
                     echo '<blockquote>';
+                    echo '<p>Event Date: '.$event->getEventstart()->format('d/m/Y').'</p>';
+                    echo '<p>Event Id: '.$event->getFrontendLink().'</p>';
                     echo '<p>Event Id: '.$event->getEventId().'</p>';
                     echo '</blockquote>';
                 }
