@@ -28,10 +28,10 @@ class DispatchController implements ControllerInterface
         /**
          * TODO: Add SWITCH CASE for other Factories
          */
-        switch(key($jsonObject)){
+        switch (key($jsonObject)) {
             case 'Events':
                 $factory = new EventFactory();
-                foreach($jsonObject->Events as $event){
+                foreach ($jsonObject->Events as $event) {
                     array_push($object, $factory->createEventsFromJson($event));
                 }
                 break;
@@ -41,5 +41,4 @@ class DispatchController implements ControllerInterface
 
         return $object;
     }
-
 }

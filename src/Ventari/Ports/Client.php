@@ -39,10 +39,9 @@ class Client
         $httpClient         = new HttpClient($method, $base_uri);
         $httpClientResponse = $httpClient->dispatchRequest($function, $params);
 
-        $dispatcher = new DispatchController();
+        $dispatcher       = new DispatchController();
         $dispatchResponse = $dispatcher($httpClientResponse->responseData);
 
         return $dispatchResponse;
     }
-
 }
