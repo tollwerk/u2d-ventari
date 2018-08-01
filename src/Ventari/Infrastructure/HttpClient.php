@@ -3,6 +3,8 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 
 class HttpClient implements HttpClientInterface
@@ -50,12 +52,18 @@ class HttpClient implements HttpClientInterface
      */
     public function dispatchRequest(string $request, array $params)
     {
+        $res = null;
         $rootDirectory = dirname(__DIR__);
         $fixtureJson       = 'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json';
 
-//        $query = http_build_query($params, '', '&amp;');
+        $query = http_build_query($params, '', '&amp;');
+        $res = $this->guzzle->request('GET', 'http://localhost/~philipsaa/tollwerk/u2d-ventari/app-json.php');
+        echo $res->getStatusCode();
+        echo '<pre>';
+        echo $res->getBody();
+        echo '</pre>';
 //        try {
-//            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.'?'.$query);
+////            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.'?'.$query);
 //
 //        } catch (RequestException $e) {
 //            echo Psr7\str($e->getRequest());
@@ -65,8 +73,7 @@ class HttpClient implements HttpClientInterface
 //        }
 
 //        return $res->getBody();
-        $devJson = file_get_contents($rootDirectory.DIRECTORY_SEPARATOR.$fixtureJson);
-
-        return json_decode($devJson);
+//        $devJson = file_get_contents($rootDirectory.DIRECTORY_SEPARATOR.$fixtureJson);
+//        return json_decode($devJson);
     }
 }
