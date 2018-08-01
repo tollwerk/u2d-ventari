@@ -26,19 +26,19 @@ class HttpClient implements HttpClientInterface
      * Guzzle Client's REST URL
      * @var string
      */
-    protected $base_uri;
+    protected $baseUrl;
 
     /**
      * HttpClient constructor
      *
      * @var string $method
-     * @var string $base_uri
+     * @var string $baseUrl
      */
-    public function __construct($method, $base_uri)
+    public function __construct($method, $baseUrl)
     {
-        $this->guzzle   = new Client(['base_uri' => $base_uri]);
+        $this->guzzle   = new Client(['base_uri' => $baseUrl]);
         $this->method   = $method;
-        $this->base_uri = $base_uri;
+        $this->baseUrl = $baseUrl;
     }
 
     /**
@@ -55,7 +55,7 @@ class HttpClient implements HttpClientInterface
         $fixture = dirname(__DIR__).DIRECTORY_SEPARATOR.'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json';
 
 //        try {
-//            $res = $this->guzzle->request($this->method, $this->base_uri.DIRECTORY_SEPARATOR.'?');
+//            $res = $this->guzzle->request($this->method, $this->baseUrl.DIRECTORY_SEPARATOR.'?');
 //
 //        } catch (RequestException $e) {
 //            echo Psr7\str($e->getRequest());
