@@ -3,12 +3,6 @@ php:
   - 7.2
 env:
   - APP_ENV=development CC_TEST_REPORTER_ID=ab61a5c56b985202585f5eaaf424337c82776ba7bf6b66660ebbea55eeff13b5
-sudo: false
-dist: trusty
-cache:
-  directories:
-    - $HOME/.composer/cache
-    - $HOME/.cache/phan-ast/build
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
@@ -23,14 +17,7 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - ./tests/travis_setup.sh
-  - mkdir /tmp/opcache || true; echo -e 'opcache.enable_cli=1\nopcache.file_cache=/tmp/opcache' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - composer validate
-install:
-  - composer --prefer-dist --classmap-authoritative install
 script:
-  - tests/run_all_tests
-  - php internal/package.php
   - >-
     bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then vendor/bin/phpunit; fi;'
   - >-
