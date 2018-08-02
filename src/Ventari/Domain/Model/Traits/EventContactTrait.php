@@ -1,15 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tollwerk
- * Date: 02.08.2018
- * Time: 11:00
- */
 
 namespace Tollwerk\Ventari\Domain\Model\Traits;
 
-
-trait ContactTrait
+/**
+ * Trait EventContactTrait
+ * @package Tollwerk\Ventari\Domain\Model\Traits
+ */
+trait EventContactTrait
 {
     /**
      * @var string
