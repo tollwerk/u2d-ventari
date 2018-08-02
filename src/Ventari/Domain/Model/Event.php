@@ -3,9 +3,9 @@
 namespace Tollwerk\Ventari\Domain\Model;
 
 use Tollwerk\Ventari\Domain\Contract\EventInterface;
-use Tollwerk\Ventari\Domain\Model\Traits\EventContactTrait;
-use Tollwerk\Ventari\Domain\Model\Traits\EventDateTrait;
-use Tollwerk\Ventari\Domain\Model\Traits\EventResourcesTrait;
+use Tollwerk\Ventari\Domain\Model\Traits\Event\EventContactTrait;
+use Tollwerk\Ventari\Domain\Model\Traits\Event\EventDateTrait;
+use Tollwerk\Ventari\Domain\Model\Traits\Event\EventResourcesTrait;
 
 /**
  * Class Event

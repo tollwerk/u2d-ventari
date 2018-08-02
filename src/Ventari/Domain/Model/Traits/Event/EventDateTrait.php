@@ -1,10 +1,10 @@
 <?php
 
-namespace Tollwerk\Ventari\Domain\Model\Traits;
+namespace Tollwerk\Ventari\Domain\Model\Traits\Event;
 
 /**
  * Trait EventDateTrait
- * @package Tollwerk\Ventari\Domain\Model\Traits
+ * @package Tollwerk\Ventari\Domain\Model\Traits\Event
  */
 trait EventDateTrait
 {
