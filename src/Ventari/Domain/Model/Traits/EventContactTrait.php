@@ -155,7 +155,5 @@ trait EventContactTrait
         $this->eventContactTwitterHandle = $eventContactTwitterHandle;
     }
 
-    public function abstractMethod(): string
-    {
-    }
+    abstract public function abstractMethod(): string;
 }

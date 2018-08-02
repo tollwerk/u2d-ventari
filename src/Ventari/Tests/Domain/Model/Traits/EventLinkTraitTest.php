@@ -49,12 +49,12 @@ class EventLinkTraitTest extends AbstractTestBase
     {
         $expectedString = 'https://xing.de/event/0112358132134';
         $mock           = $this->testTrait;
-        $mock->setXingEvent($expectedString);
+        $mock->setEventXingEvent($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getXingEvent());
+        $this->assertEquals($expectedString, $mock->getEventXingEvent());
     }
 
     public function testEventLivestreamCode(): void
@@ -79,5 +79,29 @@ class EventLinkTraitTest extends AbstractTestBase
              ->will($this->returnValue($expectedString));
 
         $this->assertEquals($expectedString, $mock->getEventLivestream());
+    }
+
+    public function testEventTicketUrl(): void
+    {
+        $expectedString = 'https://ticket.service.com/?eventID=1235813';
+        $mock           = $this->testTrait;
+        $mock->setEventTicketUrl($expectedString);
+        $mock->expects($this->any())
+             ->method('abstractMethod')
+             ->will($this->returnValue($expectedString));
+
+        $this->assertEquals($expectedString, $mock->getEventTicketUrl());
+    }
+
+    public function testEventWebsite(): void
+    {
+        $expectedString = 'https://event.website.de';
+        $mock = $this->testTrait;
+        $mock->setEventWebsite($expectedString);
+        $mock->expects($this->any())
+            ->method('abstractMethod')
+            ->will($this->returnValue($expectedString));
+
+        $this->assertEquals($expectedString, $mock->getEventWebsite());
     }
 }

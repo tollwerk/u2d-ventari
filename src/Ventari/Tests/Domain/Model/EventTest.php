@@ -80,4 +80,9 @@ class EventTest extends AbstractTestBase
         $actualString   = $eventLink;
         $this->assertEquals($expectedString, $actualString);
     }
+
+//    public function abstractMethod(): void
+//    {
+//
+//    }
 }

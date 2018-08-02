@@ -92,7 +92,5 @@ trait EventDateTrait
         $this->eventEndTime = $eventEndTime;
     }
 
-    public function abstractMethod(): \DateTimeImmutable
-    {
-    }
+    abstract public function abstractMethodForDate(): \DateTimeImmutable;
 }

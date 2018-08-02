@@ -396,4 +396,14 @@ class Event extends AbstractModel implements EventInterface
     {
         $this->eventFrontendLink = $eventFrontendLink;
     }
+
+    public function abstractMethod(): string
+    {
+        // TODO: Implement abstractMethod() method.
+    }
+
+    public function abstractMethodForDate(): \DateTimeImmutable
+    {
+        // TODO: Implement abstractMethodForDate() method.
+    }
 }

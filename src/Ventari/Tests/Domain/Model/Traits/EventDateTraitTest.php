@@ -27,7 +27,7 @@ class EventDateTraitTest extends AbstractTestBase
         $mock = $this->testTrait;
         $mock->setEventStartDate($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethod')
+            ->method('abstractMethodForDate')
             ->will($this->returnValue($expectedDate));
 
         $this->assertEquals($expectedDate, $mock->getEventStartDate());
@@ -39,7 +39,7 @@ class EventDateTraitTest extends AbstractTestBase
         $mock = $this->testTrait;
         $mock->setEventStartTime($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethod')
+            ->method('abstractMethodForDate')
             ->will($this->returnValue($expectedDate));
 
         $this->assertEquals($expectedDate, $mock->getEventStartTime());
@@ -51,14 +51,14 @@ class EventDateTraitTest extends AbstractTestBase
         $mock = $this->testTrait;
         $mock->setEventEndDate($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethod')
+            ->method('abstractMethodForDate')
             ->will($this->returnValue($expectedDate));
 
         $this->assertEquals($expectedDate, $mock->getEventEndDate());
 
         $mock->setEventEndTime($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethod')
+            ->method('abstractMethodForDate')
             ->will($this->returnValue($expectedDate));
 
         $this->assertEquals($expectedDate, $mock->getEventEndTime());
