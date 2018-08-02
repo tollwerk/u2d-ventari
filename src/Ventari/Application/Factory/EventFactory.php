@@ -3,7 +3,7 @@
 namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Domain\Contract\EventInterface;
-use Tollwerk\Ventari\Domain\Model\Event\Event;
+use Tollwerk\Ventari\Domain\Model\Event;
 
 /**
  * Event Factory
