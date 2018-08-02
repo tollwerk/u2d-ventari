@@ -154,6 +154,4 @@ trait EventResourcesTrait
     {
         $this->eventWebsite = $eventWebsite;
     }
-
-
 }
