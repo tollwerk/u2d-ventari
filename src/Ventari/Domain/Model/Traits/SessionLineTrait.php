@@ -50,5 +50,5 @@ trait SessionLineTrait
         $this->sessionLineName = $sessionLineName;
     }
 
-    abstract public function abstractMethod(): string;
+    abstract public function abstractMethod(): mixed;
 }

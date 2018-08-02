@@ -126,5 +126,8 @@ class Session extends AbstractModel implements SessionInterface
         $this->sessionEnd = $sessionEnd;
     }
 
-
+    public function abstractMethod(): void
+    {
+        // TODO: Implement abstractMethod() method.
+    }
 }
