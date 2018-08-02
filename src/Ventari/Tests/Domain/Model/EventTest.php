@@ -30,8 +30,8 @@ class EventTest extends AbstractTestBase
     public function testEventId()
     {
         $event = $this->event();
-        $event->setEventId(1234);
-        $expectedString = $event->getEventId();
+        $event->setId(1234);
+        $expectedString = $event->getId();
         $actualString   = '1234';
         $this->assertEquals($expectedString, intval($actualString));
 
@@ -60,8 +60,8 @@ class EventTest extends AbstractTestBase
     public function testEventDate($event)
     {
         $eventDate = new \DateTimeImmutable('2018-12-10');
-        $event->setEventStart($eventDate);
-        $expectedString = $event->getEventStart();
+        $event->setEventStartDate($eventDate);
+        $expectedString = $event->getEventStartDate();
         $actualString   = $eventDate;
         $this->assertEquals($expectedString, $actualString);
 
@@ -75,8 +75,8 @@ class EventTest extends AbstractTestBase
     public function testEventLink($event)
     {
         $eventLink = 'https://www.nueww.de/event/link.php?id=1234';
-        $event->setFrontendLink($eventLink);
-        $expectedString = $event->getFrontendLink();
+        $event->setEventFrontendLink($eventLink);
+        $expectedString = $event->getEventFrontendLink();
         $actualString   = $eventLink;
         $this->assertEquals($expectedString, $actualString);
     }
