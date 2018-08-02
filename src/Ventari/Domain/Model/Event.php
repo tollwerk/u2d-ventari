@@ -264,7 +264,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @param integer $eventMaxParticipants
      */
-    public function setEventMaxParticipants(string $eventMaxParticipants): void
+    public function setEventMaxParticipants(int $eventMaxParticipants): void
     {
         $this->eventMaxParticipants = $eventMaxParticipants;
     }
