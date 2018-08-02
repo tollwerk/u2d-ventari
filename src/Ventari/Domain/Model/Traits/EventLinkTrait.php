@@ -1,12 +1,12 @@
 <?php
 
-namespace Tollwerk\Ventari\Domain\Model\Traits\Event;
+namespace Tollwerk\Ventari\Domain\Model\Traits;
 
 /**
- * Trait EventResourcesTrait
- * @package Tollwerk\Ventari\Domain\Model\Traits\Event
+ * Trait EventLinkTrait
+ * @package Tollwerk\Ventari\Domain\Model\Traits
  */
-trait EventResourcesTrait
+trait EventLinkTrait
 {
     /**
      * @var string
@@ -154,4 +154,6 @@ trait EventResourcesTrait
     {
         $this->eventWebsite = $eventWebsite;
     }
+
+    abstract public function abstractMethod(): string;
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Tollwerk\Ventari\Domain\Model\Traits\Event;
+namespace Tollwerk\Ventari\Domain\Model\Traits;
 
 /**
  * Trait EventDateTrait
- * @package Tollwerk\Ventari\Domain\Model\Traits\Event
+ * @package Tollwerk\Ventari\Domain\Model\Traits
  */
 trait EventDateTrait
 {
@@ -92,5 +92,7 @@ trait EventDateTrait
         $this->eventEndTime = $eventEndTime;
     }
 
-
+    public function abstractMethod(): \DateTimeImmutable
+    {
+    }
 }

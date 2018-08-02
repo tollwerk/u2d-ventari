@@ -1,10 +1,10 @@
 <?php
 
-namespace Tollwerk\Ventari\Domain\Model\Traits\Event;
+namespace Tollwerk\Ventari\Domain\Model\Traits;
 
 /**
  * Trait EventContactTrait
- * @package Tollwerk\Ventari\Domain\Model\Traits\Event
+ * @package Tollwerk\Ventari\Domain\Model\Traits
  */
 trait EventContactTrait
 {
@@ -153,5 +153,9 @@ trait EventContactTrait
     public function setEventContactTwitterHandle(string $eventContactTwitterHandle): void
     {
         $this->eventContactTwitterHandle = $eventContactTwitterHandle;
+    }
+
+    public function abstractMethod(): string
+    {
     }
 }
