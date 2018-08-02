@@ -24,7 +24,7 @@ class Event extends AbstractModel implements EventInterface
     protected $eventCategory;
 
     /**
-     * @var string
+     * @var boolean
      */
     protected $eventChargeable;
 
@@ -65,7 +65,7 @@ class Event extends AbstractModel implements EventInterface
 
 
     /**
-     * @var string
+     * @var int
      */
     protected $eventMaxParticipants;
 
@@ -126,17 +126,17 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return boolean
      */
-    public function getEventChargeable(): string
+    public function getEventChargeable(): bool
     {
         return $this->eventChargeable;
     }
 
     /**
-     * @param string $eventChargeable
+     * @param boolean $eventChargeable
      */
-    public function setEventChargeable(string $eventChargeable): void
+    public function setEventChargeable(bool $eventChargeable): void
     {
         $this->eventChargeable = $eventChargeable;
     }
@@ -254,15 +254,15 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getEventMaxParticipants(): string
+    public function getEventMaxParticipants(): int
     {
         return $this->eventMaxParticipants;
     }
 
     /**
-     * @param string $eventMaxParticipants
+     * @param integer $eventMaxParticipants
      */
     public function setEventMaxParticipants(string $eventMaxParticipants): void
     {

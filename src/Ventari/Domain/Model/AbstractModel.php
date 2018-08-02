@@ -27,7 +27,7 @@ abstract class AbstractModel
     }
 
     /**
-     * @param $id
+     * @param integer $id
      *
      * @return $this
      */

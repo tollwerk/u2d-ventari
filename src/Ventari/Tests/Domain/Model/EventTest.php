@@ -8,81 +8,171 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class EventTest extends AbstractTestBase
 {
     /**
-     * @var Event $event
+     * @var Event $testClass
      */
-    public static $event;
+    public $testClass;
 
-    public static function setUpBeforeClass()
+    protected function setUp()
     {
-        self::$event = new Event();
+        $this->testClass = new Event();
     }
 
-    public function event()
+    public function testClass(): void
     {
-        $this->assertInstanceOf(Event::class, self::$event);
-
-        return self::$event;
+        $this->assertInstanceOf(Event::class, $this->testClass);
     }
 
-    /**
-     * Test Get and Set Event Id
-     */
-    public function testEventId()
+    public function testEventCategory(): void
     {
-        $event = $this->event();
-        $event->setId(1234);
-        $expectedString = $event->getId();
-        $actualString   = '1234';
-        $this->assertEquals($expectedString, intval($actualString));
-
-        return $event;
+        $expectedString = 'Introduction';
+        $event          = $this->testClass;
+        $event->setEventCategory($expectedString);
+        $this->assertEquals($expectedString, $event->getEventCategory());
     }
 
-    /**
-     * Test Get and Set Event Id
-     * @depends testEventId
-     */
-    public function testEventName($event)
+    public function testEventChargeable(): void
     {
-        $eventName = 'Event Name';
-        $event->setEventName($eventName);
-        $expectedString = $event->getEventName();
-        $actualString   = $eventName;
-        $this->assertEquals($expectedString, $actualString);
+        $event = $this->testClass;
 
-        return $event;
+        $expectedValue = true;
+        $event->setEventChargeable($expectedValue);
+        $this->assertEquals($expectedValue, $event->getEventChargeable());
+
+        $expectedValue = false;
+        $event->setEventChargeable($expectedValue);
+        $this->assertFalse($event->getEventChargeable());
     }
 
-    /**
-     * Test Get and Set Event Date
-     * @depends testEventName
-     */
-    public function testEventDate($event)
+    public function testEventCity(): void
     {
-        $eventDate = new \DateTimeImmutable('2018-12-10');
-        $event->setEventStartDate($eventDate);
-        $expectedString = $event->getEventStartDate();
-        $actualString   = $eventDate;
-        $this->assertEquals($expectedString, $actualString);
-
-        return $event;
+        $expectedString = 'Nürnberg';
+        $event          = $this->testClass;
+        $event->setEventCity($expectedString);
+        $this->assertEquals($expectedString, $event->getEventCity());
     }
 
-    /**
-     * Test Get and Set Event Link
-     * @depends testEventDate
-     */
-    public function testEventLink($event)
+    public function testEventCostDescription(): void
     {
-        $eventLink = 'https://www.nueww.de/event/link.php?id=1234';
-        $event->setEventFrontendLink($eventLink);
-        $expectedString = $event->getEventFrontendLink();
-        $actualString   = $eventLink;
-        $this->assertEquals($expectedString, $actualString);
+        $expectedString = 'Free with School ID';
+        $event          = $this->testClass;
+        $event->setEventCostDescription($expectedString);
+        $this->assertEquals($expectedString, $event->getEventCostDescription());
     }
 
-//    public function abstractMethod(): void
-//    {
-//
-//    }
+    public function testEventCost(): void
+    {
+        $event = $this->testClass;
+
+        $expectedString = 'Free';
+        $event->setEventCost($expectedString);
+        $this->assertEquals($expectedString, $event->getEventCost());
+
+        $expectedString = '€20.00';
+        $event->setEventCost($expectedString);
+        $this->assertEquals($expectedString, $event->getEventCost());
+    }
+
+    public function testEventDescriptionLong(): void
+    {
+        $expectedString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
+        $event          = $this->testClass;
+        $event->setEventDescriptionLong($expectedString);
+        $this->assertEquals($expectedString, $event->getEventDescriptionLong());
+    }
+
+    public function testEventDescription(): void
+    {
+        $expectedString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
+        $event          = $this->testClass;
+        $event->setEventDescription($expectedString);
+        $this->assertEquals($expectedString, $event->getEventDescription());
+    }
+
+    public function testEventImage(): void
+    {
+        $expectedString = '/file_upload/media/events/138532110.svg';
+        $event          = $this->testClass;
+        $event->setEventImage($expectedString);
+        $this->assertEquals($expectedString, $event->getEventImage());
+    }
+
+    public function testEventLevel(): void
+    {
+        $expectedString = 'Expert';
+        $event          = $this->testClass;
+        $event->setEventLevel($expectedString);
+        $this->assertEquals($expectedString, $event->getEventLevel());
+    }
+
+    public function testEventMaxParticipants(): void
+    {
+        $expectedValue = 48;
+        $event         = $this->testClass;
+        $event->setEventMaxParticipants($expectedValue);
+        $this->assertEquals($expectedValue, $event->getEventMaxParticipants());
+    }
+
+    public function testEventName(): void
+    {
+        $expectedString = 'Web Accessibility Review';
+        $event          = $this->testClass;
+        $event->setEventName($expectedString);
+        $this->assertEquals($expectedString, $event->getEventName());
+    }
+
+    public function testEventOtherTags(): void
+    {
+        $expectedString = 'web, javascript, e-commerce';
+        $event          = $this->testClass;
+        $event->setEventOtherTags($expectedString);
+        $this->assertEquals($expectedString, $event->getEventOtherTags());
+    }
+
+    public function testEventPresentationLanguage(): void
+    {
+        $expectedString = 'Deutsch';
+        $event          = $this->testClass;
+        $event->setEventPresentationLanguage($expectedString);
+        $this->assertEquals($expectedString, $event->getEventPresentationLanguage());
+    }
+
+    public function testEventStatus(): void
+    {
+        $expectedString = 'Cancelled';
+        $event          = $this->testClass;
+        $event->setEventStatus($expectedString);
+        $this->assertEquals($expectedString, $event->getEventStatus());
+    }
+
+    public function testEventTargetGroup(): void
+    {
+        $expectedString = 'youth';
+        $event          = $this->testClass;
+        $event->setEventTargetGroup($expectedString);
+        $this->assertEquals($expectedString, $event->getEventTargetGroup());
+    }
+
+    public function testEventTracks(): void
+    {
+        $expectedString = 'I dunno what this property means';
+        $event = $this->testClass;
+        $event->setEventTracks($expectedString);
+        $this->assertEquals($expectedString, $event->getEventTracks());
+    }
+
+    public function testEventTyp(): void
+    {
+        $expectedString = 'Sponsored';
+        $event = $this->testClass;
+        $event->setEventTyp($expectedString);
+        $this->assertEquals($expectedString, $event->getEventTyp());
+    }
+
+    public function testEventFrontendLink(): void
+    {
+        $expectedString = 'https://events.nueww.de/tms/frontend/frontend.cfm?l=1000';
+        $event = $this->testClass;
+        $event->setEventFrontendLink($expectedString);
+        $this->assertEquals($expectedString, $event->getEventFrontendLink());
+    }
 }
