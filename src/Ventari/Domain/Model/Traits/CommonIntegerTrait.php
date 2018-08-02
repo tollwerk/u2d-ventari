@@ -50,5 +50,5 @@ trait CommonIntegerTrait
         $this->eventId = $eventId;
     }
 
-
+    abstract public function abstractMethod(): void;
 }

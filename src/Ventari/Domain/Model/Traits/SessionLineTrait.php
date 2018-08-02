@@ -49,4 +49,6 @@ trait SessionLineTrait
     {
         $this->sessionLineName = $sessionLineName;
     }
+
+    abstract public function abstractMethod(): string;
 }

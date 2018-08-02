@@ -21,7 +21,7 @@ class EventContactTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(EventContactTrait::class);
     }
 
-    public function testGetEventContactEmail(): void
+    public function testEventContactEmail(): void
     {
         $expectedString = 'email@server.com';
         $mock           = $this->testTrait;
@@ -33,7 +33,7 @@ class EventContactTraitTest extends AbstractTestBase
         $this->assertEquals($expectedString, $mock->getEventContactEmail());
     }
 
-    public function testGetEventContactFacebook(): void
+    public function testEventContactFacebook(): void
     {
         $expectedString = 'https://facebook.com/EventPage';
         $mock           = $this->testTrait;

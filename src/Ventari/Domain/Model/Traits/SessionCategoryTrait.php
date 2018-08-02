@@ -91,4 +91,6 @@ trait SessionCategoryTrait
     {
         $this->sessionSignposting = $sessionSignposting;
     }
+
+    abstract public function abstractMethod(): mixed;
 }
