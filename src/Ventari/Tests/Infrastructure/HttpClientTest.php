@@ -21,7 +21,7 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        self::$testClass = new HttpClient('GET', 'localhost');
+        self::$testClass = new HttpClient('GET', 'https://events.nueww.de/rest/');
     }
 
     /**
@@ -47,7 +47,7 @@ class HttpClientTest extends AbstractTestBase
      */
     public function testDispatchRequest(string $request, array $params)
     {
-        $this->assertEquals($request, 'Events');
+        $this->assertEquals($request, 'events');
         $this->assertArrayHasKey('eventId', $params);
 
         $httpClient = self::$testClass;
@@ -61,7 +61,7 @@ class HttpClientTest extends AbstractTestBase
     public function requestProvider()
     {
         return [
-            ['Events', array('eventId' => 1080)]
+            ['events', ['eventId' => 1080, 'eventName' => 'Event Name']]
         ];
     }
 }

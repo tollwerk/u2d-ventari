@@ -29,6 +29,12 @@ class HttpClient implements HttpClientInterface
     protected $baseUrl;
 
     /**
+     * Authentication Object
+     * @var mixed
+     */
+    protected static $authConfig;
+
+    /**
      * HttpClient constructor
      *
      * @var string $method
@@ -36,7 +42,16 @@ class HttpClient implements HttpClientInterface
      */
     public function __construct($method, $baseUrl)
     {
-        $this->guzzle  = new Client(['base_uri' => $baseUrl]);
+
+        $rootDirectory      = \dirname(__DIR__, 3).DIRECTORY_SEPARATOR;
+        $authFile         = $rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-authentication.xml";
+        $authFileContents = file_get_contents($authFile);
+        self::$authConfig   = simplexml_load_string($authFileContents);
+
+        $this->guzzle  = new Client([
+            'headers' => ['User-Agent' => 'Ventari WebService'],
+        ]);
+
         $this->method  = $method;
         $this->baseUrl = $baseUrl;
     }
@@ -53,27 +68,23 @@ class HttpClient implements HttpClientInterface
     public function dispatchRequest(string $request, array $params)
     {
         $res = null;
-        $rootDirectory = dirname(__DIR__);
-        $fixtureJson       = 'Tests'.DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json';
+        $query = '?'.http_build_query($params);
+        $username = self::$authConfig->username->__toString();
+        $password = self::$authConfig->password->__toString();
+        $authentication = ['auth' => [$username, $password]];
 
-//        $query = http_build_query($params, '', '&amp;');
-//        $res = $this->guzzle->request('GET', 'http://localhost/~philipsaa/tollwerk/u2d-ventari/app-json.php');
-//        echo $res->getStatusCode();
-//        echo '<pre>';
-//        echo $res->getBody();
-//        echo '</pre>';
-//        try {
-////            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.'?'.$query);
-//
-//        } catch (RequestException $e) {
-//            echo Psr7\str($e->getRequest());
-//            if ($e->hasResponse()) {
-//                echo Psr7\str($e->getResponse());
-//            }
-//        }
+        try {
+            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $authentication);
+        } catch (RequestException $e) {
+            echo Psr7\str($e->getRequest());
+            if ($e->hasResponse()) {
+                echo Psr7\str($e->getResponse());
+            }
+        }
 
-//        return $res->getBody();
-        $devJson = file_get_contents($rootDirectory.DIRECTORY_SEPARATOR.$fixtureJson);
-        return json_decode($devJson);
+        $body = $res->getBody();
+        return json_decode((string) $body)->responseData;
+//        $devJson = file_get_contents($rootDirectory.DIRECTORY_SEPARATOR.$fixtureJson);
+//        return json_decode($devJson);
     }
 }

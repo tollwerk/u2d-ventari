@@ -13,7 +13,6 @@ class ClientTest extends AbstractTestBase
      */
     public function testConstructor()
     {
-        $this->assertClassHasAttribute('rootDirectory', Client::class);
         $this->assertClassHasAttribute('restConfig', Client::class);
     }
 

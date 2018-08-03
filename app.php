@@ -1,7 +1,7 @@
 <?php
 //Require once the Composer Autoload
-if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
-    require_once dirname(__FILE__).'/vendor/autoload.php';
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once __DIR__.'/vendor/autoload.php';
 }
 ?>
 <!doctype html>
@@ -20,7 +20,6 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                 $params   = $_GET;
                 unset($params['function']);
 
-
                 $App    = new Tollwerk\Ventari\Ports\Client();
                 $Events = $App->makeRequest($function, $params);
 
@@ -34,7 +33,7 @@ if (file_exists(dirname(__FILE__).'/vendor/autoload.php')) {
                 }
             } else { ?>
                 <div class="launch">
-                    <a href="app.php?function=events&eventId=1080">Run it!</a>
+                    <a href="app.php?function=events&param=1080">Run it!</a>
                 </div>
             <?php } ?>
         </div>

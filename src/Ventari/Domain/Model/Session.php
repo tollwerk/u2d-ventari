@@ -128,6 +128,6 @@ class Session extends AbstractModel implements SessionInterface
 
     public function abstractMethod(): void
     {
-        // TODO: Implement abstractMethod() method.
+        // TODO: Ignore this method. It's used for testing purposes
     }
 }

@@ -23,16 +23,17 @@ class DispatchController implements ControllerInterface
      */
     public function __invoke($jsonObject)
     {
+
         $object = [];
 
         /**
          * TODO: Add SWITCH CASE for other Factories
          */
         switch (key($jsonObject)) {
-            case 'Events':
+            case 'events':
                 $factory = new EventFactory();
-                foreach ($jsonObject->Events as $event) {
-                    array_push($object, $factory->createEventsFromJson($event));
+                foreach ($jsonObject->events as $event) {
+                    $object[] = $factory->createEventsFromJson($event);
                 }
                 break;
             default:

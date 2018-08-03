@@ -33,7 +33,8 @@ class EventFactory
 
         // Run through all JSON properties
         foreach ($json as $key => $value) {
-            $setter = 'set'.ucfirst($key);
+//            $setter = 'set'.ucfirst($key);
+            $setter = 'set'.str_replace('_', '', ucwords($key, '_'));
             if (is_callable([$event, $setter])) {
                 $event->$setter(self::refineValue($key, $value));
             }
