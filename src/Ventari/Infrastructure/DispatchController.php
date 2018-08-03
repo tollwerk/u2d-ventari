@@ -23,7 +23,6 @@ class DispatchController implements ControllerInterface
      */
     public function __invoke($jsonObject)
     {
-
         $object = [];
 
         /**
