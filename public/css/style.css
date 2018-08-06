@@ -18,15 +18,24 @@ blockquote {
     font-size: 2em;
 }
 
+.launch{
+    position: relative;
+    top: 6em;
+    left: 30%;
+}
 
-button {
+label {
+    color: white;
+}
+
+a  {
     color: white;
     padding: 1rem;
     text-decoration: none;
     border: thick solid white;
 }
 
-button:hover {
+a:hover {
     color: rebeccapurple;
     background-color: white;
     border: thick solid rebeccapurple;

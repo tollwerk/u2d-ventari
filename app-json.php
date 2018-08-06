@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 $sourcePath   = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Ventari';
-$filePath     = 'Tests'.DIRECTORY_SEPARATOR."Fixture".DIRECTORY_SEPARATOR.'Locations.json';
+$filePath     = 'Tests'.DIRECTORY_SEPARATOR."Fixture".DIRECTORY_SEPARATOR.'Location.json';
 $fileContents = file_get_contents($sourcePath.DIRECTORY_SEPARATOR.$filePath);
 
 echo json_encode(json_decode($fileContents));

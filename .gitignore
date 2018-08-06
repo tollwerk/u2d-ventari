@@ -4,4 +4,4 @@
 /vendor
 /composer.lock
 /config/nueww.postman_collection.json
-/config/rest-authentication.xml
+/config/config.php

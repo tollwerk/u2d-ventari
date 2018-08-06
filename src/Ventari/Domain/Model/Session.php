@@ -20,11 +20,6 @@ class Session extends AbstractModel implements SessionInterface
     use CommonIntegerTrait, SessionCategoryTrait, SessionLineTrait;
 
     /**
-     * @var int
-     */
-    protected $sessionId;
-
-    /**
      * @var string
      */
     protected $sessionName;
@@ -35,32 +30,14 @@ class Session extends AbstractModel implements SessionInterface
     protected $sessionRemark;
 
     /**
-     * TODO: Review and decide if we want to mainting a single format relationship with he rest service, Or are we just gonna ingest the string.
-     * @var string
+     * @var \DateTimeImmutable
      */
     protected $sessionStart;
 
     /**
-     * TODO: Ditto
-     * @var string
+     * @var \DateTimeImmutable
      */
     protected $sessionEnd;
-
-    /**
-     * @return int
-     */
-    public function getSessionId(): int
-    {
-        return $this->sessionId;
-    }
-
-    /**
-     * @param int $sessionId
-     */
-    public function setSessionId(int $sessionId): void
-    {
-        $this->sessionId = $sessionId;
-    }
 
     /**
      * @return string
@@ -95,33 +72,33 @@ class Session extends AbstractModel implements SessionInterface
     }
 
     /**
-     * @return string
+     * @return \DateTimeImmutable
      */
-    public function getSessionStart(): string
+    public function getSessionStart(): \DateTimeImmutable
     {
         return $this->sessionStart;
     }
 
     /**
-     * @param string $sessionStart
+     * @param \DateTimeImmutable $sessionStart
      */
-    public function setSessionStart(string $sessionStart): void
+    public function setSessionStart(\DateTimeImmutable $sessionStart): void
     {
         $this->sessionStart = $sessionStart;
     }
 
     /**
-     * @return string
+     * @return \DateTimeImmutable
      */
-    public function getSessionEnd(): string
+    public function getSessionEnd(): \DateTimeImmutable
     {
         return $this->sessionEnd;
     }
 
     /**
-     * @param string $sessionEnd
+     * @param \DateTimeImmutable $sessionEnd
      */
-    public function setSessionEnd(string $sessionEnd): void
+    public function setSessionEnd(\DateTimeImmutable $sessionEnd): void
     {
         $this->sessionEnd = $sessionEnd;
     }

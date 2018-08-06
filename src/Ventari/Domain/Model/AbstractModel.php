@@ -2,11 +2,13 @@
 
 namespace Tollwerk\Ventari\Domain\Model;
 
+use Tollwerk\Ventari\Domain\Contract\ModelInterface;
+
 /**
  * Class AbstractModel
  * @package Tollwerk\Ventari\Domain\Entity
  */
-abstract class AbstractModel
+abstract class AbstractModel implements ModelInterface
 {
     /**
      * @var int
@@ -21,7 +23,7 @@ abstract class AbstractModel
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -31,7 +33,7 @@ abstract class AbstractModel
      *
      * @return $this
      */
-    public function setId($id)
+    public function setId($id): ModelInterface
     {
         $this->id = $id;
         return $this;

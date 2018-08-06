@@ -29,31 +29,27 @@ class HttpClient implements HttpClientInterface
     protected $baseUrl;
 
     /**
-     * Authentication Object
-     * @var mixed
+     * Authentication Array
+     * @var array
      */
-    protected static $authConfig;
+    protected $authentication;
 
     /**
-     * HttpClient constructor
+     * HttpClient constructor.
      *
-     * @var string $method
-     * @var string $baseUrl
+     * @param string $method
+     * @param string $baseUrl
+     * @param array $authentication
      */
-    public function __construct($method, $baseUrl)
+    public function __construct(string $method, string $baseUrl, array $authentication)
     {
-
-        $rootDirectory    = \dirname(__DIR__, 3).DIRECTORY_SEPARATOR;
-        $authFile         = $rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-authentication.xml";
-        $authFileContents = file_get_contents($authFile);
-        self::$authConfig = simplexml_load_string($authFileContents);
-
         $this->guzzle = new Client([
             'headers' => ['User-Agent' => 'Ventari WebService'],
         ]);
 
-        $this->method  = $method;
-        $this->baseUrl = $baseUrl;
+        $this->method         = $method;
+        $this->baseUrl        = $baseUrl;
+        $this->authentication = $authentication;
     }
 
     /**
@@ -68,13 +64,10 @@ class HttpClient implements HttpClientInterface
     public function dispatchRequest(string $request, array $params)
     {
         /** FOR DEV PURPOSED ONLY */
-        $fixtureJson   = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';
-
+        $fixtureJson    = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';
         $res            = null;
         $query          = '?'.http_build_query($params);
-        $username       = self::$authConfig->username->__toString();
-        $password       = self::$authConfig->password->__toString();
-        $authentication = ['auth' => [$username, $password]];
+        $authentication = ['auth' => [$this->authentication['username'], $this->authentication['password']]];
 
         try {
 //            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $authentication);
@@ -87,7 +80,9 @@ class HttpClient implements HttpClientInterface
         }
 
         $body = $res->getBody();
-        return json_decode((string) $body)->responseData;
+
+        return json_decode((string)$body)->responseData;
 
     }
+
 }

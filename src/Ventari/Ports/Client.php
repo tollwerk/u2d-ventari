@@ -12,41 +12,70 @@ use Tollwerk\Ventari\Infrastructure\HttpClient;
 class Client
 {
     /**
-     * Configuration Object
-     * @var mixed
+     * @var HttpClient $client
      */
-    protected static $restConfig;
+    protected static $client;
 
-    public function __construct()
+    /**
+     * @var DispatchController $dispatcher
+     */
+    protected static $dispatcher;
+
+    /**
+     * Client constructor.
+     *
+     * @param string $method
+     * @param string $api
+     * @param array $authentication
+     */
+    public function __construct(string $method, string $api, array $authentication)
     {
-        $rootDirectory      = \dirname(__DIR__, 3).DIRECTORY_SEPARATOR;
-        $configFile         = $rootDirectory.'config'.DIRECTORY_SEPARATOR."rest-config.xml";
-        $configFileContents = file_get_contents($configFile);
-        self::$restConfig   = simplexml_load_string($configFileContents);
+        self::$client     = new HttpClient($method, $api, $authentication);
+        self::$dispatcher = new DispatchController();
+
+    }
+
+    protected function makeRequest($function, $params)
+    {
+        $clientResponse   = self::$client->dispatchRequest($function, $params);
+        $dispatchResponse = self::$dispatcher->dispatch($function, $clientResponse);
+
+        return $dispatchResponse;
     }
 
     /**
-     * @param $function
-     * @param $params
+     * @param array|null $params
      *
-     * @return \Psr\Http\Message\StreamInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return ControllerInterface
      */
-    public function makeRequest($function, $params)
+    public function getEvents(array $params = null): ControllerInterface
     {
-        $method   = self::$restConfig->method->__toString();
-        $protocal = self::$restConfig->protocol->__toString();
-        $baseUri  = self::$restConfig->domain->__toString();
-        $basePath = self::$restConfig->path->__toString();
+        $_params = (count($params) > 0) ? $params : [];
 
-        $baseUrl = $protocal.'://'.$baseUri.'/'.$basePath;
+        return $this->makeRequest('Event', $_params);
+    }
 
-        $httpClient     = new HttpClient($method, $baseUrl);
-        $clientResponse = $httpClient->dispatchRequest($function, $params);
+    /**
+     * @param array|null $params
+     *
+     * @return ControllerInterface
+     */
+    public function getLocations(array $params = null): ControllerInterface
+    {
+        $_params = (count($params) > 0) ? $params : [];
 
-        $dispatcher       = new DispatchController();
-        $dispatchResponse = $dispatcher($clientResponse);
+        return $this->makeRequest('Location', $_params);
+    }
 
-        return $dispatchResponse;
+    /**
+     * @param array|null $params
+     *
+     * @return ControllerInterface
+     */
+    public function getSessions(array $params = null): ControllerInterface
+    {
+        $_params = (count($params) > 0) ? $params : [];
+
+        return $this->makeRequest('Session', $_params);
     }
 }

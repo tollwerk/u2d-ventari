@@ -2,7 +2,8 @@
 
 namespace Tollwerk\Ventari\Application\Factory;
 
-use Tollwerk\Ventari\Domain\Contract\LocationInterface;
+use Tollwerk\Ventari\Application\Contract\FactoryInterface;
+use Tollwerk\Ventari\Domain\Contract\ModelInterface;
 use Tollwerk\Ventari\Domain\Model\Location;
 
 /**
@@ -10,8 +11,15 @@ use Tollwerk\Ventari\Domain\Model\Location;
  *
  * @package Tollwerk\Ventari\Application\Factory
  */
-class LocationFactory
+class LocationFactory implements FactoryInterface
 {
+    /**
+     * Function name
+     *
+     * @var string
+     */
+    const FUNCTION_NAME ='Location';
+
     protected static $locationApi = [
         'hotelId'        => 'Id',
         'hotelAddress'   => 'LocationAddress',
@@ -30,10 +38,10 @@ class LocationFactory
      *
      * @param \stdClass $json JSON object
      *
-     * @return LocationInterface Location
+     * @return ModelInterface Location
      * @throws \Exception
      */
-    public static function createLocationFromJson($json): LocationInterface
+    public static function createFromJson($json): ModelInterface
     {
         $location = new Location();
 

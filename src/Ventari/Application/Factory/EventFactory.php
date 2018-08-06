@@ -2,7 +2,8 @@
 
 namespace Tollwerk\Ventari\Application\Factory;
 
-use Tollwerk\Ventari\Domain\Contract\EventInterface;
+use Tollwerk\Ventari\Application\Contract\FactoryInterface;
+use Tollwerk\Ventari\Domain\Contract\ModelInterface;
 use Tollwerk\Ventari\Domain\Model\Event;
 
 /**
@@ -10,8 +11,15 @@ use Tollwerk\Ventari\Domain\Model\Event;
  *
  * @package Tollwerk\Ventari\Application\Factory
  */
-class EventFactory
+class EventFactory implements FactoryInterface
 {
+    /**
+     * Function name
+     *
+     * @var string
+     */
+    const FUNCTION_NAME = 'Event';
+
     /**
      * Date based properties
      *
@@ -71,10 +79,10 @@ class EventFactory
      *
      * @param \stdClass $json JSON object
      *
-     * @return EventInterface Event
+     * @return ModelInterface Event
      * @throws \Exception
      */
-    public static function createEventsFromJson($json)
+    public static function createFromJson($json): ModelInterface
     {
         $event = new Event();
 
@@ -82,7 +90,7 @@ class EventFactory
         foreach ($json as $key => $value) {
             $setter = 'set'.self::$eventApi[$key];
 
-            if (is_callable([$event, $setter], true)) {
+            if (\is_callable([$event, $setter], true)) {
                 $event->$setter(self::refineValue($key, $value));
             }
         }

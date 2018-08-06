@@ -16,53 +16,35 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
         <div class="content">
             <?php
             $params = $_GET;
-            if (isset($params['function'])) {
-                $App      = new Tollwerk\Ventari\Ports\Client();
-                $function = $params['function'];
-                unset($params['function']);
+            $config = require __DIR__.DIRECTORY_SEPARATOR.'config/config.php';
 
-                if ($function == 'events') {
-                    $Events = $App->makeRequest($function, $params);
-                    foreach ($Events as $event) {
-                        echo '<h3>'.$event->getEventName().'</h3>';
-                        echo '<blockquote>';
-                        echo '<p>Event Id: '.$event->getId().'</p>';
-                        echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
-                        echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
-                        echo '</blockquote>';
-                    }
-                }
+            $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
-                if ($function == 'locations') {
-                    $Locations = $App->makeRequest($function, $params);
-                    foreach ($Locations as $location) {
-                        echo '<h3>'.$location->getLocationName().'</h3>';
-                        echo '<blockquote>';
-                        echo '<p>Location Id: '.$location->getId().'</p>';
-                        echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
-                        echo '<p>Location City: '.$location->getLocationCity().'</p>';
-                        echo '</blockquote>';
-                    }
-                }
-
-                if ($function == 'sessions') {
-                    $Sessions = $App->makeRequest($function, $params);
-                    foreach ($Sessions as $session) {
-                        echo '<h3>'.$session->getSessionName().'</h3>';
-                        print_r($session);
-                        echo '<br>';
-                    }
-                }
-            } else { ?>
-                <div class="launch">
-                    <form action="app.php">
-                        <label for="events"><input type="radio" name="function" id="events" value="events" checked>Events</input></label>
-                        <label for="locations"><input type="radio" name="function" id="locations" value="locations">Locations</input></label>
-                        <label for="sessions"><input type="radio" name="function" id="sessions" value="sessions">Sessions</input></label>
-                        <button>Run In!</button>
-                    </form>
-                </div>
-            <?php } ?>
+            $Events = $App->getEvents($params);
+            foreach ($Events as $event) {
+                echo '<h3>'.$event->getEventName($params).'</h3>';
+                echo '<blockquote>';
+                echo '<p>Event Id: '.$event->getId().'</p>';
+                echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
+                echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
+                echo '</blockquote>';
+            }
+            $Locations = $App->getLocations($params);
+            foreach ($Locations as $location) {
+                echo '<h3>'.$location->getLocationName().'</h3>';
+                echo '<blockquote>';
+                echo '<p>Location Id: '.$location->getId().'</p>';
+                echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
+                echo '<p>Location City: '.$location->getLocationCity().'</p>';
+                echo '</blockquote>';
+            }
+            $Sessions = $App->getSessions($params);
+            foreach ($Sessions as $session) {
+                echo '<h3>'.$session->getSessionName().'</h3>';
+                print_r($session);
+                echo '<br>';
+            }
+            ?>
         </div>
     </body>
 </html>
