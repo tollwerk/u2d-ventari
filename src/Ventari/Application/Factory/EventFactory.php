@@ -78,18 +78,11 @@ class EventFactory
     {
         $event = new Event();
 
-//        foreach ($json as $key => $value) {
-//        foreach (self::$eventApi as $key => $value) {
-//            echo str_replace('_', '', ucwords($item, '_')).PHP_EOL;
-//            echo self::$eventApi[$key].PHP_EOL;
-//        }
-
         // Run through all JSON properties
         foreach ($json as $key => $value) {
             $setter = 'set'.self::$eventApi[$key];
 
             if (is_callable([$event, $setter], true)) {
-//                echo PHP_EOL.$setter.' : '.gettype($value).PHP_EOL;
                 $event->$setter(self::refineValue($key, $value));
             }
         }
