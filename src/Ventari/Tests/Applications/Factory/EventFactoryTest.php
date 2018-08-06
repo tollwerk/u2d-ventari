@@ -44,9 +44,19 @@ class EventFactoryTest extends AbstractTestBase
      */
     public function testRefineValue($input)
     {
-        $input  = json_decode(json_encode($input));
-        $actual = self::$testClass->accessRefineValue('eventstart', $input->Events[0]->eventstart);
-        $this->assertInstanceOf(\DateTimeImmutable::class, $actual);
+        $dateProps = self::$testClass->accessDateProperties();
+        $this->assertInternalType('array', $dateProps);
+        $input = json_decode(json_encode($input));
+
+        foreach ($input->Events[0] as $key => $value) {
+            $actual = self::$testClass->accessRefineValue($key, $value);
+            if (in_array($key, $dateProps)) {
+                $this->assertInstanceOf(\DateTimeImmutable::class, $actual);
+            } else {
+                $this->assertInternalType('string', $actual);
+            }
+        }
+
     }
 
     public function jsonInputProvider()
@@ -56,10 +66,10 @@ class EventFactoryTest extends AbstractTestBase
                 array(
                     'Events' => array(
                         array(
-                            'eventName'    => 'Test Event Name',
-                            'eventstart'   => '2018-10-03',
-                            'frontendLink' => 'https://www.domain.com',
-                            'eventId'      => '1029'
+                            'event_name'       => 'Test Event Name',
+                            'event_start_date' => '2018-10-03',
+                            'frontendLink'     => 'https://www.domain.com',
+                            'event_id'         => '1029'
                         )
                     )
                 )

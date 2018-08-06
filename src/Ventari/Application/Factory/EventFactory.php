@@ -17,11 +17,16 @@ class EventFactory
      *
      * @var string[]
      */
-    protected static $dateProperties = ['eventstart'];
+    protected static $dateProperties = [
+        'event_endtime',
+        'event_end_date',
+        'event_start_time',
+        'event_start_date',
+    ];
 
     protected static $eventApi = [
         'id'                           => 'Id',
-        'active'                       => 'isctive',
+        'active'                       => 'Active',
         'event_category'               => 'EventCategory',
         'event_chargeable'             => 'EventChargeable',
         'event_city'                   => 'EventCity',
@@ -39,7 +44,7 @@ class EventFactory
         'event_end_date'               => 'EventEndDate',
         'event_endtime'                => 'EventEndtime',
         'event_facebook_event'         => 'EventFacebookEvent',
-        'event_id'                     => 'EventId',
+        'event_id'                     => 'Id',
         'event_image'                  => 'EventImage',
         'event_level'                  => 'EventLevel',
         'event_livestream'             => 'EventLivestream',
@@ -58,7 +63,7 @@ class EventFactory
         'event_typ'                    => 'EventTyp',
         'event_website'                => 'EventWebsite',
         'event_xing_event'             => 'EventXingEvent',
-        'frontendLink'                 => 'FrontendLink',
+        'frontendLink'                 => 'EventFrontendLink',
     ];
 
     /**
@@ -73,24 +78,19 @@ class EventFactory
     {
         $event = new Event();
 
-        echo '<pre>';
 //        foreach ($json as $key => $value) {
 //        foreach (self::$eventApi as $key => $value) {
 //            echo str_replace('_', '', ucwords($item, '_')).PHP_EOL;
 //            echo self::$eventApi[$key].PHP_EOL;
 //        }
-        echo '</pre>';
 
         // Run through all JSON properties
         foreach ($json as $key => $value) {
             $setter = 'set'.self::$eventApi[$key];
-//            $setter = 'set'.str_replace('_', '', ucwords($key, '_'));
 
             if (is_callable([$event, $setter], true)) {
-                echo '<pre>';
-                var_dump($setter);
-                echo '</pre>';
-//                $event->$setter(self::refineValue($key, $value));
+//                echo PHP_EOL.$setter.' : '.gettype($value).PHP_EOL;
+                $event->$setter(self::refineValue($key, $value));
             }
         }
 
@@ -112,7 +112,7 @@ class EventFactory
 
         // Convert date based properties
 
-        if (in_array($property, self::$dateProperties)) {
+        if (\in_array($property, self::$dateProperties)) {
             $refinedValue = new \DateTimeImmutable($value);
         }
 
@@ -122,5 +122,10 @@ class EventFactory
     public function accessRefineValue(string $prop, $val)
     {
         return $this->refineValue($prop, $val);
+    }
+
+    public function accessDateProperties()
+    {
+        return self::$dateProperties;
     }
 }

@@ -254,9 +254,9 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getEventMaxParticipants(): int
+    public function getEventMaxParticipants(): string
     {
         return $this->eventMaxParticipants;
     }
@@ -264,7 +264,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @param integer $eventMaxParticipants
      */
-    public function setEventMaxParticipants(int $eventMaxParticipants): void
+    public function setEventMaxParticipants(string $eventMaxParticipants): void
     {
         $this->eventMaxParticipants = $eventMaxParticipants;
     }
