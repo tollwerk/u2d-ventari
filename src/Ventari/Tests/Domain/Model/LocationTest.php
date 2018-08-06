@@ -23,28 +23,28 @@ class LocationTest extends AbstractTestBase
         $this->assertInstanceOf(Location::class, $this->testClass);
     }
 
-    public function testHotelId(): void
+    public function testId(): void
     {
         $expectedValue = 12358;
         $location      = $this->testClass;
-        $location->setHotelId($expectedValue);
-        $this->assertEquals($expectedValue, $this->testClass->getHotelId());
+        $location->setId($expectedValue);
+        $this->assertEquals($expectedValue, $this->testClass->getId());
     }
 
-    public function testHotelAddress(): void
+    public function testLocationAddress(): void
     {
         $expectedString = 'Königstorgraben 11';
         $location       = $this->testClass;
-        $location->setHotelAddress($expectedString);
-        $this->assertEquals($expectedString, $location->getHotelAddress());
+        $location->setLocationAddress($expectedString);
+        $this->assertEquals($expectedString, $location->getLocationAddress());
     }
 
-    public function testHotelTelephone(): void
+    public function testLocationTelephone(): void
     {
         $expectedValue = '+49 911 4567 9112';
         $location      = $this->testClass;
-        $location->setHotelTelephone($expectedValue);
-        $this->assertEquals($expectedValue, $location->getHotelTelephone());
+        $location->setLocationTelephone($expectedValue);
+        $this->assertEquals($expectedValue, $location->getLocationTelephone());
     }
 
     public function testRowNum(): void
@@ -55,20 +55,20 @@ class LocationTest extends AbstractTestBase
         $this->assertEquals($expectedValue, $location->getRowNum());
     }
 
-    public function testHotelZip(): void
+    public function testLocationZip(): void
     {
         $expectedValue = 90402;
         $location      = $this->testClass;
-        $location->setHotelZip($expectedValue);
-        $this->assertEquals($expectedValue, $location->getHotelZip());
+        $location->setLocationZip($expectedValue);
+        $this->assertEquals($expectedValue, $location->getLocationZip());
     }
 
-    public function testHotelName(): void
+    public function testLocationName(): void
     {
         $expectedString = 'Holiday Inn';
         $location       = $this->testClass;
-        $location->setHotelName($expectedString);
-        $this->assertEquals($expectedString, $location->getHotelName());
+        $location->setLocationName($expectedString);
+        $this->assertEquals($expectedString, $location->getLocationName());
     }
 
     public function testEventId(): void
@@ -79,27 +79,27 @@ class LocationTest extends AbstractTestBase
         $this->assertEquals($expectedValue, $location->getEventId());
     }
 
-    public function testHotelCity(): void
+    public function testLocationCity(): void
     {
         $expectedValue = 'Nürnberg';
         $location      = $this->testClass;
-        $location->setHotelCity($expectedValue);
-        $this->assertEquals($expectedValue, $location->getHotelCity());
+        $location->setLocationCity($expectedValue);
+        $this->assertEquals($expectedValue, $location->getLocationCity());
     }
 
-    public function testHotelFax(): void
+    public function testLocationFax(): void
     {
         $expectedValue = '+49 911 4567 9112';
         $location      = $this->testClass;
-        $location->setHotelFax($expectedValue);
-        $this->assertEquals($expectedValue, $location->getHotelFax());
+        $location->setLocationFax($expectedValue);
+        $this->assertEquals($expectedValue, $location->getLocationFax());
     }
 
-    public function testHotelEmail(): void
+    public function testLocationEmail(): void
     {
         $expectedString = 'user@mail-server.net';
         $location       = $this->testClass;
-        $location->setHotelEmail($expectedString);
-        $this->assertEquals($expectedString, $location->getHotelEmail());
+        $location->setLocationEmail($expectedString);
+        $this->assertEquals($expectedString, $location->getLocationEmail());
     }
 }

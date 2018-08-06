@@ -1,0 +1,44 @@
+{
+  "responseData": {
+    "locations": [
+      {
+        "hotelId": 3,
+        "hotelAddress": "Prinzregentenufer 3",
+        "hotelTelephone": "",
+        "rowNum": 1,
+        "hotelZip": 90489,
+        "hotelName": "up2date solutions GmbH",
+        "eventId": 1801,
+        "hotelCity": "Nürnberg",
+        "hotelFax": "091123759913",
+        "hotelEmail": "info@up2date-solutions.de"
+      },
+      {
+        "hotelId": 4,
+        "hotelAddress": "Königstorgraben 11",
+        "hotelTelephone": "",
+        "rowNum": 2,
+        "hotelZip": 90402,
+        "hotelName": "Design Offices Nürnberg City",
+        "eventId": 1810,
+        "hotelCity": "Nürnberg",
+        "hotelFax": "",
+        "hotelEmail": "nuernberg.city@designoffices.de"
+      },
+      {
+        "hotelId": 5,
+        "hotelAddress": "Prinzregentenufer 3 0",
+        "hotelTelephone": "",
+        "rowNum": 3,
+        "hotelZip": 90489,
+        "hotelName": "up2date solutions GmbH",
+        "eventId": 1876,
+        "hotelCity": "Nürnberg",
+        "hotelFax": "091123759913",
+        "hotelEmail": "info@up2date-solutions.de"
+      }
+    ],
+    "resultCount": 3
+  },
+  "responseStatus": 200
+}

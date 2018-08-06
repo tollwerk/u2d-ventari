@@ -2,219 +2,170 @@
 
 namespace Tollwerk\Ventari\Domain\Model;
 
+use Tollwerk\Ventari\Domain\Contract\LocationInterface;
+use Tollwerk\Ventari\Domain\Model\Traits\CommonIntegerTrait;
+
 /**
  * Class Location
  * @package Tollwerk\Ventari\Domain\Model
  */
-class Location extends AbstractModel
+class Location extends AbstractModel implements LocationInterface
 {
     /**
-     * @var int $hotelId
+     * Use traits
      */
-    protected $hotelId;
+    use CommonIntegerTrait;
 
     /**
-     * @var string $hotelAddress
+     * @var string $locationAddress
      */
-    protected $hotelAddress;
+    protected $locationAddress;
 
     /**
-     * @var string $hotelTelephone
+     * @var string $locationTelephone
      */
-    protected $hotelTelephone;
+    protected $locationTelephone;
 
     /**
-     * @var int $rowNum
+     * @var int $locationZip
      */
-    protected $rowNum;
+    protected $locationZip;
 
     /**
-     * @var int $hotelZip
+     * @var string $locationName
      */
-    protected $hotelZip;
+    protected $locationName;
 
     /**
-     * @var string $hotelName
+     * @var string $locationCity
      */
-    protected $hotelName;
+    protected $locationCity;
 
     /**
-     * @var int $eventId
+     * @var string $locationFax
      */
-    protected $eventId;
+    protected $locationFax;
 
     /**
-     * @var string $hotelCity
+     * @var string $locationEmail
      */
-    protected $hotelCity;
+    protected $locationEmail;
 
     /**
-     * @var string $hotelFax
+     * @return string
      */
-    protected $hotelFax;
-
-    /**
-     * @var string $hotelEmail
-     */
-    protected $hotelEmail;
-
-    /**
-     * @return int
-     */
-    public function getHotelId(): int
+    public function getLocationAddress(): string
     {
-        return $this->hotelId;
+        return $this->locationAddress;
     }
 
     /**
-     * @param int $hotelId
+     * @param string $locationAddress
      */
-    public function setHotelId(int $hotelId): void
+    public function setLocationAddress(string $locationAddress): void
     {
-        $this->hotelId = $hotelId;
+        $this->locationAddress = $locationAddress;
     }
 
     /**
      * @return string
      */
-    public function getHotelAddress(): string
+    public function getLocationTelephone(): string
     {
-        return $this->hotelAddress;
+        return $this->locationTelephone;
     }
 
     /**
-     * @param string $hotelAddress
+     * @param string $locationTelephone
      */
-    public function setHotelAddress(string $hotelAddress): void
+    public function setLocationTelephone(string $locationTelephone): void
     {
-        $this->hotelAddress = $hotelAddress;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHotelTelephone(): string
-    {
-        return $this->hotelTelephone;
-    }
-
-    /**
-     * @param string $hotelTelephone
-     */
-    public function setHotelTelephone(string $hotelTelephone): void
-    {
-        $this->hotelTelephone = $hotelTelephone;
+        $this->locationTelephone = $locationTelephone;
     }
 
     /**
      * @return int
      */
-    public function getRowNum(): int
+    public function getLocationZip(): int
     {
-        return $this->rowNum;
+        return $this->locationZip;
     }
 
     /**
-     * @param int $rowNum
+     * @param int $locationZip
      */
-    public function setRowNum(int $rowNum): void
+    public function setLocationZip(int $locationZip): void
     {
-        $this->rowNum = $rowNum;
-    }
-
-    /**
-     * @return int
-     */
-    public function getHotelZip(): int
-    {
-        return $this->hotelZip;
-    }
-
-    /**
-     * @param int $hotelZip
-     */
-    public function setHotelZip(int $hotelZip): void
-    {
-        $this->hotelZip = $hotelZip;
+        $this->locationZip = $locationZip;
     }
 
     /**
      * @return string
      */
-    public function getHotelName(): string
+    public function getLocationName(): string
     {
-        return $this->hotelName;
+        return $this->locationName;
     }
 
     /**
-     * @param string $hotelName
+     * @param string $locationName
      */
-    public function setHotelName(string $hotelName): void
+    public function setLocationName(string $locationName): void
     {
-        $this->hotelName = $hotelName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getEventId(): int
-    {
-        return $this->eventId;
-    }
-
-    /**
-     * @param int $eventId
-     */
-    public function setEventId(int $eventId): void
-    {
-        $this->eventId = $eventId;
+        $this->locationName = $locationName;
     }
 
     /**
      * @return string
      */
-    public function getHotelCity(): string
+    public function getLocationCity(): string
     {
-        return $this->hotelCity;
+        return $this->locationCity;
     }
 
     /**
-     * @param string $hotelCity
+     * @param string $locationCity
      */
-    public function setHotelCity(string $hotelCity): void
+    public function setLocationCity(string $locationCity): void
     {
-        $this->hotelCity = $hotelCity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHotelFax(): string
-    {
-        return $this->hotelFax;
-    }
-
-    /**
-     * @param string $hotelFax
-     */
-    public function setHotelFax(string $hotelFax): void
-    {
-        $this->hotelFax = $hotelFax;
+        $this->locationCity = $locationCity;
     }
 
     /**
      * @return string
      */
-    public function getHotelEmail(): string
+    public function getLocationFax(): string
     {
-        return $this->hotelEmail;
+        return $this->locationFax;
     }
 
     /**
-     * @param string $hotelEmail
+     * @param string $locationFax
      */
-    public function setHotelEmail(string $hotelEmail): void
+    public function setLocationFax(string $locationFax): void
     {
-        $this->hotelEmail = $hotelEmail;
+        $this->locationFax = $locationFax;
     }
+
+    /**
+     * @return string
+     */
+    public function getLocationEmail(): string
+    {
+        return $this->locationEmail;
+    }
+
+    /**
+     * @param string $locationEmail
+     */
+    public function setLocationEmail(string $locationEmail): void
+    {
+        $this->locationEmail = $locationEmail;
+    }
+
+    public function abstractMethod(): string
+    {
+        // TODO: Implement abstractMethod() method.
+    }
+
 }
