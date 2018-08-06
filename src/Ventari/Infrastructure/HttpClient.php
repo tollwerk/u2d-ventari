@@ -68,7 +68,7 @@ class HttpClient implements HttpClientInterface
     public function dispatchRequest(string $request, array $params)
     {
         /** FOR DEV PURPOSED ONLY */
-        $fixtureJson   = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/Events.json';
+        $fixtureJson   = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';
 
         $res            = null;
         $query          = '?'.http_build_query($params);

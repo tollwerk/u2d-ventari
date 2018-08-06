@@ -26,25 +26,39 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
                     foreach ($Events as $event) {
                         echo '<h3>'.$event->getEventName().'</h3>';
                         echo '<blockquote>';
-                        echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
-                        echo '<p>Event Id: '.$event->getEventFrontendLink().'</p>';
                         echo '<p>Event Id: '.$event->getId().'</p>';
+                        echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
+                        echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
                         echo '</blockquote>';
                     }
                 }
 
-                if ($function == 'location') {
+                if ($function == 'locations') {
                     $Locations = $App->makeRequest($function, $params);
                     foreach ($Locations as $location) {
                         echo '<h3>'.$location->getLocationName().'</h3>';
+                        echo '<blockquote>';
+                        echo '<p>Location Id: '.$location->getId().'</p>';
+                        echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
+                        echo '<p>Location City: '.$location->getLocationCity().'</p>';
+                        echo '</blockquote>';
+                    }
+                }
 
+                if ($function == 'sessions') {
+                    $Sessions = $App->makeRequest($function, $params);
+                    foreach ($Sessions as $session) {
+                        echo '<h3>'.$session->getSessionName().'</h3>';
+                        print_r($session);
+                        echo '<br>';
                     }
                 }
             } else { ?>
                 <div class="launch">
                     <form action="app.php">
                         <label for="events"><input type="radio" name="function" id="events" value="events" checked>Events</input></label>
-                        <label for="location"><input type="radio" name="function" id="location" value="location">Location</input></label>
+                        <label for="locations"><input type="radio" name="function" id="locations" value="locations">Locations</input></label>
+                        <label for="sessions"><input type="radio" name="function" id="sessions" value="sessions">Sessions</input></label>
                         <button>Run In!</button>
                     </form>
                 </div>

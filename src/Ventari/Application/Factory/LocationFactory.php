@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Domain\Contract\LocationInterface;
+use Tollwerk\Ventari\Domain\Model\Location;
 
 /**
  * Location Factory
@@ -11,7 +12,7 @@ use Tollwerk\Ventari\Domain\Contract\LocationInterface;
  */
 class LocationFactory
 {
-    protected static $eventApi = [
+    protected static $locationApi = [
         'hotelId'        => 'Id',
         'hotelAddress'   => 'LocationAddress',
         'hotelTelephone' => 'LocationTelephone',
@@ -32,14 +33,14 @@ class LocationFactory
      * @return LocationInterface Location
      * @throws \Exception
      */
-    public static function createLocationsFromJson($json)
+    public static function createLocationFromJson($json): LocationInterface
     {
         $location = new Location();
 
         foreach ($json as $key => $value) {
-            $setter = 'set'.self::$eventApi[$key];
+            $setter = 'set'.self::$locationApi[$key];
 
-            if (is_callable([$location, $setter], true)) {
+            if (\is_callable([$location, $setter], true)) {
                 $location->$setter($value);
             }
         }
