@@ -43,6 +43,7 @@ class LocationFactory implements FactoryInterface
      */
     public static function createFromJson($json): ModelInterface
     {
+
         $location = new Location();
 
         foreach ($json as $key => $value) {

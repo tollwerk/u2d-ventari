@@ -28,7 +28,7 @@ class FactoryFactory
      *
      * @return FactoryInterface
      */
-    public static function createFromFunction(string $function): FactoryInterface
+    public static function createFromFunction(string $function)
     {
         if (empty(static::$factories)) {
             throw new RuntimeException(

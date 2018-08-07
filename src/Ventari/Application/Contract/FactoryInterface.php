@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: philipsaa
- * Date: 8/6/18
- * Time: 16:56
- */
 
 namespace Tollwerk\Ventari\Application\Contract;
 

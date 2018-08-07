@@ -58,7 +58,6 @@ class SessionFactory implements FactoryInterface
     {
         $session = new Session();
 
-        echo $json;
         foreach ($json as $key => $value) {
             $setter = 'set'.self::$sessionApi[$key];
             if (\is_callable([$session, $setter], true)) {
@@ -85,7 +84,7 @@ class SessionFactory implements FactoryInterface
         // Convert date based properties
 
         if (\in_array($property, self::$dateProperties)) {
-            $refinedValue = new \DateTimeImmutable($value);
+            $refinedValue = new \DateTimeImmutable(str_replace(',', '', $value));
         }
 
         return $refinedValue;

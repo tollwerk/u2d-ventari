@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: philipsaa
- * Date: 8/6/18
- * Time: 17:12
- */
 
 namespace Tollwerk\Ventari\Infrastructure\Exception;
 
@@ -17,13 +11,12 @@ class RuntimeException extends \Tollwerk\Ventari\Application\Exception\RuntimeEx
 {
     /**
      * Undefined method
-     *
      * @var string
      */
     const METHOD_UNDEFINED_STR = 'Undefined method "%s"';
+
     /**
      * Undefined method
-     *
      * @var int
      */
     const METHOD_UNDEFINED = 1234;

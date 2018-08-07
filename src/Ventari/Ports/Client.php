@@ -2,45 +2,26 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-use Tollwerk\Ventari\Infrastructure\DispatchController;
-use Tollwerk\Ventari\Infrastructure\HttpClient;
+use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
+use Tollwerk\Ventari\Infrastructure\AbstractPort;
+
 
 /**
  * Class Client
  * @package Tollwerk\Ventari\Ports
  */
-class Client
+class Client extends AbstractPort
 {
     /**
-     * @var HttpClient $client
-     */
-    protected static $client;
-
-    /**
-     * @var DispatchController $dispatcher
-     */
-    protected static $dispatcher;
-
-    /**
-     * Client constructor.
+     * @param array|null $params
      *
-     * @param string $method
-     * @param string $api
-     * @param array $authentication
+     * @return ControllerInterface
      */
-    public function __construct(string $method, string $api, array $authentication)
+    public function  getEvents(array $params = null): array
     {
-        self::$client     = new HttpClient($method, $api, $authentication);
-        self::$dispatcher = new DispatchController();
+        $_params = (count($params) > 0) ? $params : [];
 
-    }
-
-    protected function makeRequest($function, $params)
-    {
-        $clientResponse   = self::$client->dispatchRequest($function, $params);
-        $dispatchResponse = self::$dispatcher->dispatch($function, $clientResponse);
-
-        return $dispatchResponse;
+        return $this->makeRequest('events', $_params);
     }
 
     /**
@@ -48,11 +29,11 @@ class Client
      *
      * @return ControllerInterface
      */
-    public function getEvents(array $params = null): ControllerInterface
+    public function getLocations(array $params = null): array
     {
         $_params = (count($params) > 0) ? $params : [];
 
-        return $this->makeRequest('Event', $_params);
+        return $this->makeRequest('views/locations', $_params);
     }
 
     /**
@@ -60,22 +41,10 @@ class Client
      *
      * @return ControllerInterface
      */
-    public function getLocations(array $params = null): ControllerInterface
+    public function getSessions(array $params = null): array
     {
         $_params = (count($params) > 0) ? $params : [];
 
-        return $this->makeRequest('Location', $_params);
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return ControllerInterface
-     */
-    public function getSessions(array $params = null): ControllerInterface
-    {
-        $_params = (count($params) > 0) ? $params : [];
-
-        return $this->makeRequest('Session', $_params);
+        return $this->makeRequest('views/agenda', $_params);
     }
 }

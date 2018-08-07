@@ -15,14 +15,12 @@ class EventFactory implements FactoryInterface
 {
     /**
      * Function name
-     *
      * @var string
      */
     const FUNCTION_NAME = 'Event';
 
     /**
      * Date based properties
-     *
      * @var string[]
      */
     protected static $dateProperties = [
@@ -86,10 +84,8 @@ class EventFactory implements FactoryInterface
     {
         $event = new Event();
 
-        // Run through all JSON properties
         foreach ($json as $key => $value) {
             $setter = 'set'.self::$eventApi[$key];
-
             if (\is_callable([$event, $setter], true)) {
                 $event->$setter(self::refineValue($key, $value));
             }

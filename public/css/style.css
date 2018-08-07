@@ -12,10 +12,20 @@ blockquote {
     color: white;
     background-color:black;
     line-height: 0.8;
+    word-wrap: break-word;
 }
 
 .content {
     font-size: 2em;
+}
+
+.column {
+    float: left;
+    width: 24%;
+    padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    background: purple;
 }
 
 .launch{

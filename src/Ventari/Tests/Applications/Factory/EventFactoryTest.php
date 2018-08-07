@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Tests\Applications\Factory;
 
 use Tollwerk\Ventari\Application\Factory\EventFactory;
+use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class EventFactoryTest extends AbstractTestBase
@@ -30,12 +31,10 @@ class EventFactoryTest extends AbstractTestBase
      * TODO: Assert the Object returned is Instance of Event Model
      * @dataProvider jsonInputProvider
      */
-    public function testCreateEventFromJson($input)
+    public function testCreateFromJson($input)
     {
-        $input = json_encode($input);
-        $this->assertJson($input);
-//        $actual = self::$testClass->createEventsFromJson($input);
-//        $this->assertInstanceOf(Event::class, $actual);
+        $actual = self::$testClass->createFromJson($input);
+        $this->assertInstanceOf(Event::class, $actual);
     }
 
     /**
@@ -48,7 +47,7 @@ class EventFactoryTest extends AbstractTestBase
         $this->assertInternalType('array', $dateProps);
         $input = json_decode(json_encode($input));
 
-        foreach ($input->Events[0] as $key => $value) {
+        foreach ($input as $key => $value) {
             $actual = self::$testClass->accessRefineValue($key, $value);
             if (in_array($key, $dateProps)) {
                 $this->assertInstanceOf(\DateTimeImmutable::class, $actual);
@@ -64,14 +63,10 @@ class EventFactoryTest extends AbstractTestBase
         return [
             [
                 array(
-                    'Events' => array(
-                        array(
-                            'event_name'       => 'Test Event Name',
-                            'event_start_date' => '2018-10-03',
-                            'frontendLink'     => 'https://www.domain.com',
-                            'event_id'         => '1029'
-                        )
-                    )
+                    'event_name'       => 'Test Event Name',
+                    'event_start_date' => '2018-10-03',
+                    'frontendLink'     => 'https://www.domain.com',
+                    'event_id'         => '1029'
                 )
             ]
         ];
