@@ -33,11 +33,16 @@ class AbstractPort
 
     }
 
-    protected function makeRequest($function, $params)
+    protected function makeRequest($function, $params): array
     {
         $clientResponse = self::$client->dispatchRequest($function, $params);
 
         $function = str_replace('views/','', $function);
         return self::$dispatcher->dispatch($function, $clientResponse);
+    }
+
+    public function accessMakeRequest($arg1, $arg2): mixed
+    {
+        return $this->makeRequest($arg1, $arg2);
     }
 }

@@ -21,22 +21,30 @@ class DispatchController implements ControllerInterface
     /**
      * BaseController constructor.
      *
-     * @param $jsonObject
+     * @param string $function
+     * @param \stdClass $jsonObject
      *
      * @return array
      * @throws \Exception
      */
     public function dispatch($function, $jsonObject): array
     {
+//        echo '<pre>';
+//        var_dump($function);
+//        echo '<br>';
+//        var_dump($jsonObject);
+//        echo '</pre>';
+
         $objects      = [];
-        $factoryType = static::$dispatchers[$function];
+        $factoryType  = static::$dispatchers[$function];
         $factoryClass = FactoryFactory::createFromFunction($factoryType);
 
-        foreach ($jsonObject->$function as $object) {
-            $objects[] = $factoryClass::createFromJson($object);
-//            $objects[] = \call_user_func([$factoryClass, 'createFromJson'], $object);
-        }
+//        foreach ($jsonObject->$function as $object) {
+//            $objects[] = $factoryClass::createFromJson($object);
+////            $objects[] = \call_user_func([$factoryClass, 'createFromJson'], $object);
+//        }
 
-        return $objects;
+        return $factoryType;
+//        return $objects;
     }
 }

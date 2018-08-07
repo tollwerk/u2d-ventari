@@ -20,6 +20,11 @@ class Session extends AbstractModel implements SessionInterface
     use CommonIntegerTrait, SessionCategoryTrait, SessionLineTrait;
 
     /**
+     * @var int
+     */
+    protected $sessionId;
+
+    /**
      * @var string
      */
     protected $sessionName;
@@ -38,6 +43,22 @@ class Session extends AbstractModel implements SessionInterface
      * @var \DateTimeImmutable
      */
     protected $sessionEnd;
+
+    /**
+     * @return int
+     */
+    public function getSessionId(): int
+    {
+        return $this->sessionId;
+    }
+
+    /**
+     * @param int $sessionId
+     */
+    public function setSessionId(int $sessionId): void
+    {
+        $this->sessionId = $sessionId;
+    }
 
     /**
      * @return string

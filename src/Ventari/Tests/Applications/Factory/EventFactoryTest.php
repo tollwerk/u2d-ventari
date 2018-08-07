@@ -27,8 +27,8 @@ class EventFactoryTest extends AbstractTestBase
     }
 
     /**
-     * Test createEventFromJson
-     * TODO: Assert the Object returned is Instance of Event Model
+     * Test createFromJson
+     *
      * @dataProvider jsonInputProvider
      */
     public function testCreateFromJson($input)

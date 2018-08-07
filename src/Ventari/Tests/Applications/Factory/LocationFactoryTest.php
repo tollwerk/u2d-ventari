@@ -18,6 +18,9 @@ class LocationFactoryTest extends AbstractTestBase
         self::$testClass = new LocationFactory();
     }
 
+    /**
+     * Test the Instance of LocationFactory
+     */
     public function testConstructor()
     {
         $this->assertInstanceOf(LocationFactory::class, self::$testClass);

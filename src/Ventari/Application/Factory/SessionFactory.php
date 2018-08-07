@@ -31,19 +31,19 @@ class SessionFactory implements FactoryInterface
     ];
 
     protected static $sessionApi = [
-        'sessionId'            => 'Id',
-        'sessionName'          => 'SessionName',
-        'sessionRemark'        => 'SessionRemark',
-        'sessionStart'         => 'SessionStart',
-        'sessionEnd'           => 'SessionEnd',
-        'rowNum'               => 'RowNum',
-        'eventId'              => 'EventId',
-        'sessionCategoryColor' => 'SessionCategoryColor',
-        'sessionCategoryId'    => 'SessionCategoryId',
-        'sessionCategoryName'  => 'SessionCategoryName',
-        'sessionSignposting'   => 'SessionSignposting',
-        'sessionLineId'        => 'SessionLineId',
-        'sessionLineName'      => 'SessionLineName',
+        'sessionId'            => 'id',
+        'sessionName'          => 'sessionName',
+        'sessionRemark'        => 'sessionRemark',
+        'sessionStart'         => 'sessionStart',
+        'sessionEnd'           => 'sessionEnd',
+        'rowNum'               => 'rowNum',
+        'eventId'              => 'eventId',
+        'sessionCategoryColor' => 'sessionCategoryColor',
+        'sessionCategoryId'    => 'sessionCategoryId',
+        'sessionCategoryName'  => 'sessionCategoryName',
+        'sessionSignposting'   => 'sessionSignposting',
+        'sessionLineId'        => 'sessionLineId',
+        'sessionLineName'      => 'sessionLineName',
     ];
 
     /**
@@ -59,7 +59,7 @@ class SessionFactory implements FactoryInterface
         $session = new Session();
 
         foreach ($json as $key => $value) {
-            $setter = 'set'.self::$sessionApi[$key];
+            $setter = 'set'.ucfirst(self::$sessionApi[$key]);
             if (\is_callable([$session, $setter], true)) {
                 $session->$setter(self::refineValue($key, $value));
             }

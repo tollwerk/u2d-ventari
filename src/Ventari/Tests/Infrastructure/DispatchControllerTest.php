@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Applications;
 
-use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Infrastructure\DispatchController;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -28,23 +27,18 @@ class DispatchControllerTest extends AbstractTestBase
      *
      * @dataProvider jsonInputProvider
      */
-    public function testConstructor($json)
+    public function testDispatch($json)
     {
+        $json = json_decode(json_encode($json));
         $this->assertInstanceOf(DispatchController::class, self::$testClass);
 
-        $json = json_decode(json_encode($json));
-        $this->assertEquals('Events', key($json));
-        $dispatchController = new DispatchController();
-        $response           = $dispatchController($json);
+        $response = self::$testClass->dispatch(key($json), $json);
 
-        foreach ($response as $item) {
-            $this->assertInstanceOf(Event::class, $item);
-        }
-    }
+        print_r($response);
 
-    public function testInstance()
-    {
-        $this->assertClassHasAttribute('instance', get_class(self::$testClass));
+//        foreach ($response as $item) {
+//            $this->assertInstanceOf(Event::class, $item);
+//        }
     }
 
     public function jsonInputProvider()
@@ -52,13 +46,11 @@ class DispatchControllerTest extends AbstractTestBase
         return [
             [
                 array(
-                    'Events' => array(
-                        array(
-                            'eventName'    => 'Test Event Name',
-                            'eventstart'   => '2018-10-03',
-                            'frontendLink' => 'https://www.domain.com',
-                            'eventId'      => '1029'
-                        )
+                    'events' => array(
+                        'event_name'       => 'Test Event Name',
+                        'event_start_date' => '2018-10-03',
+                        'frontendLink'     => 'https://www.domain.com',
+                        'event_id'         => '1029'
                     )
                 )
             ]

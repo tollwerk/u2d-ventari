@@ -21,16 +21,16 @@ class LocationFactory implements FactoryInterface
     const FUNCTION_NAME ='Location';
 
     protected static $locationApi = [
-        'hotelId'        => 'Id',
-        'hotelAddress'   => 'LocationAddress',
-        'hotelTelephone' => 'LocationTelephone',
-        'rowNum'         => 'RowNum',
-        'hotelZip'       => 'LocationZip',
-        'hotelName'      => 'LocationName',
-        'eventId'        => 'EventId',
-        'hotelCity'      => 'LocationCity',
-        'hotelFax'       => 'LocationFax',
-        'hotelEmail'     => 'LocationEmail',
+        'hotelId'        => 'id',
+        'hotelAddress'   => 'locationAddress',
+        'hotelTelephone' => 'locationTelephone',
+        'rowNum'         => 'rowNum',
+        'hotelZip'       => 'locationZip',
+        'hotelName'      => 'locationName',
+        'eventId'        => 'eventId',
+        'hotelCity'      => 'locationCity',
+        'hotelFax'       => 'locationFax',
+        'hotelEmail'     => 'locationEmail',
     ];
 
     /**
@@ -43,11 +43,10 @@ class LocationFactory implements FactoryInterface
      */
     public static function createFromJson($json): ModelInterface
     {
-
         $location = new Location();
 
         foreach ($json as $key => $value) {
-            $setter = 'set'.self::$locationApi[$key];
+            $setter = 'set'.ucfirst(self::$locationApi[$key]);
 
             if (\is_callable([$location, $setter], true)) {
                 $location->$setter($value);

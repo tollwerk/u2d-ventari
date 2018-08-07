@@ -46,7 +46,7 @@ class SessionTest extends AbstractTestBase
 
     public function testSessionStart(): void
     {
-        $expectedString = '';
+        $expectedString = new \DateTimeImmutable('October 22 2018 09:00:00');
         $session = $this->testClass;
         $session->setSessionStart($expectedString);
         $this->assertEquals($expectedString, $session->getSessionStart());
@@ -54,7 +54,7 @@ class SessionTest extends AbstractTestBase
 
     public function testSessionEnd(): void
     {
-        $expectedString = '';
+        $expectedString = new \DateTimeImmutable('October 22 2018 17:30:00');
         $session = $this->testClass;
         $session->setSessionEnd($expectedString);
         $this->assertEquals($expectedString, $session->getSessionEnd());
