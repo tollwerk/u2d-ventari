@@ -70,4 +70,6 @@ trait SessionCategoryTrait
     {
         $this->categoryName = $categoryName;
     }
+
+    abstract public function abstractMethod(): mixed;
 }

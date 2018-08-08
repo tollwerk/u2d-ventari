@@ -59,4 +59,9 @@ class LocationFactory implements FactoryInterface
 
         return $location;
     }
+
+    public function accessLocationApi(): array
+    {
+        return self::$locationApi;
+    }
 }

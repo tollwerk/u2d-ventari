@@ -109,4 +109,9 @@ class SessionFactory implements FactoryInterface
     {
         return self::$dateProperties;
     }
+
+    public function accessSessionApi(): array
+    {
+        return self::$sessionApi;
+    }
 }

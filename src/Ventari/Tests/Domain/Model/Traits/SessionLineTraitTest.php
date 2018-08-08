@@ -18,27 +18,27 @@ class SessionLineTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(SessionLineTrait::class);
     }
 
-    public function testSessionLineId(): void
+    public function testLineId(): void
     {
         $expectedValue = 112358;
         $mock           = $this->testTrait;
-        $mock->setSessionLineId($expectedValue);
+        $mock->setLineId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedValue));
 
-        $this->assertEquals($expectedValue, $mock->getSessionLineId());
+        $this->assertEquals($expectedValue, $mock->getLineId());
     }
 
-    public function testSessionLineName(): void
+    public function testLineName(): void
     {
         $expectedString = 'Gallery 3';
         $mock           = $this->testTrait;
-        $mock->setSessionLineName($expectedString);
+        $mock->setLineName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getSessionLineName());
+        $this->assertEquals($expectedString, $mock->getLineName());
     }
 }

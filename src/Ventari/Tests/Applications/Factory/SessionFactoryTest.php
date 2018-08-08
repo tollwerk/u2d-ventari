@@ -27,17 +27,19 @@ class SessionFactoryTest extends AbstractTestBase
     }
 
     /**
-     * Test createFromJson
+     * @param $input
      *
+     * @throws \Exception
      * @dataProvider jsonInputProvider
      */
-    public function testCreateFromJson($input)
+    public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass->createFromJson($input);
+        $actual = self::$testClass::createFromJson($input);
+        /** TODO: Review Assertion */
         $this->assertInstanceOf(Session::class, $actual);
     }
 
-    public function jsonInputProvider()
+    public function jsonInputProvider(): array
     {
         return [
             [

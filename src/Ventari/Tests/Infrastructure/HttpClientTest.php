@@ -21,7 +21,7 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
+        $config          = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
         self::$testClass = new HttpClient($config['method'], $config['api'], $config['authentication']);
     }
 
@@ -34,24 +34,24 @@ class HttpClientTest extends AbstractTestBase
         /**
          * Testing the Constructor
          */
-        $this->assertClassHasAttribute('method', get_class($httpClient));
         $this->assertClassHasAttribute('guzzle', get_class($httpClient));
+        $this->assertClassHasAttribute('method', get_class($httpClient));
+        $this->assertClassHasAttribute('baseUrl', get_class($httpClient));
+        $this->assertClassHasAttribute('authentication', get_class($httpClient));
     }
 
     /**
-     * @param string $request
-     * @param array $params
+     * @param $function
+     * @param $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @dataProvider requestProvider
      */
-    public function testDispatchRequest(string $request, array $params): void
+    public function testDispatchRequest($function, $params): void
     {
-        $this->assertEquals($request, 'events');
-        $this->assertArrayHasKey('eventId', $params);
-
-        $httpClient = self::$testClass;
-        $request    = $httpClient->dispatchRequest($request, $params);
-        $this->assertInstanceOf('stdClass', $request);
+        $httpClient     = self::$testClass;
+        $clientResponse = $httpClient->dispatchRequest($function, $params);
+        $this->assertInstanceOf('stdClass', $clientResponse);
     }
 
     /**
@@ -60,7 +60,9 @@ class HttpClientTest extends AbstractTestBase
     public function requestProvider(): array
     {
         return [
-            ['events', ['eventId' => 1080, 'eventName' => 'Event Name']]
+            ['events', []],
+            ['views/locations', []],
+            ['views/agenda', []]
         ];
     }
 }

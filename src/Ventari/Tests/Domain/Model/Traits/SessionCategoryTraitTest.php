@@ -18,54 +18,39 @@ class SessionCategoryTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(SessionCategoryTrait::class);
     }
 
-    public function testSessionCategoryColor(): void
+    public function testCategoryColor(): void
     {
         $expectedString = '#EEE8AA';
         $mock           = $this->testTrait;
-        $mock->setSessionCategoryColor($expectedString);
+        $mock->setCategoryColor($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getSessionCategoryColor());
+        $this->assertEquals($expectedString, $mock->getCategoryColor());
     }
 
-    public function testSessionCategoryId(): void
+    public function testCategoryId(): void
     {
         $expectedValue = 112358;
-        $mock = $this->testTrait;
-        $mock->setSessionCategoryId($expectedValue);
+        $mock          = $this->testTrait;
+        $mock->setCategoryId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedValue));
 
-        $this->assertEquals($expectedValue, $mock->getSessionCategoryId());
+        $this->assertEquals($expectedValue, $mock->getCategoryId());
     }
 
-    public function testSessionCategoryName(): void
+    public function testCategoryName(): void
     {
         $expectedString = 'Introduction';
-        $mock = $this->testTrait;
-        $mock->setSessionCategoryName($expectedString);
+        $mock           = $this->testTrait;
+        $mock->setCategoryName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getSessionCategoryName());
+        $this->assertEquals($expectedString, $mock->getCategoryName());
     }
-
-
-    public function testSessionSignposting(): void
-    {
-        $expectedString = 'http://server.com/signup/?eventId=1123';
-        $mock = $this->testTrait;
-        $mock->setSessionSignposting($expectedString);
-        $mock->expects($this->any())
-             ->method('abstractMethod')
-             ->will($this->returnValue($expectedString));
-
-        $this->assertEquals($expectedString, $mock->getSessionSignposting());
-    }
-
-
 }

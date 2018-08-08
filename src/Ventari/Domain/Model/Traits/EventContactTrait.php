@@ -152,7 +152,7 @@ trait EventContactTrait
      */
     public function setOrganizerTwitter(string $organizerTwitter): void
     {
-        $this->organizerTwitterHandle = $organizerTwitter;
+        $this->organizerTwitter = $organizerTwitter;
     }
 
     abstract public function abstractMethod(): string;

@@ -21,87 +21,87 @@ class EventLinkTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(EventLinkTrait::class);
     }
 
-    public function testEventFacebookEvent(): void
+    public function testFacebookEvent(): void
     {
         $expectedString = 'expectedString';
         $mock           = $this->testTrait;
-        $mock->setEventFacebookEvent($expectedString);
+        $mock->setFacebookEvent($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventFacebookEvent());
+        $this->assertEquals($expectedString, $mock->getFacebookEvent());
     }
 
-    public function testEventTwitterHandle(): void
+    public function testTwitter(): void
     {
         $expectedString = '@johndoe1';
         $mock           = $this->testTrait;
-        $mock->setEventTwitterHandle($expectedString);
+        $mock->setTwitter($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventTwitterHandle());
+        $this->assertEquals($expectedString, $mock->getTwitter());
     }
 
     public function testXingEvent(): void
     {
         $expectedString = 'https://xing.de/event/0112358132134';
         $mock           = $this->testTrait;
-        $mock->setEventXingEvent($expectedString);
+        $mock->setXingEvent($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventXingEvent());
+        $this->assertEquals($expectedString, $mock->getXingEvent());
     }
 
-    public function testEventLivestreamCode(): void
+    public function testLivestreamEmbed(): void
     {
         $expectedString = '0112358132134';
         $mock           = $this->testTrait;
-        $mock->setEventLivestreamCode($expectedString);
+        $mock->setLivestreamEmbed($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventLivestreamCode());
+        $this->assertEquals($expectedString, $mock->getLivestreamEmbed());
     }
 
-    public function testEventLivestream(): void
+    public function testLivestream(): void
     {
         $expectedString = 'https://live.stream.de';
         $mock           = $this->testTrait;
-        $mock->setEventLivestream($expectedString);
+        $mock->setLivestream($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventLivestream());
+        $this->assertEquals($expectedString, $mock->getLivestream());
     }
 
-    public function testEventTicketUrl(): void
+    public function testTicketUrl(): void
     {
         $expectedString = 'https://ticket.service.com/?eventID=1235813';
         $mock           = $this->testTrait;
-        $mock->setEventTicketUrl($expectedString);
+        $mock->setTicketUrl($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventTicketUrl());
+        $this->assertEquals($expectedString, $mock->getTicketUrl());
     }
 
-    public function testEventWebsite(): void
+    public function testWebsite(): void
     {
         $expectedString = 'https://event.website.de';
-        $mock = $this->testTrait;
-        $mock->setEventWebsite($expectedString);
+        $mock           = $this->testTrait;
+        $mock->setWebsite($expectedString);
         $mock->expects($this->any())
-            ->method('abstractMethod')
-            ->will($this->returnValue($expectedString));
+             ->method('abstractMethod')
+             ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventWebsite());
+        $this->assertEquals($expectedString, $mock->getWebsite());
     }
 }

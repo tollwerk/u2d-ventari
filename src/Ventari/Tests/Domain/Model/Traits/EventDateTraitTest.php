@@ -21,46 +21,27 @@ class EventDateTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(EventDateTrait::class);
     }
 
-    public function testEventStartDate(): void
+    public function testStartDateTime(): void
     {
         $expectedDate = new \DateTimeImmutable('now');
-        $mock = $this->testTrait;
-        $mock->setEventStartDate($expectedDate);
+        $mock         = $this->testTrait;
+        $mock->setStartDateTime($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethodForDate')
-            ->will($this->returnValue($expectedDate));
+             ->method('abstractMethodForDate')
+             ->will($this->returnValue($expectedDate));
 
-        $this->assertEquals($expectedDate, $mock->getEventStartDate());
+        $this->assertEquals($expectedDate, $mock->getStartDateTime());
     }
 
-    public function testEventStartTime(): void
+    public function testEndDateTime(): void
     {
         $expectedDate = new \DateTimeImmutable('now');
-        $mock = $this->testTrait;
-        $mock->setEventStartTime($expectedDate);
+        $mock         = $this->testTrait;
+        $mock->setEndDateTime($expectedDate);
         $mock->expects($this->any())
-            ->method('abstractMethodForDate')
-            ->will($this->returnValue($expectedDate));
+             ->method('abstractMethodForDate')
+             ->will($this->returnValue($expectedDate));
 
-        $this->assertEquals($expectedDate, $mock->getEventStartTime());
-    }
-
-    public function testEventEndDate(): void
-    {
-        $expectedDate = new \DateTimeImmutable('now');
-        $mock = $this->testTrait;
-        $mock->setEventEndDate($expectedDate);
-        $mock->expects($this->any())
-            ->method('abstractMethodForDate')
-            ->will($this->returnValue($expectedDate));
-
-        $this->assertEquals($expectedDate, $mock->getEventEndDate());
-
-        $mock->setEventEndTime($expectedDate);
-        $mock->expects($this->any())
-            ->method('abstractMethodForDate')
-            ->will($this->returnValue($expectedDate));
-
-        $this->assertEquals($expectedDate, $mock->getEventEndTime());
+        $this->assertEquals($expectedDate, $mock->getEndDateTime());
     }
 }

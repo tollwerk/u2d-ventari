@@ -122,11 +122,11 @@ class EventFactory implements FactoryInterface
     {
         $refinedValue = $value;
 
-        if (\in_array($property, self::$dateProperties)) {
+        if (\in_array($property, self::$dateProperties, true)) {
             $refinedValue = new \DateTimeImmutable($value);
         }
 
-        if (\in_array($property, self::$intProperties)) {
+        if (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
         }
 
@@ -138,8 +138,13 @@ class EventFactory implements FactoryInterface
         return $this->refineValue($prop, $val);
     }
 
-    public function accessDateProperties()
+    public function accessDateProperties(): array
     {
         return self::$dateProperties;
+    }
+
+    public function accessEventApi(): array
+    {
+        return self::$eventApi;
     }
 }

@@ -61,7 +61,7 @@ class HttpClient implements HttpClientInterface
      * @return \Psr\Http\Message\StreamInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function dispatchRequest(string $request, array $params)
+    public function dispatchRequest(string $request, array $params): \stdClass
     {
         /** FOR DEV PURPOSED ONLY */
         $fixtureJson    = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';

@@ -21,86 +21,86 @@ class EventContactTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(EventContactTrait::class);
     }
 
-    public function testEventContactEmail(): void
+    public function testOrganizerEmail(): void
     {
         $expectedString = 'email@server.com';
         $mock           = $this->testTrait;
-        $mock->setEventContactEmail($expectedString);
+        $mock->setOrganizerEmail($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactEmail());
+        $this->assertEquals($expectedString, $mock->getOrganizerEmail());
     }
 
-    public function testEventContactFacebook(): void
+    public function testOrganizerFacebook(): void
     {
         $expectedString = 'https://facebook.com/EventPage';
         $mock           = $this->testTrait;
-        $mock->setEventContactFacebook($expectedString);
+        $mock->setOrganizerFacebook($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactFacebook());
+        $this->assertEquals($expectedString, $mock->getOrganizerFacebook());
     }
 
-    public function testGetEventContactInstagram(): void
+    public function testOrganizerInstagram(): void
     {
         $expectedString = 'https://instagram.com/EventAccount';
         $mock           = $this->testTrait;
-        $mock->setEventContactInstagram($expectedString);
+        $mock->setOrganizerInstagram($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactInstagram());
+        $this->assertEquals($expectedString, $mock->getOrganizerInstagram());
     }
 
-    public function testGetEventContactLinks(): void
+    public function testOrganizerWebsite(): void
     {
         $expectedString = 'http://event.link';
         $mock           = $this->testTrait;
-        $mock->setEventContactLinks($expectedString);
+        $mock->setOrganizerWebsite($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactLinks());
+        $this->assertEquals($expectedString, $mock->getOrganizerWebsite());
     }
 
-    public function testEventContactLogo(): void
+    public function testOrganizerLogo(): void
     {
         $expectedString = 'https://server.com/resources/logo.svg';
         $mock           = $this->testTrait;
-        $mock->setEventContactLogo($expectedString);
+        $mock->setOrganizerLogo($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactLogo());
+        $this->assertEquals($expectedString, $mock->getOrganizerLogo());
     }
 
-    public function testEventContactName(): void
+    public function testOrganizerName(): void
     {
         $expectedString = 'John Doe';
         $mock           = $this->testTrait;
-        $mock->setEventContactName($expectedString);
+        $mock->setOrganizerName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
 
-        $this->assertEquals($expectedString, $mock->getEventContactName());
+        $this->assertEquals($expectedString, $mock->getOrganizerName());
     }
 
-    public function testEventContactTwitterHandle(): void
+    public function testOrganizerTwitter(): void
     {
         $expectedString = '@johndoe1';
         $mock           = $this->testTrait;
-        $mock->setEventContactTwitterHandle($expectedString);
+        $mock->setOrganizerTwitter($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedString));
-        $this->assertEquals($expectedString, $mock->getEventContactTwitterHandle());
+        $this->assertEquals($expectedString, $mock->getOrganizerTwitter());
     }
 }

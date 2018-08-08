@@ -30,15 +30,15 @@ class CommonIntegerTraitTest extends AbstractTestBase
         $this->assertEquals($expectedValue, $mock->getRowNum());
     }
 
-    public function testEventId(): void
+    public function testEventVentariId(): void
     {
         $expectedValue = 112358;
         $mock           = $this->testTrait;
-        $mock->setEventId($expectedValue);
+        $mock->setEventVentariId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')
              ->will($this->returnValue($expectedValue));
 
-        $this->assertEquals($expectedValue, $mock->getEventId());
+        $this->assertEquals($expectedValue, $mock->getEventVentariId());
     }
 }

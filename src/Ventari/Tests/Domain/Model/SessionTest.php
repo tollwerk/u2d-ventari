@@ -2,6 +2,7 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
+use Tollwerk\Ventari\Application\Factory\SessionFactory;
 use Tollwerk\Ventari\Domain\Model\Session;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -12,51 +13,25 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class SessionTest extends AbstractTestBase
 {
     /**
-     * @var Session $testClass
+     * @var array
      */
-    public $testClass;
+    public $sessionApi;
 
-    protected function setUp(){
-        $this->testClass = new Session();
+    protected function setUp()
+    {
+        $factory          = new SessionFactory();
+        $this->sessionApi = $factory->accessSessionApi();
     }
 
     public function testSessionId(): void
     {
-        $expectedValue = 112358;
-        $session = $this->testClass;
-        $session->setSessionId($expectedValue);
-        $this->assertEquals($expectedValue, $session->getSessionId());
-    }
-
-    public function testSessionName(): void
-    {
-        $expectedString = '';
-        $session = $this->testClass;
-        $session->setSessionName($expectedString);
-        $this->assertEquals($expectedString, $session->getSessionName());
-    }
-
-    public function testSessionRemark(): void
-    {
-        $expectedString = '';
-        $session = $this->testClass;
-        $session->setSessionRemark($expectedString);
-        $this->assertEquals($expectedString, $session->getSessionRemark());
-    }
-
-    public function testSessionStart(): void
-    {
-        $expectedString = new \DateTimeImmutable('October 22 2018 09:00:00');
-        $session = $this->testClass;
-        $session->setSessionStart($expectedString);
-        $this->assertEquals($expectedString, $session->getSessionStart());
-    }
-
-    public function testSessionEnd(): void
-    {
-        $expectedString = new \DateTimeImmutable('October 22 2018 17:30:00');
-        $session = $this->testClass;
-        $session->setSessionEnd($expectedString);
-        $this->assertEquals($expectedString, $session->getSessionEnd());
+        $testClass = new Session();
+        foreach ($this->sessionApi as $property) {
+            $this->assertClassHasAttribute($property, Session::class);
+            $setter = 'set'.ucfirst($property);
+            $getter = 'get'.ucfirst($property);
+            $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
+            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
+        }
     }
 }
