@@ -66,11 +66,12 @@ class SessionFactory implements FactoryInterface
     public static function createFromJson($json): ModelInterface
     {
         $session = new Session();
-
         foreach ($json as $key => $value) {
-            $setter = 'set'.ucfirst(self::$sessionApi[$key]);
-            if (\is_callable([$session, $setter], true)) {
-                $session->$setter(self::refineValue($key, $value));
+            if (!empty(self::$eventApi[$key])) {
+                $setter = 'set'.ucfirst(self::$sessionApi[$key]);
+                if (\is_callable([$session, $setter], true)) {
+                    $session->$setter(self::refineValue($key, $value));
+                }
             }
         }
 
@@ -99,12 +100,12 @@ class SessionFactory implements FactoryInterface
         return $refinedValue;
     }
 
-    public function accessRefineValue(string $prop, $val)
+    public function accessRefineValue(string $prop, $val): \DateTimeImmutable
     {
         return $this->refineValue($prop, $val);
     }
 
-    public function accessDateProperties()
+    public function accessDateProperties(): array
     {
         return self::$dateProperties;
     }

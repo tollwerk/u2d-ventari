@@ -22,6 +22,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $Events = $App->getEvents($params);
             echo '<div class="column">';
+            echo '<pre>';
             print_r($Events);
 //            foreach ($Events as $event) {
 //                echo '<strong>'.$event->getEventName($params).'</strong>';
@@ -31,10 +32,12 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 //                echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
 //                echo '</blockquote>';
 //            }
+            echo '</pre>';
             echo '</div>';
 
             $Locations = $App->getLocations($params);
             echo '<div class="column">';
+            echo '<pre>';
             print_r($Locations);
 //            foreach ($Locations as $location) {
 //                echo '<strong>'.$location->getLocationName().'</strong>';
@@ -44,10 +47,12 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 //                echo '<p>Location City: '.$location->getLocationCity().'</p>';
 //                echo '</blockquote>';
 //            }
+            echo '</pre>';
             echo '</div>';
 
             $Sessions = $App->getSessions($params);
             echo '<div class="column">';
+            echo '<pre>';
             print_r($Sessions);
 //            foreach ($Sessions as $session) {
 //                echo '<strong>'.$session->getSessionName().'</strong>';
@@ -57,6 +62,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 //                echo '<p>Session Start: '.$session->getSessionStart()->format('g:ia \o\n l jS F Y').'</p>';
 //                echo '</blockquote>';
 //            }
+            echo '</pre>';
             echo '</div>';
             ?>
         </div>

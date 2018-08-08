@@ -18,14 +18,14 @@ class FactoryFactoryTest extends AbstractTestBase
     {
         $testClass = new FactoryFactory();
 
-        $actual = $testClass->createFromFunction($input[0]);
-        $this->assertInstanceOf(EventFactory::class, $actual);
+        $expected = $testClass::createFromFunction($input[0]);
+        $this->assertEquals($expected, EventFactory::class);
 
-        $actual = $testClass->createFromFunction($input[1]);
-        $this->assertInstanceOf(LocationFactory::class, $actual);
+        $expected = $testClass::createFromFunction($input[1]);
+        $this->assertEquals($expected, LocationFactory::class);
 
-        $actual = $testClass->createFromFunction($input[2]);
-        $this->assertInstanceOf(SessionFactory::class, $actual);
+        $expected = $testClass::createFromFunction($input[2]);
+        $this->assertEquals($expected, SessionFactory::class);
 
 
     }
@@ -33,9 +33,7 @@ class FactoryFactoryTest extends AbstractTestBase
     public function factoryNames()
     {
         return [
-            ['Event'],
-            ['Location'],
-            ['Session']
+            [['Event','Location','Session']],
         ];
     }
 }

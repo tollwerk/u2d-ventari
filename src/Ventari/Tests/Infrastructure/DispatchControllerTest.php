@@ -2,6 +2,7 @@
 
 namespace Tollwerk\Ventari\Tests\Applications;
 
+use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Infrastructure\DispatchController;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -32,8 +33,7 @@ class DispatchControllerTest extends AbstractTestBase
         $this->assertInstanceOf(DispatchController::class, self::$testClass);
         $response = self::$testClass->dispatch('events', $json);
         foreach ($response as $item) {
-        print_r($item);
-//            $this->assertInstanceOf(Event::class, $item);
+            $this->assertInstanceOf(Event::class, $item);
         }
     }
 }

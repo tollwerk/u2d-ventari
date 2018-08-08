@@ -21,7 +21,8 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        self::$testClass = new HttpClient('GET', 'https://events.nueww.de/rest/');
+        $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
+        self::$testClass = new HttpClient($config['method'], $config['api'], $config['authentication']);
     }
 
     /**
@@ -38,14 +39,12 @@ class HttpClientTest extends AbstractTestBase
     }
 
     /**
-     * Test Dispatch Request
-     *
      * @param string $request
      * @param array $params
      *
-     * @dataProvider requestProvider
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function testDispatchRequest(string $request, array $params)
+    public function testDispatchRequest(string $request, array $params): void
     {
         $this->assertEquals($request, 'events');
         $this->assertArrayHasKey('eventId', $params);
@@ -58,7 +57,7 @@ class HttpClientTest extends AbstractTestBase
     /**
      * @return array
      */
-    public function requestProvider()
+    public function requestProvider(): array
     {
         return [
             ['events', ['eventId' => 1080, 'eventName' => 'Event Name']]

@@ -2,20 +2,11 @@
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
-use Tollwerk\Ventari\Domain\Model\Event;
 use Tollwerk\Ventari\Ports\Client;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
 {
-    /**
-     * Test Constructor
-     */
-    public function testConstructor()
-    {
-        $this->assertClassHasAttribute('restConfig', Client::class);
-    }
-
     /**
      * Test Make Request
      * @var $function string
@@ -23,23 +14,42 @@ class ClientTest extends AbstractTestBase
      *
      * @dataProvider requestProvider
      */
-    public function testMakeRequest($function, $params)
+    public function testMakeRequest($function, $params): void
     {
-        $client  = new Client();
-        $request = $client->makeRequest($function, $params);
-        $this->assertInternalType('array', $request);
-        foreach ($request as $item) {
-            $this->assertInstanceOf(Event::class, $item);
+        $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
+        $client = new Client($config['method'], $config['api'], $config['authentication']);
+
+        if ($function == 'events') {
+            $request = $client->getEvents($params);
         }
+        if ($function == 'views/locations') {
+            $request = $client->getEvents($params);
+        }
+        if ($function == 'views/agenda') {
+            $request = $client->getEvents($params);
+        }
+        $this->assertInternalType('array', $request);
     }
 
-    public function requestProvider()
+    public function requestProvider(): array
     {
         return [
             [
-                'Events',
+                'events',
                 array(
                     'eventId' => 1080
+                )
+            ],
+            [
+                'views/locations',
+                array(
+                    'hotelId' => 2191
+                )
+            ],
+            [
+                'views/agenda',
+                array(
+                    'session_id' => 3302
                 )
             ]
         ];

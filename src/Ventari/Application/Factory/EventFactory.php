@@ -97,7 +97,6 @@ class EventFactory implements FactoryInterface
     public static function createFromJson($json): ModelInterface
     {
         $event = new Event();
-
         foreach ($json as $key => $value) {
             if (!empty(self::$eventApi[$key])) {
                 $setter = 'set'.ucfirst(self::$eventApi[$key]);

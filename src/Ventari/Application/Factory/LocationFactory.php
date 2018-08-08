@@ -18,15 +18,15 @@ class LocationFactory implements FactoryInterface
      *
      * @var string
      */
-    const FUNCTION_NAME ='Location';
+    const FUNCTION_NAME = 'Location';
 
     protected static $locationApi = [
         // AbstractModel
-        'hotelId'        => 'ventariId',
+        'hotelId' => 'ventariId',
 
         // CommonInteger Trait
-        'rowNum'         => 'rowNum', // <-- Necessary?
-        'eventId'        => 'eventVentariId', // <-- We need this to associate this with an event
+        'rowNum'  => 'rowNum', // <-- Necessary?
+        'eventId' => 'eventVentariId', // <-- We need this to associate this with an event
 
         'hotelAddress'   => 'streetAddress',
         'hotelTelephone' => 'phone',
@@ -48,12 +48,12 @@ class LocationFactory implements FactoryInterface
     public static function createFromJson($json): ModelInterface
     {
         $location = new Location();
-
         foreach ($json as $key => $value) {
-            $setter = 'set'.ucfirst(self::$locationApi[$key]);
-
-            if (\is_callable([$location, $setter], true)) {
-                $location->$setter($value);
+            if (!empty(self::$eventApi[$key])) {
+                $setter = 'set'.ucfirst(self::$locationApi[$key]);
+                if (\is_callable([$location, $setter], true)) {
+                    $location->$setter($value);
+                }
             }
         }
 
