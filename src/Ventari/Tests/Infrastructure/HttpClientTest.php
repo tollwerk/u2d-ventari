@@ -21,7 +21,7 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        $config = ['method' => 'GET', 'api' => 'https://events.nueww.de/rest/', 'authentication' => ['username' => 'username', 'password' => 'password']];
+        $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'config.php';
         self::$testClass = new HttpClient($config['method'], $config['api'], $config['authentication']);
     }
 

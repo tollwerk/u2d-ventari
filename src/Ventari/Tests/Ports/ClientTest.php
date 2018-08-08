@@ -16,7 +16,7 @@ class ClientTest extends AbstractTestBase
      */
     public function testMakeRequest($function, $params): void
     {
-        $config = ['method' => 'GET', 'api' => 'https://events.nueww.de/rest/', 'authentication' => ['username' => 'username', 'password' => 'password']];
+        $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'config.php';
         $client = new Client($config['method'], $config['api'], $config['authentication']);
 
         if ($function == 'events') {
