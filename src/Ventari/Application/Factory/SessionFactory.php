@@ -31,19 +31,19 @@ class SessionFactory implements FactoryInterface
     ];
 
     protected static $sessionApi = [
-        'sessionId'            => 'id',
-        'sessionName'          => 'sessionName',
-        'sessionRemark'        => 'sessionRemark',
-        'sessionStart'         => 'sessionStart',
-        'sessionEnd'           => 'sessionEnd',
-        'rowNum'               => 'rowNum',
-        'eventId'              => 'eventId',
-        'sessionCategoryColor' => 'sessionCategoryColor',
-        'sessionCategoryId'    => 'sessionCategoryId',
-        'sessionCategoryName'  => 'sessionCategoryName',
-        'sessionSignposting'   => 'sessionSignposting',
-        'sessionLineId'        => 'sessionLineId',
-        'sessionLineName'      => 'sessionLineName',
+        'sessionId'            => 'ventariId',
+        'sessionName'          => 'name',
+        'sessionRemark'        => 'remark',
+        'sessionStart'         => 'startTime',
+        'sessionEnd'           => 'endTime',
+        'rowNum'               => 'rowNum', // <-- Necessary?
+        'eventId'              => 'eventVentariId', // <-- We need this to associate this with an event
+        'sessionCategoryColor' => 'categoryColor',
+        'sessionCategoryId'    => 'categoryId',
+        'sessionCategoryName'  => 'categoryName',
+        'sessionSignposting'   => 'room',
+        'sessionLineId'        => 'lineId',
+        'sessionLineName'      => 'lineName',
     ];
 
     /**

@@ -21,16 +21,16 @@ class LocationFactory implements FactoryInterface
     const FUNCTION_NAME ='Location';
 
     protected static $locationApi = [
-        'hotelId'        => 'id',
-        'hotelAddress'   => 'locationAddress',
-        'hotelTelephone' => 'locationTelephone',
-        'rowNum'         => 'rowNum',
-        'hotelZip'       => 'locationZip',
-        'hotelName'      => 'locationName',
-        'eventId'        => 'eventId',
-        'hotelCity'      => 'locationCity',
-        'hotelFax'       => 'locationFax',
-        'hotelEmail'     => 'locationEmail',
+        'hotelId'        => 'ventariId',
+        'hotelAddress'   => 'streetAddress',
+        'hotelTelephone' => 'phone',
+        'rowNum'         => 'rowNum', // <-- Necessary?
+        'hotelZip'       => 'postalCode',
+        'hotelName'      => 'name',
+        'eventId'        => 'eventVentariId', // <-- We need this to associate this with an event
+        'hotelCity'      => 'locality',
+        'hotelFax'       => 'fax',
+        'hotelEmail'     => 'email',
     ];
 
     /**
