@@ -15,22 +15,22 @@ class AbstractPortTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
-        $config          = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php';
+        $config          = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php';
         self::$testClass = new AbstractPort('GET', 'https://events.nueww.de/rest/', $config['authentication']);
     }
 
     /**
      * Test Constructor
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertClassHasAttribute('client', get_class(self::$testClass));
         $this->assertClassHasAttribute('dispatcher', get_class(self::$testClass));
     }
 
-//    public function testMakeRequest()
-//    {
-//        $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
-//        $this->assertInstanceOf(DispatchController::class, $requestReponse);
-//    }
+    public function testMakeRequest(): void
+    {
+        $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
+        $this->assertInstanceOf(DispatchController::class, $requestReponse);
+    }
 }

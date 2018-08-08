@@ -21,14 +21,14 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        $config          = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
+        $config          = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config/config.php';
         self::$testClass = new HttpClient($config['method'], $config['api'], $config['authentication']);
     }
 
     /**
      * Test Constructor
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $httpClient = self::$testClass;
         /**

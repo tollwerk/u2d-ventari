@@ -26,9 +26,9 @@ class DispatchControllerTest extends AbstractTestBase
     /**
      * Test the BaseController
      */
-    public function testDispatch()
+    public function testDispatch(): void
     {
-        $json = file_get_contents(dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json');
+        $json = file_get_contents(\dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json');
         $json = json_decode($json)->responseData;
         $this->assertInstanceOf(DispatchController::class, self::$testClass);
         $response = self::$testClass->dispatch('events', $json);
