@@ -34,24 +34,9 @@ class ClientTest extends AbstractTestBase
     public function requestProvider(): array
     {
         return [
-            [
-                'events',
-                array(
-                    'eventId' => 1080
-                )
-            ],
-            [
-                'views/locations',
-                array(
-                    'hotelId' => 2191
-                )
-            ],
-            [
-                'views/agenda',
-                array(
-                    'session_id' => 3302
-                )
-            ]
+            ['events', ['eventId' => 1080]],
+//            ['views/locations', ['hotelId' => 2191]],
+//            ['views/agenda', ['session_id' => 3302]]
         ];
     }
 }

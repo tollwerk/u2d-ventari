@@ -64,14 +64,14 @@ class HttpClient implements HttpClientInterface
     public function dispatchRequest(string $request, array $params): \stdClass
     {
         /** FOR DEV PURPOSED ONLY */
-        $fixtureJson    = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';
+//        $fixtureJson    = 'http://localhost/~philipsaa/tollwerk/u2d-ventari/src/Ventari/Tests/Fixture/'.ucfirst($request).'.json';
         $res            = null;
         $query          = '?'.http_build_query($params);
         $authentication = ['auth' => [$this->authentication['username'], $this->authentication['password']]];
 
         try {
-//            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $authentication);
-            $res = $this->guzzle->request('GET', $fixtureJson);
+            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $authentication);
+//            $res = $this->guzzle->request('GET', $fixtureJson);
         } catch (RequestException $e) {
             echo Psr7\str($e->getRequest());
             if ($e->hasResponse()) {

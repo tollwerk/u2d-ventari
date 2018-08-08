@@ -21,9 +21,9 @@ blockquote {
 
 .column {
     float: left;
-    width: 24%;
+    width: 26%;
     padding: 1em;
-    margin-left: 1em;
+    margin-left: 3em;
     margin-right: 1em;
     background: purple;
 }

@@ -5,6 +5,12 @@
         </testsuite>
     </testsuites>
 
+    <php>
+        <const name="WEB_SERVER_HOST" value="api.server.com" />
+        <const name="WEB_SERVER_PORT" value="1349" />
+        <const name="WEB_SERVER_DOCROOT" value="./src/Ventari/Tests/Http" />
+    </php>
+
     <logging>
         <log type="coverage-xml" target="build/coverage"/>
     </logging>

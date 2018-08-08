@@ -1,7 +1,7 @@
 <?php
 return [
     'method' => 'GET',
-    'api'    => 'https://server.com/rest/',
+    'api'    => 'api.server.com',
     'authentication'   => [
         'username' => 'username',
         'password' => 'qwerasdfzxcvtyuighjkbnmop'
