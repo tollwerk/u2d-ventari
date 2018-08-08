@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: philipsaa
- * Date: 8/6/18
- * Time: 17:01
- */
 
 namespace Tollwerk\Ventari\Domain\Contract;
 
@@ -18,22 +12,22 @@ interface ModelInterface
     /**
      * @return int
      */
-    public function getId(): int;
+    public function getVentariId(): int;
 
     /**
      * @param integer $id
      *
      * @return $this
      */
-    public function setId($id): ModelInterface;
+    public function setVentariId(int $id): void;
 
     /**
      * @return bool
      */
-    public function isActive(): bool ;
+    public function isHidden(): bool ;
 
     /**
      * @param bool $active
      */
-    public function setActive(bool $active): void;
+    public function setHidden(bool $active): void;
 }

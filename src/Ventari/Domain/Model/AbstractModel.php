@@ -13,46 +13,42 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @var int
      */
-    protected $id;
+    protected $ventariId;
 
     /**
      * @var bool
      */
-    protected $active;
+    protected $hidden;
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getVentariId(): int
     {
-        return $this->id;
+        return $this->ventariId;
     }
 
     /**
-     * @param integer $id
-     *
-     * @return $this
+     * @param int $ventariId
      */
-    public function setId($id): ModelInterface
+    public function setVentariId(int $ventariId): void
     {
-        $this->id = $id;
-        return $this;
+        $this->ventariId = $ventariId;
     }
 
     /**
      * @return bool
      */
-    public function isActive(): bool
+    public function isHidden(): bool
     {
-        return $this->active;
+        return $this->hidden;
     }
 
     /**
-     * @param bool $active
+     * @param bool $hidden
      */
-    public function setActive(bool $active): void
+    public function setHidden(bool $hidden): void
     {
-        $this->active = $active;
+        $this->hidden = $hidden;
     }
-
 }

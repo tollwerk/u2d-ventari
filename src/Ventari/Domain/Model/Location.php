@@ -16,103 +16,104 @@ class Location extends AbstractModel implements LocationInterface
      */
     use CommonIntegerTrait;
 
-    /**
-     * @var string $locationAddress
-     */
-    protected $locationAddress;
 
     /**
-     * @var string $locationTelephone
+     * @var string
      */
-    protected $locationTelephone;
+    protected $streetAddress;
 
     /**
-     * @var int $locationZip
+     * @var string
      */
-    protected $locationZip;
+    protected $phone;
 
     /**
-     * @var string $locationName
+     * @var int
      */
-    protected $locationName;
+    protected $postalCode;
 
     /**
-     * @var string $locationCity
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
      */
     protected $locationCity;
 
     /**
      * @var string $locationFax
      */
-    protected $locationFax;
+    protected $fax;
 
     /**
      * @var string $locationEmail
      */
-    protected $locationEmail;
+    protected $email;
 
     /**
      * @return string
      */
-    public function getLocationAddress(): string
+    public function getStreetAddress(): string
     {
-        return $this->locationAddress;
+        return $this->streetAddress;
     }
 
     /**
-     * @param string $locationAddress
+     * @param string $streetAddress
      */
-    public function setLocationAddress(string $locationAddress): void
+    public function setStreetAddress(string $streetAddress): void
     {
-        $this->locationAddress = $locationAddress;
+        $this->streetAddress = $streetAddress;
     }
 
     /**
      * @return string
      */
-    public function getLocationTelephone(): string
+    public function getPhone(): string
     {
-        return $this->locationTelephone;
+        return $this->phone;
     }
 
     /**
-     * @param string $locationTelephone
+     * @param string $phone
      */
-    public function setLocationTelephone(string $locationTelephone): void
+    public function setPhone(string $phone): void
     {
-        $this->locationTelephone = $locationTelephone;
+        $this->phone = $phone;
     }
 
     /**
      * @return int
      */
-    public function getLocationZip(): int
+    public function getPostalCode(): int
     {
-        return $this->locationZip;
+        return $this->postalCode;
     }
 
     /**
-     * @param int $locationZip
+     * @param int $postalCode
      */
-    public function setLocationZip(int $locationZip): void
+    public function setPostalCode(int $postalCode): void
     {
-        $this->locationZip = $locationZip;
+        $this->postalCode = $postalCode;
     }
 
     /**
      * @return string
      */
-    public function getLocationName(): string
+    public function getName(): string
     {
-        return $this->locationName;
+        return $this->name;
     }
 
     /**
-     * @param string $locationName
+     * @param string $name
      */
-    public function setLocationName(string $locationName): void
+    public function setName(string $name): void
     {
-        $this->locationName = $locationName;
+        $this->name = $name;
     }
 
     /**
@@ -134,33 +135,33 @@ class Location extends AbstractModel implements LocationInterface
     /**
      * @return string
      */
-    public function getLocationFax(): string
+    public function getFax(): string
     {
-        return $this->locationFax;
+        return $this->fax;
     }
 
     /**
-     * @param string $locationFax
+     * @param string $fax
      */
-    public function setLocationFax(string $locationFax): void
+    public function setFax(string $fax): void
     {
-        $this->locationFax = $locationFax;
+        $this->fax = $fax;
     }
 
     /**
      * @return string
      */
-    public function getLocationEmail(): string
+    public function getEmail(): string
     {
-        return $this->locationEmail;
+        return $this->email;
     }
 
     /**
-     * @param string $locationEmail
+     * @param string $email
      */
-    public function setLocationEmail(string $locationEmail): void
+    public function setEmail(string $email): void
     {
-        $this->locationEmail = $locationEmail;
+        $this->email = $email;
     }
 
     public function abstractMethod(): string

@@ -21,13 +21,17 @@ class LocationFactory implements FactoryInterface
     const FUNCTION_NAME ='Location';
 
     protected static $locationApi = [
+        // AbstractModel
         'hotelId'        => 'ventariId',
+
+        // CommonInteger Trait
+        'rowNum'         => 'rowNum', // <-- Necessary?
+        'eventId'        => 'eventVentariId', // <-- We need this to associate this with an event
+
         'hotelAddress'   => 'streetAddress',
         'hotelTelephone' => 'phone',
-        'rowNum'         => 'rowNum', // <-- Necessary?
         'hotelZip'       => 'postalCode',
         'hotelName'      => 'name',
-        'eventId'        => 'eventVentariId', // <-- We need this to associate this with an event
         'hotelCity'      => 'locality',
         'hotelFax'       => 'fax',
         'hotelEmail'     => 'email',

@@ -11,86 +11,63 @@ trait SessionCategoryTrait
     /**
      * @var string
      */
-    protected $sessionCategoryColor;
+    protected $categoryColor;
 
     /**
      * @var int
      */
-    protected $sessionCategoryId;
+    protected $categoryId;
 
     /**
      * @var string
      */
-    protected $sessionCategoryName;
-
-    /**
-     * @var string
-     */
-    protected $sessionSignposting;
+    protected $categoryName;
 
     /**
      * @return string
      */
-    public function getSessionCategoryColor(): string
+    public function getCategoryColor(): string
     {
-        return $this->sessionCategoryColor;
+        return $this->categoryColor;
     }
 
     /**
-     * @param string $sessionCategoryColor
+     * @param string $categoryColor
      */
-    public function setSessionCategoryColor(string $sessionCategoryColor): void
+    public function setCategoryColor(string $categoryColor): void
     {
-        $this->sessionCategoryColor = $sessionCategoryColor;
+        $this->categoryColor = $categoryColor;
     }
 
     /**
      * @return int
      */
-    public function getSessionCategoryId(): int
+    public function getCategoryId(): int
     {
-        return $this->sessionCategoryId;
+        return $this->categoryId;
     }
 
     /**
-     * @param int $sessionCategoryId
+     * @param int $categoryId
      */
-    public function setSessionCategoryId(int $sessionCategoryId): void
+    public function setCategoryId(int $categoryId): void
     {
-        $this->sessionCategoryId = $sessionCategoryId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSessionCategoryName(): string
-    {
-        return $this->sessionCategoryName;
-    }
-
-    /**
-     * @param string $sessionCategoryName
-     */
-    public function setSessionCategoryName(string $sessionCategoryName): void
-    {
-        $this->sessionCategoryName = $sessionCategoryName;
+        $this->categoryId = $categoryId;
     }
 
     /**
      * @return string
      */
-    public function getSessionSignposting(): string
+    public function getName(): string
     {
-        return $this->sessionSignposting;
+        return $this->name;
     }
 
     /**
-     * @param string $sessionSignposting
+     * @param string $name
      */
-    public function setSessionSignposting(string $sessionSignposting): void
+    public function setName(string $name): void
     {
-        $this->sessionSignposting = $sessionSignposting;
+        $this->name = $name;
     }
-
-    abstract public function abstractMethod(): mixed;
 }

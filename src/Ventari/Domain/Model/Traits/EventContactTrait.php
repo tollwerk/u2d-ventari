@@ -11,148 +11,148 @@ trait EventContactTrait
     /**
      * @var string
      */
-    protected $eventContactEmail;
+    protected $organizerEmail;
 
     /**
      * @var string
      */
-    protected $eventContactFacebook;
+    protected $organizerFacebook;
 
     /**
      * @var string
      */
-    protected $eventContactInstagram;
+    protected $organizerInstagram;
 
     /**
      * @var string
      */
-    protected $eventContactLinks;
+    protected $organizerWebsite;
 
     /**
      * @var string
      */
-    protected $eventContactLogo;
+    protected $organizerLogo;
 
     /**
      * @var string
      */
-    protected $eventContactName;
+    protected $organizerName;
 
     /**
      * @var string
      */
-    protected $eventContactTwitterHandle;
+    protected $organizerTwitterHandle;
 
     /**
      * @return string
      */
-    public function getEventContactEmail(): string
+    public function getOrganizerEmail(): string
     {
-        return $this->eventContactEmail;
+        return $this->organizerEmail;
     }
 
     /**
-     * @param string $eventContactEmail
+     * @param string $organizerEmail
      */
-    public function setEventContactEmail(string $eventContactEmail): void
+    public function setOrganizerEmail(string $organizerEmail): void
     {
-        $this->eventContactEmail = $eventContactEmail;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventContactFacebook(): string
-    {
-        return $this->eventContactFacebook;
-    }
-
-    /**
-     * @param string $eventContactFacebook
-     */
-    public function setEventContactFacebook(string $eventContactFacebook): void
-    {
-        $this->eventContactFacebook = $eventContactFacebook;
+        $this->organizerEmail = $organizerEmail;
     }
 
     /**
      * @return string
      */
-    public function getEventContactInstagram(): string
+    public function getOrganizerFacebook(): string
     {
-        return $this->eventContactInstagram;
+        return $this->organizerFacebook;
     }
 
     /**
-     * @param string $eventContactInstagram
+     * @param string $organizerFacebook
      */
-    public function setEventContactInstagram(string $eventContactInstagram): void
+    public function setOrganizerFacebook(string $organizerFacebook): void
     {
-        $this->eventContactInstagram = $eventContactInstagram;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventContactLinks(): string
-    {
-        return $this->eventContactLinks;
-    }
-
-    /**
-     * @param string $eventContactLinks
-     */
-    public function setEventContactLinks(string $eventContactLinks): void
-    {
-        $this->eventContactLinks = $eventContactLinks;
+        $this->organizerFacebook = $organizerFacebook;
     }
 
     /**
      * @return string
      */
-    public function getEventContactLogo(): string
+    public function getOrganizerInstagram(): string
     {
-        return $this->eventContactLogo;
+        return $this->organizerInstagram;
     }
 
     /**
-     * @param string $eventContactLogo
+     * @param string $organizerInstagram
      */
-    public function setEventContactLogo(string $eventContactLogo): void
+    public function setOrganizerInstagram(string $organizerInstagram): void
     {
-        $this->eventContactLogo = $eventContactLogo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventContactName(): string
-    {
-        return $this->eventContactName;
-    }
-
-    /**
-     * @param string $eventContactName
-     */
-    public function setEventContactName(string $eventContactName): void
-    {
-        $this->eventContactName = $eventContactName;
+        $this->organizerInstagram = $organizerInstagram;
     }
 
     /**
      * @return string
      */
-    public function getEventContactTwitterHandle(): string
+    public function getOrganizerWebsite(): string
     {
-        return $this->eventContactTwitterHandle;
+        return $this->organizerWebsite;
     }
 
     /**
-     * @param string $eventContactTwitterHandle
+     * @param string $organizerWebsite
      */
-    public function setEventContactTwitterHandle(string $eventContactTwitterHandle): void
+    public function setOrganizerWebsite(string $organizerWebsite): void
     {
-        $this->eventContactTwitterHandle = $eventContactTwitterHandle;
+        $this->organizerWebsite = $organizerWebsite;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganizerLogo(): string
+    {
+        return $this->organizerLogo;
+    }
+
+    /**
+     * @param string $organizerLogo
+     */
+    public function setOrganizerLogo(string $organizerLogo): void
+    {
+        $this->organizerLogo = $organizerLogo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganizerName(): string
+    {
+        return $this->organizerName;
+    }
+
+    /**
+     * @param string $organizerName
+     */
+    public function setOrganizerName(string $organizerName): void
+    {
+        $this->organizerName = $organizerName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganizerTwitterHandle(): string
+    {
+        return $this->organizerTwitterHandle;
+    }
+
+    /**
+     * @param string $organizerTwitterHandle
+     */
+    public function setOrganizerTwitterHandle(string $organizerTwitterHandle): void
+    {
+        $this->organizerTwitterHandle = $organizerTwitterHandle;
     }
 
     abstract public function abstractMethod(): string;

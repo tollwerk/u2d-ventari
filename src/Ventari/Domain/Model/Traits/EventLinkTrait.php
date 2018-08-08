@@ -11,148 +11,148 @@ trait EventLinkTrait
     /**
      * @var string
      */
-    protected $eventFacebookEvent;
+    protected $facebookEvent;
 
     /**
      * @var string
      */
-    protected $eventTwitterHandle;
+    protected $twitter;
 
     /**
      * @var string
      */
-    protected $eventXingEvent;
+    protected $xingEvent;
 
     /**
      * @var string
      */
-    protected $eventLivestreamCode;
+    protected $livestreamEmbed;
 
     /**
      * @var string
      */
-    protected $eventLivestream;
+    protected $livestream;
 
     /**
      * @var string
      */
-    protected $eventTicketUrl;
+    protected $ticketUrl;
 
     /**
      * @var string
      */
-    protected $eventWebsite;
+    protected $website;
 
     /**
      * @return string
      */
-    public function getEventFacebookEvent(): string
+    public function getFacebookEvent(): string
     {
-        return $this->eventFacebookEvent;
+        return $this->facebookEvent;
     }
 
     /**
-     * @param string $eventFacebookEvent
+     * @param string $facebookEvent
      */
-    public function setEventFacebookEvent(string $eventFacebookEvent): void
+    public function setFacebookEvent(string $facebookEvent): void
     {
-        $this->eventFacebookEvent = $eventFacebookEvent;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventTwitterHandle(): string
-    {
-        return $this->eventTwitterHandle;
-    }
-
-    /**
-     * @param string $eventTwitterHandle
-     */
-    public function setEventTwitterHandle(string $eventTwitterHandle): void
-    {
-        $this->eventTwitterHandle = $eventTwitterHandle;
+        $this->facebookEvent = $facebookEvent;
     }
 
     /**
      * @return string
      */
-    public function getEventXingEvent(): string
+    public function getTwitter(): string
     {
-        return $this->eventXingEvent;
+        return $this->twitter;
     }
 
     /**
-     * @param string $eventXingEvent
+     * @param string $twitter
      */
-    public function setEventXingEvent(string $eventXingEvent): void
+    public function setTwitter(string $twitter): void
     {
-        $this->eventXingEvent = $eventXingEvent;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventLivestreamCode(): string
-    {
-        return $this->eventLivestreamCode;
-    }
-
-    /**
-     * @param string $eventLivestreamCode
-     */
-    public function setEventLivestreamCode(string $eventLivestreamCode): void
-    {
-        $this->eventLivestreamCode = $eventLivestreamCode;
+        $this->twitter = $twitter;
     }
 
     /**
      * @return string
      */
-    public function getEventLivestream(): string
+    public function getXingEvent(): string
     {
-        return $this->eventLivestream;
+        return $this->xingEvent;
     }
 
     /**
-     * @param string $eventLivestream
+     * @param string $xingEvent
      */
-    public function setEventLivestream(string $eventLivestream): void
+    public function setXingEvent(string $xingEvent): void
     {
-        $this->eventLivestream = $eventLivestream;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventTicketUrl(): string
-    {
-        return $this->eventTicketUrl;
-    }
-
-    /**
-     * @param string $eventTicketUrl
-     */
-    public function setEventTicketUrl(string $eventTicketUrl): void
-    {
-        $this->eventTicketUrl = $eventTicketUrl;
+        $this->xingEvent = $xingEvent;
     }
 
     /**
      * @return string
      */
-    public function getEventWebsite(): string
+    public function getLivestreamEmbed(): string
     {
-        return $this->eventWebsite;
+        return $this->livestreamEmbed;
     }
 
     /**
-     * @param string $eventWebsite
+     * @param string $livestreamEmbed
      */
-    public function setEventWebsite(string $eventWebsite): void
+    public function setLivestreamEmbed(string $livestreamEmbed): void
     {
-        $this->eventWebsite = $eventWebsite;
+        $this->livestreamEmbed = $livestreamEmbed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLivestream(): string
+    {
+        return $this->livestream;
+    }
+
+    /**
+     * @param string $livestream
+     */
+    public function setLivestream(string $livestream): void
+    {
+        $this->livestream = $livestream;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTicketUrl(): string
+    {
+        return $this->ticketUrl;
+    }
+
+    /**
+     * @param string $ticketUrl
+     */
+    public function setTicketUrl(string $ticketUrl): void
+    {
+        $this->ticketUrl = $ticketUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite(): string
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     */
+    public function setWebsite(string $website): void
+    {
+        $this->website = $website;
     }
 
     abstract public function abstractMethod(): string;

@@ -17,7 +17,7 @@ class EventFactory implements FactoryInterface
      * Function name
      * @var string
      */
-    const FUNCTION_NAME = e;
+    const FUNCTION_NAME = 'Event';
 
     /**
      * Date based properties
@@ -31,11 +31,11 @@ class EventFactory implements FactoryInterface
     ];
 
     protected static $eventApi = [
+        // AbstractModel
         'id'                           => 'ventariId',
         'active'                       => 'hidden',
-        'event_category'               => 'ventariCategories', // We need a mapping to local TYPO3 sys_categories
-        'event_chargeable'             => 'chargeable',
-        'event_city'                   => 'locality',
+
+        // EventContact Traits
         'event_contact_email'          => 'organizerEmail',
         'event_contact_facebook'       => 'organizerFacebook',
         'event_contact_instagram'      => 'organizerInstagram',
@@ -43,33 +43,43 @@ class EventFactory implements FactoryInterface
         'event_contact_logo'           => 'organizerLogo',
         'event_contact_name'           => 'organizerName',
         'event_contact_twitter_handle' => 'organizerTwitter',
-        'event_cost'                   => 'ticketPrice',
-        'event_cost_description'       => 'ticketDescription',
-        'event_description'            => 'summary',
-        'event_description_long'       => 'description',
+
+        // EventDate Traits
+        'event_start_date'             => 'startDateTime', // We need to combine this with event_start_time!
+        'event_start_time'             => 'startDateTime', // We need to combine this with event_start_date!
         'event_end_date'               => 'endDateTime', // We need to combine this with event_endtime!
         'event_endtime'                => 'endDateTime', // We need to combine this with event_end_date!
+
+        //EventLink Traits
         'event_facebook_event'         => 'facebookEvent',
-//        'event_id'                     => 'id', <-- Skip this, it's redundant with id
+        'event_twitter_handle'         => 'twitter',
+        'event_xing_event'             => 'xingEvent',
+        'event_livestream_code'        => 'livestreamEmbed',
+        'event_livestream'             => 'livestream',
+        'event_ticket_url'             => 'ticketUrl',
+        'event_website'                => 'website',
+
+        // Event Model
+        'event_category'               => 'ventariCategories', // We need a mapping to local TYPO3 sys_categories
+        'event_chargeable'             => 'chargeable',
+        'event_city'                   => 'locality',
+        'event_cost_description'       => 'ticketDescription',
+        'event_cost'                   => 'ticketPrice',
+        'event_description_long'       => 'description',
+        'event_description'            => 'summary',
         'event_image'                  => 'image',
         'event_level'                  => 'level',
-        'event_livestream'             => 'livestream',
-        'event_livestream_code'        => 'livestreamEmbed',
         'event_max_participants'       => 'maxParticipants',
         'event_name'                   => 'name',
         'event_other_tags'             => 'tags',
         'event_presentation_language'  => 'presentationLanguage',
-        'event_start_date'             => 'startDateTime', // We need to combine this with event_start_time!
-        'event_start_time'             => 'startDateTime', // We need to combine this with event_start_date!
         'event_status'                 => 'status',
         'event_targetgroup'            => 'targetgroup',
-        'event_ticket_url'             => 'ticketUrl',
         'event_tracks'                 => 'tracks',
-        'event_twitter_handle'         => 'twitter',
-//        'event_typ'                    => 'type', // Not necessary
-        'event_website'                => 'website',
-        'event_xing_event'             => 'xingEvent',
         'frontendLink'                 => 'registration',
+
+//        'event_typ'                    => 'type', // Not necessary
+//        'event_id'                     => 'id', <-- Skip this, it's redundant with id
     ];
 
     /**

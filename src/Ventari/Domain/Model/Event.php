@@ -63,7 +63,6 @@ class Event extends AbstractModel implements EventInterface
      */
     protected $eventLevel;
 
-
     /**
      * @var int
      */
@@ -98,11 +97,6 @@ class Event extends AbstractModel implements EventInterface
      * @var string
      */
     protected $eventTracks;
-
-    /**
-     * @var string
-     */
-    protected $eventTyp;
 
     /**
      * @var string

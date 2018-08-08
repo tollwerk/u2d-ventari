@@ -13,115 +13,114 @@ use Tollwerk\Ventari\Domain\Model\Traits\SessionLineTrait;
  */
 class Session extends AbstractModel implements SessionInterface
 {
-
     /**
      * Use traits
      */
     use CommonIntegerTrait, SessionCategoryTrait, SessionLineTrait;
 
     /**
-     * @var int
+     * @var string
      */
-    protected $sessionId;
+    protected $name;
 
     /**
      * @var string
      */
-    protected $sessionName;
+    protected $remark;
+
+    /**
+     * @var \DateTimeImmutable
+     */
+    protected $startTime;
+
+    /**
+     * @var \DateTimeImmutable
+     */
+    protected $endTime;
 
     /**
      * @var string
      */
-    protected $sessionRemark;
+    protected $room;
 
     /**
-     * @var \DateTimeImmutable
+     * @return string
      */
-    protected $sessionStart;
-
-    /**
-     * @var \DateTimeImmutable
-     */
-    protected $sessionEnd;
-
-    /**
-     * @return int
-     */
-    public function getSessionId(): int
+    public function getName(): string
     {
-        return $this->sessionId;
+        return $this->name;
     }
 
     /**
-     * @param int $sessionId
+     * @param string $name
      */
-    public function setSessionId(int $sessionId): void
+    public function setName(string $name): void
     {
-        $this->sessionId = $sessionId;
+        $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getSessionName(): string
+    public function getRemark(): string
     {
-        return $this->sessionName;
+        return $this->remark;
     }
 
     /**
-     * @param string $sessionName
+     * @param string $remark
      */
-    public function setSessionName(string $sessionName): void
+    public function setRemark(string $remark): void
     {
-        $this->sessionName = $sessionName;
+        $this->remark = $remark;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getStartTime(): \DateTimeImmutable
+    {
+        return $this->startTime;
+    }
+
+    /**
+     * @param \DateTimeImmutable $startTime
+     */
+    public function setStartTime(\DateTimeImmutable $startTime): void
+    {
+        $this->startTime = $startTime;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getEndTime(): \DateTimeImmutable
+    {
+        return $this->endTime;
+    }
+
+    /**
+     * @param \DateTimeImmutable $endTime
+     */
+    public function setEndTime(\DateTimeImmutable $endTime): void
+    {
+        $this->endTime = $endTime;
     }
 
     /**
      * @return string
      */
-    public function getSessionRemark(): string
+    public function getRoom(): string
     {
-        return $this->sessionRemark;
+        return $this->room;
     }
 
     /**
-     * @param string $sessionRemark
+     * @param string $room
      */
-    public function setSessionRemark(string $sessionRemark): void
+    public function setRoom(string $room): void
     {
-        $this->sessionRemark = $sessionRemark;
-    }
-
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getSessionStart(): \DateTimeImmutable
-    {
-        return $this->sessionStart;
-    }
-
-    /**
-     * @param \DateTimeImmutable $sessionStart
-     */
-    public function setSessionStart(\DateTimeImmutable $sessionStart): void
-    {
-        $this->sessionStart = $sessionStart;
-    }
-
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getSessionEnd(): \DateTimeImmutable
-    {
-        return $this->sessionEnd;
-    }
-
-    /**
-     * @param \DateTimeImmutable $sessionEnd
-     */
-    public function setSessionEnd(\DateTimeImmutable $sessionEnd): void
-    {
-        $this->sessionEnd = $sessionEnd;
+        $this->room = $room;
     }
 
     public function abstractMethod(): void

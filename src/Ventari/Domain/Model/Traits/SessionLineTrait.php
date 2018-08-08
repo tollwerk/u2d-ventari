@@ -11,44 +11,45 @@ trait SessionLineTrait
     /**
      * @var int
      */
-    protected $sessionLineId;
+    protected $lineId;
 
     /**
      * @var string
      */
-    protected $sessionLineName;
+    protected $lineName;
 
     /**
      * @return int
      */
-    public function getSessionLineId(): int
+    public function getLineId(): int
     {
-        return $this->sessionLineId;
+        return $this->lineId;
     }
 
     /**
-     * @param int $sessionLineId
+     * @param int $lineId
      */
-    public function setSessionLineId(int $sessionLineId): void
+    public function setLineId(int $lineId): void
     {
-        $this->sessionLineId = $sessionLineId;
+        $this->lineId = $lineId;
     }
 
     /**
      * @return string
      */
-    public function getSessionLineName(): string
+    public function getLineName(): string
     {
-        return $this->sessionLineName;
+        return $this->lineName;
     }
 
     /**
-     * @param string $sessionLineName
+     * @param string $lineName
      */
-    public function setSessionLineName(string $sessionLineName): void
+    public function setLineName(string $lineName): void
     {
-        $this->sessionLineName = $sessionLineName;
+        $this->lineName = $lineName;
     }
+
 
     abstract public function abstractMethod(): mixed;
 }

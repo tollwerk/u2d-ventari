@@ -16,7 +16,7 @@ trait CommonIntegerTrait
     /**
      * @var int
      */
-    protected $eventId;
+    protected $eventVentariId;
 
     /**
      * @return int
@@ -37,17 +37,17 @@ trait CommonIntegerTrait
     /**
      * @return int
      */
-    public function getEventId(): int
+    public function getEventVentariId(): int
     {
-        return $this->eventId;
+        return $this->eventVentariId;
     }
 
     /**
-     * @param int $eventId
+     * @param int $eventVentariId
      */
-    public function setEventId(int $eventId): void
+    public function setEventVentariId(int $eventVentariId): void
     {
-        $this->eventId = $eventId;
+        $this->eventVentariId = $eventVentariId;
     }
 
     abstract public function abstractMethod(): mixed;

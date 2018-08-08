@@ -31,19 +31,28 @@ class SessionFactory implements FactoryInterface
     ];
 
     protected static $sessionApi = [
+        // AbstractModel
         'sessionId'            => 'ventariId',
+
+        // CommonInteger Traits
+        'rowNum'               => 'rowNum', // <-- Necessary?
+        'eventId'              => 'eventVentariId', // <-- We need this to associate this with an event
+
+        // SessionCategory Traits
+        'sessionCategoryColor' => 'categoryColor',
+        'sessionCategoryId'    => 'categoryId',
+        'sessionCategoryName'  => 'categoryName',
+
+        // SessionLine Traits
+        'sessionLineId'        => 'lineId',
+        'sessionLineName'      => 'lineName',
+
+        // Session Model
         'sessionName'          => 'name',
         'sessionRemark'        => 'remark',
         'sessionStart'         => 'startTime',
         'sessionEnd'           => 'endTime',
-        'rowNum'               => 'rowNum', // <-- Necessary?
-        'eventId'              => 'eventVentariId', // <-- We need this to associate this with an event
-        'sessionCategoryColor' => 'categoryColor',
-        'sessionCategoryId'    => 'categoryId',
-        'sessionCategoryName'  => 'categoryName',
         'sessionSignposting'   => 'room',
-        'sessionLineId'        => 'lineId',
-        'sessionLineName'      => 'lineName',
     ];
 
     /**

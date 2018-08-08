@@ -24,36 +24,16 @@ class DispatchControllerTest extends AbstractTestBase
 
     /**
      * Test the BaseController
-     *
-     * @dataProvider jsonInputProvider
      */
-    public function testDispatch($json)
+    public function testDispatch()
     {
-        $json = json_decode(json_encode($json));
+        $json = file_get_contents(dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'Events.json');
+        $json = json_decode($json);
         $this->assertInstanceOf(DispatchController::class, self::$testClass);
-
-        $response = self::$testClass->dispatch(key($json), $json);
-
-        print_r($response);
-
-//        foreach ($response as $item) {
-//            $this->assertInstanceOf(Event::class, $item);
-//        }
-    }
-
-    public function jsonInputProvider()
-    {
-        return [
-            [
-                array(
-                    'events' => array(
-                        'event_name'       => 'Test Event Name',
-                        'event_start_date' => '2018-10-03',
-                        'frontendLink'     => 'https://www.domain.com',
-                        'event_id'         => '1029'
-                    )
-                )
-            ]
-        ];
+        $response = self::$testClass->dispatch('events', $json->responseData);
+        foreach ($response as $item) {
+        print_r($item);
+            $this->assertInstanceOf(Event::class, $item);
+        }
     }
 }
