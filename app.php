@@ -22,40 +22,41 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $Events = $App->getEvents($params);
             echo '<div class="column">';
-            foreach ($Events as $event) {
-                echo '<strong>'.$event->getEventName($params).'</strong>';
-                echo '<blockquote>';
-                echo '<p>Event Id: '.$event->getId().'</p>';
-                echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
-                echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
-                echo '</blockquote>';
-            }
+            print_r($Events);
+//            foreach ($Events as $event) {
+//                echo '<strong>'.$event->getEventName($params).'</strong>';
+//                echo '<blockquote>';
+//                echo '<p>Event Id: '.$event->getId().'</p>';
+//                echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
+//                echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
+//                echo '</blockquote>';
+//            }
             echo '</div>';
 
             $Locations = $App->getLocations($params);
             echo '<div class="column">';
-            foreach ($Locations as $location) {
-                echo '<strong>'.$location->getLocationName().'</strong>';
-                echo '<blockquote>';
-                echo '<p>Location Id: '.$location->getId().'</p>';
-                echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
-                echo '<p>Location City: '.$location->getLocationCity().'</p>';
-                echo '</blockquote>';
-            }
+            print_r($Locations);
+//            foreach ($Locations as $location) {
+//                echo '<strong>'.$location->getLocationName().'</strong>';
+//                echo '<blockquote>';
+//                echo '<p>Location Id: '.$location->getId().'</p>';
+//                echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
+//                echo '<p>Location City: '.$location->getLocationCity().'</p>';
+//                echo '</blockquote>';
+//            }
             echo '</div>';
 
             $Sessions = $App->getSessions($params);
-            echo '<pre>';
-            echo '</pre>';
             echo '<div class="column">';
-            foreach ($Sessions as $session) {
-                echo '<strong>'.$session->getSessionName().'</strong>';
-                echo '<blockquote>';
-                echo '<p>Session Id: '.$session->getId().'</p>';
-                echo '<p>Session Category Id: '.$session->getSessionCategoryId().'</p>';
-                echo '<p>Session Start: '.$session->getSessionStart()->format('g:ia \o\n l jS F Y').'</p>';
-                echo '</blockquote>';
-            }
+            print_r($Sessions);
+//            foreach ($Sessions as $session) {
+//                echo '<strong>'.$session->getSessionName().'</strong>';
+//                echo '<blockquote>';
+//                echo '<p>Session Id: '.$session->getId().'</p>';
+//                echo '<p>Session Category Id: '.$session->getSessionCategoryId().'</p>';
+//                echo '<p>Session Start: '.$session->getSessionStart()->format('g:ia \o\n l jS F Y').'</p>';
+//                echo '</blockquote>';
+//            }
             echo '</div>';
             ?>
         </div>

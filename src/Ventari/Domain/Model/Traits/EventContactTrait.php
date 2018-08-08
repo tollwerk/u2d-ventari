@@ -41,7 +41,7 @@ trait EventContactTrait
     /**
      * @var string
      */
-    protected $organizerTwitterHandle;
+    protected $organizerTwitter;
 
     /**
      * @return string
@@ -142,17 +142,17 @@ trait EventContactTrait
     /**
      * @return string
      */
-    public function getOrganizerTwitterHandle(): string
+    public function getOrganizerTwitter(): string
     {
-        return $this->organizerTwitterHandle;
+        return $this->organizerTwitter;
     }
 
     /**
-     * @param string $organizerTwitterHandle
+     * @param string $organizerTwitter
      */
-    public function setOrganizerTwitterHandle(string $organizerTwitterHandle): void
+    public function setOrganizerTwitter(string $organizerTwitter): void
     {
-        $this->organizerTwitterHandle = $organizerTwitterHandle;
+        $this->organizerTwitterHandle = $organizerTwitter;
     }
 
     abstract public function abstractMethod(): string;

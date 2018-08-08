@@ -40,15 +40,15 @@ class Location extends AbstractModel implements LocationInterface
     /**
      * @var string
      */
-    protected $locationCity;
+    protected $locality;
 
     /**
-     * @var string $locationFax
+     * @var string
      */
     protected $fax;
 
     /**
-     * @var string $locationEmail
+     * @var string
      */
     protected $email;
 
@@ -119,17 +119,17 @@ class Location extends AbstractModel implements LocationInterface
     /**
      * @return string
      */
-    public function getLocationCity(): string
+    public function getLocality(): string
     {
-        return $this->locationCity;
+        return $this->locality;
     }
 
     /**
-     * @param string $locationCity
+     * @param string $locality
      */
-    public function setLocationCity(string $locationCity): void
+    public function setLocality(string $locality): void
     {
-        $this->locationCity = $locationCity;
+        $this->locality = $locality;
     }
 
     /**

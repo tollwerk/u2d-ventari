@@ -11,85 +11,43 @@ trait EventDateTrait
     /**
      * @var \DateTimeImmutable
      */
-    protected $eventStartDate;
+    protected $startDateTime;
 
     /**
      * @var \DateTimeImmutable
      */
-    protected $eventStartTime;
-
-    /**
-     * @var \DateTimeImmutable
-     */
-    protected $eventEndDate;
-
-    /**
-     * @var \DateTimeImmutable
-     */
-    protected $eventEndTime;
+    protected $endDateTime;
 
     /**
      * @return \DateTimeImmutable
      */
-    public function getEventStartDate(): \DateTimeImmutable
+    public function getStartDateTime(): \DateTimeImmutable
     {
-        return $this->eventStartDate;
+        return $this->startDateTime;
     }
 
     /**
-     * @param \DateTimeImmutable $eventStartDate
+     * @param \DateTimeImmutable $startDateTime
      */
-    public function setEventStartDate(\DateTimeImmutable $eventStartDate): void
+    public function setStartDateTime(\DateTimeImmutable $startDateTime): void
     {
-        $this->eventStartDate = $eventStartDate;
+        $this->startDateTime = $startDateTime;
     }
 
     /**
      * @return \DateTimeImmutable
      */
-    public function getEventStartTime(): \DateTimeImmutable
+    public function getEndDateTime(): \DateTimeImmutable
     {
-        return $this->eventStartTime;
+        return $this->endDateTime;
     }
 
     /**
-     * @param \DateTimeImmutable $eventStartTime
+     * @param \DateTimeImmutable $endDateTime
      */
-    public function setEventStartTime(\DateTimeImmutable $eventStartTime): void
+    public function setEndDateTime(\DateTimeImmutable $endDateTime): void
     {
-        $this->eventStartTime = $eventStartTime;
-    }
-
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getEventEndDate(): \DateTimeImmutable
-    {
-        return $this->eventEndDate;
-    }
-
-    /**
-     * @param \DateTimeImmutable $eventEndDate
-     */
-    public function setEventEndDate(\DateTimeImmutable $eventEndDate): void
-    {
-        $this->eventEndDate = $eventEndDate;
-    }
-
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getEventEndTime(): \DateTimeImmutable
-    {
-        return $this->eventEndTime;
-    }
-
-    /**
-     * @param \DateTimeImmutable $eventEndTime
-     */
-    public function setEventEndTime(\DateTimeImmutable $eventEndTime): void
-    {
-        $this->eventEndTime = $eventEndTime;
+        $this->endDateTime = $endDateTime;
     }
 
     abstract public function abstractMethodForDate(): \DateTimeImmutable;

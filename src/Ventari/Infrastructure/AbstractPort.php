@@ -30,14 +30,12 @@ class AbstractPort
     {
         self::$client     = new HttpClient($method, $api, $authentication);
         self::$dispatcher = new DispatchController();
-
     }
 
     protected function makeRequest($function, $params): array
     {
         $clientResponse = self::$client->dispatchRequest($function, $params);
-
-        $function = str_replace('views/','', $function);
+        $function = str_replace('views/', '', $function);
         return self::$dispatcher->dispatch($function, $clientResponse);
     }
 

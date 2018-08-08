@@ -30,6 +30,10 @@ class EventFactory implements FactoryInterface
         'event_start_date',
     ];
 
+    protected static $intProperties = [
+        'event_max_participants'
+    ];
+
     protected static $eventApi = [
         // AbstractModel
         'id'                           => 'ventariId',
@@ -95,9 +99,11 @@ class EventFactory implements FactoryInterface
         $event = new Event();
 
         foreach ($json as $key => $value) {
-            $setter = 'set'.self::$eventApi[$key];
-            if (\is_callable([$event, $setter], true)) {
-                $event->$setter(self::refineValue($key, $value));
+            if (!empty(self::$eventApi[$key])) {
+                $setter = 'set'.ucfirst(self::$eventApi[$key]);
+                if (\is_callable([$event, $setter], true)) {
+                    $event->$setter(self::refineValue($key, $value));
+                }
             }
         }
 
@@ -117,10 +123,12 @@ class EventFactory implements FactoryInterface
     {
         $refinedValue = $value;
 
-        // Convert date based properties
-
         if (\in_array($property, self::$dateProperties)) {
             $refinedValue = new \DateTimeImmutable($value);
+        }
+
+        if (\in_array($property, self::$intProperties)) {
+            $refinedValue = (int)$value;
         }
 
         return $refinedValue;

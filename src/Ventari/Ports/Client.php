@@ -17,7 +17,7 @@ class Client extends AbstractPort
      *
      * @return ControllerInterface
      */
-    public function  getEvents(array $params = null): array
+    public function getEvents(array $params = null): array
     {
         $_params = (count($params) > 0) ? $params : [];
 

@@ -21,374 +21,358 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @var string
      */
-    protected $eventCategory;
+    protected $ventariCategories;
 
     /**
      * @var boolean
      */
-    protected $eventChargeable;
+    protected $chargeable;
 
     /**
      * @var string
      */
-    protected $eventCity;
+    protected $locality;
 
     /**
      * @var string
      */
-    protected $eventCostDescription;
+    protected $ticketDescription;
 
     /**
      * @var string
      */
-    protected $eventCost;
+    protected $ticketPrice;
 
     /**
      * @var string
      */
-    protected $eventDescriptionLong;
+    protected $description;
 
     /**
      * @var string
      */
-    protected $eventDescription;
+    protected $summary;
 
     /**
      * @var string
      */
-    protected $eventImage;
+    protected $image;
 
     /**
      * @var string
      */
-    protected $eventLevel;
+    protected $level;
 
     /**
      * @var int
      */
-    protected $eventMaxParticipants;
+    protected $maxParticipants;
 
     /**
      * @var string
      */
-    protected $eventName;
+    protected $name;
 
     /**
      * @var string
      */
-    protected $eventOtherTags;
+    protected $tags;
 
     /**
      * @var string
      */
-    protected $eventPresentationLanguage;
+    protected $presentationLanguage;
 
     /**
      * @var string
      */
-    protected $eventStatus;
+    protected $status;
 
     /**
      * @var string
      */
-    protected $eventTargetGroup;
+    protected $targetgroup;
 
     /**
      * @var string
      */
-    protected $eventTracks;
+    protected $tracks;
 
     /**
      * @var string
      */
-    protected $eventFrontendLink;
+    protected $registration;
 
     /**
      * @return string
      */
-    public function getEventCategory(): string
+    public function getVentariCategories(): string
     {
-        return $this->eventCategory;
+        return $this->ventariCategories;
     }
 
     /**
-     * @param string $eventCategory
+     * @param string $ventariCategories
      */
-    public function setEventCategory(string $eventCategory): void
+    public function setVentariCategories(string $ventariCategories): void
     {
-        $this->eventCategory = $eventCategory;
+        $this->ventariCategories = $ventariCategories;
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function getEventChargeable(): bool
+    public function isChargeable(): bool
     {
-        return $this->eventChargeable;
+        return $this->chargeable;
     }
 
     /**
-     * @param boolean $eventChargeable
+     * @param bool $chargeable
      */
-    public function setEventChargeable(bool $eventChargeable): void
+    public function setChargeable(bool $chargeable): void
     {
-        $this->eventChargeable = $eventChargeable;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventCity(): string
-    {
-        return $this->eventCity;
-    }
-
-    /**
-     * @param string $eventCity
-     */
-    public function setEventCity(string $eventCity): void
-    {
-        $this->eventCity = $eventCity;
+        $this->chargeable = $chargeable;
     }
 
     /**
      * @return string
      */
-    public function getEventCostDescription(): string
+    public function getLocality(): string
     {
-        return $this->eventCostDescription;
+        return $this->locality;
     }
 
     /**
-     * @param string $eventCostDescription
+     * @param string $locality
      */
-    public function setEventCostDescription(string $eventCostDescription): void
+    public function setLocality(string $locality): void
     {
-        $this->eventCostDescription = $eventCostDescription;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventCost(): string
-    {
-        return $this->eventCost;
-    }
-
-    /**
-     * @param string $eventCost
-     */
-    public function setEventCost(string $eventCost): void
-    {
-        $this->eventCost = $eventCost;
+        $this->locality = $locality;
     }
 
     /**
      * @return string
      */
-    public function getEventDescriptionLong(): string
+    public function getTicketDescription(): string
     {
-        return $this->eventDescriptionLong;
+        return $this->ticketDescription;
     }
 
     /**
-     * @param string $eventDescriptionLong
+     * @param string $ticketDescription
      */
-    public function setEventDescriptionLong(string $eventDescriptionLong): void
+    public function setTicketDescription(string $ticketDescription): void
     {
-        $this->eventDescriptionLong = $eventDescriptionLong;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventDescription(): string
-    {
-        return $this->eventDescription;
-    }
-
-    /**
-     * @param string $eventDescription
-     */
-    public function setEventDescription(string $eventDescription): void
-    {
-        $this->eventDescription = $eventDescription;
+        $this->ticketDescription = $ticketDescription;
     }
 
     /**
      * @return string
      */
-    public function getEventImage(): string
+    public function getTicketPrice(): string
     {
-        return $this->eventImage;
+        return $this->ticketPrice;
     }
 
     /**
-     * @param string $eventImage
+     * @param string $ticketPrice
      */
-    public function setEventImage(string $eventImage): void
+    public function setTicketPrice(string $ticketPrice): void
     {
-        $this->eventImage = $eventImage;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventLevel(): string
-    {
-        return $this->eventLevel;
-    }
-
-    /**
-     * @param string $eventLevel
-     */
-    public function setEventLevel(string $eventLevel): void
-    {
-        $this->eventLevel = $eventLevel;
+        $this->ticketPrice = $ticketPrice;
     }
 
     /**
      * @return string
      */
-    public function getEventMaxParticipants(): string
+    public function getDescription(): string
     {
-        return $this->eventMaxParticipants;
+        return $this->description;
     }
 
     /**
-     * @param integer $eventMaxParticipants
+     * @param string $description
      */
-    public function setEventMaxParticipants(string $eventMaxParticipants): void
+    public function setDescription(string $description): void
     {
-        $this->eventMaxParticipants = $eventMaxParticipants;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventName(): string
-    {
-        return $this->eventName;
-    }
-
-    /**
-     * @param string $eventName
-     */
-    public function setEventName(string $eventName): void
-    {
-        $this->eventName = $eventName;
+        $this->description = $description;
     }
 
     /**
      * @return string
      */
-    public function getEventOtherTags(): string
+    public function getSummary(): string
     {
-        return $this->eventOtherTags;
+        return $this->summary;
     }
 
     /**
-     * @param string $eventOtherTags
+     * @param string $summary
      */
-    public function setEventOtherTags(string $eventOtherTags): void
+    public function setSummary(string $summary): void
     {
-        $this->eventOtherTags = $eventOtherTags;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventPresentationLanguage(): string
-    {
-        return $this->eventPresentationLanguage;
-    }
-
-    /**
-     * @param string $eventPresentationLanguage
-     */
-    public function setEventPresentationLanguage(string $eventPresentationLanguage): void
-    {
-        $this->eventPresentationLanguage = $eventPresentationLanguage;
+        $this->summary = $summary;
     }
 
     /**
      * @return string
      */
-    public function getEventStatus(): string
+    public function getImage(): string
     {
-        return $this->eventStatus;
+        return $this->image;
     }
 
     /**
-     * @param string $eventStatus
+     * @param string $image
      */
-    public function setEventStatus(string $eventStatus): void
+    public function setImage(string $image): void
     {
-        $this->eventStatus = $eventStatus;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEventTargetGroup(): string
-    {
-        return $this->eventTargetGroup;
-    }
-
-    /**
-     * @param string $eventTargetGroup
-     */
-    public function setEventTargetGroup(string $eventTargetGroup): void
-    {
-        $this->eventTargetGroup = $eventTargetGroup;
+        $this->image = $image;
     }
 
     /**
      * @return string
      */
-    public function getEventTracks(): string
+    public function getLevel(): string
     {
-        return $this->eventTracks;
+        return $this->level;
     }
 
     /**
-     * @param string $eventTracks
+     * @param string $level
      */
-    public function setEventTracks(string $eventTracks): void
+    public function setLevel(string $level): void
     {
-        $this->eventTracks = $eventTracks;
+        $this->level = $level;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxParticipants(): int
+    {
+        return $this->maxParticipants;
+    }
+
+    /**
+     * @param int $maxParticipants
+     */
+    public function setMaxParticipants(int $maxParticipants): void
+    {
+        $this->maxParticipants = $maxParticipants;
     }
 
     /**
      * @return string
      */
-    public function getEventTyp(): string
+    public function getName(): string
     {
-        return $this->eventTyp;
+        return $this->name;
     }
 
     /**
-     * @param string $eventTyp
+     * @param string $name
      */
-    public function setEventTyp(string $eventTyp): void
+    public function setName(string $name): void
     {
-        $this->eventTyp = $eventTyp;
+        $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getEventFrontendLink(): string
+    public function getTags(): string
     {
-        return $this->eventFrontendLink;
+        return $this->tags;
     }
 
     /**
-     * @param string $eventFrontendLink
+     * @param string $tags
      */
-    public function setEventFrontendLink(string $eventFrontendLink): void
+    public function setTags(string $tags): void
     {
-        $this->eventFrontendLink = $eventFrontendLink;
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPresentationLanguage(): string
+    {
+        return $this->presentationLanguage;
+    }
+
+    /**
+     * @param string $presentationLanguage
+     */
+    public function setPresentationLanguage(string $presentationLanguage): void
+    {
+        $this->presentationLanguage = $presentationLanguage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetgroup(): string
+    {
+        return $this->targetgroup;
+    }
+
+    /**
+     * @param string $targetgroup
+     */
+    public function setTargetgroup(string $targetgroup): void
+    {
+        $this->targetgroup = $targetgroup;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTracks(): string
+    {
+        return $this->tracks;
+    }
+
+    /**
+     * @param string $tracks
+     */
+    public function setTracks(string $tracks): void
+    {
+        $this->tracks = $tracks;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegistration(): string
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param string $registration
+     */
+    public function setRegistration(string $registration): void
+    {
+        $this->registration = $registration;
     }
 
     public function abstractMethod(): string
