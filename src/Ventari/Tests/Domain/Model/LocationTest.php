@@ -29,8 +29,12 @@ class LocationTest extends AbstractTestBase
         foreach ($this->locationApi as $property) {
             $this->assertClassHasAttribute($property, Location::class);
             $setter = 'set'.ucfirst($property);
-            $getter = 'get'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
+        }
+
+        foreach ($this->locationApi as $property) {
+            $this->assertClassHasAttribute($property, Location::class);
+            $getter = 'get'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
         }
     }
