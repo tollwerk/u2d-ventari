@@ -47,12 +47,12 @@ class HttpClientTest extends AbstractTestBase
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @dataProvider requestProvider
      */
-    public function testDispatchRequest($function, $params): void
-    {
-        $httpClient     = self::$testClass;
-        $clientResponse = $httpClient->dispatchRequest($function, $params);
-        $this->assertInstanceOf('stdClass', $clientResponse);
-    }
+//    public function testDispatchRequest($function, $params): void
+//    {
+//        $httpClient     = self::$testClass;
+//        $clientResponse = $httpClient->dispatchRequest($function, $params);
+//        $this->assertInstanceOf('stdClass', $clientResponse);
+//    }
 
     /**
      * @return array
