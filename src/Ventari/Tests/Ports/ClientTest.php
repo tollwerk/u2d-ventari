@@ -28,7 +28,7 @@ class ClientTest extends AbstractTestBase
         if ($function == 'views/agenda') {
             $request = $client->getSessions($params);
         }
-        $this->assertInternalType('array', $request);
+
     }
 
     public function requestProvider(): array

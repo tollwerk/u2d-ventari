@@ -11,7 +11,7 @@ pre {
 blockquote {
     color: white;
     background-color:black;
-    line-height: 0.8;
+    line-height: 1.2;
     word-wrap: break-word;
 }
 
@@ -28,17 +28,12 @@ blockquote {
     background: purple;
 }
 
-.launch{
-    position: relative;
-    top: 6em;
-    left: 30%;
-}
-
 label {
     color: white;
 }
 
 a  {
+    display: flex;
     color: white;
     padding: 1rem;
     text-decoration: none;

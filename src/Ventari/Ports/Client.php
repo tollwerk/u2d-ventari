@@ -47,4 +47,14 @@ class Client extends AbstractPort
 
         return $this->makeRequest('views/agenda', $_params);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return array
+     */
+    public function getEventLogo(string $id): array
+    {
+        return $this->requestFile($id);
+    }
 }

@@ -20,49 +20,44 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
+
             $Events = $App->getEvents($params);
             echo '<div class="column">';
-            echo '<pre>';
-            print_r($Events);
-//            foreach ($Events as $event) {
-//                echo '<strong>'.$event->getEventName($params).'</strong>';
-//                echo '<blockquote>';
-//                echo '<p>Event Id: '.$event->getId().'</p>';
-//                echo '<p>Event Date: '.$event->getEventStartDate()->format('d/m/Y').'</p>';
-//                echo '<p>Event FE Link: '.$event->getEventFrontendLink().'</p>';
-//                echo '</blockquote>';
-//            }
-            echo '</pre>';
+            foreach ($Events as $event) {
+                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
+                if ($event->getOrganizerLogo() !== '') {
+                    $LogoId = $event->getOrganizerLogo();
+                    $Files  = $App->getEventLogo($LogoId);
+                    echo '<pre>';
+                    foreach ($Files as $File) {
+                        echo '<img src="data:'.$File->mimeType.';base64,'.$File->content.'">';
+                    }
+                    echo '</pre>';
+                } else {
+                    echo $event->getName();
+                }
+                echo '</a>';
+                echo '<br>';
+            }
             echo '</div>';
 
             $Locations = $App->getLocations($params);
             echo '<div class="column">';
-            echo '<pre>';
-            print_r($Locations);
-//            foreach ($Locations as $location) {
-//                echo '<strong>'.$location->getLocationName().'</strong>';
-//                echo '<blockquote>';
-//                echo '<p>Location Id: '.$location->getId().'</p>';
-//                echo '<p>Location Address: '.$location->getLocationAddress().'</p>';
-//                echo '<p>Location City: '.$location->getLocationCity().'</p>';
-//                echo '</blockquote>';
-//            }
-            echo '</pre>';
+            //            print_r($Locations);
+            foreach ($Locations as $location) {
+                echo '<blockquote>';
+                print_r($location);
+                echo '</blockquote>';
+            }
             echo '</div>';
 
             $Sessions = $App->getSessions($params);
             echo '<div class="column">';
-            echo '<pre>';
-            print_r($Sessions);
-//            foreach ($Sessions as $session) {
-//                echo '<strong>'.$session->getSessionName().'</strong>';
-//                echo '<blockquote>';
-//                echo '<p>Session Id: '.$session->getId().'</p>';
-//                echo '<p>Session Category Id: '.$session->getSessionCategoryId().'</p>';
-//                echo '<p>Session Start: '.$session->getSessionStart()->format('g:ia \o\n l jS F Y').'</p>';
-//                echo '</blockquote>';
-//            }
-            echo '</pre>';
+            foreach ($Sessions as $session) {
+                echo '<blockquote>';
+                print_r($session);
+                echo '</blockquote>';
+            }
             echo '</div>';
             ?>
         </div>
