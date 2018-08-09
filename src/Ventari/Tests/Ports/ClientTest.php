@@ -23,10 +23,10 @@ class ClientTest extends AbstractTestBase
             $request = $client->getEvents($params);
         }
         if ($function == 'views/locations') {
-            $request = $client->getEvents($params);
+            $request = $client->getLocations($params);
         }
         if ($function == 'views/agenda') {
-            $request = $client->getEvents($params);
+            $request = $client->getSessions($params);
         }
         $this->assertInternalType('array', $request);
     }
