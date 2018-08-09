@@ -24,6 +24,10 @@ class LocationFactory implements FactoryInterface
      * @var array
      */
     protected static $intProperties = [
+        'hotelId',
+        'rowNum',
+        'eventId',
+        'hotelZip',
         'companyId',
         'longitude',
         'latitude',
@@ -83,6 +87,15 @@ class LocationFactory implements FactoryInterface
         return $refinedValue;
     }
 
+    public function accessRefineValue(string $prop, $val)
+    {
+        return $this->refineValue($prop, $val);
+    }
+
+    public function accessIntProperties(): array
+    {
+        return self::$intProperties;
+    }
     public function accessLocationApi(): array
     {
         return self::$locationApi;

@@ -29,9 +29,12 @@ class EventFactoryTest extends AbstractTestBase
     /**
      * Test createFromJson
      *
+     * @param $input
+     *
      * @dataProvider jsonInputProvider
+     * @throws \Exception
      */
-    public function testCreateFromJson($input)
+    public function testCreateFromJson($input): void
     {
         $actual = self::$testClass->createFromJson($input);
         $this->assertInstanceOf(Event::class, $actual);
@@ -39,9 +42,12 @@ class EventFactoryTest extends AbstractTestBase
 
     /**
      * Test refineValue
+     *
+     * @param $input
+     *
      * @dataProvider jsonInputProvider
      */
-    public function testRefineValue($input)
+    public function testRefineValue($input): void
     {
         $dateProps = self::$testClass->accessDateProperties();
         $this->assertInternalType('array', $dateProps);
@@ -58,7 +64,7 @@ class EventFactoryTest extends AbstractTestBase
 
     }
 
-    public function jsonInputProvider()
+    public function jsonInputProvider(): array
     {
         return [
             [
