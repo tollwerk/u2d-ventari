@@ -90,9 +90,6 @@ class SessionFactory implements FactoryInterface
     protected static function refineValue(string $property, $value)
     {
         $refinedValue = $value;
-
-        // Convert date based properties
-
         if (\in_array($property, self::$dateProperties)) {
             $refinedValue = new \DateTimeImmutable(str_replace(',', '', $value));
         }
@@ -100,7 +97,7 @@ class SessionFactory implements FactoryInterface
         return $refinedValue;
     }
 
-    public function accessRefineValue(string $prop, $val): \DateTimeImmutable
+    public function accessRefineValue(string $prop, $val)
     {
         return $this->refineValue($prop, $val);
     }

@@ -3,7 +3,6 @@
 namespace Tollwerk\Ventari\Tests\Applications\Factory;
 
 use Tollwerk\Ventari\Application\Factory\SessionFactory;
-use Tollwerk\Ventari\Domain\Model\Session;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class SessionFactoryTest extends AbstractTestBase
@@ -21,7 +20,7 @@ class SessionFactoryTest extends AbstractTestBase
     /**
      * Test the Instance of SessionFactory
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertInstanceOf(SessionFactory::class, self::$testClass);
     }
@@ -35,8 +34,24 @@ class SessionFactoryTest extends AbstractTestBase
     public function testCreateFromJson($input): void
     {
         $actual = self::$testClass::createFromJson($input);
-        /** TODO: Review Assertion */
-        $this->assertInstanceOf(Session::class, $actual);
+        $this->assertObjectNotHasAttribute('$setter', $actual);
+//        $this->assertInstanceOf(ModelInterface::class, $actual);
+    }
+
+    /**
+     * @param $input
+     *
+     * @dataProvider jsonInputProvider
+     */
+    public function testRefineValue($input): void
+    {
+        foreach ($input as $key => $value) {
+            $actual = self::$testClass->accessRefineValue($key, $value);
+
+            if (\in_array($key, self::$testClass->accessDateProperties())) {
+                $this->assertInstanceOf(\DateTimeImmutable::class, $actual);
+            }
+        }
     }
 
     public function jsonInputProvider(): array
