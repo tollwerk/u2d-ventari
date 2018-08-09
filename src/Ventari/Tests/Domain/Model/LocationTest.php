@@ -31,7 +31,7 @@ class LocationTest extends AbstractTestBase
             $setter = 'set'.ucfirst($property);
             $getter = 'get'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
-//            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
+            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
         }
     }
 }

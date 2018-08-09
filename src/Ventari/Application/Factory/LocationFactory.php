@@ -28,9 +28,15 @@ class LocationFactory implements FactoryInterface
         'rowNum',
         'eventId',
         'hotelZip',
-        'companyId',
+        'companyId'
+    ];
+
+    /**
+     * @var array
+     */
+    protected static $floatProperties = [
         'longitude',
-        'latitude',
+        'latitude'
     ];
 
     protected static $locationApi = [
@@ -82,6 +88,10 @@ class LocationFactory implements FactoryInterface
 
         if (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
+        }
+
+        if (\in_array($property, self::$floatProperties, true)) {
+            $refinedValue = (float)$value;
         }
 
         return $refinedValue;

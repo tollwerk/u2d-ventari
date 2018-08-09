@@ -57,11 +57,11 @@ class Location extends AbstractModel implements LocationInterface
      */
     protected $companyId;
     /**
-     * @var int
+     * @var float
      */
     protected $longitude;
     /**
-     * @var int
+     * @var float
      */
     protected $latitude;
 
@@ -178,6 +178,14 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * @return int
+     */
+    public function getCompanyId(): int
+    {
+        return $this->companyId;
+    }
+
+    /**
      * @param int $companyId
      */
     public function setCompanyId(int $companyId): void
@@ -186,20 +194,37 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
-     * @param int $longitude
+     * @return float
      */
-    public function setLongitude(int $longitude): void
+    public function getLongitude(): float
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude(float $longitude): void
     {
         $this->longitude = $longitude;
     }
 
     /**
-     * @param int $latitude
+     * @return float
      */
-    public function setLatitude(int $latitude): void
+    public function getLatitude(): float
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude(float $latitude): void
     {
         $this->latitude = $latitude;
     }
+
 
     public function abstractMethod(): string
     {
