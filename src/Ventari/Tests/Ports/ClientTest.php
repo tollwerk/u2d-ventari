@@ -16,6 +16,7 @@ class ClientTest extends AbstractTestBase
      */
     public function testMakeRequest($function, $params): void
     {
+        $request = null;
         $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
         $client = new Client($config['method'], $config['api'], $config['authentication']);
 
@@ -28,7 +29,7 @@ class ClientTest extends AbstractTestBase
         if ($function == 'views/agenda') {
             $request = $client->getSessions($params);
         }
-
+        $this->assertInternalType('array', $request);
     }
 
     public function requestProvider(): array
