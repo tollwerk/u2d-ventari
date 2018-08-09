@@ -15,7 +15,7 @@ class AbstractPortTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
-        $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'Fixture'.DIRECTORY_SEPARATOR.'config.php';
+        $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php';
         self::$testClass = new AbstractPort($config['method'], $config['api'], $config['authentication']);
     }
 

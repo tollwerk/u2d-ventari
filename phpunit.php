@@ -6,6 +6,7 @@ $process = proc_open($command, [['pipe', 'r']], $pipes);
 $pstatus = proc_get_status($process);
 $pid = $pstatus['pid'];
 echo sprintf('%s - Web server started on %s:%d with PID %d', date('r'), WEB_SERVER_HOST, WEB_SERVER_PORT, $pid).PHP_EOL;
+
 // Register shutdown function to stop the built-in webserver
 register_shutdown_function(function () use ($pid) {
     echo sprintf('%s - Killing process with ID %d', date('r'), $pid).PHP_EOL;

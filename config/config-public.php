@@ -1,7 +1,8 @@
 <?php
+
 return [
     'method' => 'GET',
-    'api'    => 'api.server.com',
+    'api'    => 'localhost',
     'authentication'   => [
         'username' => 'username',
         'password' => 'qwerasdfzxcvtyuighjkbnmop'
