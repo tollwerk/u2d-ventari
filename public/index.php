@@ -21,7 +21,7 @@ if (strpos($request_uri[0], 'views/agenda')) {
 }
 
 if (strpos($request_uri[0], 'files')) {
-    require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Files.json';
+    require 'fixture'.DIRECTORY_SEPARATOR.'Files.json';
 return;
 }
 echo json_encode(['message' => 'No Route Setup']);
