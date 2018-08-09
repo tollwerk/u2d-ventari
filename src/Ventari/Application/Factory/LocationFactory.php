@@ -20,6 +20,15 @@ class LocationFactory implements FactoryInterface
      */
     const FUNCTION_NAME = 'Location';
 
+    /**
+     * @var array
+     */
+    protected static $intProperties = [
+        'companyId',
+        'longitude',
+        'latitude',
+    ];
+
     protected static $locationApi = [
         // AbstractModel
         'hotelId' => 'ventariId',
@@ -35,6 +44,9 @@ class LocationFactory implements FactoryInterface
         'hotelCity'      => 'locality',
         'hotelFax'       => 'fax',
         'hotelEmail'     => 'email',
+        'companyId'      => 'companyId',
+        'longitude'      => 'longitude',
+        'latitude'       => 'latitude',
     ];
 
     /**
@@ -52,12 +64,23 @@ class LocationFactory implements FactoryInterface
             if (!empty(self::$eventApi[$key])) {
                 $setter = 'set'.ucfirst(self::$locationApi[$key]);
                 if (\is_callable([$location, $setter], true)) {
-                    $location->$setter($value);
+                    $location->$setter(self::refineValue($key, $value));
                 }
             }
         }
 
         return $location;
+    }
+
+    protected static function refineValue(string $property, $value)
+    {
+        $refinedValue = $value;
+
+        if (\in_array($property, self::$intProperties, true)) {
+            $refinedValue = (int)$value;
+        }
+
+        return $refinedValue;
     }
 
     public function accessLocationApi(): array

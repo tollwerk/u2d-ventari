@@ -53,6 +53,19 @@ class Location extends AbstractModel implements LocationInterface
     protected $email;
 
     /**
+     * @var int
+     */
+    protected $companyId;
+    /**
+     * @var int
+     */
+    protected $longitude;
+    /**
+     * @var int
+     */
+    protected $latitude;
+
+    /**
      * @return string
      */
     public function getStreetAddress(): string
@@ -162,6 +175,30 @@ class Location extends AbstractModel implements LocationInterface
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @param int $companyId
+     */
+    public function setCompanyId(int $companyId): void
+    {
+        $this->companyId = $companyId;
+    }
+
+    /**
+     * @param int $longitude
+     */
+    public function setLongitude(int $longitude): void
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * @param int $latitude
+     */
+    public function setLatitude(int $latitude): void
+    {
+        $this->latitude = $latitude;
     }
 
     public function abstractMethod(): string
