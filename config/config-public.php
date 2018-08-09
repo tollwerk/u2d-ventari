@@ -2,7 +2,7 @@
 
 return [
     'method' => 'GET',
-    'api'    => 'localhost',
+    'api'    => 'localhost:1349',
     'authentication'   => [
         'username' => 'username',
         'password' => 'qwerasdfzxcvtyuighjkbnmop'

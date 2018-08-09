@@ -17,19 +17,18 @@ class ClientTest extends AbstractTestBase
     public function testMakeRequest($function, $params): void
     {
         $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-        $this->assertInternalType('array', $config);
-//        $client = new Client($config['method'], $config['api'], $config['authentication']);
-//
-//        if ($function == 'events') {
-//            $request = $client->getEvents($params);
-//        }
-//        if ($function == 'views/locations') {
-//            $request = $client->getEvents($params);
-//        }
-//        if ($function == 'views/agenda') {
-//            $request = $client->getEvents($params);
-//        }
-//        $this->assertInternalType('array', $request);
+        $client = new Client($config['method'], $config['api'], $config['authentication']);
+
+        if ($function == 'events') {
+            $request = $client->getEvents($params);
+        }
+        if ($function == 'views/locations') {
+            $request = $client->getEvents($params);
+        }
+        if ($function == 'views/agenda') {
+            $request = $client->getEvents($params);
+        }
+        $this->assertInternalType('array', $request);
     }
 
     public function requestProvider(): array
