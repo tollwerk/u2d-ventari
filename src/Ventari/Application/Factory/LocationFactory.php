@@ -71,7 +71,7 @@ class LocationFactory implements FactoryInterface
     {
         $location = new Location();
         foreach ($json as $key => $value) {
-            if (!empty(self::$eventApi[$key])) {
+            if (!empty(self::$locationApi[$key])) {
                 $setter = 'set'.ucfirst(self::$locationApi[$key]);
                 if (\is_callable([$location, $setter], true)) {
                     $location->$setter(self::refineValue($key, $value));
