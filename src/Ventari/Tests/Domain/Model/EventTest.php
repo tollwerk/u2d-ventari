@@ -22,11 +22,16 @@ class EventTest extends AbstractTestBase
     public function testClass(): void
     {
         $testClass = new Event();
+
         foreach ($this->eventApi as $property) {
             $this->assertClassHasAttribute($property, Event::class);
             $setter = 'set'.ucfirst($property);
-            $getter = ($property !== 'hidden' && $property !== 'chargeable') ? 'get'.ucfirst($property) : 'is'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
+        }
+
+        foreach ($this->eventApi as $property) {
+            $this->assertClassHasAttribute($property, Event::class);
+            $getter = ($property !== 'hidden' && $property !== 'chargeable') ? 'get'.ucfirst($property) : 'is'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
         }
     }
