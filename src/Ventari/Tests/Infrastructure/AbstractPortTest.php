@@ -28,9 +28,9 @@ class AbstractPortTest extends AbstractTestBase
         $this->assertClassHasAttribute('dispatcher', get_class(self::$testClass));
     }
 
-//    public function testMakeRequest(): void
-//    {
-//        $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
-//        $this->assertInstanceOf(DispatchController::class, $requestReponse);
-//    }
+    public function testMakeRequest(): void
+    {
+        $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
+        $this->assertInternalType('array', $requestReponse);
+    }
 }

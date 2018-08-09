@@ -44,7 +44,7 @@ class AbstractPort
         return self::$client->dispatchRequest('files/'.$id, [])->files;
     }
 
-    public function accessMakeRequest($arg1, $arg2): mixed
+    public function accessMakeRequest($arg1, $arg2): array
     {
         return $this->makeRequest($arg1, $arg2);
     }
