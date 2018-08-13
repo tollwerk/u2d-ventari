@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-use Tollwerk\Ventari\Domain\Contract\ControllerInterface;
 use Tollwerk\Ventari\Infrastructure\AbstractPort;
 
 
@@ -13,9 +12,12 @@ use Tollwerk\Ventari\Infrastructure\AbstractPort;
 class Client extends AbstractPort
 {
     /**
-     * @param array $params
+     * Return all events
      *
-     * @return ControllerInterface
+     * @param array $params Parameters
+     *
+     * @return array Events
+     * @api
      */
     public function getEvents(array $params = []): array
     {
@@ -23,9 +25,12 @@ class Client extends AbstractPort
     }
 
     /**
-     * @param array $params
+     * Return all locations
      *
-     * @return ControllerInterface
+     * @param array $params Parameters
+     *
+     * @return array Locations
+     * @api
      */
     public function getLocations(array $params = []): array
     {
@@ -33,9 +38,12 @@ class Client extends AbstractPort
     }
 
     /**
+     * Return all sessions
+     *
      * @param array $params
      *
-     * @return ControllerInterface
+     * @return array Sessions
+     * @api
      */
     public function getSessions(array $params = []): array
     {
@@ -43,11 +51,14 @@ class Client extends AbstractPort
     }
 
     /**
-     * @param string $id
+     * Return a file
      *
-     * @return array
+     * @param string $id File ID
+     *
+     * @return array File
+     * @api
      */
-    public function getEventLogo(string $id): array
+    public function getFile(string $id): array
     {
         return $this->requestFile($id);
     }

@@ -35,7 +35,6 @@ class DispatchController implements ControllerInterface
 
         foreach ($jsonObject->$function as $object) {
             $objects[] = $factoryClass::createFromJson($object);
-//            $objects[] = \call_user_func([$factoryClass, 'createFromJson'], $object);
         }
 
         return $objects;

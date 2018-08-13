@@ -10,38 +10,63 @@ namespace Tollwerk\Ventari\Infrastructure;
 class AbstractPort
 {
     /**
+     * HTTP client
+     *
      * @var HttpClient $client
      */
-    protected static $client;
+    protected $client;
 
     /**
+     * Dispatcher
+     *
      * @var DispatchController $dispatcher
      */
-    protected static $dispatcher;
+    protected $dispatcher;
 
     /**
-     * Client constructor.
+     * Client constructor
      *
-     * @param string $method
-     * @param string $api
-     * @param array $authentication
+     * @param string $method        Request method
+     * @param string $api           API URL
+     * @param array $authentication Authentication credentials
      */
     public function __construct(string $method, string $api, array $authentication)
     {
-        self::$client     = new HttpClient($method, $api, $authentication);
-        self::$dispatcher = new DispatchController();
+        $this->client     = new HttpClient($method, $api, $authentication);
+        $this->dispatcher = new DispatchController();
     }
 
-    protected function makeRequest($function, $params): array
+    /**
+     * Make an API request
+     *
+     * @param string $function API function
+     * @param array $params    Request parameters
+     *
+     * @return array Response
+     */
+    protected function makeRequest(string $function, array $params): array
     {
-        $clientResponse = self::$client->dispatchRequest($function, $params);
-        $function = str_replace('views/', '', $function);
-        return self::$dispatcher->dispatch($function, $clientResponse);
+        $clientResponse = $this->client->dispatchRequest($function, $params);
+        $function       = str_replace('views/', '', $function);
+
+        return $this->dispatcher->dispatch($function, $clientResponse);
     }
 
-    protected function requestFile($id): array
+    /**
+     * Request a file
+     *
+     * @param string $id File ID
+     *
+     * @return array|null File
+     */
+    protected function requestFile(string $id): ?array
     {
-        return self::$client->dispatchRequest('files/'.$id, [])->files;
+        $files = $this->client->dispatchRequest('files/'.$id, [])->files;
+        if (count($files)) {
+            return (array)array_shift($files);
+        }
+
+        return null;
     }
 
     public function accessMakeRequest($arg1, $arg2): array
