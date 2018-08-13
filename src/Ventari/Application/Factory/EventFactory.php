@@ -131,7 +131,7 @@ class EventFactory implements FactoryInterface
         $refinedValue = $value;
 
         if (\in_array($property, self::$dateProperties, true)) {
-            $refinedValue = new \DateTimeImmutable($value);
+            $refinedValue = new \DateTime($value);
         }
 
         if (\in_array($property, self::$intProperties, true)) {

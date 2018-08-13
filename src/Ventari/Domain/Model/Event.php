@@ -380,7 +380,7 @@ class Event extends AbstractModel implements EventInterface
         // TODO: Implement abstractMethod() method.
     }
 
-    public function abstractMethodForDate(): \DateTimeImmutable
+    public function abstractMethodForDate(): \DateTime
     {
         // TODO: Implement abstractMethodForDate() method.
     }

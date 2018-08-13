@@ -23,7 +23,7 @@ class EventDateTraitTest extends AbstractTestBase
 
     public function testStartDateTime(): void
     {
-        $expectedDate = new \DateTimeImmutable('now');
+        $expectedDate = new \DateTime('now');
         $mock         = $this->testTrait;
         $mock->setStartDateTime($expectedDate);
         $mock->expects($this->any())
@@ -35,7 +35,7 @@ class EventDateTraitTest extends AbstractTestBase
 
     public function testEndDateTime(): void
     {
-        $expectedDate = new \DateTimeImmutable('now');
+        $expectedDate = new \DateTime('now');
         $mock         = $this->testTrait;
         $mock->setEndDateTime($expectedDate);
         $mock->expects($this->any())

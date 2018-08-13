@@ -49,7 +49,7 @@ class SessionFactoryTest extends AbstractTestBase
             $actual = self::$testClass->accessRefineValue($key, $value);
 
             if (\in_array($key, self::$testClass->accessDateProperties())) {
-                $this->assertInstanceOf(\DateTimeImmutable::class, $actual);
+                $this->assertInstanceOf(\DateTime::class, $actual);
             }
         }
     }

@@ -9,46 +9,46 @@ namespace Tollwerk\Ventari\Domain\Model\Traits;
 trait EventDateTrait
 {
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTime
      */
     protected $startDateTime;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTime
      */
     protected $endDateTime;
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getStartDateTime(): \DateTimeImmutable
+    public function getStartDateTime(): \DateTime
     {
         return $this->startDateTime;
     }
 
     /**
-     * @param \DateTimeImmutable $startDateTime
+     * @param \DateTime $startDateTime
      */
-    public function setStartDateTime(\DateTimeImmutable $startDateTime): void
+    public function setStartDateTime(\DateTime $startDateTime): void
     {
         $this->startDateTime = $startDateTime;
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getEndDateTime(): \DateTimeImmutable
+    public function getEndDateTime(): \DateTime
     {
         return $this->endDateTime;
     }
 
     /**
-     * @param \DateTimeImmutable $endDateTime
+     * @param \DateTime $endDateTime
      */
-    public function setEndDateTime(\DateTimeImmutable $endDateTime): void
+    public function setEndDateTime(\DateTime $endDateTime): void
     {
         $this->endDateTime = $endDateTime;
     }
 
-    abstract public function abstractMethodForDate(): \DateTimeImmutable;
+    abstract public function abstractMethodForDate(): \DateTime;
 }

@@ -91,7 +91,7 @@ class SessionFactory implements FactoryInterface
     {
         $refinedValue = $value;
         if (\in_array($property, self::$dateProperties)) {
-            $refinedValue = new \DateTimeImmutable(str_replace(',', '', $value));
+            $refinedValue = new \DateTime(str_replace(',', '', $value));
         }
 
         return $refinedValue;
