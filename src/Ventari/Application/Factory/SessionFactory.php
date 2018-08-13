@@ -52,7 +52,7 @@ class SessionFactory implements FactoryInterface
         'sessionRemark'        => 'remark',
         'sessionStart'         => 'startTime',
         'sessionEnd'           => 'endTime',
-        'sessionSignposting'   => 'room',
+        'sessionRoom'          => 'room',
     ];
 
     /**
