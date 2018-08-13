@@ -67,7 +67,7 @@ class SessionFactory implements FactoryInterface
     {
         $session = new Session();
         foreach ($json as $key => $value) {
-            if (!empty(self::$eventApi[$key])) {
+            if (!empty(self::$sessionApi[$key])) {
                 $setter = 'set'.ucfirst(self::$sessionApi[$key]);
                 if (\is_callable([$session, $setter], true)) {
                     $session->$setter(self::refineValue($key, $value));
