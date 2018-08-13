@@ -19,6 +19,15 @@ trait EventDateTrait
     protected $endDateTime;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->startDateTime = new \DateTime('@0');
+        $this->endDateTime   = new \DateTime('@0');
+    }
+
+    /**
      * @return \DateTime
      */
     public function getStartDateTime(): \DateTime
@@ -27,11 +36,21 @@ trait EventDateTrait
     }
 
     /**
-     * @param \DateTime $startDateTime
+     * Set the start date & time
+     *
+     * @param array $modifiers Modifiers
      */
-    public function setStartDateTime(\DateTime $startDateTime): void
+    public function setStartDateTime(array $modifiers): void
     {
-        $this->startDateTime = $startDateTime;
+        $this->startDateTime->setDate(
+            empty($modifiers['year']) ? $this->startDateTime->format('Y') : $modifiers['year'],
+            empty($modifiers['month']) ? $this->startDateTime->format('n') : $modifiers['month'],
+            empty($modifiers['day']) ? $this->startDateTime->format('j') : $modifiers['day']
+        );
+        $this->startDateTime->setTime(
+            empty($modifiers['hour']) ? $this->startDateTime->format('G') : $modifiers['hour'],
+            empty($modifiers['minute']) ? intval(ltrim($this->startDateTime->format('i'), '0')) : $modifiers['minute']
+        );
     }
 
     /**
@@ -43,11 +62,21 @@ trait EventDateTrait
     }
 
     /**
-     * @param \DateTime $endDateTime
+     * Set the start date & time
+     *
+     * @param array $modifiers Modifiers
      */
-    public function setEndDateTime(\DateTime $endDateTime): void
+    public function setEndDateTime(array $modifiers): void
     {
-        $this->endDateTime = $endDateTime;
+        $this->endDateTime->setDate(
+            empty($modifiers['year']) ? $this->endDateTime->format('Y') : $modifiers['year'],
+            empty($modifiers['month']) ? $this->endDateTime->format('n') : $modifiers['month'],
+            empty($modifiers['day']) ? $this->endDateTime->format('j') : $modifiers['day']
+        );
+        $this->endDateTime->setTime(
+            empty($modifiers['hour']) ? $this->endDateTime->format('G') : $modifiers['hour'],
+            empty($modifiers['minute']) ? intval(ltrim($this->endDateTime->format('i'), '0')) : $modifiers['minute']
+        );
     }
 
     abstract public function abstractMethodForDate(): \DateTime;

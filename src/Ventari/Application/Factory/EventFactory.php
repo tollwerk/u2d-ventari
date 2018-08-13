@@ -24,10 +24,17 @@ class EventFactory implements FactoryInterface
      * @var string[]
      */
     protected static $dateProperties = [
-        'event_endtime',
         'event_end_date',
-        'event_start_time',
         'event_start_date',
+    ];
+
+    /**
+     * Time based properties
+     * @var string[]
+     */
+    protected static $timeProperties = [
+        'event_endtime',
+        'event_start_time',
     ];
 
     protected static $intProperties = [
@@ -131,14 +138,17 @@ class EventFactory implements FactoryInterface
         $refinedValue = $value;
 
         if (\in_array($property, self::$dateProperties, true)) {
-            $refinedValue = new \DateTime($value);
-        }
+            $refinedValue = [];
+            list($refinedValue['year'], $refinedValue['month'], $refinedValue['day']) = explode('-', $value);
 
-        if (\in_array($property, self::$intProperties, true)) {
+        } elseif (\in_array($property, self::$timeProperties, true)) {
+            $refinedValue = [];
+            list($refinedValue['hour'], $refinedValue['minute']) = explode(':', $value);
+
+        } elseif (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
-        }
 
-        if (\in_array($property, self::$arrayProperties, true)) {
+        } elseif (\in_array($property, self::$arrayProperties, true)) {
             $refinedValue = array_filter(explode(',', $value));
         }
 

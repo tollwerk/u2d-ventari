@@ -21,11 +21,11 @@ class SessionFactory implements FactoryInterface
     const FUNCTION_NAME = 'Session';
 
     /**
-     * Date based properties
+     * Time based properties
      *
      * @var string[]
      */
-    protected static $dateProperties = [
+    protected static $timeProperties = [
         'sessionStart',
         'sessionEnd',
     ];
@@ -90,7 +90,7 @@ class SessionFactory implements FactoryInterface
     protected static function refineValue(string $property, $value)
     {
         $refinedValue = $value;
-        if (\in_array($property, self::$dateProperties)) {
+        if (\in_array($property, self::$timeProperties)) {
             $refinedValue = new \DateTime(str_replace(',', '', $value));
         }
 
