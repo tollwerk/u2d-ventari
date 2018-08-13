@@ -13,12 +13,12 @@ abstract class AbstractModel implements ModelInterface
     /**
      * @var int
      */
-    protected $ventariId;
+    protected $ventariId = 0;
 
     /**
      * @var bool
      */
-    protected $hidden;
+    protected $hidden = false;
 
     /**
      * @return int

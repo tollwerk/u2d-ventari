@@ -21,12 +21,12 @@ class Session extends AbstractModel implements SessionInterface
     /**
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * @var string
      */
-    protected $remark;
+    protected $remark = '';
 
     /**
      * @var \DateTime
@@ -41,7 +41,7 @@ class Session extends AbstractModel implements SessionInterface
     /**
      * @var string
      */
-    protected $room;
+    protected $room = '';
 
     /**
      * @return string
