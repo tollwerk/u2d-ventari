@@ -24,20 +24,25 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $Events = $App->getEvents($params);
             echo '<div class="column">';
             foreach ($Events as $event) {
-                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
-                if ($event->getOrganizerLogo() !== '') {
-                    $LogoId = $event->getOrganizerLogo();
-                    $Files  = $App->getEventLogo($LogoId);
-                    echo '<pre>';
-                    foreach ($Files as $File) {
-                        echo '<img src="data:'.$File->mimeType.';base64,'.$File->content.'">';
-                    }
-                    echo '</pre>';
-                } else {
-                    echo $event->getName();
-                }
-                echo '</a>';
-                echo '<br>';
+                echo '<blockquote>';
+                echo '<pre>';
+                print_r($event);
+                echo '</pre>';
+                echo '</blockquote>';
+//                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
+//                if ($event->getOrganizerLogo() !== '') {
+//                    $LogoId = $event->getOrganizerLogo();
+//                    $Files  = $App->getEventLogo($LogoId);
+//                    echo '<pre>';
+//                    foreach ($Files as $File) {
+//                        echo '<img src="data:'.$File->mimeType.';base64,'.$File->content.'">';
+//                    }
+//                    echo '</pre>';
+//                } else {
+//                    echo $event->getName();
+//                }
+//                echo '</a>';
+//                echo '<br>';
             }
             echo '</div>';
 

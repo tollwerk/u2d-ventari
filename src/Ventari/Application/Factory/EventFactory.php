@@ -35,10 +35,11 @@ class EventFactory implements FactoryInterface
     ];
 
     protected static $arrayProperties = [
-        'event_presentation_language',
         'event_level',
-        'event_category'
-
+        'event_presentation_language',
+        'event_targetgroup',
+        'event_category',
+        'event_tracks'
     ];
 
     protected static $eventApi = [
@@ -138,7 +139,7 @@ class EventFactory implements FactoryInterface
         }
 
         if (\in_array($property, self::$arrayProperties, true)) {
-            $refinedValue = explode(',', $value);
+            $refinedValue = array_filter(explode(',', $value));
         }
 
         return $refinedValue;
