@@ -19,7 +19,7 @@ class Event extends AbstractModel implements EventInterface
     use EventContactTrait, EventDateTrait, EventLinkTrait;
 
     /**
-     * @var string
+     * @var array
      */
     protected $ventariCategories;
 
@@ -59,7 +59,7 @@ class Event extends AbstractModel implements EventInterface
     protected $image;
 
     /**
-     * @var string
+     * @var array
      */
     protected $level;
 
@@ -79,7 +79,7 @@ class Event extends AbstractModel implements EventInterface
     protected $tags;
 
     /**
-     * @var string
+     * @var array
      */
     protected $presentationLanguage;
 
@@ -89,12 +89,12 @@ class Event extends AbstractModel implements EventInterface
     protected $status;
 
     /**
-     * @var string
+     * @var array
      */
     protected $targetgroup;
 
     /**
-     * @var string
+     * @var array
      */
     protected $tracks;
 
@@ -104,7 +104,7 @@ class Event extends AbstractModel implements EventInterface
     protected $registration;
 
     /**
-     * @return string
+     * @return array
      */
     public function getVentariCategories(): array
     {
@@ -112,7 +112,7 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @param string $ventariCategories
+     * @param array $ventariCategories
      */
     public function setVentariCategories(array $ventariCategories): void
     {
@@ -240,7 +240,7 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @param string $level
+     * @param array $level
      */
     public function setLevel(array $level): void
     {
@@ -328,33 +328,33 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getTargetgroup(): string
+    public function getTargetgroup(): array
     {
         return $this->targetgroup;
     }
 
     /**
-     * @param string $targetgroup
+     * @param array $targetgroup
      */
-    public function setTargetgroup(string $targetgroup): void
+    public function setTargetgroup(array $targetgroup): void
     {
         $this->targetgroup = $targetgroup;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getTracks(): string
+    public function getTracks(): array
     {
         return $this->tracks;
     }
 
     /**
-     * @param string $tracks
+     * @param array $tracks
      */
-    public function setTracks(string $tracks): void
+    public function setTracks(array $tracks): void
     {
         $this->tracks = $tracks;
     }
