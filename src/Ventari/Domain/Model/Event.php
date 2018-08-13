@@ -232,7 +232,7 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getLevel(): array
     {
@@ -296,7 +296,7 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getPresentationLanguage(): array
     {
@@ -304,7 +304,7 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @param string $presentationLanguage
+     * @param array $presentationLanguage
      */
     public function setPresentationLanguage(array $presentationLanguage): void
     {
