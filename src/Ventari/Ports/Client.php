@@ -13,39 +13,33 @@ use Tollwerk\Ventari\Infrastructure\AbstractPort;
 class Client extends AbstractPort
 {
     /**
-     * @param array|null $params
+     * @param array $params
      *
      * @return ControllerInterface
      */
-    public function getEvents(array $params = null): array
+    public function getEvents(array $params = []): array
     {
-        $_params = (count($params) > 0) ? $params : [];
-
-        return $this->makeRequest('events', $_params);
+        return $this->makeRequest('events', $params);
     }
 
     /**
-     * @param array|null $params
+     * @param array $params
      *
      * @return ControllerInterface
      */
-    public function getLocations(array $params = null): array
+    public function getLocations(array $params = []): array
     {
-        $_params = (count($params) > 0) ? $params : [];
-
-        return $this->makeRequest('views/locations', $_params);
+        return $this->makeRequest('views/locations', $params);
     }
 
     /**
-     * @param array|null $params
+     * @param array $params
      *
      * @return ControllerInterface
      */
-    public function getSessions(array $params = null): array
+    public function getSessions(array $params = []): array
     {
-        $_params = (count($params) > 0) ? $params : [];
-
-        return $this->makeRequest('views/agenda', $_params);
+        return $this->makeRequest('views/agenda', $params);
     }
 
     /**
