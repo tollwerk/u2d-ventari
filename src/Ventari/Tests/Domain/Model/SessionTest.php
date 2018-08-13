@@ -36,7 +36,11 @@ class SessionTest extends AbstractTestBase
         $factory = new SessionFactory();
 
         foreach ($input as $key => $value){
-            $property = (isset($this->sessionApi[$key])) ? $this->sessionApi[$key] : $this->sessionApi['sessionName'];
+            if (isset($this->sessionApi[$key])) {
+                $property = $this->sessionApi[$key];
+            } else {
+                $property = $this->sessionApi['sessionName'];
+            }
             $this->assertClassHasAttribute($property, Session::class);
 
             $setter = 'set'.ucfirst($property);

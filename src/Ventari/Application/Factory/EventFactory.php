@@ -34,6 +34,13 @@ class EventFactory implements FactoryInterface
         'event_max_participants'
     ];
 
+    protected static $arrayProperties = [
+        'event_presentation_language',
+        'event_level',
+        'event_category'
+
+    ];
+
     protected static $eventApi = [
         // AbstractModel
         'id'                           => 'ventariId',
@@ -128,6 +135,10 @@ class EventFactory implements FactoryInterface
 
         if (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
+        }
+
+        if (\in_array($property, self::$arrayProperties, true)) {
+            $refinedValue = explode(',', $value);
         }
 
         return $refinedValue;

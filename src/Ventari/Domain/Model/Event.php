@@ -106,7 +106,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @return string
      */
-    public function getVentariCategories(): string
+    public function getVentariCategories(): array
     {
         return $this->ventariCategories;
     }
@@ -114,7 +114,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @param string $ventariCategories
      */
-    public function setVentariCategories(string $ventariCategories): void
+    public function setVentariCategories(array $ventariCategories): void
     {
         $this->ventariCategories = $ventariCategories;
     }
@@ -234,7 +234,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @return string
      */
-    public function getLevel(): string
+    public function getLevel(): array
     {
         return $this->level;
     }
@@ -242,7 +242,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @param string $level
      */
-    public function setLevel(string $level): void
+    public function setLevel(array $level): void
     {
         $this->level = $level;
     }
@@ -298,7 +298,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @return string
      */
-    public function getPresentationLanguage(): string
+    public function getPresentationLanguage(): array
     {
         return $this->presentationLanguage;
     }
@@ -306,7 +306,7 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @param string $presentationLanguage
      */
-    public function setPresentationLanguage(string $presentationLanguage): void
+    public function setPresentationLanguage(array $presentationLanguage): void
     {
         $this->presentationLanguage = $presentationLanguage;
     }

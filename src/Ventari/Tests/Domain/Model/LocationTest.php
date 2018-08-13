@@ -35,8 +35,12 @@ class LocationTest extends AbstractTestBase
         $testClass = new Location();
         $factory   = new LocationFactory();
 
-        foreach ($input as $key => $value){
-            $property = (isset($this->locationApi[$key])) ? $this->locationApi[$key] : $this->locationApi['hotelId'];
+        foreach ($input as $key => $value) {
+            if (isset($this->locationApi[$key])) {
+                $property = $this->locationApi[$key];
+            } else {
+                $property = $this->locationApi['hotelId'];
+            }
             $this->assertClassHasAttribute($property, Location::class);
 
             $setter = 'set'.ucfirst($property);
