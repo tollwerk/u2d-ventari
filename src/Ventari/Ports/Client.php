@@ -86,6 +86,6 @@ class Client extends AbstractPort
      */
     public function getSpeakerPhoto(int $speakerId): ?array
     {
-        return $this->requestPhoto($speakerId);
+        return parent::getSpeakerPhoto($speakerId);
     }
 }
