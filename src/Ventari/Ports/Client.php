@@ -73,4 +73,11 @@ class Client extends AbstractPort
     {
         return $this->requestFile($id);
     }
+
+    public function getSpeakerPhoto(string $id): array
+    {
+        return $this->requestPhoto($id);
+    }
+
+
 }

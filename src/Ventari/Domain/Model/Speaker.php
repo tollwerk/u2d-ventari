@@ -124,7 +124,7 @@ class Speaker extends AbstractModel implements SpeakerInterface
     /**
      * @return bool
      */
-    public function isPhoto(): bool
+    public function hasPhoto(): bool
     {
         return $this->photo;
     }

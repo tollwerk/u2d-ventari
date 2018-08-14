@@ -69,6 +69,12 @@ class AbstractPort
         return null;
     }
 
+    public function requestPhoto(string $id): ?array
+    {
+        $files = $this->client->dispatchRequest('participants/'.$id.'/uploads/2026/', []);
+        return (array)$files;
+    }
+
     public function accessMakeRequest($arg1, $arg2): array
     {
         return $this->makeRequest($arg1, $arg2);

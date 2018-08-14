@@ -24,6 +24,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $Events = $App->getEvents($params);
             echo '<div class="column">';
             echo '<strong>Events</strong>';
+            echo '<br><br>';
             foreach ($Events as $event) {
 //                echo '<blockquote>';
 //                print_r($event);
@@ -44,16 +45,26 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $Speakers = $App->getSpeakers();
             echo '<div class="column">';
             echo '<strong>Speakers</strong>';
+            echo '<br><br>';
             foreach ($Speakers as $speaker) {
-                echo '<blockquote>';
-                print_r($speaker);
-                echo '</blockquote>';
+//                echo '<blockquote>';
+//                print_r($speaker);
+//                echo '</blockquote>';
+                if ($speaker->hasPhoto()){
+                    $SpeakerId = $speaker->getVentariId();
+                    $File   = $App->getSpeakerPhoto($SpeakerId);
+                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
+                } else {
+                    echo $speaker->getGivenName().' '.$speaker->getLastName();
+                }
+                echo '<br>';
             }
             echo '</div>';
 
             $Locations = $App->getLocations($params);
             echo '<div class="column">';
             echo '<strong>Locations</strong>';
+            echo '<br><br>';
 //            print_r($Locations);
             foreach ($Locations as $location) {
                 echo '<blockquote>';
@@ -65,6 +76,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $Sessions = $App->getSessions($params);
             echo '<div class="column">';
             echo '<strong>Sessions</strong>';
+            echo '<br><br>';
             foreach ($Sessions as $session) {
                 echo '<blockquote>';
                 print_r($session);
