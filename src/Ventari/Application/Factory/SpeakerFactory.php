@@ -68,10 +68,23 @@ class SpeakerFactory implements FactoryInterface
         return $speaker;
     }
 
+    /**
+     * Refine a value based on its property
+     *
+     * @param string $property Property name
+     * @param string $value Property value
+     *
+     * @return mixed Refined property value
+     */
     protected static function refineValue(string $property, $value)
     {
         $refinedValue = $value;
 
         return $refinedValue;
+    }
+
+    public function accessRefineValue(string $prop, $val)
+    {
+        return $this->refineValue($prop, $val);
     }
 }

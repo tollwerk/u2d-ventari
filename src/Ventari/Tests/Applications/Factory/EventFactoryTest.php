@@ -21,7 +21,7 @@ class EventFactoryTest extends AbstractTestBase
     /**
      * Test the Instance of EventFactory
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertInstanceOf(EventFactory::class, self::$testClass);
     }
