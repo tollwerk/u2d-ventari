@@ -23,7 +23,8 @@ class EventDateTraitTest extends AbstractTestBase
 
     public function testStartDateTime(): void
     {
-        $expectedDate = new \DateTime('now');
+        $expectedDate = new \DateTime('@0');
+//        $expectedDate = $date->getTimestamp();
         $modifiers    = [
             'year'  => $expectedDate->format('Y'),
             'month' => $expectedDate->format('n'),
@@ -42,7 +43,7 @@ class EventDateTraitTest extends AbstractTestBase
 
     public function testEndDateTime(): void
     {
-        $expectedDate = new \DateTime('now');
+        $expectedDate = new \DateTime('@0');
         $modifiers    = [
             'year'  => $expectedDate->format('Y'),
             'month' => $expectedDate->format('n'),
