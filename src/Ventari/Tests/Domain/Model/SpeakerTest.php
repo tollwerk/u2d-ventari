@@ -56,17 +56,18 @@ class SpeakerTest extends AbstractTestBase
         return [
             [
                 array(
-                    'position'   => "Position",
+                    'position'   => 'Position',
                     'speakerId'  => 175,
-                    'salutation' => "Herr",
-                    'lastname'   => "Mustermann",
+                    'salutation' => 'Herr',
+                    'lastname'   => 'Mustermann',
                     'eventId'    => 1801,
-                    'title'      => "Dr.",
-                    'firstname'  => "Max",
+                    'title'      => 'Dr.',
+                    'firstname'  => 'Max',
                     'photo'      => 1,
-                    'remark'     => "Bemerkung",
-                    'type'       => "Referent",
-                    'company'    => "u2d"
+                    'remark'     => 'Bemerkung',
+                    'type'       => 'Referent',
+                    'company'    => 'u2d',
+                    'email'      => 'john@company.de'
                 )
             ]
         ];
