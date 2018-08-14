@@ -5,6 +5,7 @@ namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Application\Contract\FactoryInterface;
 use Tollwerk\Ventari\Domain\Contract\ModelInterface;
+use Tollwerk\Ventari\Domain\Model\Participant;
 
 /**
  * Participant Factory
@@ -46,7 +47,23 @@ class ParticipantFactory implements FactoryInterface
      */
     public static function createFromJson($json): ModelInterface
     {
+        $participant = new Participant();
+        foreach ($json as $key => $value) {
+            if (!empty(self::$participantApi[$key])) {
+                $setter = 'set'.ucfirst(self::$participantApi[$key]);
+                if (\is_callable([$participant, $setter], true)){
+                    $participant->$setter(self::refineValue($key, $value));
+                }
+            }
+        }
 
+        return $participant;
     }
 
+    protected static function refineValue(string $property, $value)
+    {
+        $refinedValue = $value;
+
+        return $refinedValue;
+    }
 }
