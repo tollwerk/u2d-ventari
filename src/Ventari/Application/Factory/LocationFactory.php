@@ -44,7 +44,7 @@ class LocationFactory implements FactoryInterface
         'hotelId' => 'ventariId',
 
         // CommonInteger Trait
-        'rowNum'  => 'rowNum', // <-- Necessary?
+//        'rowNum'  => 'rowNum', // <-- Not necessary
         'eventId' => 'eventVentariId', // <-- We need this to associate this with an event
 
         'hotelAddress'   => 'streetAddress',

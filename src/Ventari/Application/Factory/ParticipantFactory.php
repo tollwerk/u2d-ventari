@@ -21,10 +21,10 @@ class ParticipantFactory implements FactoryInterface
     const FUNCTION_NAME = 'Participant';
 
     protected static $participantApi = [
-        'personId'            => 'personId',
-        'rowNum'              => 'rowNum',
-        'parentParticipantId' => 'parentParticipantId',
-        'createDate'          => 'createDate',
+        'personId'            => 'personVentariId', // <-- We need this to associate this with an event
+//        'rowNum'              => 'rowNum', // Not necessary
+//        'parentParticipantId' => 'parentParticipantId', // <-- Necessary?
+//        'createDate'          => 'createDate', // Not necessary
         'eventId'             => 'eventId',
         'hash'                => 'hash',
         'status'              => 'status',
