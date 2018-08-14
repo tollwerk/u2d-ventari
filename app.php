@@ -20,7 +20,6 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
-
             $Events = $App->getEvents($params);
             echo '<div class="column">';
             echo '<strong>Events</strong>';
@@ -53,11 +52,13 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
                 if ($speaker->hasPhoto()){
                     $SpeakerId = $speaker->getVentariId();
                     $File   = $App->getSpeakerPhoto($SpeakerId);
+                    echo $speaker->getGivenName().' '.$speaker->getLastName().'<br>';
                     echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
                 } else {
                     echo $speaker->getGivenName().' '.$speaker->getLastName();
+                    echo '<br><small>No Picture!</small><br>';
                 }
-                echo '<br>';
+                echo '<br><br>';
             }
             echo '</div>';
 

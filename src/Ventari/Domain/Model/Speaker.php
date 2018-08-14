@@ -30,7 +30,7 @@ class Speaker extends AbstractModel implements SpeakerInterface
     /**
      * @var string
      */
-    protected $lastName;
+    protected $familyName;
 
     /**
      * @var bool
@@ -108,17 +108,17 @@ class Speaker extends AbstractModel implements SpeakerInterface
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getFamilyName(): string
     {
-        return $this->lastName;
+        return $this->familyName;
     }
 
     /**
-     * @param string $lastName
+     * @param string $familyName
      */
-    public function setLastName(string $lastName): void
+    public function setFamilyName(string $familyName): void
     {
-        $this->lastName = $lastName;
+        $this->familyName = $familyName;
     }
 
     /**

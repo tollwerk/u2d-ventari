@@ -31,7 +31,7 @@ class SpeakerFactory implements FactoryInterface
         'company'    => 'organization',
         'email'      => 'email',
         'firstname'  => 'givenName',
-        'lastname'   => 'lastName',
+        'lastname'   => 'familyName',
         'photo'      => 'photo',
         'position'   => 'role',
         'remark'     => 'description',
