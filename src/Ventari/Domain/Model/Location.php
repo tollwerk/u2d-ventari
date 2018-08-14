@@ -20,50 +20,50 @@ class Location extends AbstractModel implements LocationInterface
     /**
      * @var string
      */
-    protected $streetAddress;
+    protected $streetAddress = '';
 
     /**
      * @var string
      */
-    protected $phone;
+    protected $phone = '';
 
     /**
      * @var int
      */
-    protected $postalCode;
+    protected $postalCode = 0;
 
     /**
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * @var string
      */
-    protected $locality;
+    protected $locality = '';
 
     /**
      * @var string
      */
-    protected $fax;
+    protected $fax = '';
 
     /**
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * @var int
      */
-    protected $companyId;
+    protected $companyId = 0;
     /**
      * @var float
      */
-    protected $longitude;
+    protected $longitude = 0;
     /**
      * @var float
      */
-    protected $latitude;
+    protected $latitude = 0;
 
     /**
      * @return string

@@ -18,18 +18,6 @@ class CommonIntegerTraitTest extends AbstractTestBase
         $this->testTrait = $this->getMockForTrait(CommonIntegerTrait::class);
     }
 
-    public function testRowNum(): void
-    {
-        $expectedValue = 112358;
-        $mock           = $this->testTrait;
-        $mock->setRowNum($expectedValue);
-        $mock->expects($this->any())
-             ->method('abstractMethod')
-             ->will($this->returnValue($expectedValue));
-
-        $this->assertEquals($expectedValue, $mock->getRowNum());
-    }
-
     public function testEventVentariId(): void
     {
         $expectedValue = 112358;

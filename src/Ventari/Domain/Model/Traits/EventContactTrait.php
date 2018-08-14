@@ -11,37 +11,37 @@ trait EventContactTrait
     /**
      * @var string
      */
-    protected $organizerEmail;
+    protected $organizerEmail = '';
 
     /**
      * @var string
      */
-    protected $organizerFacebook;
+    protected $organizerFacebook = '';
 
     /**
      * @var string
      */
-    protected $organizerInstagram;
+    protected $organizerInstagram = '';
 
     /**
      * @var string
      */
-    protected $organizerWebsite;
+    protected $organizerWebsite = '';
 
     /**
      * @var string
      */
-    protected $organizerLogo;
+    protected $organizerLogo = '';
 
     /**
      * @var string
      */
-    protected $organizerName;
+    protected $organizerName = '';
 
     /**
      * @var string
      */
-    protected $organizerTwitter;
+    protected $organizerTwitter = '';
 
     /**
      * @return string

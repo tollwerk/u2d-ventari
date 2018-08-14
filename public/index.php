@@ -22,6 +22,13 @@ if (strpos($request_uri[0], 'views/agenda')) {
 
 if (strpos($request_uri[0], 'files')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Files.json';
-return;
+
+    return;
 }
+
+if (strpos($request_uri[0], 'participants')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json.json';
+    return;
+}
+
 echo json_encode(['message' => 'No Route Setup']);

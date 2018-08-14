@@ -21,87 +21,87 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @var array
      */
-    protected $ventariCategories;
+    protected $ventariCategories = [];
 
     /**
      * @var boolean
      */
-    protected $chargeable;
+    protected $chargeable = false;
 
     /**
      * @var string
      */
-    protected $locality;
+    protected $locality = '';
 
     /**
      * @var string
      */
-    protected $ticketDescription;
+    protected $ticketDescription = '';
 
     /**
      * @var string
      */
-    protected $ticketPrice;
+    protected $ticketPrice = '';
 
     /**
      * @var string
      */
-    protected $description;
+    protected $description = '';
 
     /**
      * @var string
      */
-    protected $summary;
+    protected $summary = '';
 
     /**
      * @var string
      */
-    protected $image;
+    protected $image = '';
 
     /**
      * @var array
      */
-    protected $level;
+    protected $level = [];
 
     /**
      * @var int
      */
-    protected $maxParticipants;
+    protected $maxParticipants = 0;
 
     /**
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * @var string
      */
-    protected $tags;
+    protected $tags = '';
 
     /**
      * @var array
      */
-    protected $presentationLanguage;
+    protected $presentationLanguage = [];
 
     /**
      * @var string
      */
-    protected $status;
+    protected $status = '';
 
     /**
      * @var array
      */
-    protected $targetgroup;
+    protected $targetgroup = [];
 
     /**
      * @var array
      */
-    protected $tracks;
+    protected $tracks = [];
 
     /**
      * @var string
      */
-    protected $registration;
+    protected $registration = '';
 
     /**
      * @return array

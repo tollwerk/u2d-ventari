@@ -11,37 +11,37 @@ trait EventLinkTrait
     /**
      * @var string
      */
-    protected $facebookEvent;
+    protected $facebookEvent = '';
 
     /**
      * @var string
      */
-    protected $twitter;
+    protected $twitter = '';
 
     /**
      * @var string
      */
-    protected $xingEvent;
+    protected $xingEvent = '';
 
     /**
      * @var string
      */
-    protected $livestreamEmbed;
+    protected $livestreamEmbed = '';
 
     /**
      * @var string
      */
-    protected $livestream;
+    protected $livestream = '';
 
     /**
      * @var string
      */
-    protected $ticketUrl;
+    protected $ticketUrl = '';
 
     /**
      * @var string
      */
-    protected $website;
+    protected $website = '';
 
     /**
      * @return string

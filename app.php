@@ -52,10 +52,10 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
                 if ($speaker->hasPhoto()){
                     $SpeakerId = $speaker->getVentariId();
                     $File   = $App->getSpeakerPhoto($SpeakerId);
-                    echo $speaker->getGivenName().' '.$speaker->getLastName().'<br>';
+                    echo $speaker->getGivenName().' '.$speaker->getFamilyName().'<br>';
                     echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
                 } else {
-                    echo $speaker->getGivenName().' '.$speaker->getLastName();
+                    echo $speaker->getGivenName().' '.$speaker->getFamilyName();
                     echo '<br><small>No Picture!</small><br>';
                 }
                 echo '<br><br>';

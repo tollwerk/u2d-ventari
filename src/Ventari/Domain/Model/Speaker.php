@@ -15,47 +15,47 @@ class Speaker extends AbstractModel implements SpeakerInterface
     /**
      * @var string
      */
-    protected $organization;
+    protected $organization = '';
 
     /**
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * @var string
      */
-    protected $givenName;
+    protected $givenName = '';
 
     /**
      * @var string
      */
-    protected $familyName;
+    protected $familyName = '';
 
     /**
      * @var bool
      */
-    protected $photo;
+    protected $photo = false;
 
     /**
      * @var string
      */
-    protected $role;
+    protected $role = '';
 
     /**
      * @var string
      */
-    protected $description;
+    protected $description = '';
 
     /**
      * @var string
      */
-    protected $gender;
+    protected $gender = '';
 
     /**
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     /**
      * @return string

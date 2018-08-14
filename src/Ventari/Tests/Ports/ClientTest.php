@@ -40,7 +40,7 @@ class ClientTest extends AbstractTestBase
         $request = null;
         $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
         $client  = new Client($config['method'], $config['api'], $config['authentication']);
-        $request = $client->getEventLogo('D9594D0B2B5C32772312E1B6E00885A3');
+        $request = $client->getFile('D9594D0B2B5C32772312E1B6E00885A3');
         $this->assertInternalType('array', $request);
     }
 

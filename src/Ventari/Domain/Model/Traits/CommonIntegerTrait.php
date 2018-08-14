@@ -11,7 +11,7 @@ trait CommonIntegerTrait
     /**
      * @var int
      */
-    protected $eventVentariId;
+    protected $eventVentariId = 0;
 
     /**
      * @return int

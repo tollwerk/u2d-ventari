@@ -11,17 +11,17 @@ trait SessionCategoryTrait
     /**
      * @var string
      */
-    protected $categoryColor;
+    protected $categoryColor = '';
 
     /**
      * @var int
      */
-    protected $categoryId;
+    protected $categoryId = 0;
 
     /**
      * @var string
      */
-    protected $categoryName;
+    protected $categoryName = '';
 
     /**
      * @return string

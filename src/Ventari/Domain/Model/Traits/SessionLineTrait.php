@@ -11,12 +11,12 @@ trait SessionLineTrait
     /**
      * @var int
      */
-    protected $lineId;
+    protected $lineId = 0;
 
     /**
      * @var string
      */
-    protected $lineName;
+    protected $lineName = '';
 
     /**
      * @return int
