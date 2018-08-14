@@ -21,20 +21,24 @@ class ParticipantFactory implements FactoryInterface
     const FUNCTION_NAME = 'Participant';
 
     protected static $participantApi = [
-        'personId'            => 'personVentariId', // <-- We need this to associate this with an event
+        'pa_salutation' => 'title',
+        'pa_email'      => 'email',
+        'pa_firstname'  => 'givenName',
+        'pa_lastname'   => 'lastName',
+//        'personId'            => 'personVentariId', // <-- We need this to associate this with an event
 //        'rowNum'              => 'rowNum', // Not necessary
 //        'parentParticipantId' => 'parentParticipantId', // <-- Necessary?
 //        'createDate'          => 'createDate', // Not necessary
-        'eventId'             => 'eventId',
-        'hash'                => 'hash',
-        'status'              => 'status',
-        'groupId'             => 'groupId',
-        'languageId'          => 'languageId',
-        'lastModified'        => 'lastModified',
-        'originId'            => 'originId',
-        'id'                  => 'id',
-        'createdBy'           => 'createdBy',
-        'changedBy'           => 'changedBy',
+        'eventId'       => 'eventVentariId',
+//        'hash'          => 'hash',
+//        'status'        => 'status',
+//        'groupId'       => 'groupId',
+//        'languageId'    => 'languageId',
+//        'lastModified'  => 'lastModified',
+//        'originId'      => 'originId',
+        'id'            => 'ventariId',
+//        'createdBy'     => 'createdBy',
+//        'changedBy'     => 'changedBy',
     ];
 
     /**
@@ -48,10 +52,15 @@ class ParticipantFactory implements FactoryInterface
     public static function createFromJson($json): ModelInterface
     {
         $participant = new Participant();
+        if (!empty($json->fields) && is_array($json->fields)) {
+            foreach ($json->fields as $field) {
+                $json[$field->token] = $field->value;
+            }
+        }
         foreach ($json as $key => $value) {
             if (!empty(self::$participantApi[$key])) {
                 $setter = 'set'.ucfirst(self::$participantApi[$key]);
-                if (\is_callable([$participant, $setter], true)){
+                if (\is_callable([$participant, $setter], true)) {
                     $participant->$setter(self::refineValue($key, $value));
                 }
             }
