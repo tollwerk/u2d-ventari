@@ -96,9 +96,6 @@ class EventFactory implements FactoryInterface
         'event_targetgroup'            => 'targetgroup',
         'event_tracks'                 => 'tracks',
         'frontendLink'                 => 'registration',
-
-//        'event_typ'                    => 'type', // Not necessary
-//        'event_id'                     => 'id', <-- Skip this, it's redundant with id
     ];
 
     /**
@@ -139,17 +136,24 @@ class EventFactory implements FactoryInterface
 
         if (\in_array($property, self::$dateProperties, true)) {
             $refinedValue = [];
-            list($refinedValue['year'], $refinedValue['month'], $refinedValue['day']) = explode('-', $value);
+            if ($value !== '') {
+                list($refinedValue['year'], $refinedValue['month'], $refinedValue['day']) = explode('-', $value);
+            }
 
         } elseif (\in_array($property, self::$timeProperties, true)) {
             $refinedValue = [];
-            list($refinedValue['hour'], $refinedValue['minute']) = explode(':', $value);
+            if ($value !== '') {
+                list($refinedValue['hour'], $refinedValue['minute']) = explode(':', $value);
+            }
 
         } elseif (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
 
         } elseif (\in_array($property, self::$arrayProperties, true)) {
-            $refinedValue = array_filter(explode(',', $value));
+            $refinedValue = [];
+            if ($value !== '') {
+                $refinedValue = array_filter(explode(',', $value));
+            }
         }
 
         return $refinedValue;

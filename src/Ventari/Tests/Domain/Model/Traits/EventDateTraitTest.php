@@ -24,11 +24,18 @@ class EventDateTraitTest extends AbstractTestBase
     public function testStartDateTime(): void
     {
         $expectedDate = new \DateTime('now');
+        $modifiers    = [
+            'year'  => $expectedDate->format('Y'),
+            'month' => $expectedDate->format('n'),
+            'day'   => $expectedDate->format('j'),
+            'hour' => $expectedDate->format('G'),
+            'minute' => (int) ltrim($expectedDate->format('i'), '0')
+        ];
         $mock         = $this->testTrait;
-        $mock->setStartDateTime($expectedDate);
+        $mock->setStartDateTime($modifiers);
         $mock->expects($this->any())
              ->method('abstractMethodForDate')
-             ->will($this->returnValue($expectedDate));
+             ->will($this->returnValue($modifiers));
 
         $this->assertEquals($expectedDate, $mock->getStartDateTime());
     }
@@ -36,11 +43,18 @@ class EventDateTraitTest extends AbstractTestBase
     public function testEndDateTime(): void
     {
         $expectedDate = new \DateTime('now');
+        $modifiers    = [
+            'year'  => $expectedDate->format('Y'),
+            'month' => $expectedDate->format('n'),
+            'day'   => $expectedDate->format('j'),
+            'hour' => $expectedDate->format('G'),
+            'minute' => (int) ltrim($expectedDate->format('i'), '0')
+        ];
         $mock         = $this->testTrait;
-        $mock->setEndDateTime($expectedDate);
+        $mock->setEndDateTime($modifiers);
         $mock->expects($this->any())
              ->method('abstractMethodForDate')
-             ->will($this->returnValue($expectedDate));
+             ->will($this->returnValue($modifiers));
 
         $this->assertEquals($expectedDate, $mock->getEndDateTime());
     }

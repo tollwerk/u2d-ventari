@@ -49,7 +49,7 @@ trait EventDateTrait
         );
         $this->startDateTime->setTime(
             empty($modifiers['hour']) ? $this->startDateTime->format('G') : $modifiers['hour'],
-            empty($modifiers['minute']) ? intval(ltrim($this->startDateTime->format('i'), '0')) : $modifiers['minute']
+            empty($modifiers['minute']) ? (int) ltrim($this->startDateTime->format('i'), '0') : $modifiers['minute']
         );
     }
 
@@ -79,5 +79,6 @@ trait EventDateTrait
         );
     }
 
-    abstract public function abstractMethodForDate(): \DateTime;
+//    abstract public function abstractMethodForDate(): \DateTime;
+    abstract public function abstractMethodForDate(): void;
 }

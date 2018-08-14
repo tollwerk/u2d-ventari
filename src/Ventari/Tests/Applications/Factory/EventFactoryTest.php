@@ -56,7 +56,8 @@ class EventFactoryTest extends AbstractTestBase
         foreach ($input as $key => $value) {
             $actual = self::$testClass->accessRefineValue($key, $value);
             if (in_array($key, $dateProps)) {
-                $this->assertInstanceOf(\DateTime::class, $actual);
+//                $this->assertInstanceOf(\DateTime::class, $actual);
+                $this->assertInternalType('array', $actual);
             } else {
                 $this->assertInternalType('string', $actual);
             }

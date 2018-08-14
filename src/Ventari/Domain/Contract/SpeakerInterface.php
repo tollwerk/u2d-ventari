@@ -3,10 +3,10 @@
 namespace Tollwerk\Ventari\Domain\Contract;
 
 /**
- * Interface ParticipantInterface
+ * Interface SpeakerInterface
  * @package Tollwerk\Ventari\Domain\Contract
  */
-interface ParticipantInterface
+interface SpeakerInterface
 {
 
 }

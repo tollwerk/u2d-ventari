@@ -11,28 +11,7 @@ trait CommonIntegerTrait
     /**
      * @var int
      */
-    protected $rowNum;
-
-    /**
-     * @var int
-     */
     protected $eventVentariId;
-
-    /**
-     * @return int
-     */
-    public function getRowNum(): int
-    {
-        return $this->rowNum;
-    }
-
-    /**
-     * @param int $rowNum
-     */
-    public function setRowNum(int $rowNum): void
-    {
-        $this->rowNum = $rowNum;
-    }
 
     /**
      * @return int

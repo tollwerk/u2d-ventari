@@ -13,10 +13,10 @@ class DispatchController implements ControllerInterface
      * @var array
      */
     protected static $dispatchers = [
-        'events'       => 'Event',
-        'locations'    => 'Location',
-        'agenda'       => 'Session',
-        'participants' => 'Participant'
+        'events'    => 'Event',
+        'locations' => 'Location',
+        'agenda'    => 'Session',
+        'speakers'  => 'Speaker'
     ];
 
     /**
@@ -33,7 +33,9 @@ class DispatchController implements ControllerInterface
         $objects      = [];
         $factoryType  = static::$dispatchers[$function];
         $factoryClass = FactoryFactory::createFromFunction($factoryType);
-
+//        echo '<pre>';
+//        print_r($jsonObject->$function);
+//        echo '</pre>';
         foreach ($jsonObject->$function as $object) {
             $objects[] = $factoryClass::createFromJson($object);
         }

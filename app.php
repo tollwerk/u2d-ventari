@@ -21,44 +21,40 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
 
-//            $Events = $App->getEvents($params);
+            $Events = $App->getEvents($params);
             echo '<div class="column">';
-//            foreach ($Events as $event) {
-                echo '<blockquote>';
-                echo '<pre>';
+            echo '<strong>Events</strong>';
+            foreach ($Events as $event) {
+//                echo '<blockquote>';
 //                print_r($event);
-                echo '</pre>';
-                echo '</pre>';
-                echo '</blockquote>';
-//                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
-//                if ($event->getOrganizerLogo() !== '') {
-//                    $LogoId = $event->getOrganizerLogo();
-//                    $Files  = $App->getEventLogo($LogoId);
-//                    echo '<pre>';
-//                    foreach ($Files as $File) {
-//                        echo '<img src="data:'.$File->mimeType.';base64,'.$File->content.'">';
-//                    }
-//                    echo '</pre>';
-//                } else {
-//                    echo $event->getName();
-//                }
-//                echo '</a>';
-//                echo '<br>';
-//            }
+//                echo '</blockquote>';
+                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
+                if ($event->getOrganizerLogo() !== '') {
+                    $LogoId = $event->getOrganizerLogo();
+                    $File   = $App->getFile($LogoId);
+                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
+                } else {
+                    echo $event->getName();
+                }
+                echo '</a>';
+                echo '<br>';
+            }
             echo '</div>';
 
-            $Spearkers = $App->getSpeakers(['filterEventId' => 1876]);
+            $Speakers = $App->getSpeakers();
             echo '<div class="column">';
-            foreach ($Spearkers as $spearker) {
+            echo '<strong>Speakers</strong>';
+            foreach ($Speakers as $speaker) {
                 echo '<blockquote>';
-                print_r($spearker);
+                print_r($speaker);
                 echo '</blockquote>';
             }
             echo '</div>';
 
             $Locations = $App->getLocations($params);
             echo '<div class="column">';
-            //            print_r($Locations);
+            echo '<strong>Locations</strong>';
+//            print_r($Locations);
             foreach ($Locations as $location) {
                 echo '<blockquote>';
                 print_r($location);
@@ -68,6 +64,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $Sessions = $App->getSessions($params);
             echo '<div class="column">';
+            echo '<strong>Sessions</strong>';
             foreach ($Sessions as $session) {
                 echo '<blockquote>';
                 print_r($session);

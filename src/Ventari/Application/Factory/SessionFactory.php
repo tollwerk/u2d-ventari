@@ -35,7 +35,6 @@ class SessionFactory implements FactoryInterface
         'sessionId'            => 'ventariId',
 
         // CommonInteger Traits
-        'rowNum'               => 'rowNum', // <-- Necessary?
         'eventId'              => 'eventVentariId', // <-- We need this to associate this with an event
 
         // SessionCategory Traits
@@ -104,7 +103,7 @@ class SessionFactory implements FactoryInterface
 
     public function accessDateProperties(): array
     {
-        return self::$dateProperties;
+        return self::$timeProperties;
     }
 
     public function accessSessionApi(): array

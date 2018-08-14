@@ -24,11 +24,6 @@ class Client extends AbstractPort
         return $this->makeRequest('events', $params);
     }
 
-    public function getSpeakers(array $params = []): array
-    {
-        return $this->makeRequest('participants', $params);
-    }
-
     /**
      * Return all locations
      *
@@ -53,6 +48,17 @@ class Client extends AbstractPort
     public function getSessions(array $params = []): array
     {
         return $this->makeRequest('views/agenda', $params);
+    }
+
+    /**
+     * Return all speakers
+     * @param array $params
+     *
+     * @return array
+     */
+    public function getSpeakers(array $params = []): array
+    {
+        return $this->makeRequest('views/speakers', $params);
     }
 
     /**
