@@ -26,8 +26,15 @@ if (strpos($request_uri[0], 'files')) {
     return;
 }
 
+if (strpos($request_uri[0], 'views/speakers')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Speakers.json';
+
+    return;
+}
+
 if (strpos($request_uri[0], 'participants')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json';
+
     return;
 }
 

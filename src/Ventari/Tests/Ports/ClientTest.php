@@ -29,6 +29,9 @@ class ClientTest extends AbstractTestBase
         if ($function == 'views/agenda') {
             $request = $client->getSessions($params);
         }
+        if ($function == 'views/speakers'){
+            $request = $client->getSpeakers($params);
+        }
         $this->assertInternalType('array', $request);
     }
 
@@ -60,6 +63,7 @@ class ClientTest extends AbstractTestBase
             ['events', ['eventId' => 1080]],
             ['views/locations', ['hotelId' => 2191]],
             ['views/agenda', ['session_id' => 3302]],
+            ['views/speakers', ['id' => 186]]
         ];
     }
 }
