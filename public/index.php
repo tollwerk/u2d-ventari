@@ -27,7 +27,7 @@ if (strpos($request_uri[0], 'files')) {
 }
 
 if (strpos($request_uri[0], 'participants')) {
-    require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json.json';
+    require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json';
     return;
 }
 

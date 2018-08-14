@@ -40,8 +40,18 @@ class ClientTest extends AbstractTestBase
         $request = null;
         $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
         $client  = new Client($config['method'], $config['api'], $config['authentication']);
-        $request = $client->getFile('D9594D0B2B5C32772312E1B6E00885A3');
+        $request = $client->getFile('hash1234');
         $this->assertInternalType('array', $request);
+    }
+
+    public function testRequestPhoto(): void
+    {
+        $request = null;
+        $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
+        $client  = new Client($config['method'], $config['api'], $config['authentication']);
+        $request = $client->getSpeakerPhoto('186');
+        $this->assertInternalType('array', $request);
+
     }
 
     public function requestProvider(): array
