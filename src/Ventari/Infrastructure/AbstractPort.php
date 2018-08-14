@@ -69,9 +69,17 @@ class AbstractPort
         return null;
     }
 
-    public function requestPhoto(string $id): ?array
+    /**
+     * Request a speaker photo
+     *
+     * @param int $speakerId Speaker ID
+     *
+     * @return array Photo
+     */
+    public function getSpeakerPhoto(int $speakerId): ?array
     {
-        $files = $this->client->dispatchRequest('participants/'.$id.'/uploads/2026/', []);
+        $files = $this->client->dispatchRequest('participants/'.$speakerId.'/uploads/2026/', []);
+
         return (array)$files;
     }
 

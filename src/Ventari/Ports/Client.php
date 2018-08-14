@@ -52,9 +52,11 @@ class Client extends AbstractPort
 
     /**
      * Return all speakers
+     *
      * @param array $params
      *
-     * @return array
+     * @return array Speakers
+     * @api
      */
     public function getSpeakers(array $params = []): array
     {
@@ -74,10 +76,16 @@ class Client extends AbstractPort
         return $this->requestFile($id);
     }
 
-    public function getSpeakerPhoto(string $id): array
+    /**
+     * Get a speaker photo
+     *
+     * @param int $speakerId Speaker ID
+     *
+     * @return array Photo
+     * @api
+     */
+    public function getSpeakerPhoto(int $speakerId): ?array
     {
-        return $this->requestPhoto($id);
+        return $this->requestPhoto($speakerId);
     }
-
-
 }
