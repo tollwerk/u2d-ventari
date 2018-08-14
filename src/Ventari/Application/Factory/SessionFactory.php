@@ -49,8 +49,8 @@ class SessionFactory implements FactoryInterface
         // Session Model
         'sessionName'          => 'name',
         'sessionRemark'        => 'remark',
-        'sessionStart'         => 'startTime',
-        'sessionEnd'           => 'endTime',
+        'sessionStart'         => 'startDateTime',
+        'sessionEnd'           => 'endDateTime',
         'sessionRoom'          => 'room',
     ];
 

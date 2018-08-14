@@ -31,17 +31,26 @@ class Session extends AbstractModel implements SessionInterface
     /**
      * @var \DateTime
      */
-    protected $startTime;
+    protected $startDateTime;
 
     /**
      * @var \DateTime
      */
-    protected $endTime;
+    protected $endDateTime;
 
     /**
      * @var string
      */
     protected $room = '';
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->startDateTime = new \DateTime('@0');
+        $this->endDateTime   = new \DateTime('@0');
+    }
 
     /**
      * @return string
@@ -78,33 +87,33 @@ class Session extends AbstractModel implements SessionInterface
     /**
      * @return \DateTime
      */
-    public function getStartTime(): \DateTime
+    public function getStartDateTime(): \DateTime
     {
-        return $this->startTime;
+        return $this->startDateTime;
     }
 
     /**
-     * @param \DateTime $startTime
+     * @param \DateTime $startDateTime
      */
-    public function setStartTime(\DateTime $startTime): void
+    public function setStartDateTime(\DateTime $startDateTime): void
     {
-        $this->startTime = $startTime;
+        $this->startDateTime = $startDateTime;
     }
 
     /**
      * @return \DateTime
      */
-    public function getEndTime(): \DateTime
+    public function getEndDateTime(): \DateTime
     {
-        return $this->endTime;
+        return $this->endDateTime;
     }
 
     /**
-     * @param \DateTime $endTime
+     * @param \DateTime $endDateTime
      */
-    public function setEndTime(\DateTime $endTime): void
+    public function setEndDateTime(\DateTime $endDateTime): void
     {
-        $this->endTime = $endTime;
+        $this->endDateTime = $endDateTime;
     }
 
     /**
