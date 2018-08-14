@@ -13,9 +13,10 @@ class DispatchController implements ControllerInterface
      * @var array
      */
     protected static $dispatchers = [
-        'events'    => 'Event',
-        'locations' => 'Location',
-        'agenda'    => 'Session'
+        'events'       => 'Event',
+        'locations'    => 'Location',
+        'agenda'       => 'Session',
+        'participants' => 'Participant'
     ];
 
     /**

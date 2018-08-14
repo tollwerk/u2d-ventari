@@ -21,12 +21,13 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
 
-            $Events = $App->getEvents($params);
+//            $Events = $App->getEvents($params);
             echo '<div class="column">';
-            foreach ($Events as $event) {
+//            foreach ($Events as $event) {
                 echo '<blockquote>';
                 echo '<pre>';
-                print_r($event);
+//                print_r($event);
+                echo '</pre>';
                 echo '</pre>';
                 echo '</blockquote>';
 //                echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
@@ -43,6 +44,15 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 //                }
 //                echo '</a>';
 //                echo '<br>';
+//            }
+            echo '</div>';
+
+            $Spearkers = $App->getSpeakers(['filterEventId' => 1876]);
+            echo '<div class="column">';
+            foreach ($Spearkers as $spearker) {
+                echo '<blockquote>';
+                print_r($spearker);
+                echo '</blockquote>';
             }
             echo '</div>';
 

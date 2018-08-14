@@ -24,6 +24,11 @@ class Client extends AbstractPort
         return $this->makeRequest('events', $params);
     }
 
+    public function getSpeakers(array $params = []): array
+    {
+        return $this->makeRequest('participants', $params);
+    }
+
     /**
      * Return all locations
      *

@@ -3,106 +3,128 @@
     "resultCount": 3,
     "participants": [
       {
-        "static_fields": {
-          "personId": "",
-          "changeDate": "April, 01 2015 10:43:33",
-          "statusId": 0,
-          "groupId": "",
-          "RowNum": 1,
-          "parentParticipantId": "",
-          "languageId": 1,
-          "createDate": "March, 12 2015 13:14:47",
-          "originId": 1,
-          "eventId": 1881,
-          "createdBy": "Nießen, Stefan",
-          "changedBy": "Nießen, Stefan"
-        },
-        "dynamic_fields": [
+        "personId": "",
+        "fields": [
           {
-            "mapping_token": "pa_email",
-            "pv_value": "e.schwahn@mail.de",
-            "anz_param_id": 7
+            "anzParamId": 7,
+            "value": "ft@u2d.de",
+            "token": "pa_email"
           },
           {
-            "mapping_token": "pa_salutation",
-            "pv_value": 15,
-            "anz_param_id": 51
+            "anzParamId": 2,
+            "value": "Max",
+            "token": "pa_firstname"
           },
           {
-            "mapping_token": "pa_surname",
-            "pv_value": "Schwahn",
-            "anz_param_id": 1
+            "anzParamId": 1,
+            "value": "Mustermann",
+            "token": "pa_lastname"
+          },
+          {
+            "anzParamId": 51,
+            "value": 14,
+            "token": "pa_salutation"
           }
         ],
-        "id": 42940
+        "rowNum": 1,
+        "parentParticipantId": "",
+        "createDate": "July, 25 2018 18:24:31",
+        "eventId": 1876,
+        "hash": "FCDA9ED4FACD83FCC16CEEBF535B92",
+        "status": 4,
+        "groupId": "",
+        "languageId": 1,
+        "lastModified": "July, 25 2018 18:24:31",
+        "originId": 4,
+        "id": 185,
+        "createdBy": "teilnehmer",
+        "changedBy": "teilnehmer"
       },
       {
-        "static_fields": {
-          "personId": "",
-          "changeDate": "April, 01 2015 10:36:15",
-          "statusId": 0,
-          "groupId": "",
-          "RowNum": 2,
-          "parentParticipantId": "",
-          "languageId": 1,
-          "createDate": "March, 12 2015 13:14:52",
-          "originId": 1,
-          "eventId": 1881,
-          "createdBy": "Nießen, Stefan",
-          "changedBy": "Nießen, Stefan"
-        },
-        "dynamic_fields": [
+        "personId": "",
+        "fields": [
           {
-            "mapping_token": "pa_email",
-            "pv_value": "s.nuss@mail.de",
-            "anz_param_id": 7
+            "anzParamId": 7,
+            "value": "ft@u2d.de",
+            "token": "pa_email"
           },
           {
-            "mapping_token": "pa_salutation",
-            "pv_value": 15,
-            "anz_param_id": 51
+            "anzParamId": 2,
+            "value": "Donald",
+            "token": "pa_firstname"
           },
           {
-            "mapping_token": "pa_surname",
-            "pv_value": "Nuss",
-            "anz_param_id": 1
+            "anzParamId": 1,
+            "value": "Duck",
+            "token": "pa_lastname"
+          },
+          {
+            "anzParamId": 51,
+            "value": 14,
+            "token": "pa_salutation"
+          },
+          {
+            "anzParamId": 2024,
+            "value": 506,
+            "token": "pa_type"
           }
         ],
-        "id": 42970
+        "rowNum": 2,
+        "parentParticipantId": "",
+        "createDate": "July, 25 2018 18:41:15",
+        "eventId": 1876,
+        "hash": "69955DF0CB1506854D4486157B873A",
+        "status": 0,
+        "groupId": "",
+        "languageId": 1,
+        "lastModified": "August, 02 2018 09:40:44",
+        "originId": 1,
+        "id": 186,
+        "createdBy": "Tschoepe2, Florian",
+        "changedBy": "Tschoepe, Florian"
       },
       {
-        "static_fields": {
-          "personId": "",
-          "changeDate": "April, 01 2015 10:35:48",
-          "statusId": 0,
-          "groupId": "",
-          "RowNum": 3,
-          "parentParticipantId": "",
-          "languageId": 1,
-          "createDate": "March, 12 2015 13:15:12",
-          "originId": 1,
-          "eventId": 1881,
-          "createdBy": "Nießen, Stefan",
-          "changedBy": "Nießen, Stefan"
-        },
-        "dynamic_fields": [
+        "personId": "",
+        "fields": [
           {
-            "mapping_token": "pa_email",
-            "pv_value": "s.ottweil@mail.it",
-            "anz_param_id": 7
+            "anzParamId": 7,
+            "value": "ft@u2d.de",
+            "token": "pa_email"
           },
           {
-            "mapping_token": "pa_salutation",
-            "pv_value": 15,
-            "anz_param_id": 51
+            "anzParamId": 2,
+            "value": "Micky",
+            "token": "pa_firstname"
           },
           {
-            "mapping_token": "pa_surname",
-            "pv_value": "Ottweil",
-            "anz_param_id": 1
+            "anzParamId": 1,
+            "value": "Mouse",
+            "token": "pa_lastname"
+          },
+          {
+            "anzParamId": 51,
+            "value": 14,
+            "token": "pa_salutation"
+          },
+          {
+            "anzParamId": 2024,
+            "value": 506,
+            "token": "pa_type"
           }
         ],
-        "id": 43106
+        "rowNum": 3,
+        "parentParticipantId": "",
+        "createDate": "August, 02 2018 09:43:50",
+        "eventId": 1876,
+        "hash": "F584C6D1BCEC52982FC86BF8634811",
+        "status": 0,
+        "groupId": "",
+        "languageId": 1,
+        "lastModified": "August, 02 2018 09:44:33",
+        "originId": 1,
+        "id": 194,
+        "createdBy": "Tschoepe, Florian",
+        "changedBy": "Tschoepe, Florian"
       }
     ]
   },
