@@ -87,4 +87,9 @@ class SpeakerFactory implements FactoryInterface
     {
         return $this->refineValue($prop, $val);
     }
+
+    public function accessSpeakerApi(): array
+    {
+        return self::$speakerApi;
+    }
 }
