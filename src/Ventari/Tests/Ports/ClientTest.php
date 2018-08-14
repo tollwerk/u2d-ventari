@@ -44,7 +44,7 @@ class ClientTest extends AbstractTestBase
         $this->assertInternalType('array', $request);
     }
 
-    public function testRequestPhoto(): void
+    public function testGetSpeakerPhoto(): void
     {
         $request = null;
         $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
