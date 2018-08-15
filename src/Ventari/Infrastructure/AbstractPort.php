@@ -93,25 +93,25 @@ class AbstractPort
      */
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
-        $response = null;
-        $filter   = [
+        $userValid = false;
+        $response  = null;
+        $filter    = [
             'filterEventId' => $eventId,
             'filterFields'  => [
                 'pa_email' => $participantEmail,
             ],
         ];
 
-        /**
-         * Check that participant is already registered to the event
-         */
+
         $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
 
         if ($clientResponse->resultCount) {
-            $response = $clientResponse->participants;
+            $userValid = true;
+            $response  = $clientResponse->participants;
         } else {
             $participant = $this->getRegisteredEvents($participantEmail);
 
-            $filter      = [
+            $filter = [
                 'eventId' => $eventId,
                 'fields'  => [
                     'pa_email' => $participantEmail,
@@ -124,21 +124,27 @@ class AbstractPort
             $response   = $submission;
         }
 
-        echo '<pre>';
-        print_r($response[0]);
-        echo '</pre>';
+        $email = '';
 
-        $email = 'placeholder@server.net';
+        if ($userValid) {
+            /** Valid User */
+            $personId = $response[0]->personId;
+            $fields   = $response[0]->fields;
+        } else {
+            /** Invalid User */
+            $personId = $response->participants[0]->personId;
+            $fields   = $response->participants[0]->fields;
+        }
 
-        foreach ($response[0]->fields as $field){
-            if ($field->token === 'pa_email'){
+        foreach ($fields as $field) {
+            if ($field->token === 'pa_email') {
                 $email = $field->value;
             }
         }
 
         return [
-            'personId' => $response[0]->personId,
-            'email' => $email
+            'personId' => $personId,
+            'email'    => $email
         ];
     }
 
