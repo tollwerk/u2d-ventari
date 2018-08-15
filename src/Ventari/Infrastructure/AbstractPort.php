@@ -94,40 +94,52 @@ class AbstractPort
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
         $response = null;
-        $filter = [
+        $filter   = [
             'filterEventId' => $eventId,
             'filterFields'  => [
                 'pa_email' => $participantEmail,
             ],
         ];
 
+        /**
+         * Check that participant is already registered to the event
+         */
         $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
 
-//        echo '<pre>';
-//        print_r($clientResponse);
-//        echo '</pre>';
-
         if ($clientResponse->resultCount) {
-            echo '<h3>User Exists: </h3>';
-            $response = $this->getRegisteredEvents($participantEmail);
+            $response = $clientResponse->participants;
         } else {
-            echo '<h3>User Does Not Exists: </h3>';
-            $response = $this->getRegisteredEvents($participantEmail);
-            if (count($response) <= 0){
-                $filter = [
-                    'eventId' => $eventId,
-                    'fields'  => [
-                        'pa_email' => $participantEmail,
-                    ],
-                ];
-                $submission = $this->client->dispatchCurlSubmission('participants/', $filter);
-                $response = $submission->participants;
+            $participant = $this->getRegisteredEvents($participantEmail);
+
+            $filter      = [
+                'eventId' => $eventId,
+                'fields'  => [
+                    'pa_email' => $participantEmail,
+                ]
+            ];
+            if (count($participant) > 0) {
+                $filter['personId'] = $participant[0]->personId;
+            }
+            $submission = $this->client->dispatchCurlSubmission('participants/', $filter);
+            $response   = $submission;
+        }
+
+        echo '<pre>';
+        print_r($response[0]);
+        echo '</pre>';
+
+        $email = 'placeholder@server.net';
+
+        foreach ($response[0]->fields as $field){
+            if ($field->token === 'pa_email'){
+                $email = $field->value;
             }
         }
 
-        echo '<br>';
-
-        return $response;
+        return [
+            'personId' => $response[0]->personId,
+            'email' => $email
+        ];
     }
 
     /**
@@ -139,16 +151,21 @@ class AbstractPort
      */
     protected function getRegisteredEvents(string $participantEmail): ?array
     {
-        $filter = [
+        $_events = [];
+        $filter  = [
             'filterActiveEvents' => 1,
-            'filterFields'  => [
+            'filterFields'       => [
                 'pa_email' => $participantEmail,
             ],
         ];
 
-        $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
+        $events = $this->client->dispatchCurlRequest('participants/', $filter);
 
-        return $clientResponse->participants;
+        foreach ($events->participants as $event) {
+            $_events[] = $event->eventId;
+        }
+
+        return $_events;
     }
 
     /**

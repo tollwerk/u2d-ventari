@@ -59,10 +59,11 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
 
 
                         try {
+                            if ($_GET['function'] === 'registerForEvent') {
+                                $data = $App->registerForEvent($participantEmail, (int)$eventId);
+                            }
                             if ($_GET['function'] === 'getRegisteredEvents') {
                                 $data = $App->getRegisteredEvents($participantEmail);
-                            } else {
-                                $data = $App->registerForEvent($participantEmail, (int)$eventId);
                             }
                         } catch (\Exception $e) {
                             echo 'CAUGHT EXCEPTION: '.$e->getMessage();
