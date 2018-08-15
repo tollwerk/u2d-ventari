@@ -59,7 +59,7 @@ class AbstractPort
      *
      * @return array|null File
      */
-    protected function requestFile(string $id): ?array
+    protected function getFile(string $id): ?array
     {
         $files = $this->client->dispatchRequest('files/'.$id, [])->files;
         if (count($files)) {
@@ -76,13 +76,89 @@ class AbstractPort
      *
      * @return array Photo
      */
-    public function getSpeakerPhoto(int $speakerId): ?array
+    protected function getSpeakerPhoto(int $speakerId): ?array
     {
         $files = $this->client->dispatchRequest('participants/'.$speakerId.'/uploads/2026/', []);
 
         return (array)$files;
     }
 
+    /**
+     * Register for Event
+     *
+     * @param string $participantEmail
+     * @param int $eventId
+     *
+     * @return array|null
+     */
+    protected function registerForEvent(string $participantEmail, int $eventId): ?array
+    {
+        $response = null;
+        $filter = [
+            'filterEventId' => $eventId,
+            'filterFields'  => [
+                'pa_email' => $participantEmail,
+            ],
+        ];
+
+        $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
+
+//        echo '<pre>';
+//        print_r($clientResponse);
+//        echo '</pre>';
+
+        if ($clientResponse->resultCount) {
+            echo '<h3>User Exists: </h3>';
+            $response = $this->getRegisteredEvents($participantEmail);
+        } else {
+            echo '<h3>User Does Not Exists: </h3>';
+            $response = $this->getRegisteredEvents($participantEmail);
+            if (count($response) <= 0){
+                $filter = [
+                    'eventId' => $eventId,
+                    'fields'  => [
+                        'pa_email' => $participantEmail,
+                    ],
+                ];
+                $submission = $this->client->dispatchCurlSubmission('participants/', $filter);
+                $response = $submission->participants;
+            }
+        }
+
+        echo '<br>';
+
+        return $response;
+    }
+
+    /**
+     * Registered Events
+     *
+     * @param string $participantEmail
+     *
+     * @return array|null
+     */
+    protected function getRegisteredEvents(string $participantEmail): ?array
+    {
+        $filter = [
+            'filterActiveEvents' => 1,
+            'filterFields'  => [
+                'pa_email' => $participantEmail,
+            ],
+        ];
+
+        $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
+
+        return $clientResponse->participants;
+    }
+
+    /**
+     * For Testing Purposes Only
+     *
+     * @param $arg1
+     * @param $arg2
+     *
+     * @return array
+     */
     public function accessMakeRequest($arg1, $arg2): array
     {
         return $this->makeRequest($arg1, $arg2);

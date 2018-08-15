@@ -21,7 +21,7 @@ class Client extends AbstractPort
      */
     public function getEvents(array $params = []): array
     {
-        return $this->makeRequest('events', $params);
+        return parent::makeRequest('events', $params);
     }
 
     /**
@@ -34,7 +34,7 @@ class Client extends AbstractPort
      */
     public function getLocations(array $params = []): array
     {
-        return $this->makeRequest('views/locations', $params);
+        return parent::makeRequest('views/locations', $params);
     }
 
     /**
@@ -47,7 +47,7 @@ class Client extends AbstractPort
      */
     public function getSessions(array $params = []): array
     {
-        return $this->makeRequest('views/agenda', $params);
+        return parent::makeRequest('views/agenda', $params);
     }
 
     /**
@@ -60,7 +60,7 @@ class Client extends AbstractPort
      */
     public function getSpeakers(array $params = []): array
     {
-        return $this->makeRequest('views/speakers', $params);
+        return parent::makeRequest('views/speakers', $params);
     }
 
     /**
@@ -73,7 +73,7 @@ class Client extends AbstractPort
      */
     public function getFile(string $id): array
     {
-        return $this->requestFile($id);
+        return parent::getFile($id);
     }
 
     /**
@@ -87,5 +87,32 @@ class Client extends AbstractPort
     public function getSpeakerPhoto(int $speakerId): ?array
     {
         return parent::getSpeakerPhoto($speakerId);
+    }
+
+    /**
+     * Register for Event
+     *
+     * @param string $participantEmail
+     * @param int $eventId
+     *
+     * @return array|null
+     * @api
+     */
+    public function registerForEvent(string $participantEmail, int $eventId): ?array
+    {
+        return parent::registerForEvent($participantEmail, $eventId);
+    }
+
+    /**
+     * Return all registered|active events
+     *
+     * @param string $participantEmail
+     *
+     * @return array|null
+     * @api
+     */
+    public function getRegisteredEvents(string $participantEmail): ?array
+    {
+        return parent::getRegisteredEvents($participantEmail);
     }
 }

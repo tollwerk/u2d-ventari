@@ -8,13 +8,33 @@ pre {
     font-size: 1rem;
     color: lawngreen;
 }
+
 blockquote {
     color: white;
-    background-color:black;
+    background-color: black;
     line-height: 1.2;
     word-wrap: break-word;
 }
+form {
+    display: flex;
+    flex-wrap: wrap;
+}
+input {
+    padding-left:1em;
+    height: 30px;
+    width: 15rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid purple;
+}
 
+input[type=submit] {
+    margin-top: 15px;
+    color: purple;
+    background-color: mediumvioletred;
+    width:100%;
+}
 .content {
     font-size: 1em;
 }
@@ -28,11 +48,16 @@ blockquote {
     background: purple;
 }
 
+.formField {
+    margin: 2px;
+    width: 100%;
+}
+
 label {
     color: white;
 }
 
-a  {
+a {
     display: flex;
     color: white;
     padding: 1rem;
