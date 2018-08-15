@@ -58,7 +58,8 @@ class EventFactory implements FactoryInterface
         'event_contact_email'          => 'organizerEmail',
         'event_contact_facebook'       => 'organizerFacebook',
         'event_contact_instagram'      => 'organizerInstagram',
-        'event_contact_links'          => 'organizerWebsite',
+        'event_contact_other_links'    => 'organizerOtherLink', // <--
+        'event_contact_website'        => 'organizerWebsite', // <--
         'event_contact_logo'           => 'organizerLogo',
         'event_contact_name'           => 'organizerName',
         'event_contact_twitter_handle' => 'organizerTwitter',

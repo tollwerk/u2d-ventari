@@ -26,6 +26,11 @@ trait EventContactTrait
     /**
      * @var string
      */
+    protected $organizerOtherLink = '';
+
+    /**
+     * @var string
+     */
     protected $organizerWebsite = '';
 
     /**
@@ -89,6 +94,22 @@ trait EventContactTrait
     public function setOrganizerInstagram(string $organizerInstagram): void
     {
         $this->organizerInstagram = $organizerInstagram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganizerOtherLink(): string
+    {
+        return $this->organizerOtherLink;
+    }
+
+    /**
+     * @param string $organizerOtherLink
+     */
+    public function setOrganizerOtherLink(string $organizerOtherLink): void
+    {
+        $this->organizerOtherLink = $organizerOtherLink;
     }
 
     /**
