@@ -108,7 +108,7 @@ class AbstractPort
         ];
 
 //        try {
-            $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
+        $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
 //        } catch($e) {
 //            echo $e;
 //        }
@@ -190,6 +190,29 @@ class AbstractPort
         }
 
         return $_events;
+    }
+
+    protected function getEventParticipants(): ?array
+    {
+        $eventIds         = [];
+        $participantCount = [];
+        try {
+            $events = $this->client->dispatchRequest('events', []);
+        } catch (\Exception $exception) {
+            echo '<h3>Fail! </h3>';
+            echo $exception;
+        }
+
+        foreach ($events->events as $event) {
+            $eventIds[] = $event->event_id;
+        }
+
+        foreach ($eventIds as $event) {
+            $participants       = $this->client->dispatchRequest('participants', ['filterEventId' => $event]);
+            $participantCount[$event] = $participants->resultCount;
+        }
+
+        return $participantCount;
     }
 
     /**

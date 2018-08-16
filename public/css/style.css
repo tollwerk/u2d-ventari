@@ -48,6 +48,12 @@ input[type=submit] {
     background: purple;
 }
 
+.responsive {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
 .formField {
     margin: 2px;
     width: 100%;

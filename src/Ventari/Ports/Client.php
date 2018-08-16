@@ -115,4 +115,14 @@ class Client extends AbstractPort
     {
         return parent::getRegisteredEvents($participantEmail);
     }
+
+    /**
+     * Return Events with Participant Count
+     * @return array|null
+     * @api
+     */
+    public function getEventParticipants(): ?array
+    {
+        return parent::getEventParticipants();
+    }
 }

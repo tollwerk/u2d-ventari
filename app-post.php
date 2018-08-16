@@ -45,6 +45,11 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                 </form>
                 <hr>
 
+                <h3 style="margin-bottom:0;">Additional Methods</h3>
+                <form action="?function=getParticipantCounts" method="post">
+                    <input type="submit" value="GET PARTICIPANT COUNTS">
+                </form>
+
                 <br><a href="app-post.php">RESET</a>
             </div>
 
@@ -54,9 +59,11 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
 
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $config = require __DIR__.DIRECTORY_SEPARATOR.'config/config.php';
-                        $App    = new \Tollwerk\Ventari\Ports\Client($config['method'], $config['api'],
-                            $config['authentication']);
-
+                        $App    = new \Tollwerk\Ventari\Ports\Client(
+                            $config['method'],
+                            $config['api'],
+                            $config['authentication']
+                        );
 
                         try {
                             if ($_GET['function'] === 'registerForEvent') {
@@ -64,6 +71,10 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                             }
                             if ($_GET['function'] === 'getRegisteredEvents') {
                                 $data = $App->getRegisteredEvents($participantEmail);
+                            }
+                            if ($_GET['function'] === 'getParticipantCounts') {
+//                                $data = $App->getRegisteredEvents('ft@u2d.de');
+                                $data = $App->getEventParticipants();
                             }
                         } catch (\Exception $e) {
                             echo 'CAUGHT EXCEPTION: '.$e->getMessage();

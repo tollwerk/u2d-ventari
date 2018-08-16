@@ -58,7 +58,7 @@ class HttpClient implements HttpClientInterface
      * @param string $request
      * @param array $params
      *
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \stdClass
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dispatchRequest(string $request, array $params): \stdClass

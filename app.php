@@ -32,7 +32,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
                 if ($event->getOrganizerLogo() !== '') {
                     $LogoId = $event->getOrganizerLogo();
                     $File   = $App->getFile($LogoId);
-                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
+                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'" width="100%" class="responsive">';
                 } else {
                     echo $event->getName();
                 }
@@ -53,7 +53,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
                     $SpeakerId = $speaker->getVentariId();
                     $File   = $App->getSpeakerPhoto($SpeakerId);
                     echo $speaker->getGivenName().' '.$speaker->getFamilyName().'<br>';
-                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'">';
+                    echo '<img src="data:'.$File['mimeType'].';base64,'.$File['content'].'" width="100%">';
                 } else {
                     echo $speaker->getGivenName().' '.$speaker->getFamilyName();
                     echo '<br><small>No Picture!</small><br>';

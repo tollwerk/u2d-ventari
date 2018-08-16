@@ -7,6 +7,7 @@ use Tollwerk\Ventari\Application\Factory\EventFactory;
 use Tollwerk\Ventari\Application\Factory\LocationFactory;
 use Tollwerk\Ventari\Application\Factory\SessionFactory;
 use Tollwerk\Ventari\Application\Factory\SpeakerFactory;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
 class FactoryFactory
 {
@@ -34,12 +35,11 @@ class FactoryFactory
         /**
          * TODO: Implement Runtime Exceptions
          */
-//        if (isset(static::$factories[$function])) {
-//            throw new RuntimeException(
-//                sprintf(RuntimeException::METHOD_UNDEFINED_STR, $function),
-//                RuntimeException::METHOD_UNDEFINED
-//            );
-//        }
+
+        if (!isset(static::$factories[$function])) {
+            throw new RuntimeException(sprintf(RuntimeException::METHOD_UNDEFINED_STR, $function),
+                RuntimeException::METHOD_UNDEFINED);
+        }
 
         return static::$factories[$function];
     }
