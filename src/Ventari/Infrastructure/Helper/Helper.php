@@ -34,4 +34,14 @@ class Helper
 
         return $output;
     }
+
+    public static function createFrontendLink($eventId, $participantId, $participantHash, $languageId) {
+        $link  = "/tms/frontend/index.cfm";
+        $link .= "?l=" . $eventId;
+        $link .= "&amp;id=" . $participantId;
+        $link .= "&amp;sp_id=" . $languageId;
+        $link .= "&amp;dat_h=" . $participantHash;
+
+        return $link;
+    }
 }

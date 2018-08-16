@@ -3,6 +3,8 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 
 class HttpClient implements HttpClientInterface

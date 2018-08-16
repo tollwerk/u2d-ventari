@@ -3,22 +3,31 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
-use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
+use GuzzleHttp\Psr7;
+use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
+
 
 /**
  * Class CurlClient
  * @package Tollwerk\Ventari\Infrastructure
  */
-class CurlClient implements HttpClientInterface
+class CurlClient implements CurlClientInterface
 {
     /**
      * Guzzle Client
      * @var \GuzzleHttp\Client $guzzle
      */
     protected $guzzle;
+
+    /**
+     * Guzzle Client's Request Method
+     * @var string
+     */
+    protected $method;
 
     /**
      * Guzzle Client's REST URL
@@ -35,10 +44,11 @@ class CurlClient implements HttpClientInterface
     /**
      * CurlClient constructor.
      *
+     * @param string $method
      * @param string $baseUrl
      * @param array $authentication
      */
-    public function __construct(string $baseUrl, array $authentication)
+    public function __construct(string $method, string $baseUrl, array $authentication)
     {
         $handler      = new CurlHandler();
         $stack        = HandlerStack::create($handler);
@@ -46,6 +56,7 @@ class CurlClient implements HttpClientInterface
             'handler' => $stack
         ]);
 
+        $this->method         = $method;
         $this->baseUrl        = $baseUrl;
         $this->authentication = ['auth' => [$authentication['username'], $authentication['password']]];
     }
@@ -65,17 +76,23 @@ class CurlClient implements HttpClientInterface
         $query = '?'.Helper::queryBuilder($params);
 
         try {
-            $res = curl_init($this->baseUrl.'/'.$request.'/'.$query);
-            curl_setopt($res, CURLOPT_USERPWD, $this->authentication['auth'][0].":".$this->authentication['auth'][1]);
-            curl_setopt($res, CURLOPT_TIMEOUT, 30);
-            curl_setopt($res, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($res, CURLOPT_RETURNTRANSFER, true);
-
+            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
+                'curl' => [
+                    CURLOPT_USERPWD        => $this->authentication['auth'][0].":".$this->authentication['auth'][1],
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_SSL_VERIFYPEER => false,
+                    CURLOPT_RETURNTRANSFER => true
+                ]
+            ]);
         } catch (RequestException $e) {
-            echo $e;
+            echo 'Fail!<br>';
+            echo Psr7\str($e->getRequest());
+            if ($e->hasResponse()) {
+                echo Psr7\str($e->getResponse());
+            }
         }
 
-        $result = curl_exec($res);
+        $result = $res->getBody();
 
         return json_decode((string)$result)->responseData;
     }

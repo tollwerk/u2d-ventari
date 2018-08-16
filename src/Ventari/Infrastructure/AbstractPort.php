@@ -2,6 +2,8 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
+use Tollwerk\Ventari\Infrastructure\Helper\Helper;
+
 
 /**
  * Class AbstractPort
@@ -33,7 +35,7 @@ class AbstractPort
     public function __construct(string $method, string $api, array $authentication)
     {
         $this->client     = new HttpClient($method, $api, $authentication);
-        $this->handler    = new CurlClient($api, $authentication);
+        $this->handler    = new CurlClient($method, $api, $authentication);
         $this->dispatcher = new DispatchController();
     }
 
@@ -125,27 +127,34 @@ class AbstractPort
             $response   = $submission;
         }
 
+        echo '<pre>';
+        print_r($response);
+        echo '</pre>';
+
         $email = '';
 
         if ($userValid) {
             /** Valid User */
-            $personId = $response[0]->personId;
-            $fields   = $response[0]->fields;
+            $resource = $response[0];
         } else {
             /** Invalid User */
-            $personId = $response->participants[0]->personId;
-            $fields   = $response->participants[0]->fields;
+            $resource = $response->participants[0];
         }
 
-        foreach ($fields as $field) {
+        foreach ($resource->fields as $field) {
             if ($field->token === 'pa_email') {
                 $email = $field->value;
             }
         }
 
         return [
-            'personId' => $personId,
-            'email'    => $email
+            'personId' => $resource->personId,
+            'email'    => $email,
+            'link'     => Helper::createFrontendLink(
+                $resource->eventId,
+                $resource->personId,
+                $resource->hash,
+                $resource->languageId)
         ];
     }
 
@@ -167,9 +176,10 @@ class AbstractPort
         ];
 
         $events = $this->handler->dispatchRequest('participants/', $filter);
-
-        foreach ($events->participants as $event) {
-            $_events[] = $event->eventId;
+        if (isset($events->participants)) {
+            foreach ($events->participants as $event) {
+                $_events[] = $event->eventId;
+            }
         }
 
         return $_events;
