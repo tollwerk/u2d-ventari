@@ -48,7 +48,7 @@ class Session extends AbstractModel implements SessionInterface
      */
     public function __construct()
     {
-        $dateTimeZone = new \DateTimeZone('CET');
+        $dateTimeZone = new \DateTimeZone('Europe/Berlin');
         $this->startDateTime = new \DateTime('@0');
         $this->startDateTime->setTimezone($dateTimeZone);
         $this->endDateTime   = new \DateTime('@0');
