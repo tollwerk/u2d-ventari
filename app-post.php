@@ -38,7 +38,7 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                 <form action="?function=getRegisteredEvents" method="post">
                     <div class="formField">
                         <label for="email">E-Mail:</label>
-                        <input type="text" id="email" name="email" value="ft@u2d.de"
+                        <input type="text" id="email" name="email" value="<?php echo $participantEmail; ?>"
                                placeholder="Attendee Email Address">
                     </div>
                     <input type="submit">

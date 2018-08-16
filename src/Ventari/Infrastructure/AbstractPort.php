@@ -2,8 +2,6 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
-use Tollwerk\Ventari\Infrastructure\Helper\Helper;
-
 
 /**
  * Class AbstractPort
@@ -96,7 +94,10 @@ class AbstractPort
      */
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
-        $baseUrl = 'https://events.nueww.de';
+        /**
+         * TODO: Improve integration of baseUrl
+         */
+        $baseUrl   = 'https://events.nueww.de';
         $userValid = false;
         $response  = null;
         $filter    = [
@@ -106,16 +107,23 @@ class AbstractPort
             ],
         ];
 
+//        try {
+            $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
+//        } catch($e) {
+//            echo $e;
+//        }
 
-        $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
+        echo '<pre>';
+        echo '<h3>$clientResponse: </h3>';
+        print_r($clientResponse);
+        echo '</pre>';
 
         if ($clientResponse->resultCount) {
             $userValid = true;
             $response  = $clientResponse->participants;
         } else {
             $participant = $this->getRegisteredEvents($participantEmail);
-
-            $filter = [
+            $filter      = [
                 'eventId' => $eventId,
                 'fields'  => [
                     'pa_email' => $participantEmail,
@@ -127,10 +135,6 @@ class AbstractPort
             $submission = $this->handler->dispatchSubmission('participants/', $filter);
             $response   = $submission;
         }
-
-        echo '<pre>';
-        print_r($response);
-        echo '</pre>';
 
         $email = '';
 
@@ -152,11 +156,13 @@ class AbstractPort
             'personId' => $resource->personId,
             'email'    => $email,
             'link'     => $baseUrl.Helper::createFrontendLink(
-                $resource->eventId,
-                $resource->personId,
-                $resource->hash,
-                $resource->languageId)
+                    $resource->eventId,
+                    $resource->personId,
+                    $resource->hash,
+                    $resource->languageId)
         ];
+
+//        return [];
     }
 
     /**

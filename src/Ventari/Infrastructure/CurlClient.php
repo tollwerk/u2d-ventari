@@ -72,8 +72,9 @@ class CurlClient implements CurlClientInterface
     public function dispatchRequest(string $request, array $params): \stdClass
     {
         // TODO: Implement dispatchRequest() method.
-        $res   = null;
-        $query = '?'.Helper::queryBuilder($params);
+        $result = '{"responseData":{"message":"400"},"responseStatus":200}';
+        $res    = null;
+        $query  = '?'.Helper::queryBuilder($params);
 
         try {
             $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
@@ -85,14 +86,28 @@ class CurlClient implements CurlClientInterface
                 ]
             ]);
         } catch (RequestException $e) {
+            echo '<pre>';
             echo 'Fail!<br>';
             echo Psr7\str($e->getRequest());
+            echo '</pre>';
             if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+                echo '<pre>';
+                echo 'But there is a Message';
+                echo '</pre>';
+//                echo Psr7\str($e->getResponse());
+            } else {
+                echo '<pre>';
+                echo 'No Response';
+                echo '</pre>';
             }
         }
+        echo '<br><br><br>';
 
         $result = $res->getBody();
+
+        echo '<pre>';
+//        print_r($result);
+        echo '</pre>';
 
         return json_decode((string)$result)->responseData;
     }
