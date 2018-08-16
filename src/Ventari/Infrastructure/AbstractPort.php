@@ -96,6 +96,7 @@ class AbstractPort
      */
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
+        $baseUrl = 'https://events.nueww.de';
         $userValid = false;
         $response  = null;
         $filter    = [
@@ -150,7 +151,7 @@ class AbstractPort
         return [
             'personId' => $resource->personId,
             'email'    => $email,
-            'link'     => Helper::createFrontendLink(
+            'link'     => $baseUrl.Helper::createFrontendLink(
                 $resource->eventId,
                 $resource->personId,
                 $resource->hash,
