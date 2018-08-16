@@ -2,7 +2,10 @@
 
 namespace Tollwerk\Ventari\Domain\Contract;
 
-interface HttpClientInterface
+
+interface CurlClientInterface
 {
     public function dispatchRequest(string $request, array $params);
+
+    public function dispatchSubmission(string $request, array $params);
 }

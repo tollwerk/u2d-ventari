@@ -33,6 +33,7 @@ class AbstractPort
     public function __construct(string $method, string $api, array $authentication)
     {
         $this->client     = new HttpClient($method, $api, $authentication);
+        $this->handler    = new CurlClient($api, $authentication);
         $this->dispatcher = new DispatchController();
     }
 
@@ -103,7 +104,7 @@ class AbstractPort
         ];
 
 
-        $clientResponse = $this->client->dispatchCurlRequest('participants/', $filter);
+        $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
 
         if ($clientResponse->resultCount) {
             $userValid = true;
@@ -120,7 +121,7 @@ class AbstractPort
             if (count($participant) > 0) {
                 $filter['personId'] = $participant[0]->personId;
             }
-            $submission = $this->client->dispatchCurlSubmission('participants/', $filter);
+            $submission = $this->handler->dispatchSubmission('participants/', $filter);
             $response   = $submission;
         }
 
@@ -165,7 +166,7 @@ class AbstractPort
             ],
         ];
 
-        $events = $this->client->dispatchCurlRequest('participants/', $filter);
+        $events = $this->handler->dispatchRequest('participants/', $filter);
 
         foreach ($events->participants as $event) {
             $_events[] = $event->eventId;
