@@ -208,7 +208,8 @@ class AbstractPort
         }
 
         foreach ($eventIds as $event) {
-            $participants       = $this->client->dispatchRequest('participants', ['filterEventId' => $event]);
+            $participants = $this->client->dispatchRequest('participants', ['filterEventId' => $event]);
+
             $participantCount[$event] = $participants->resultCount;
         }
 

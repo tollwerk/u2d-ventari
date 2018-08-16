@@ -3,9 +3,10 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
 class HttpClient implements HttpClientInterface
 {
@@ -63,20 +64,22 @@ class HttpClient implements HttpClientInterface
      */
     public function dispatchRequest(string $request, array $params): \stdClass
     {
+        $body  = '{"responseData":{"message":"400"},"responseStatus":200}';
         $res   = null;
         $query = '?'.http_build_query($params);
 
         try {
             $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $this->authentication);
-        } catch (RequestException $e) {
-            echo Psr7\str($e->getRequest());
-            if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+            $body = $res->getBody();
+        } catch (RequestException $exception) {
+            if ($exception->hasResponse()){
+                echo Psr7\str($exception->getRequest());
             }
+            throw new RuntimeException(Psr7\str($exception->getRequest()), $exception->getCode());
         }
 
-        $body = $res->getBody();
-
         return json_decode((string)$body)->responseData;
+
+
     }
 }

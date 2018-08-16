@@ -32,10 +32,6 @@ class FactoryFactory
      */
     public static function createFromFunction(string $function)
     {
-        /**
-         * TODO: Implement Runtime Exceptions
-         */
-
         if (!isset(static::$factories[$function])) {
             throw new RuntimeException(sprintf(RuntimeException::METHOD_UNDEFINED_STR, $function),
                 RuntimeException::METHOD_UNDEFINED);
