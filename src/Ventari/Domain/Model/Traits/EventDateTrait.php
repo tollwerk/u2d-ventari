@@ -23,8 +23,11 @@ trait EventDateTrait
      */
     public function __construct()
     {
+        $dateTimeZone = new \DateTimeZone('CET');
         $this->startDateTime = new \DateTime('@0');
+        $this->startDateTime->setTimezone($dateTimeZone);
         $this->endDateTime   = new \DateTime('@0');
+        $this->endDateTime->setTimezone($dateTimeZone);
     }
 
     /**
