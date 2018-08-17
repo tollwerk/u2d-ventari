@@ -196,9 +196,6 @@ class AbstractPort
 
         $events = $this->handler->dispatchRequest('participants', $filter);
 
-        echo '<pre>';
-        print_r($events);
-        echo '</pre>';
         if (isset($events->participants)) {
             foreach ($events->participants as $event) {
                 $_events[] = $event->eventId;
