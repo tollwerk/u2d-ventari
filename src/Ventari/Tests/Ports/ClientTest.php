@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Tests\Ports;
 
 use Tollwerk\Ventari\Ports\Client;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
@@ -29,7 +30,7 @@ class ClientTest extends AbstractTestBase
         if ($function == 'views/agenda') {
             $request = $client->getSessions($params);
         }
-        if ($function == 'views/speakers'){
+        if ($function == 'views/speakers') {
             $request = $client->getSpeakers($params);
         }
         $this->assertInternalType('array', $request);
@@ -55,6 +56,19 @@ class ClientTest extends AbstractTestBase
         $request = $client->getSpeakerPhoto('186');
         $this->assertInternalType('array', $request);
 
+    }
+
+    public function testRuntimException(): void
+    {
+        $exceptionMessage = 'RuntimeException Tester';
+        $exceptionCode    = 0000;
+        $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
+
+        echo '---';
+        echo $testClass->getMessage();
+        echo '---';
+
+        $this->assertEquals($exceptionMessage, $testClass->getMessage());
     }
 
     public function requestProvider(): array
