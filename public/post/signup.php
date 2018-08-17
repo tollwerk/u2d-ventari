@@ -19,8 +19,8 @@ function createFrontendLink($eventId, $participantId, $participantHash, $languag
 // 3 = zugesagt dhg / 4 = zugesagt / 9 = warteliste / 11 = nachnominiert
 define("STATUS_ZUGESAGT", array(3, 4, 9, 11));
 
-$frmEmail = isset($_POST["email"]) ? $_POST["email"] : "ft@u2d.de";
-$frmEvent = isset($_POST["event"]) ? $_POST["event"] : "";
+$frmEmail = isset($_POST["email"]) ? $_POST["email"] : "tester@tollwerk.de"; //ft@u2d.de
+$frmEvent = isset($_POST["event"]) ? $_POST["event"] : "1876";
 
 $username = "nueww_interface";
 $password = "E24C45166E503DDE23169435BEBB3B4C";

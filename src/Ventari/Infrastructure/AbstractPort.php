@@ -2,6 +2,9 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Helper\Helper;
+
 
 /**
  * Class AbstractPort
@@ -15,6 +18,13 @@ class AbstractPort
      * @var HttpClient $client
      */
     protected $client;
+
+    /**
+     * CURL client
+     *
+     * @var CurlClient $handler
+     */
+    protected $handler;
 
     /**
      * Dispatcher
@@ -47,10 +57,17 @@ class AbstractPort
      */
     protected function makeRequest(string $function, array $params): array
     {
-        $clientResponse = $this->client->dispatchRequest($function, $params);
-        $function       = str_replace('views/', '', $function);
+        $dispatchResponse = [];
+        $clientResponse   = $this->client->dispatchRequest($function, $params);
+        $function         = str_replace('views', '', $function);
 
-        return $this->dispatcher->dispatch($function, $clientResponse);
+        try {
+            $dispatchResponse = $this->dispatcher->dispatch($function, $clientResponse);
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        return $dispatchResponse;
     }
 
     /**
@@ -62,7 +79,7 @@ class AbstractPort
      */
     protected function getFile(string $id): ?array
     {
-        $files = $this->client->dispatchRequest('files/'.$id, [])->files;
+        $files = $this->client->dispatchRequest('files'.$id, [])->files;
         if (count($files)) {
             return (array)array_shift($files);
         }
@@ -94,75 +111,70 @@ class AbstractPort
      */
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
+        $clientResponse = null;
         /**
          * TODO: Improve integration of baseUrl
          */
         $baseUrl   = 'https://events.nueww.de';
-        $userValid = false;
         $response  = null;
-        $filter    = [
-            'filterEventId' => $eventId,
-            'filterFields'  => [
-                'pa_email' => $participantEmail,
-            ],
-        ];
 
-//        try {
-        $clientResponse = $this->handler->dispatchRequest('participants/', $filter);
-//        } catch($e) {
-//            echo $e;
-//        }
+        try {
+            $clientResponse = $this->handler->dispatchRequest('participants', [
+                'filterEventId' => $eventId,
+                'filterFields'  => [
+                    'pa_email' => $participantEmail,
+                ],
+            ]);
+        } catch (RuntimeException $exception) {
+            echo $exception->getMessage();
+        }
 
-        echo '<pre>';
-        echo '<h3>$clientResponse: </h3>';
-        print_r($clientResponse);
-        echo '</pre>';
 
         if ($clientResponse->resultCount) {
-            $userValid = true;
-            $response  = $clientResponse->participants;
+            $response  = $clientResponse->participants[0];
         } else {
-            $participant = $this->getRegisteredEvents($participantEmail);
-            $filter      = [
+            $clientResponse = $this->handler->dispatchRequest('participants', [
+                'filterActiveEvents' => 1,
+                'filterFields'       => [
+                    'pa_email' => $participantEmail
+                ]
+            ]);
+
+            $filter = [
                 'eventId' => $eventId,
                 'fields'  => [
                     'pa_email' => $participantEmail,
                 ]
             ];
-            if (count($participant) > 0) {
-                $filter['personId'] = $participant[0]->personId;
+
+            if ($clientResponse->resultCount !== 0) {
+                $filter['personId'] = $clientResponse->participants[0]->personId;
             }
-            $submission = $this->handler->dispatchSubmission('participants/', $filter);
-            $response   = $submission;
+
+            /**
+             * About to make submission with or without the personId
+             */
+            $submission = $this->handler->dispatchSubmission('participants', $filter);
+            $response = $submission->participants[0];
         }
 
         $email = '';
 
-        if ($userValid) {
-            /** Valid User */
-            $resource = $response[0];
-        } else {
-            /** Invalid User */
-            $resource = $response->participants[0];
-        }
-
-        foreach ($resource->fields as $field) {
+        foreach ($response->fields as $field) {
             if ($field->token === 'pa_email') {
                 $email = $field->value;
             }
         }
 
         return [
-            'personId' => $resource->personId,
+            'personId' => $response->personId,
             'email'    => $email,
             'link'     => $baseUrl.Helper::createFrontendLink(
-                    $resource->eventId,
-                    $resource->personId,
-                    $resource->hash,
-                    $resource->languageId)
+                    $response->eventId,
+                    $response->personId,
+                    $response->hash,
+                    $response->languageId)
         ];
-
-//        return [];
     }
 
     /**
@@ -182,7 +194,11 @@ class AbstractPort
             ],
         ];
 
-        $events = $this->handler->dispatchRequest('participants/', $filter);
+        $events = $this->handler->dispatchRequest('participants', $filter);
+
+        echo '<pre>';
+        print_r($events);
+        echo '</pre>';
         if (isset($events->participants)) {
             foreach ($events->participants as $event) {
                 $_events[] = $event->eventId;

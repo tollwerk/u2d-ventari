@@ -3,7 +3,6 @@
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
 use Tollwerk\Ventari\Infrastructure\AbstractPort;
-use Tollwerk\Ventari\Infrastructure\DispatchController;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class AbstractPortTest extends AbstractTestBase
@@ -15,7 +14,7 @@ class AbstractPortTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
-        $config = require dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
+        $config = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
         self::$testClass = new AbstractPort($config['method'], $config['api'], $config['authentication']);
     }
 

@@ -67,17 +67,18 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
 
                         try {
                             if ($_GET['function'] === 'registerForEvent') {
-                                $data = $App->registerForEvent($participantEmail, (int)$eventId);
+                                $data = $App->registerForEvent((string)$participantEmail, (int)$eventId);
                             }
                             if ($_GET['function'] === 'getRegisteredEvents') {
-                                $data = $App->getRegisteredEvents($participantEmail);
+                                $data = $App->getRegisteredEvents((string)$participantEmail);
                             }
                             if ($_GET['function'] === 'getParticipantCounts') {
-//                                $data = $App->getRegisteredEvents('ft@u2d.de');
                                 $data = $App->getEventParticipants();
                             }
                         } catch (\Exception $e) {
-                            echo 'CAUGHT EXCEPTION: '.$e->getMessage();
+                            echo '<pre>';
+                            echo 'CAUGHT EXCEPTION: '.$e->getMessage().'<br>';
+                            echo '</pre>';
                         }
 
                         echo 'Response:';

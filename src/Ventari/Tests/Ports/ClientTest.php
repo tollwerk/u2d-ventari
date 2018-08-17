@@ -9,6 +9,17 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class ClientTest extends AbstractTestBase
 {
     /**
+     * @var array
+     */
+    protected static $config;
+
+    public static function setUpBeforeClass()
+    {
+        self::$config = require \dirname(__DIR__,
+                4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
+    }
+
+    /**
      * Test Make Request
      * @var $function string
      * @var $params   array
@@ -18,9 +29,7 @@ class ClientTest extends AbstractTestBase
     public function testMakeRequest($function, $params): void
     {
         $request = null;
-        $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-        $client  = new Client($config['method'], $config['api'], $config['authentication']);
-
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         if ($function == 'events') {
             $request = $client->getEvents($params);
         }
@@ -36,14 +45,10 @@ class ClientTest extends AbstractTestBase
         $this->assertInternalType('array', $request);
     }
 
-    /**
-     * Test Request File
-     */
     public function testRequestFile(): void
     {
         $request = null;
-        $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-        $client  = new Client($config['method'], $config['api'], $config['authentication']);
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getFile('hash1234');
         $this->assertInternalType('array', $request);
     }
@@ -51,23 +56,29 @@ class ClientTest extends AbstractTestBase
     public function testGetSpeakerPhoto(): void
     {
         $request = null;
-        $config  = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-        $client  = new Client($config['method'], $config['api'], $config['authentication']);
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getSpeakerPhoto('186');
         $this->assertInternalType('array', $request);
 
     }
 
-    public function testRuntimException(): void
+    public function testRegisterForEvent(): void
+    {
+        $participantEmail = 'email@server.net';
+        $eventId          = 1123;
+        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request          = $client->registerForEvent($participantEmail, $eventId);
+
+        echo '<pre>';
+        print_r($request);
+        echo '</pre>';
+    }
+
+    public function testRuntimeException(): void
     {
         $exceptionMessage = 'RuntimeException Tester';
         $exceptionCode    = 0000;
         $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
-
-        echo '---';
-        echo $testClass->getMessage();
-        echo '---';
-
         $this->assertEquals($exceptionMessage, $testClass->getMessage());
     }
 

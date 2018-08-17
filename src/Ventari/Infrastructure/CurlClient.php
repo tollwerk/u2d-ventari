@@ -79,7 +79,7 @@ class CurlClient implements CurlClientInterface
         try {
             $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
                 'curl' => [
-                    CURLOPT_USERPWD        => $this->authentication['auth'][0].":".$this->authentication['auth'][1],
+                    CURLOPT_USERPWD        => $this->authentication['auth'][0].':'.$this->authentication['auth'][1],
                     CURLOPT_TIMEOUT        => 30,
                     CURLOPT_SSL_VERIFYPEER => false,
                     CURLOPT_RETURNTRANSFER => true
@@ -140,59 +140,74 @@ class CurlClient implements CurlClientInterface
     {
         $res = null;
 
-        try {
-            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/', [
-                'curl' => [
-                    CURLOPT_USERPWD        => $this->authentication['auth'][0].":".$this->authentication['auth'][1],
-                    CURLOPT_POST           => 1,
-                    CURLOPT_POSTFIELDS     => json_encode($params),
-                    CURLOPT_HTTPHEADER     => array('Content-Type:application/json'),
-                    CURLOPT_TIMEOUT        => 30,
-                    CURLOPT_SSL_VERIFYPEER => false,
-                    CURLOPT_RETURNTRANSFER => true,
+        $requestData = json_encode($params);
 
-                ]
-            ]);
-            $body = $res->getBody();
-        } catch (RequestException $exception) {
-            echo 'RequestException'.PHP_EOL;
+        $process = curl_init($this->baseUrl.'/'.$request.'/');
 
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
+        curl_setopt($process, CURLOPT_USERPWD, $this->authentication['auth'][0].':'.$this->authentication['auth'][1]);
+        curl_setopt($process, CURLOPT_POST, 1);
+        curl_setopt($process, CURLOPT_POSTFIELDS, $requestData);
+        curl_setopt($process, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($process, CURLOPT_TIMEOUT, 30);
+        curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
 
-            throw new RuntimeException(
-                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
-                PHP_EOL.Psr7\str($exception->getRequest()),
-                RuntimeException::METHOD_CURLCLIENT
-            );
-
-        } catch (GuzzleException $exception) {
-            echo 'GuzzleException'.PHP_EOL;
-
-            throw new RuntimeException(
-                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
-                PHP_EOL.$exception->getMessage(),
-                RuntimeException::DEPENDENCY_EXCEPTION
-            );
-        }
-
-        try {
-            $dispatchReponse = json_decode((string)$body)->responseData;
-        } catch (RequestException $exception) {
-            echo 'RequestException'.PHP_EOL;
-
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
-
-            throw new RuntimeException(
-                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
-                PHP_EOL.$exception->getMessage(),
-                RuntimeException::METHOD_CURLCLIENT
-            );
-        }
-
-        return $dispatchReponse;
+        $result = curl_exec($process);
+        $json = json_decode($result);
+        return $json->responseData;
+//        try {
+//            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/', [
+//                'curl' => [
+//                    CURLOPT_USERPWD        => $this->authentication['auth'][0].':'.$this->authentication['auth'][1],
+//                    CURLOPT_POST           => 1,
+//                    CURLOPT_POSTFIELDS     => $requestData,
+//                    CURLOPT_HTTPHEADER     => array('Content-Type:application/json'),
+//                    CURLOPT_TIMEOUT        => 30,
+//                    CURLOPT_SSL_VERIFYPEER => false,
+//                    CURLOPT_RETURNTRANSFER => true,
+//
+//                ]
+//            ]);
+//            $body = $res->getBody();
+//        } catch (RequestException $exception) {
+//            echo 'RequestException'.PHP_EOL;
+//
+//            if ($exception->hasResponse()) {
+//                echo Psr7\str($exception->getRequest());
+//            }
+//
+//            throw new RuntimeException(
+//                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
+//                PHP_EOL.Psr7\str($exception->getRequest()),
+//                RuntimeException::METHOD_CURLCLIENT
+//            );
+//
+//        } catch (GuzzleException $exception) {
+//            echo 'GuzzleException'.PHP_EOL;
+//
+//            throw new RuntimeException(
+//                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
+//                PHP_EOL.$exception->getMessage(),
+//                RuntimeException::DEPENDENCY_EXCEPTION
+//            );
+//        }
+//
+//        try {
+//            $dispatchReponse = json_decode((string)$body)->responseData;
+//        } catch (RequestException $exception) {
+//            echo 'RequestException'.PHP_EOL;
+//
+//            if ($exception->hasResponse()) {
+//                echo Psr7\str($exception->getRequest());
+//            }
+//
+//            throw new RuntimeException(
+//                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
+//                PHP_EOL.$exception->getMessage(),
+//                RuntimeException::METHOD_CURLCLIENT
+//            );
+//        }
+//
+//        return $dispatchReponse;
     }
 }
