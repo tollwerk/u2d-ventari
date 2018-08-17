@@ -56,6 +56,7 @@ class LocationFactory implements FactoryInterface
         'companyId'      => 'companyId',
         'longitude'      => 'longitude',
         'latitude'       => 'latitude',
+        'hotelRoom'      => 'room'
     ];
 
     /**
@@ -105,6 +106,7 @@ class LocationFactory implements FactoryInterface
     {
         return self::$intProperties;
     }
+
     public function accessLocationApi(): array
     {
         return self::$locationApi;

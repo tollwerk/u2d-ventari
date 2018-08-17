@@ -45,6 +45,11 @@ class Location extends AbstractModel implements LocationInterface
     /**
      * @var string
      */
+    protected $room = '';
+
+    /**
+     * @var string
+     */
     protected $fax = '';
 
     /**
@@ -143,6 +148,22 @@ class Location extends AbstractModel implements LocationInterface
     public function setLocality(string $locality): void
     {
         $this->locality = $locality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoom(): string
+    {
+        return $this->room;
+    }
+
+    /**
+     * @param string $room
+     */
+    public function setRoom(string $room): void
+    {
+        $this->room = $room;
     }
 
     /**
