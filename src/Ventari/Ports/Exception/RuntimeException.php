@@ -58,6 +58,10 @@ class RuntimeException extends \Tollwerk\Ventari\Infrastructure\Exception\Runtim
      * @var string
      */
     public const DEPENDENCY_EXCEPTION_STR = 'Guzzle Exception Caught';
+
+    public const RESPONSE_PERSONID = 9998;
+    public const RESPONSE_PERSONID_STR = 'Missing Value: "%s"';
+
     /**
      * @var null|Throwable
      */

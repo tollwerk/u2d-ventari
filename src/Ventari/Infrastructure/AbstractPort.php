@@ -2,8 +2,8 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
-use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 
 /**
@@ -59,7 +59,7 @@ class AbstractPort
     {
         $dispatchResponse = [];
         $clientResponse   = $this->client->dispatchRequest($function, $params);
-        $function         = str_replace('views/', '', $function);
+        $function         = str_replace('views/ ', '', $function);
 
         try {
             $dispatchResponse = $this->dispatcher->dispatch($function, $clientResponse);
@@ -139,6 +139,13 @@ class AbstractPort
                     'pa_email' => $participantEmail
                 ]
             ]);
+
+            if (isset($clientResponse->participants[0]->personId)){
+                throw new RuntimeException(
+                    sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
+                    RuntimeException::RESPONSE_PERSONID
+                );
+            }
 
             $filter = [
                 'eventId' => $eventId,
