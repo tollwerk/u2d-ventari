@@ -115,8 +115,9 @@ class AbstractPort
         /**
          * TODO: Improve integration of baseUrl
          */
-        $baseUrl   = 'https://events.nueww.de';
-        $response  = null;
+        $baseUrl  = 'https://events.nueww.de';
+        $response = null;
+        $email    = '';
 
         try {
             $clientResponse = $this->handler->dispatchRequest('participants', [
@@ -131,7 +132,7 @@ class AbstractPort
 
 
         if ($clientResponse->resultCount) {
-            $response  = $clientResponse->participants[0];
+            $response = $clientResponse->participants[0];
         } else {
             $clientResponse = $this->handler->dispatchRequest('participants', [
                 'filterActiveEvents' => 1,
@@ -140,7 +141,7 @@ class AbstractPort
                 ]
             ]);
 
-            if (isset($clientResponse->participants[0]->personId)){
+            if (isset($clientResponse->participants[0]->personId)) {
                 throw new RuntimeException(
                     sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
                     RuntimeException::RESPONSE_PERSONID
@@ -162,10 +163,16 @@ class AbstractPort
              * About to make submission with or without the personId
              */
             $submission = $this->handler->dispatchSubmission('participants', $filter);
-            $response = $submission->participants[0];
+            $response   = $submission->participants[0];
         }
 
-        $email = '';
+
+        if (isset($response->personId)) {
+            throw new RuntimeException(
+                sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
+                RuntimeException::RESPONSE_PERSONID
+            );
+        }
 
         foreach ($response->fields as $field) {
             if ($field->token === 'pa_email') {
