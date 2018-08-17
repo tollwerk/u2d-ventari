@@ -3,11 +3,13 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 
 
@@ -71,13 +73,11 @@ class CurlClient implements CurlClientInterface
      */
     public function dispatchRequest(string $request, array $params): \stdClass
     {
-        // TODO: Implement dispatchRequest() method.
-        $result = '{"responseData":{"message":"400"},"responseStatus":200}';
-        $res    = null;
-        $query  = '?'.Helper::queryBuilder($params);
+        $res   = null;
+        $query = '?'.Helper::queryBuilder($params);
 
         try {
-            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
+            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
                 'curl' => [
                     CURLOPT_USERPWD        => $this->authentication['auth'][0].":".$this->authentication['auth'][1],
                     CURLOPT_TIMEOUT        => 30,
@@ -85,31 +85,47 @@ class CurlClient implements CurlClientInterface
                     CURLOPT_RETURNTRANSFER => true
                 ]
             ]);
-        } catch (RequestException $e) {
-            echo '<pre>';
-            echo 'Fail!<br>';
-            echo Psr7\str($e->getRequest());
-            echo '</pre>';
-            if ($e->hasResponse()) {
-                echo '<pre>';
-                echo 'But there is a Message';
-                echo '</pre>';
-//                echo Psr7\str($e->getResponse());
-            } else {
-                echo '<pre>';
-                echo 'No Response';
-                echo '</pre>';
+            $body = $res->getBody();
+        } catch (RequestException $exception) {
+            echo 'RequestException'.PHP_EOL;
+
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
             }
+
+            throw new RuntimeException(
+                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
+                PHP_EOL.Psr7\str($exception->getRequest()),
+                RuntimeException::METHOD_CURLCLIENT
+            );
+
+        } catch (GuzzleException $exception) {
+            echo 'GuzzleException'.PHP_EOL;
+
+            throw new RuntimeException(
+                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
+                PHP_EOL.$exception->getMessage(),
+                RuntimeException::DEPENDENCY_EXCEPTION
+            );
         }
-        echo '<br><br><br>';
 
-        $result = $res->getBody();
+        try {
+            $dispatchResponse = json_decode((string)$body)->responseData;
+        } catch (RequestException $exception) {
+            echo 'RequestException'.PHP_EOL;
 
-        echo '<pre>';
-//        print_r($result);
-        echo '</pre>';
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
+            }
 
-        return json_decode((string)$result)->responseData;
+            throw new RuntimeException(
+                RuntimeException::METHOD_CURLCLIENT_STR.' : '.
+                $exception->getCode(),
+                RuntimeException::METHOD_CURLCLIENT
+            );
+        }
+
+        return $dispatchResponse;
     }
 
     /**
@@ -125,20 +141,58 @@ class CurlClient implements CurlClientInterface
         $res = null;
 
         try {
-            $res = curl_init($this->baseUrl.'/'.$request.'/');
-            curl_setopt($res, CURLOPT_USERPWD, $this->authentication['auth'][0].":".$this->authentication['auth'][1]);
-            curl_setopt($res, CURLOPT_POST, 1);
-            curl_setopt($res, CURLOPT_POSTFIELDS, json_encode($params));
-            curl_setopt($res, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            curl_setopt($res, CURLOPT_TIMEOUT, 30);
-            curl_setopt($res, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($res, CURLOPT_RETURNTRANSFER, true);
-        } catch (RequestExceptions $e) {
-            echo $e;
+            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/', [
+                'curl' => [
+                    CURLOPT_USERPWD        => $this->authentication['auth'][0].":".$this->authentication['auth'][1],
+                    CURLOPT_POST           => 1,
+                    CURLOPT_POSTFIELDS     => json_encode($params),
+                    CURLOPT_HTTPHEADER     => array('Content-Type:application/json'),
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_SSL_VERIFYPEER => false,
+                    CURLOPT_RETURNTRANSFER => true,
+
+                ]
+            ]);
+            $body = $res->getBody();
+        } catch (RequestException $exception) {
+            echo 'RequestException'.PHP_EOL;
+
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
+            }
+
+            throw new RuntimeException(
+                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
+                PHP_EOL.Psr7\str($exception->getRequest()),
+                RuntimeException::METHOD_CURLCLIENT
+            );
+
+        } catch (GuzzleException $exception) {
+            echo 'GuzzleException'.PHP_EOL;
+
+            throw new RuntimeException(
+                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
+                PHP_EOL.$exception->getMessage(),
+                RuntimeException::DEPENDENCY_EXCEPTION
+            );
         }
 
-        $result = curl_exec($res);
+        try {
+            $dispatchReponse = json_decode((string)$body)->responseData;
+        } catch (RequestException $exception) {
+            echo 'RequestException'.PHP_EOL;
 
-        return json_decode((string)$result)->responseData;
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
+            }
+
+            throw new RuntimeException(
+                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
+                PHP_EOL.$exception->getMessage(),
+                RuntimeException::METHOD_CURLCLIENT
+            );
+        }
+
+        return $dispatchReponse;
     }
 }

@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
@@ -60,26 +61,65 @@ class HttpClient implements HttpClientInterface
      * @param array $params
      *
      * @return \stdClass
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dispatchRequest(string $request, array $params): \stdClass
     {
-        $body  = '{"responseData":{"message":"400"},"responseStatus":200}';
         $res   = null;
         $query = '?'.http_build_query($params);
 
+        /**
+         * Attempt to make Request
+         */
         try {
-            $res = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, $this->authentication);
+            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query,
+                $this->authentication);
             $body = $res->getBody();
         } catch (RequestException $exception) {
-            if ($exception->hasResponse()){
+            echo 'RequestException'.PHP_EOL;
+
+            if ($exception->hasResponse()) {
                 echo Psr7\str($exception->getRequest());
             }
-            throw new RuntimeException(Psr7\str($exception->getRequest()), $exception->getCode());
+
+            throw new RuntimeException(
+                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
+                PHP_EOL.Psr7\str($exception->getRequest()),
+                RuntimeException::METHOD_HTTPCLIENT
+            );
+
+        } catch (GuzzleException $exception) {
+            echo 'GuzzleException'.PHP_EOL;
+
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
+            }
+
+            throw new RuntimeException(
+                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
+                PHP_EOL.$exception->getMessage(),
+                RuntimeException::DEPENDENCY_EXCEPTION
+            );
         }
 
-        return json_decode((string)$body)->responseData;
+        /**
+         * Prepare results for return
+         */
+        try {
+            $dispatchResponse = json_decode((string)$body)->responseData;
+        } catch (RequestException $exception) {
+            echo 'RequestException'.PHP_EOL;
 
+            if ($exception->hasResponse()) {
+                echo Psr7\str($exception->getRequest());
+            }
 
+            throw new RuntimeException(
+                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.
+                $exception->getCode(),
+                RuntimeException::METHOD_HTTPCLIENT
+            );
+        }
+
+        return $dispatchResponse;
     }
 }
