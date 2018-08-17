@@ -1,6 +1,6 @@
 <?php
 
-namespace Tollwerk\Ventari\Domain\Exception;
+namespace Tollwerk\Ventari\Domain\Contract;
 
 
 interface VentariExceptionInterface

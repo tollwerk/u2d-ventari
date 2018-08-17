@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
-use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 class HttpClient implements HttpClientInterface
 {

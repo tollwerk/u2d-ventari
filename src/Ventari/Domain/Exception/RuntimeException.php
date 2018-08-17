@@ -2,6 +2,8 @@
 
 namespace Tollwerk\Ventari\Domain\Exception;
 
+use Tollwerk\Ventari\Domain\Contract\VentariExceptionInterface;
+
 /**
  * Class RuntimeException
  *
