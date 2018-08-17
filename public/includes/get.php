@@ -30,17 +30,18 @@ if (strpos($request_uri[0], 'views/speakers')) {
 
     return;
 }
-//
-//if (strpos($request_uri[0], 'participants')) {
-//    require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json';
-//
-//    return;
-//}
 
-if (strpos($_SERVER['REQUEST_URI'], 'participants/filterEventId=1123')) {
-    require 'fixture'.DIRECTORY_SEPARATOR.'ParticipantRegistration.json';
+if (strpos($request_uri[0], 'participants')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json';
 
     return;
 }
+
+// TODO POST METHOD FOR TESTING
+//if (strpos($_SERVER['REQUEST_URI'], 'participants/filterEventId=1123')) {
+//    require 'fixture'.DIRECTORY_SEPARATOR.'ParticipantRegistration.json';
+//
+//    return;
+//}
 
 echo json_encode(['message' => 'No Route Setup']);

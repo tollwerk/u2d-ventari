@@ -59,7 +59,7 @@ class AbstractPort
     {
         $dispatchResponse = [];
         $clientResponse   = $this->client->dispatchRequest($function, $params);
-        $function         = str_replace('views', '', $function);
+        $function         = str_replace('views/', '', $function);
 
         try {
             $dispatchResponse = $this->dispatcher->dispatch($function, $clientResponse);
@@ -79,7 +79,7 @@ class AbstractPort
      */
     protected function getFile(string $id): ?array
     {
-        $files = $this->client->dispatchRequest('files'.$id, [])->files;
+        $files = $this->client->dispatchRequest('files/'.$id, [])->files;
         if (count($files)) {
             return (array)array_shift($files);
         }
