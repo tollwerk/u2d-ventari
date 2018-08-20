@@ -60,24 +60,19 @@ class ClientTest extends AbstractTestBase
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getSpeakerPhoto('186');
         $this->assertInternalType('array', $request);
-
     }
 
-//    public function testRegisterForEvent(): void
-//    {
-//        $participantEmail = 'email@server.net';
-//        $eventId          = 1123;
-//        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-//        $request          = $client->registerForEvent($participantEmail, $eventId);
-//
-//        echo '<pre>';
-//        print_r($request);
-//        echo '</pre>';
-//    }
+    public function testRegisterForEvent(): void
+    {
+        $participantEmail = 'email@server.net';
+        $eventId          = 1123;
+        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request          = $client->registerForEvent($participantEmail, $eventId);
+        $this->assertInternalType('array', $request);
+    }
 
     public function testGetRegisteredEvents(): void
     {
-        $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getRegisteredEvents('email@server.net ');
         $this->assertInternalType('array', $request);
@@ -85,7 +80,6 @@ class ClientTest extends AbstractTestBase
 
     public function testGetEventParticipants(): void
     {
-        $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getEventParticipants();
         $this->assertInternalType('array', $request);
