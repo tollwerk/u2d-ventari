@@ -25,6 +25,7 @@ class ClientTest extends AbstractTestBase
      * @var $params   array
      *
      * @dataProvider requestProvider
+     * @throws \Exception
      */
     public function testMakeRequest($function, $params): void
     {
@@ -73,6 +74,22 @@ class ClientTest extends AbstractTestBase
 //        print_r($request);
 //        echo '</pre>';
 //    }
+
+    public function testGetRegisteredEvents(): void
+    {
+        $request = null;
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request = $client->getRegisteredEvents('email@server.net ');
+        $this->assertInternalType('array', $request);
+    }
+
+    public function testGetEventParticipants(): void
+    {
+        $request = null;
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request = $client->getEventParticipants();
+        $this->assertInternalType('array', $request);
+    }
 
     public function testRuntimeException(): void
     {

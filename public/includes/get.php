@@ -1,43 +1,49 @@
 <?php
-$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+$request_uri = $_SERVER['REQUEST_URI'];
 
-if (strpos($request_uri[0], 'events')) {
+if (strpos($request_uri, 'events')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Events.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'views/locations')) {
+if (strpos($request_uri, 'views/locations')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Locations.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'views/agenda')) {
+if (strpos($request_uri, 'views/agenda')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Agenda.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'files')) {
+if (strpos($request_uri, 'files')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Files.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'views/speakers')) {
+if (strpos($request_uri, 'views/speakers')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Speakers.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'participants')) {
+if (strpos($request_uri, 'participants/?filterEventId=') || strpos($request_uri, 'participants/?filterActiveEvents=1')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'Participant.json';
+
+    return;
+}
+
+if (strpos($request_uri, 'uploads/2026/')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'SpeakerPhoto.json';
 
     return;
 }
 
-if (strpos($request_uri[0], 'bad')) {
+if (strpos($request_uri, 'bad')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'result.json';
 
     return;
@@ -50,4 +56,7 @@ if (strpos($request_uri[0], 'bad')) {
 //    return;
 //}
 
-echo json_encode(['message' => 'No Route Setup']);
+echo json_encode([
+    'message' => 'Bad Route:',
+    'input' => $_SERVER['REQUEST_URI']
+]);
