@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\HttpClient;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
@@ -37,10 +36,10 @@ class HttpClientTest extends AbstractTestBase
         /**
          * Testing the Constructor
          */
-        $this->assertClassHasAttribute('guzzle', get_class($httpClient));
-        $this->assertClassHasAttribute('method', get_class($httpClient));
-        $this->assertClassHasAttribute('baseUrl', get_class($httpClient));
-        $this->assertClassHasAttribute('authentication', get_class($httpClient));
+        $this->assertClassHasAttribute('guzzle', \get_class($httpClient));
+        $this->assertClassHasAttribute('method', \get_class($httpClient));
+        $this->assertClassHasAttribute('baseUrl', \get_class($httpClient));
+        $this->assertClassHasAttribute('authentication', \get_class($httpClient));
     }
 
     /**
@@ -53,10 +52,12 @@ class HttpClientTest extends AbstractTestBase
     public function testDispatchRequest($function, $params): void
     {
         $clientResponse = self::$testClass->dispatchRequest($function, $params);
-        var_dump($clientResponse);
         $this->assertInstanceOf('stdClass', $clientResponse);
     }
 
+    /**
+     * Test Exception for Request
+     */
     public function testDispatchRequestExceptions(): void
     {
         $testClass = new HttpClient('GET', 'wrong.server.net', [
@@ -65,9 +66,15 @@ class HttpClientTest extends AbstractTestBase
         ]);
         $this->expectException(RuntimeException::class);
         $testClass->dispatchRequest('fake_event', []);
+    }
 
-        $this->expectException(GuzzleException::class);
-        $testClass->dispatchRequest('fake_event', []);
+    /**
+     * Test Exception for Response
+     */
+    public function testDispatchResponseExceptions(): void
+    {
+        $this->expectException(RuntimeException::class);
+        self::$testClass->dispatchRequest('bad/response', []);
     }
 
     /**

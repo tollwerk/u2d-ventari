@@ -37,6 +37,12 @@ if (strpos($request_uri[0], 'participants')) {
     return;
 }
 
+if (strpos($request_uri[0], 'bad/response')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'result.json';
+
+    return;
+}
+
 // TODO POST METHOD FOR TESTING
 //if (strpos($_SERVER['REQUEST_URI'], 'participants/filterEventId=1123')) {
 //    require 'fixture'.DIRECTORY_SEPARATOR.'ParticipantRegistration.json';

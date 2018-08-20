@@ -106,12 +106,8 @@ class HttpClient implements HttpClientInterface
          */
         try {
             $dispatchResponse = json_decode((string)$body)->responseData;
-        } catch (RequestException $exception) {
-            echo 'RequestException'.PHP_EOL;
-
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
+        } catch (\RuntimeException $exception) {
+            echo '\RuntimeException'.PHP_EOL;
 
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.
