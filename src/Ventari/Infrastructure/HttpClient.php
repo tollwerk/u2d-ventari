@@ -90,10 +90,6 @@ class HttpClient implements HttpClientInterface
         } catch (GuzzleException $exception) {
             echo 'GuzzleException'.PHP_EOL;
 
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
-
             throw new RuntimeException(
                 RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
                 PHP_EOL.$exception->getMessage(),
