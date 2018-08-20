@@ -120,6 +120,9 @@ class AbstractPort
         $response = null;
         $email    = '';
 
+        /**
+         * STEP 1. Request Participant Record with EventId
+         */
         try {
             $clientResponse = $this->handler->dispatchRequest('participants', [
                 'filterEventId' => $eventId,
@@ -131,10 +134,18 @@ class AbstractPort
             echo $exception->getMessage();
         }
 
-
+        /**
+         * STEP 2. Confirm if the participant is already registered
+         */
         if ($clientResponse->resultCount) {
+            /**
+             * STEP 2.a - Return participant's record
+             */
             $response = $clientResponse->participants[0];
         } else {
+            /**
+             * STEP 2.b - Request Record of Participant
+             */
             $clientResponse = $this->handler->dispatchRequest('participants', [
                 'filterActiveEvents' => 1,
                 'filterFields'       => [
@@ -142,6 +153,9 @@ class AbstractPort
                 ]
             ]);
 
+            /**
+             * STEP 3 Throw Exception when Participant ID is missing from request
+             */
             if (isset($clientResponse->participants[0]->personId)) {
                 throw new RuntimeException(
                     sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
@@ -168,7 +182,7 @@ class AbstractPort
         }
 
 
-        if (isset($response->personId)) {
+        if (!isset($response->personId)) {
             throw new RuntimeException(
                 sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
                 RuntimeException::RESPONSE_PERSONID
@@ -181,14 +195,12 @@ class AbstractPort
             }
         }
 
+        $link = Helper::createFrontendLink($response->eventId, $response->id, $response->hash, $response->languageId);
+
         return [
             'personId' => $response->personId,
             'email'    => $email,
-            'link'     => $baseUrl.Helper::createFrontendLink(
-                    $response->eventId,
-                    $response->personId,
-                    $response->hash,
-                    $response->languageId)
+            'link'     => $baseUrl.$link
         ];
     }
 
