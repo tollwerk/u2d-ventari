@@ -3,7 +3,6 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
@@ -77,24 +76,12 @@ class HttpClient implements HttpClientInterface
         } catch (RequestException $exception) {
             echo 'RequestException'.PHP_EOL;
 
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
-
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
                 PHP_EOL.Psr7\str($exception->getRequest()),
                 RuntimeException::METHOD_HTTPCLIENT
             );
 
-        } catch (GuzzleException $exception) {
-            echo 'GuzzleException'.PHP_EOL;
-
-            throw new RuntimeException(
-                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
-                PHP_EOL.$exception->getMessage(),
-                RuntimeException::DEPENDENCY_EXCEPTION
-            );
         }
 
         /**
