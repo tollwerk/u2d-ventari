@@ -2,6 +2,8 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
+use GuzzleHttp\Exception\GuzzleException;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\HttpClient;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -21,7 +23,8 @@ class HttpClientTest extends AbstractTestBase
      */
     public static function setUpBeforeClass()
     {
-        $config = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
+        $config          = require \dirname(__DIR__,
+                4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
         self::$testClass = new HttpClient($config['method'], $config['api'], $config['authentication']);
     }
 
@@ -49,9 +52,22 @@ class HttpClientTest extends AbstractTestBase
      */
     public function testDispatchRequest($function, $params): void
     {
-        $httpClient     = self::$testClass;
-        $clientResponse = $httpClient->dispatchRequest($function, $params);
+        $clientResponse = self::$testClass->dispatchRequest($function, $params);
+        var_dump($clientResponse);
         $this->assertInstanceOf('stdClass', $clientResponse);
+    }
+
+    public function testDispatchRequestExceptions(): void
+    {
+        $testClass = new HttpClient('GET', 'wrong.server.net', [
+            'username' => 'username',
+            'password' => 'qwerasdfzxcvtyuighjkbnmop'
+        ]);
+        $this->expectException(RuntimeException::class);
+        $testClass->dispatchRequest('fake_event', []);
+
+        $this->expectException(GuzzleException::class);
+        $testClass->dispatchRequest('fake_event', []);
     }
 
     /**

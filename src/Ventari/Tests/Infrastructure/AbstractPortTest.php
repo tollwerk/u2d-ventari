@@ -23,8 +23,8 @@ class AbstractPortTest extends AbstractTestBase
      */
     public function testConstructor(): void
     {
-        $this->assertClassHasAttribute('client', get_class(self::$testClass));
-        $this->assertClassHasAttribute('dispatcher', get_class(self::$testClass));
+        $this->assertClassHasAttribute('client', \get_class(self::$testClass));
+        $this->assertClassHasAttribute('dispatcher', \get_class(self::$testClass));
     }
 
     public function testMakeRequest(): void

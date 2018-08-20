@@ -2,9 +2,19 @@
 
 namespace Tollwerk\Ventari\Infrastructure\Helper;
 
-
+/**
+ * Class Helper
+ * @package Tollwerk\Ventari\Infrastructure\Helper
+ */
 class Helper
 {
+    /**
+     * Builds String Query for Ventari 'Fields' Format
+     *
+     * @param array $params
+     *
+     * @return string
+     */
     public static function queryBuilder(array $params): string
     {
         $index  = 0;
@@ -12,7 +22,7 @@ class Helper
         foreach ($params as $key => $value) {
             $index++;
 
-            if (gettype($value) !== 'array') {
+            if (!\is_array($value)) {
                 $output .= http_build_query([$key => $value]);
             } else {
                 $subIndex = 0;
@@ -35,12 +45,23 @@ class Helper
         return $output;
     }
 
-    public static function createFrontendLink($eventId, $participantId, $participantHash, $languageId) {
-        $link  = "/tms/frontend/index.cfm";
-        $link .= "?l=" . $eventId;
-        $link .= "&amp;id=" . $participantId;
-        $link .= "&amp;sp_id=" . $languageId;
-        $link .= "&amp;dat_h=" . $participantHash;
+    /**
+     * Builds String Link for Ventari Frontend Link
+     *
+     * @param $eventId
+     * @param $participantId
+     * @param $participantHash
+     * @param $languageId
+     *
+     * @return string
+     */
+    public static function createFrontendLink($eventId, $participantId, $participantHash, $languageId): string
+    {
+        $link = '/tms/frontend/index.cfm';
+        $link .= '?l='.$eventId;
+        $link .= '&amp;id='.$participantId;
+        $link .= '&amp;sp_id='.$languageId;
+        $link .= '&amp;dat_h='.$participantHash;
 
         return $link;
     }
