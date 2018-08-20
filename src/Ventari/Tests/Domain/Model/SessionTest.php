@@ -59,19 +59,19 @@ class SessionTest extends AbstractTestBase
         return [
             [
                 array(
-                    'sessionRemark'        => "",
+                    'sessionRemark'        => '',
                     'rowNum'               => 2,
                     'sessionId'            => 535,
-                    'sessionCategoryColor' => "#EEE8AA",
-                    'sessionName'          => "Musterevent NUEWW",
+                    'sessionCategoryColor' => '#EEE8AA',
+                    'sessionName'          => 'Musterevent NUEWW',
                     'eventId'              => 1802,
                     'sessionCategoryId'    => 1,
-                    'sessionCategoryName'  => "Programmpunkt",
-                    'sessionLineName'      => "Schiene 1",
-                    'sessionEnd'           => "October, 12 2018 17:30:00",
+                    'sessionCategoryName'  => 'Programmpunkt',
+                    'sessionLineName'      => 'Schiene 1',
+                    'sessionEnd'           => 'October, 12 2018 17:30:00',
                     'sessionLineId'        => 2,
-                    'sessionRoom'          => "",
-                    'sessionStart'         => "October, 12 2018 09:00:00"
+                    'sessionRoom'          => '',
+                    'sessionStart'         => 'October, 12 2018 09:00:00'
                 )
             ]
         ];
