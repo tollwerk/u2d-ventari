@@ -195,6 +195,9 @@ class AbstractPort
             }
         }
 
+        /**
+         * The FE Link required the ID property. Not the personId
+         */
         $link = Helper::createFrontendLink($response->eventId, $response->id, $response->hash, $response->languageId);
 
         return [

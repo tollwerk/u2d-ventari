@@ -9,7 +9,7 @@ use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
-use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 
 
@@ -111,12 +111,8 @@ class CurlClient implements CurlClientInterface
 
         try {
             $dispatchResponse = json_decode((string)$body)->responseData;
-        } catch (RequestException $exception) {
-            echo 'RequestException'.PHP_EOL;
-
-            if ($exception->hasResponse()) {
-                echo Psr7\str($exception->getRequest());
-            }
+        } catch (\RuntimeException $exception) {
+            echo '\RuntimeException'.PHP_EOL;
 
             throw new RuntimeException(
                 RuntimeException::METHOD_CURLCLIENT_STR.' : '.

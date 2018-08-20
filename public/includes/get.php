@@ -37,7 +37,7 @@ if (strpos($request_uri[0], 'participants')) {
     return;
 }
 
-if (strpos($request_uri[0], 'bad/response')) {
+if (strpos($request_uri[0], 'bad')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'result.json';
 
     return;
