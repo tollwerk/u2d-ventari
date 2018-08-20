@@ -11,7 +11,6 @@ use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 
-
 /**
  * Class CurlClient
  * @package Tollwerk\Ventari\Infrastructure

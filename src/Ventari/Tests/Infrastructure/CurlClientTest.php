@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Tollwerk\Ventari\Infrastructure\CurlClient;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
@@ -64,12 +63,6 @@ class CurlClientTest extends AbstractTestBase
         $this->expectException(RuntimeException::class);
         $testClass->dispatchRequest('fake_event', []);
     }
-
-//    public function testDispatchGuzzleException(): void
-//    {
-//        $this->expectException(GuzzleException::class);
-//        self::$testClass->dispatchRequest('Events', []);
-//    }
 
     /**
      * Test Exception for Response
