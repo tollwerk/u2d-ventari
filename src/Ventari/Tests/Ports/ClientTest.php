@@ -62,17 +62,17 @@ class ClientTest extends AbstractTestBase
 
     }
 
-    public function testRegisterForEvent(): void
-    {
-        $participantEmail = 'email@server.net';
-        $eventId          = 1123;
-        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-        $request          = $client->registerForEvent($participantEmail, $eventId);
-
-        echo '<pre>';
-        print_r($request);
-        echo '</pre>';
-    }
+//    public function testRegisterForEvent(): void
+//    {
+//        $participantEmail = 'email@server.net';
+//        $eventId          = 1123;
+//        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+//        $request          = $client->registerForEvent($participantEmail, $eventId);
+//
+//        echo '<pre>';
+//        print_r($request);
+//        echo '</pre>';
+//    }
 
     public function testRuntimeException(): void
     {
