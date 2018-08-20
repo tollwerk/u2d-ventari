@@ -30,16 +30,16 @@ class ClientTest extends AbstractTestBase
     {
         $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-        if ($function == 'events') {
+        if ($function === 'events') {
             $request = $client->getEvents($params);
         }
-        if ($function == 'views/locations') {
+        if ($function === 'views/locations') {
             $request = $client->getLocations($params);
         }
-        if ($function == 'views/agenda') {
+        if ($function === 'views/agenda') {
             $request = $client->getSessions($params);
         }
-        if ($function == 'views/speakers') {
+        if ($function === 'views/speakers') {
             $request = $client->getSpeakers($params);
         }
         $this->assertInternalType('array', $request);

@@ -54,12 +54,13 @@ class AbstractPort
      * @param array $params    Request parameters
      *
      * @return array Response
+     * @throws \Exception
      */
     protected function makeRequest(string $function, array $params): array
     {
         $dispatchResponse = [];
         $clientResponse   = $this->client->dispatchRequest($function, $params);
-        $function         = str_replace('views/ ', '', $function);
+        $function         = str_replace('views/', '', $function);
 
         try {
             $dispatchResponse = $this->dispatcher->dispatch($function, $clientResponse);

@@ -17,6 +17,7 @@ class Client extends AbstractPort
      * @param array $params Parameters
      *
      * @return array Events
+     * @throws \Exception
      * @api
      */
     public function getEvents(array $params = []): array
@@ -30,6 +31,7 @@ class Client extends AbstractPort
      * @param array $params Parameters
      *
      * @return array Locations
+     * @throws \Exception
      * @api
      */
     public function getLocations(array $params = []): array
@@ -43,6 +45,7 @@ class Client extends AbstractPort
      * @param array $params
      *
      * @return array Sessions
+     * @throws \Exception
      * @api
      */
     public function getSessions(array $params = []): array
@@ -56,6 +59,7 @@ class Client extends AbstractPort
      * @param array $params
      *
      * @return array Speakers
+     * @throws \Exception
      * @api
      */
     public function getSpeakers(array $params = []): array

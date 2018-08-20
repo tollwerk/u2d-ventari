@@ -27,14 +27,12 @@ class FactoryFactory
      * Create a factory from a function string
      *
      * @param string $function Function string
-     *
-     * @return FactoryInterface
      */
     public static function createFromFunction(string $function)
     {
         if (!isset(static::$factories[$function])) {
-            throw new RuntimeException(sprintf(RuntimeException::METHOD_UNDEFINED_STR, $function),
-                RuntimeException::METHOD_UNDEFINED);
+            $message = sprintf(RuntimeException::METHOD_UNDEFINED_STR, $function);
+            throw new RuntimeException($message, RuntimeException::METHOD_UNDEFINED);
         }
 
         return static::$factories[$function];

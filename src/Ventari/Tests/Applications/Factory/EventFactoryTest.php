@@ -36,7 +36,7 @@ class EventFactoryTest extends AbstractTestBase
      */
     public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass->createFromJson($input);
+        $actual = self::$testClass::createFromJson($input);
         $this->assertInstanceOf(Event::class, $actual);
     }
 
@@ -62,7 +62,6 @@ class EventFactoryTest extends AbstractTestBase
                 $this->assertInternalType('string', $actual);
             }
         }
-
     }
 
     public function jsonInputProvider(): array
