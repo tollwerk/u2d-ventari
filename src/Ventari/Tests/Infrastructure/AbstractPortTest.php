@@ -3,6 +3,7 @@
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
 use Tollwerk\Ventari\Infrastructure\AbstractPort;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class AbstractPortTest extends AbstractTestBase
@@ -33,4 +34,9 @@ class AbstractPortTest extends AbstractTestBase
         $this->assertInternalType('array', $requestReponse);
     }
 
+    public function testMakeRequestException(): void
+    {
+        $this->expectException(\Exception::class);
+        self::$testClass->accessMakeRequest('bad/response', []);
+    }
 }

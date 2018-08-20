@@ -76,6 +76,12 @@ class ClientTest extends AbstractTestBase
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getRegisteredEvents('email@server.net ');
         $this->assertInternalType('array', $request);
+
+        $this->expectException(RuntimeException::class);
+        $client  = new Client(self::$config['method'], 'bad.server.net', self::$config['authentication']);
+        $request = $client->getRegisteredEvents('email@server.net ');
+        $this->assertInternalType('array', $request);
+
     }
 
     public function testGetEventParticipants(): void
