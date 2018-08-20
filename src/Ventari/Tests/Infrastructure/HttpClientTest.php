@@ -71,11 +71,11 @@ class HttpClientTest extends AbstractTestBase
     /**
      * Test Exception for Response
      */
-//    public function testDispatchResponseExceptions(): void
-//    {
-//        $this->expectException(RuntimeException::class);
-//        self::$testClass->dispatchRequest('bad/response', []);
-//    }
+    public function testDispatchResponseExceptions(): void
+    {
+        $this->expectException(RuntimeException::class);
+        self::$testClass->dispatchRequest('bad/response', []);
+    }
 
     /**
      * @return array

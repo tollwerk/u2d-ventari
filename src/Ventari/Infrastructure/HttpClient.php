@@ -104,17 +104,17 @@ class HttpClient implements HttpClientInterface
         /**
          * Prepare results for return
          */
-//        try {
+        try {
             $dispatchResponse = json_decode((string)$body)->responseData;
-//        } catch (\RuntimeException $exception) {
-//            echo '\RuntimeException'.PHP_EOL;
-//
-//            throw new RuntimeException(
-//                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.
-//                $exception->getCode(),
-//                RuntimeException::METHOD_HTTPCLIENT
-//            );
-//        }
+        } catch (\RuntimeException $exception) {
+            echo '\RuntimeException'.PHP_EOL;
+
+            throw new RuntimeException(
+                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.
+                $exception->getCode(),
+                RuntimeException::METHOD_HTTPCLIENT
+            );
+        }
 
         return $dispatchResponse;
     }
