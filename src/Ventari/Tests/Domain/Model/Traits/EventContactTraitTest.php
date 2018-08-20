@@ -57,6 +57,18 @@ class EventContactTraitTest extends AbstractTestBase
         $this->assertEquals($expectedString, $mock->getOrganizerInstagram());
     }
 
+    public function testOrganizerOtherLink(): void
+    {
+        $expectedString = 'http://other.link';
+        $mock           = $this->testTrait;
+        $mock->setOrganizerOtherLink($expectedString);
+        $mock->expects($this->any())
+             ->method('abstractMethod')
+             ->will($this->returnValue($expectedString));
+
+        $this->assertEquals($expectedString, $mock->getOrganizerOtherLink());
+    }
+
     public function testOrganizerWebsite(): void
     {
         $expectedString = 'http://event.link';
