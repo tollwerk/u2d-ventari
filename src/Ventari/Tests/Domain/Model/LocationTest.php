@@ -60,18 +60,19 @@ class LocationTest extends AbstractTestBase
             [
                 array(
                     'hotelId'        => 3,
-                    'hotelTelephone' => "091123759913",
+                    'hotelTelephone' => '091123759913',
                     'rowNum'         => 1,
                     'hotelZip'       => 90489,
-                    'hotelName'      => "up2date solutions GmbH",
+                    'hotelName'      => 'up2date solutions GmbH',
                     'longitude'      => 11.087469,
                     'eventId'        => 1801,
-                    'hotelCity'      => "Nürnberg",
-                    'hotelFax'       => "091123759913",
-                    'hotelAddress'   => "Prinzregentenufer 3",
+                    'hotelCity'      => 'Nürnberg',
+                    'hotelFax'       => '091123759913',
+                    'hotelAddress'   => 'Prinzregentenufer 3',
+                    'hotelRoom'      => '',
                     'companyId'      => 1,
                     'latitude'       => 49.45334,
-                    'hotelEmail'     => "info@up2date-solutions.de"
+                    'hotelEmail'     => 'info@up2date-solutions.de'
                 )
             ]
         ];
