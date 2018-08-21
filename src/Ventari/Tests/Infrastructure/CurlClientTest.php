@@ -19,6 +19,9 @@ class CurlClientTest extends AbstractTestBase
 
     public static function setUpBeforeClass()
     {
+        /**
+         * Local Config File
+         */
         $config = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
 
         self::$testClass = new CurlClient($config['method'], $config['api'], $config['authentication']);
