@@ -156,7 +156,7 @@ class AbstractPort
             /**
              * STEP 3 Throw Exception when Participant ID is missing from request
              */
-            if (isset($clientResponse->participants[0]->personId)) {
+            if (!isset($clientResponse->participants[0]->personId)) {
                 throw new RuntimeException(
                     sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
                     RuntimeException::RESPONSE_PERSONID
