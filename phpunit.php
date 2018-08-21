@@ -16,7 +16,7 @@ register_shutdown_function(function () use ($pid) {
 });
 
 error_reporting(E_ALL);
-$autoloader = __DIR__.'/vendor/autoload.php';
+$autoloader = __DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!file_exists($autoloader)) {
     echo "Composer autoloader not found: $autoloader".PHP_EOL;
     echo "Please issue 'composer install' and try again.".PHP_EOL;
