@@ -8,8 +8,8 @@ use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 /**
  * Class CurlClient
@@ -135,7 +135,8 @@ class CurlClient implements CurlClientInterface
         curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
 
         $result = curl_exec($process);
-        $json = json_decode($result);
+        $json   = json_decode($result);
+
         return $json->responseData;
 //        try {
 //            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/', [
