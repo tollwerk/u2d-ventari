@@ -39,9 +39,9 @@ class Event extends AbstractModel implements EventInterface
     protected $ticketDescription = '';
 
     /**
-     * @var string
+     * @var float
      */
-    protected $ticketPrice = '';
+    protected $ticketPrice = 0.0;
 
     /**
      * @var string
@@ -168,9 +168,9 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getTicketPrice(): string
+    public function getTicketPrice(): float
     {
         return $this->ticketPrice;
     }
@@ -180,7 +180,10 @@ class Event extends AbstractModel implements EventInterface
      */
     public function setTicketPrice(string $ticketPrice): void
     {
-        $this->ticketPrice = $ticketPrice;
+        $ticketPrice = preg_replace('/^[^\d]*/', '', $ticketPrice);
+        if (preg_match('/^(\d+(?:(?:\.|\,)\d+))/', $ticketPrice, $price)) {
+            $this->ticketPrice = floatval(strtr($price[1], ',', '.'));
+        };
     }
 
     /**
