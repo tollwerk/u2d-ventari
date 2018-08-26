@@ -84,7 +84,7 @@ class Event extends AbstractModel implements EventInterface
     protected $presentationLanguage = [];
 
     /**
-     * @var string
+     * @var int
      */
     protected $status = '';
 
@@ -315,19 +315,19 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getStatus(): string
+    public function getStatus(): int
     {
         return $this->status;
     }
 
     /**
-     * @param string $status
+     * @param mixed $status
      */
-    public function setStatus(string $status): void
+    public function setStatus($status): void
     {
-        $this->status = $status;
+        $this->status = intval($status);
     }
 
     /**
