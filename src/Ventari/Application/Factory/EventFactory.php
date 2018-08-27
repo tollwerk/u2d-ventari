@@ -41,6 +41,10 @@ class EventFactory implements FactoryInterface
         'event_max_participants'
     ];
 
+    protected static $invertProperties = [
+        'active'
+    ];
+
     protected static $arrayProperties = [
         'event_level',
         'event_presentation_language',
@@ -149,6 +153,9 @@ class EventFactory implements FactoryInterface
 
         } elseif (\in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
+
+        } elseif (\in_array($property, self::$invertProperties, true)) {
+            $refinedValue = !$value;
 
         } elseif (\in_array($property, self::$arrayProperties, true)) {
             $refinedValue = [];
