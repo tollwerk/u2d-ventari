@@ -181,9 +181,11 @@ class Event extends AbstractModel implements EventInterface
     public function setTicketPrice(string $ticketPrice): void
     {
         $ticketPrice = preg_replace('/^[^\d]*/', '', $ticketPrice);
-        if (preg_match('/^(\d+(?:(?:\.|\,)\d+))/', $ticketPrice, $price)) {
+        if (preg_match('/^(\d+(?:(?:\.|\,)\d+)?)/', $ticketPrice, $price)) {
             $this->ticketPrice = floatval(strtr($price[1], ',', '.'));
-        };
+        } else {
+            $this->ticketPrice = floatval($ticketPrice);
+        }
     }
 
     /**
