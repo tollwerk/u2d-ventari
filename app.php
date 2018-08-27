@@ -20,7 +20,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
-            $Events = $App->getEvents($params);
+            $Events = $App->getEvents(['statusIds' => 6]);
             echo '<div class="column">';
             echo '<strong>Events</strong>';
             echo '<br><br>';
