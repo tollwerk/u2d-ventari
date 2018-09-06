@@ -57,7 +57,6 @@ class ClientTest extends AbstractTestBase
 
     public function testGetSpeakerPhoto(): void
     {
-        $this->expectException(RuntimeException::class);
         $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getSpeakerPhoto('186');
