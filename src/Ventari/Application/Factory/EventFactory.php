@@ -38,7 +38,8 @@ class EventFactory implements FactoryInterface
     ];
 
     protected static $intProperties = [
-        'event_max_participants'
+        'event_max_participants',
+        'event_status'
     ];
 
     protected static $invertProperties = [

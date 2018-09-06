@@ -62,7 +62,7 @@ class EventTest extends AbstractTestBase
                 [
                     'event_city'                   => 'Nürnberg',
                     'event_end_date'               => '2018-10-22',
-                    'active'                       => false,
+                    'active'                       => 0,
                     'event_start_time'             => '09:00',
                     'event_presentation_language'  => '1,2',
                     'event_contact_facebook'       => 'https://www.facebook.com/rainer.hertwig',
@@ -85,7 +85,7 @@ class EventTest extends AbstractTestBase
                     'event_xing_event'             => 'https://www.xing.com/events/nurnberg-web-week-2018-1869393?sc_o=events_events_near_you',
                     'event_category'               => '486,488,490,492,494',
                     'event_description'            => 'Dieses Event dient der Veranschaulichung und exemplarischen Erläuterung der Vorgehensweise zur Vervollständigung der Eventdaten und als Einführung in das Teilnehmermanagement.',
-                    'event_cost'                   => '33 €',
+                    'event_cost'                   => '33.50',
                     'event_name'                   => 'U2D Schulungsevent (Veranstalterschulung)',
                     'event_ticket_url'             => '',
                     'event_chargeable'             => true,

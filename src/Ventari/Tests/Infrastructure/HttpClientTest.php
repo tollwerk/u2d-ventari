@@ -50,6 +50,7 @@ class HttpClientTest extends AbstractTestBase
      */
     public function testDispatchRequest($function, $params): void
     {
+        $this->expectException(\Exception::class);
         $clientResponse = self::$testClass->dispatchRequest($function, $params);
         $this->assertInstanceOf('stdClass', $clientResponse);
     }

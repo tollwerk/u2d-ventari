@@ -129,12 +129,7 @@ class AbstractPort
                     'pa_email' => $participantEmail,
                 ],
             ]);
-        } catch (\Exception $exception) {
-            echo 'Exception';
-            echo $exception->getMessage();
-
         } catch (RuntimeException $exception) {
-            echo 'RuntimeException';
             echo $exception->getMessage();
         }
 
@@ -270,6 +265,7 @@ class AbstractPort
      * @param $arg2
      *
      * @return array
+     * @throws \Exception
      */
     public function accessMakeRequest($arg1, $arg2): array
     {
