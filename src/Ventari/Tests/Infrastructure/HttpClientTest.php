@@ -63,7 +63,7 @@ class HttpClientTest extends AbstractTestBase
             'username' => 'username',
             'password' => 'qwerasdfzxcvtyuighjkbnmop'
         ]);
-//        $this->expectException(RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $testClass->dispatchRequest('fake_event', []);
     }
 

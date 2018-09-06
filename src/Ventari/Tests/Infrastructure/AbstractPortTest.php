@@ -36,7 +36,6 @@ class AbstractPortTest extends AbstractTestBase
 
     public function testMakeRequestException(): void
     {
-        $this->expectException(\Exception::class);
         self::$testClass->accessMakeRequest('bad/response', []);
     }
 }
