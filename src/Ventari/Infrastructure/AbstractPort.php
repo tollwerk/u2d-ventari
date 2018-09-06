@@ -64,7 +64,7 @@ class AbstractPort
 
         try {
             $dispatchResponse = $this->dispatcher->dispatch($function, $clientResponse);
-        } catch (\Exception $e) {
+        } catch (\RuntimeException $e) {
             echo $e->getMessage();
         }
 
