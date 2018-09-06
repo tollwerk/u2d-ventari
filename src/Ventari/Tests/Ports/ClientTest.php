@@ -30,7 +30,6 @@ class ClientTest extends AbstractTestBase
      */
     public function testMakeRequest($function, $params): void
     {
-        $this->expectException(RuntimeException::class);
         $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         if ($function === 'events') {
@@ -50,7 +49,6 @@ class ClientTest extends AbstractTestBase
 
     public function testRequestFile(): void
     {
-        $this->expectException(RuntimeException::class);
         $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getFile('hash1234');
