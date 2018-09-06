@@ -30,7 +30,6 @@ class AbstractPortTest extends AbstractTestBase
 
     public function testMakeRequest(): void
     {
-        $this->expectException(\Exception::class);
         $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
         $this->assertInternalType('array', $requestReponse);
     }
