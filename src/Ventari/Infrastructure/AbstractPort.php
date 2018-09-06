@@ -119,7 +119,6 @@ class AbstractPort
         $baseUrl  = 'https://events.nueww.de';
         $response = null;
         $email    = '';
-
         /**
          * STEP 1. Request Participant Record with EventId
          */
@@ -130,7 +129,12 @@ class AbstractPort
                     'pa_email' => $participantEmail,
                 ],
             ]);
+        } catch (\Exception $exception) {
+            echo 'Exception';
+            echo $exception->getMessage();
+
         } catch (RuntimeException $exception) {
+            echo 'RuntimeException';
             echo $exception->getMessage();
         }
 
@@ -157,10 +161,9 @@ class AbstractPort
              * STEP 3 Throw Exception when Participant ID is missing from request
              */
             if (!isset($clientResponse->participants[0]->personId)) {
-                throw new RuntimeException(
-                    sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
-                    RuntimeException::RESPONSE_PERSONID
-                );
+                $ventariPersonId = 0;
+            } else {
+                $ventariPersonId = $clientResponse->participants[0]->personId;
             }
 
             $filter = [
@@ -171,7 +174,8 @@ class AbstractPort
             ];
 
             if ($clientResponse->resultCount !== 0) {
-                $filter['personId'] = $clientResponse->participants[0]->personId;
+//                $filter['personId'] = $clientResponse->participants[0]->personId;
+                $filter['personId'] = $ventariPersonId;
             }
 
             /**
