@@ -32,6 +32,8 @@ class ClientTest extends AbstractTestBase
     {
         $request = null;
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+
+
         if ($function === 'events') {
             $request = $client->getEvents($params);
         }
