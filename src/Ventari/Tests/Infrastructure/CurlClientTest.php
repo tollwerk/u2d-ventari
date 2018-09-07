@@ -81,14 +81,13 @@ class CurlClientTest extends AbstractTestBase
      */
     public function testDispatchSubmission(): void
     {
-        $this->assertEquals('true', 'true', 'Testing dispatchSubmission');
-//        $clientResponse = self::$testClass->dispatchSubmission('participants', [
-//            'eventId' => 1123,
-//            'fields'  => [
-//                'pa_email' => 'email@server.net',
-//            ]
-//        ]);
-//        $this->assertInstanceOf('stdClass', $clientResponse);
+        $clientResponse = self::$testClass->dispatchSubmission('participants', [
+            'eventId' => 1123,
+            'fields'  => [
+                'pa_email' => 'email@server.net',
+            ]
+        ]);
+        $this->assertInstanceOf('stdClass', $clientResponse);
     }
 
     /**

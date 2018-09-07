@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
-use GuzzleHttp\Exception\RequestException;
 use Tollwerk\Ventari\Ports\Client;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
@@ -68,19 +67,11 @@ class ClientTest extends AbstractTestBase
     public function testRegisterForEvent(): void
     {
         $participantEmail = 'email@server.net';
-        echo PHP_EOL;
-        echo ':: PHP OUTPUT:::::::::::::::::::::::'.PHP_EOL;
-        echo PHP_EOL;
-        print_r($participantEmail);
-        echo PHP_EOL.PHP_EOL;
-
         $eventId          = 1123;
         $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-//        $request          = $client->registerForEvent($participantEmail, $eventId);
+        $request          = $client->registerForEvent($participantEmail, $eventId);
 
-
-//        $this->assertInternalType('array', $request);
-        $this->assertEquals('true','true', 'Register For Event');
+        $this->assertInternalType('array', $request);
     }
 
     public function testGetRegisteredEvents(): void
@@ -100,9 +91,8 @@ class ClientTest extends AbstractTestBase
     public function testGetEventParticipants(): void
     {
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-//        $request = $client->getEventParticipants();
-//        $this->assertInternalType('array', $request);
-        $this->assertEquals('true','true', 'Get Event Participants');
+        $request = $client->getEventParticipants();
+        $this->assertInternalType('array', $request);
     }
 
     public function testRuntimeException(): void

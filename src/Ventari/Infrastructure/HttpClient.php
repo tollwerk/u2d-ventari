@@ -4,7 +4,6 @@ namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
@@ -77,7 +76,7 @@ class HttpClient implements HttpClientInterface
         } catch (GuzzleException $exception) {
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
-                PHP_EOL.Psr7\str($exception->getRequest()),
+                PHP_EOL.Psr7\str($exception->getMessage()),
                 RuntimeException::METHOD_HTTPCLIENT
             );
 
@@ -88,7 +87,7 @@ class HttpClient implements HttpClientInterface
          */
         try {
             $dispatchResponse = json_decode((string)$body)->responseData;
-        } catch (RuntimeException $exception) {
+        } catch (\Exception $exception) {
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.
                 $exception->getCode(),
