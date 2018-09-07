@@ -241,7 +241,6 @@ class AbstractPort
         try {
             $events = $this->client->dispatchRequest('events', []);
         } catch (\Exception $exception) {
-            echo '<h3>Fail! </h3>';
             echo $exception;
         }
 
