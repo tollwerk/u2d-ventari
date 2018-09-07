@@ -25,9 +25,6 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
             echo '<strong>Events</strong>';
             echo '<br><br>';
             foreach ($Events as $event) {
-//                echo '<blockquote>';
-//                print_r($event);
-//                echo '</blockquote>';
                 echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
                 if ($event->getOrganizerLogo() !== '') {
                     $LogoId = $event->getOrganizerLogo();
