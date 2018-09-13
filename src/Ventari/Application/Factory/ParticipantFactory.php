@@ -85,8 +85,8 @@ class ParticipantFactory implements FactoryInterface
         return $this->refineValue($prop, $val);
     }
 
-    public function accessSpeakerApi(): array
+    public function accessParticipantApi(): array
     {
-        return self::$speakerApi;
+        return self::$participantApi;
     }
 }

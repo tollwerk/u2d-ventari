@@ -1,29 +1,26 @@
 <?php
 
-namespace Tollwerk\Ventari\Tests\Applications\Factory;
+namespace Tollwerk\Ventari\Tests\Application\Factory;
 
-use Tollwerk\Ventari\Application\Factory\SpeakerFactory;
-use Tollwerk\Ventari\Domain\Model\Speaker;
+use Tollwerk\Ventari\Application\Factory\ParticipantFactory;
+use Tollwerk\Ventari\Domain\Model\Participant;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
-class SpeakerFactoryTest extends AbstractTestBase
+class ParticipantFactoryTest extends AbstractTestBase
 {
     /**
-     * @var SpeakerFactory $testClass
+     * @var ParticipantFactory $testClass
      */
     public static $testClass;
 
     public static function setUpBeforeClass()
     {
-        self::$testClass = new SpeakerFactory();
+        self::$testClass = new ParticipantFactory();
     }
 
-    /**
-     * Test the Instance of SpeakerFactory
-     */
     public function testConstructor(): void
     {
-        $this->assertInstanceOf(SpeakerFactory::class, self::$testClass);
+        $this->assertInstanceOf(ParticipantFactory::class, self::$testClass);
     }
 
     /**
@@ -37,7 +34,7 @@ class SpeakerFactoryTest extends AbstractTestBase
     public function testCreateFromJson($input): void
     {
         $actual = self::$testClass::createFromJson($input);
-        $this->assertInstanceOf(Speaker::class, $actual);
+        $this->assertInstanceOf(Participant::class, $actual);
     }
 
     /**
@@ -57,23 +54,21 @@ class SpeakerFactoryTest extends AbstractTestBase
 
     public function jsonInputProvider(): array
     {
+        $fieldsData = new \stdClass();
+
         return [
             [
                 array(
-                    'position'   => "Position",
-                    'speakerId'  => 175,
-                    'salutation' => "Herr",
-                    'lastname'   => "Mustermann",
-                    'eventId'    => 1801,
-                    'title'      => "Dr.",
-                    'firstname'  => "Max",
-                    'photo'      => 1,
-                    'remark'     => "Bemerkung",
-                    'type'       => "Referent",
-                    'company'    => "u2d"
+                    'personId' => 123,
+                    'fields'   => array(
+                        (object)array(
+                            'anzParamId' => 7,
+                            'value'      => 'email@server.net'
+                        )
+                    ),
+                    'id'       => 5
                 )
             ]
         ];
     }
-
 }

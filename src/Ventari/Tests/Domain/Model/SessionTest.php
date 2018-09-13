@@ -30,7 +30,7 @@ class SessionTest extends AbstractTestBase
      *
      * @dataProvider jsonInputProvider
      */
-    public function testSessionId($input): void
+    public function testClass($input): void
     {
         $testClass = new Session();
         $factory = new SessionFactory();
