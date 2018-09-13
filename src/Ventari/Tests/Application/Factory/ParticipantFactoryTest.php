@@ -28,7 +28,7 @@ class ParticipantFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider jsonInputProvider1
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
@@ -42,7 +42,7 @@ class ParticipantFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider jsonInputProvider2
      */
     public function testRefinedValue($input): void
     {
@@ -52,10 +52,36 @@ class ParticipantFactoryTest extends AbstractTestBase
         }
     }
 
-    public function jsonInputProvider(): array
+    public function jsonInputProvider1(): array
     {
-        $fieldsData = new \stdClass();
-
+        return [
+            [
+                array(
+                    'personId' => 123,
+                    'fields'   => array(
+                        (object)array(
+                            'anzParamId' => 7,
+                            'value'      => 'email@server.net'
+                        )
+                    ),
+                    'id'       => 5
+                )
+            ],[
+                array(
+                    'personId' => '',
+                    'fields'   => array(
+                        (object)array(
+                            'anzParamId' => 7,
+                            'value'      => 'email@server.net'
+                        )
+                    ),
+                    'id'       => 5
+                )
+            ]
+        ];
+    }
+    public function jsonInputProvider2(): array
+    {
         return [
             [
                 array(
