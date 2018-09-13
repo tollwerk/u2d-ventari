@@ -50,6 +50,10 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                     <input type="submit" value="GET PARTICIPANT COUNTS">
                 </form>
 
+                <form action="?function=getAllParticipants" method="post">
+                    <input type="submit" value="GET ALL PARTICIPANTS">
+                </form>
+
                 <br><a href="app-post.php">RESET</a>
             </div>
 
@@ -74,6 +78,9 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                             }
                             if ($_GET['function'] === 'getParticipantCounts') {
                                 $data = $App->getEventParticipants();
+                            }
+                            if ($_GET['function'] === 'getAllParticipants') {
+                                $data = $App->getAllParticipants();
                             }
                         } catch (\Exception $e) {
                             echo '<pre>';

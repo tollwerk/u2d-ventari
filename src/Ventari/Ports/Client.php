@@ -129,4 +129,9 @@ class Client extends AbstractPort
     {
         return parent::getEventParticipants();
     }
+
+    public function getAllParticipants(): ?array
+    {
+        return parent::getAllParticipants();
+    }
 }

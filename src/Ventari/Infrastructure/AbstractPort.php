@@ -168,6 +168,13 @@ class AbstractPort
                 ]
             ];
 
+            if ($ventariPersonId === '') {
+                throw new RuntimeException(
+                    sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId is Empty string for '.$participantEmail),
+                    RuntimeException::RESPONSE_PERSONID
+                );
+            }
+
             if ($clientResponse->resultCount !== 0) {
 //                $filter['personId'] = $clientResponse->participants[0]->personId;
                 $filter['personId'] = $ventariPersonId;
@@ -242,6 +249,7 @@ class AbstractPort
             $events = $this->client->dispatchRequest('events', []);
         } catch (\Exception $exception) {
             echo $exception;
+            throw new RuntimeException($exception->getMessage(), '4010');
         }
 
         foreach ($events->events as $event) {
@@ -255,6 +263,17 @@ class AbstractPort
         }
 
         return $participantCount;
+    }
+
+    protected function getAllParticipants(): ?array
+    {
+        $participants = [];
+//        try {
+//            $participants = $this->client->dispatchRequest('participants');
+//        } catch (\Exception $exception) {
+//            th
+//        }
+        return $participants;
     }
 
     /**
