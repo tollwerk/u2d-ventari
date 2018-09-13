@@ -132,6 +132,6 @@ class Client extends AbstractPort
 
     public function getAllParticipants(): ?array
     {
-        return parent::getAllParticipants();
+        return parent::makeRequest('participants', ['filterActiveEvents' => true]);
     }
 }

@@ -5,7 +5,6 @@ namespace Tollwerk\Ventari\Infrastructure;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
-
 /**
  * Class AbstractPort
  * @package Tollwerk\Ventari\Infrastructure
@@ -263,17 +262,6 @@ class AbstractPort
         }
 
         return $participantCount;
-    }
-
-    protected function getAllParticipants(): ?array
-    {
-        $participants = [];
-//        try {
-//            $participants = $this->client->dispatchRequest('participants');
-//        } catch (\Exception $exception) {
-//            th
-//        }
-        return $participants;
     }
 
     /**
