@@ -130,7 +130,11 @@ class Client extends AbstractPort
      */
     public function getEventParticipants(int $status = null): ?array
     {
-        return parent::getEventParticipants($status);
+        if (isset($status)) {
+            return parent::getEventParticipants($status);
+        } else {
+            return parent::getEventParticipants();
+        }
     }
 
     public function getAllParticipants(): ?array

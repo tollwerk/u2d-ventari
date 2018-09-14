@@ -51,7 +51,7 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                 </form>
                 <hr>
 
-                <h3>Retrieve Participants by Id</h3>
+                <h3>Event Participant Count by Status Id</h3>
                 <form action="?function=getParticipantCounts" method="post">
                     <label for="participantStatusId"></label>
                     <select class="form-control" id="participantStatusId" name="participantStatusId">
@@ -72,6 +72,12 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                         <option value="15">VA angelegt (15)</option>
                     </select>
                     <input type="submit" value="GET PARTICIPANT COUNTS">
+                </form>
+                <hr>
+
+                <h3>Event Participant Count (ALL)</h3>
+                <form action="?function=getEventParticipants" method="post">
+                    <input type="submit" value="GET EVENT PARTICIPANT COUNT">
                 </form>
 
 
@@ -102,6 +108,9 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
                             }
                             if ($_GET['function'] === 'getParticipantCounts') {
                                 $data = $App->getEventParticipants((int)$_POST['participantStatusId']);
+                            }
+                            if ($_GET['function'] === 'getEventParticipants') {
+                                $data = $App->getEventParticipants();
                             }
                         } catch (\Exception $e) {
                             echo '<pre>';

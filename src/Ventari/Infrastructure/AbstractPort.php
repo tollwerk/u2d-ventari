@@ -257,12 +257,12 @@ class AbstractPort
         /**
          * Check if the submitted status is valid
          */
-        if (!isset($status) && in_array($status, $statusIds)) {
-            throw new RuntimeException(
-                sprintf(RuntimeException::METHOD_EVENTPARTICIPANTS_STR, $status),
-                RuntimeException::METHOD_EVENTPARTICIPANTS
-            );
-        }
+//        if (in_array($status, $statusIds, true)) {
+//            throw new RuntimeException(
+//                sprintf(RuntimeException::METHOD_EVENTPARTICIPANTS_STR, $status),
+//                RuntimeException::METHOD_EVENTPARTICIPANTS
+//            );
+//        }
 
         /**
          * Try to Request All Events
@@ -290,7 +290,7 @@ class AbstractPort
             /**
              * Apply status filter
              */
-            if (!isset($status)) {
+            if ($status === null) {
                 /**
                  * Return results count from the dispatch response
                  */
@@ -301,7 +301,7 @@ class AbstractPort
                  */
                 $participantIndex = 0;
                 foreach ($dispatchResponse->participants as $participant) {
-                    if ($participant->status === $status){
+                    if ($participant->status === $status) {
                         $participantIndex++;
                     }
                 }
