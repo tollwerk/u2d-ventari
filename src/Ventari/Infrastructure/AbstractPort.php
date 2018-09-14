@@ -251,13 +251,13 @@ class AbstractPort
     {
         $eventIds         = [];
         $participantCount = [];
-        $statusIds        = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+        $statusIds        = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 
         /**
          * Check if the submitted status is valid
          */
-        if (isset($status) && in_array($status, $statusIds)) {
+        if (!isset($status) && in_array($status, $statusIds)) {
             throw new RuntimeException(
                 sprintf(RuntimeException::METHOD_EVENTPARTICIPANTS_STR, $status),
                 RuntimeException::METHOD_EVENTPARTICIPANTS
