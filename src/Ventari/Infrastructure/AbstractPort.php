@@ -240,10 +240,33 @@ class AbstractPort
         return $_events;
     }
 
-    protected function getEventParticipants(): ?array
+    /**
+     * Event Participants
+     *
+     * @param int|null $status
+     *
+     * @return array|null
+     */
+    protected function getEventParticipants(int $status = null): ?array
     {
         $eventIds         = [];
         $participantCount = [];
+        $statusIds        = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+
+        /**
+         * Check if the submitted status is valid
+         */
+        if (isset($status) && in_array($status, $statusIds)) {
+            throw new RuntimeException(
+                sprintf(RuntimeException::METHOD_EVENTPARTICIPANTS_STR, $status),
+                RuntimeException::METHOD_EVENTPARTICIPANTS
+            );
+        }
+
+        /**
+         * Try to Request All Events
+         */
         try {
             $events = $this->client->dispatchRequest('events', []);
         } catch (\Exception $exception) {
@@ -251,14 +274,42 @@ class AbstractPort
             throw new RuntimeException($exception->getMessage(), '4010');
         }
 
+        /**
+         * Extract event ids and populate array
+         */
         foreach ($events->events as $event) {
             $eventIds[] = $event->event_id;
         }
 
+        /**
+         * Iterate through event ids and request Participants
+         */
         foreach ($eventIds as $event) {
-            $participants = $this->client->dispatchRequest('participants', ['filterEventId' => $event]);
+            $dispatchResponse = $this->client->dispatchRequest('participants', ['filterEventId' => $event]);
 
-            $participantCount[$event] = $participants->resultCount;
+            /**
+             * Apply status filter
+             */
+            if (!isset($status)) {
+                /**
+                 * Return results count from the dispatch response
+                 */
+                $participantCount[$event] = $dispatchResponse->resultCount;
+            } else {
+                /**
+                 * Start Count of Participants with matching status
+                 */
+                $participantIndex = 0;
+                foreach ($dispatchResponse->participants as $participant) {
+                    if ($participant->status === $status){
+                        $participantIndex++;
+                    }
+                }
+                /**
+                 * Return participant index count from matching status
+                 */
+                $participantCount[$event] = $participantIndex;
+            }
         }
 
         return $participantCount;

@@ -50,6 +50,19 @@ class RuntimeException extends \Tollwerk\Ventari\Infrastructure\Exception\Runtim
     public const RESPONSE_PERSONID = 9998;
     public const RESPONSE_PERSONID_STR = 'Missing Value: "%s"';
 
+
+    /**
+     * Participant Status Id
+     * @var int
+     */
+    public const METHOD_EVENTPARTICIPANTS = 4013;
+
+    /**
+     * Participant Status Id
+     * @var string
+     */
+    public const METHOD_EVENTPARTICIPANTS_STR = 'Incorrect Status Id: "%s"';
+
     /**
      * @var null|Throwable
      */

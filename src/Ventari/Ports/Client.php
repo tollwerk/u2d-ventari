@@ -122,12 +122,15 @@ class Client extends AbstractPort
 
     /**
      * Return Events with Participant Count
+     *
+     * @param int $status
+     *
      * @return array|null
      * @api
      */
-    public function getEventParticipants(): ?array
+    public function getEventParticipants(int $status = null): ?array
     {
-        return parent::getEventParticipants();
+        return parent::getEventParticipants($status);
     }
 
     public function getAllParticipants(): ?array
