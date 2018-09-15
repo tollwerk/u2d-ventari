@@ -23,10 +23,10 @@ trait EventDateTrait
      */
     public function __construct()
     {
-        $dateTimeZone = new \DateTimeZone('Europe/Berlin');
+        $dateTimeZone        = new \DateTimeZone('Europe/Berlin');
         $this->startDateTime = new \DateTime('@0');
         $this->startDateTime->setTimezone($dateTimeZone);
-        $this->endDateTime   = new \DateTime('@0');
+        $this->endDateTime = new \DateTime('@0');
         $this->endDateTime->setTimezone($dateTimeZone);
     }
 
@@ -46,13 +46,14 @@ trait EventDateTrait
     public function setStartDateTime(array $modifiers): void
     {
         $this->startDateTime->setDate(
-            empty($modifiers['year']) ? $this->startDateTime->format('Y') : $modifiers['year'],
-            empty($modifiers['month']) ? $this->startDateTime->format('n') : $modifiers['month'],
-            empty($modifiers['day']) ? $this->startDateTime->format('j') : $modifiers['day']
+            intval(empty($modifiers['year']) ? $this->startDateTime->format('Y') : $modifiers['year']),
+            intval(empty($modifiers['month']) ? $this->startDateTime->format('n') : $modifiers['month']),
+            intval(empty($modifiers['day']) ? $this->startDateTime->format('j') : $modifiers['day'])
         );
         $this->startDateTime->setTime(
-            empty($modifiers['hour']) ? $this->startDateTime->format('G') : $modifiers['hour'],
-            empty($modifiers['minute']) ? (int) ltrim($this->startDateTime->format('i'), '0') : $modifiers['minute']
+            intval(empty($modifiers['hour']) ? $this->startDateTime->format('G') : $modifiers['hour']),
+            intval(empty($modifiers['minute']) ? (int)ltrim($this->startDateTime->format('i'),
+                '0') : $modifiers['minute'])
         );
     }
 
@@ -72,16 +73,16 @@ trait EventDateTrait
     public function setEndDateTime(array $modifiers): void
     {
         $this->endDateTime->setDate(
-            empty($modifiers['year']) ? $this->endDateTime->format('Y') : $modifiers['year'],
-            empty($modifiers['month']) ? $this->endDateTime->format('n') : $modifiers['month'],
-            empty($modifiers['day']) ? $this->endDateTime->format('j') : $modifiers['day']
+            intval(empty($modifiers['year']) ? $this->endDateTime->format('Y') : $modifiers['year']),
+            intval(empty($modifiers['month']) ? $this->endDateTime->format('n') : $modifiers['month']),
+            intval(empty($modifiers['day']) ? $this->endDateTime->format('j') : $modifiers['day'])
         );
         $this->endDateTime->setTime(
-            empty($modifiers['hour']) ? $this->endDateTime->format('G') : $modifiers['hour'],
-            empty($modifiers['minute']) ? intval(ltrim($this->endDateTime->format('i'), '0')) : $modifiers['minute']
+            intval(empty($modifiers['hour']) ? $this->endDateTime->format('G') : $modifiers['hour']),
+            intval(empty($modifiers['minute']) ? intval(ltrim($this->endDateTime->format('i'),
+                '0')) : $modifiers['minute'])
         );
     }
 
-//    abstract public function abstractMethodForDate(): \DateTime;
     abstract public function abstractMethodForDate(): void;
 }
