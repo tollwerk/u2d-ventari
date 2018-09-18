@@ -1,7 +1,7 @@
 <?php
 //Require once the Composer Autoload
-if (file_exists(__DIR__.'/vendor/autoload.php')) {
-    require_once __DIR__.'/vendor/autoload.php';
+if (file_exists(dirname(__DIR__, 1).'/vendor/autoload.php')) {
+    require_once dirname(__DIR__, 1).'/vendor/autoload.php';
 }
 ?>
 <!doctype html>
@@ -10,13 +10,13 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="public/css/style.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div class="content">
             <?php
             $params = $_GET;
-            $config = require __DIR__.DIRECTORY_SEPARATOR.'config/config.php';
+            $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'config/config.php';
 
             $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
 
