@@ -222,6 +222,7 @@ class AbstractPort
     protected function getRegisteredEvents(string $participantEmail): ?array
     {
         $_events = [];
+        $baseUrl  = 'https://events.nueww.de';
         $filter  = [
             'filterActiveEvents' => 1,
             'filterFields'       => [
@@ -233,7 +234,11 @@ class AbstractPort
 
         if (isset($events->participants)) {
             foreach ($events->participants as $event) {
-                $_events[] = $event->eventId;
+                $link = Helper::createFrontendLink($event->eventId, $event->id, $event->hash, $event->languageId);
+                $_events[$event->eventId] = [
+                    'status' => $event->status,
+                    'link' => $baseUrl.$link
+                ];
             }
         }
 
