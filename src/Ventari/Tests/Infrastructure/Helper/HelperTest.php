@@ -32,7 +32,7 @@ class HelperTest extends AbstractTestBase
 
     public function testCreateFrontendLink(): void
     {
-        $expected = '/tms/frontend/index.cfm?l=1123&amp;id=112&amp;sp_id=1&amp;dat_h=ASDFQWERZXCV';
+        $expected = '/tms/frontend/index.cfm?l=1123&id=112&sp_id=1&dat_h=ASDFQWERZXCV';
         $actual   = self::$testClass::createFrontendLink(1123,112,'ASDFQWERZXCV',1);
         $this->assertEquals($expected, $actual);
     }
