@@ -222,7 +222,7 @@ class AbstractPort
     protected function getRegisteredEvents(string $participantEmail): ?array
     {
         $_events = [];
-        $baseUrl  = 'https://events.nueww.de';
+        $baseUrl = 'https://events.nueww.de';
         $filter  = [
             'filterActiveEvents' => 1,
             'filterFields'       => [
@@ -234,10 +234,11 @@ class AbstractPort
 
         if (isset($events->participants)) {
             foreach ($events->participants as $event) {
-                $link = Helper::createFrontendLink($event->eventId, $event->id, $event->hash, $event->languageId);
+                $link                     = Helper::createFrontendLink($event->eventId, $event->id, $event->hash,
+                    $event->languageId);
                 $_events[$event->eventId] = [
                     'status' => $event->status,
-                    'link' => $baseUrl.$link
+                    'link'   => $baseUrl.$link
                 ];
             }
         }
@@ -318,6 +319,40 @@ class AbstractPort
         }
 
         return $participantCount;
+    }
+
+    /**
+     * Return Event Status Ids
+     *
+     * @param int $eventId
+     * @param array $statusIds
+     *
+     * @return array|null
+     */
+    protected function getEventParticipantStatus(int $eventId, array $statusIds): ?array
+    {
+        $eventStatusIds = [
+            $eventId => []
+        ];
+
+        try {
+            $dispatchResponse = $this->client->dispatchRequest('participants', ['filterEventId' => $eventId]);
+        } catch (\Exception $exception) {
+            echo $exception;
+            throw new RuntimeException($exception->getMessage(), '4013');
+        }
+
+        foreach ($statusIds as $status) {
+            $participantIndex = 0;
+            foreach ($dispatchResponse->participants as $participant) {
+                if ((int)$participant->status === (int)$status) {
+                    $participantIndex++;
+                }
+            }
+            $eventStatusIds[$eventId][$status] = $participantIndex;
+        }
+
+        return $eventStatusIds;
     }
 
     /**

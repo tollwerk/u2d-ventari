@@ -2,6 +2,7 @@
 
 namespace Tollwerk\Ventari\Ports;
 
+use PHPUnit\Runner\Exception;
 use Tollwerk\Ventari\Infrastructure\AbstractPort;
 
 
@@ -137,8 +138,28 @@ class Client extends AbstractPort
         }
     }
 
+    /**
+     * Return Events status Ids
+     *
+     * @param int $eventId
+     * @param array $statusIds
+     *
+     * @return array|null
+     * @api
+     */
+    public function getEventParticipantStatus(int $eventId, array $statusIds = []): ?array
+    {
+        if (isset($statusIds) && isset($eventId)) {
+            return parent::getEventParticipantStatus($eventId, $statusIds);
+        }
+    }
+
     public function getAllParticipants(): ?array
     {
-        return parent::makeRequest('participants', ['filterActiveEvents' => true]);
+        try {
+            return parent::makeRequest('participants', ['filterActiveEvents' => true]);
+        } catch (\Exception $e) {
+            throw new Exception($e->getMessage(), $e->getCode());
+        }
     }
 }
