@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
-use PHP_CodeSniffer\Exceptions\RuntimeException;
 use Tollwerk\Ventari\Application\Factory\ParticipantFactory;
 use Tollwerk\Ventari\Domain\Model\Participant;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
