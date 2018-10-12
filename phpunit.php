@@ -10,8 +10,8 @@ echo sprintf('%s - Web server started on %s:%d with PID %d', date('r'), WEB_SERV
 // Register shutdown function to stop the built-in webserver
 register_shutdown_function(function () use ($pid) {
     echo sprintf('%s - Killing process with ID %d', date('r'), $pid).PHP_EOL;
-//    exec("taskkill /F /T /PID $pid"); // Windows Command
-    exec("kill -9 $pid"); // macOs Command
+    exec("taskkill /F /T /PID $pid"); // Windows Command
+//    exec("kill -9 $pid"); // macOs Command
     (stripos(php_uname('s'), 'win') > -1) ? exec("taskkill /F /T /PID $pid") : exec("kill -9 $pid");
 });
 

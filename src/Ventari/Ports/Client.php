@@ -149,17 +149,19 @@ class Client extends AbstractPort
      */
     public function getEventParticipantStatus(int $eventId, array $statusIds = []): ?array
     {
-        if (isset($statusIds) && isset($eventId)) {
+//        try {
             return parent::getEventParticipantStatus($eventId, $statusIds);
-        }
+//        } catch (\Exception $e) {
+//            throw new Exception($e->getMessage(), $e->getCode());
+//        }
     }
 
     public function getAllParticipants(): ?array
     {
-        try {
+//        try {
             return parent::makeRequest('participants', ['filterActiveEvents' => true]);
-        } catch (\Exception $e) {
-            throw new Exception($e->getMessage(), $e->getCode());
-        }
+//        } catch (\Exception $e) {
+//            throw new Exception($e->getMessage(), $e->getCode());
+//        }
     }
 }
