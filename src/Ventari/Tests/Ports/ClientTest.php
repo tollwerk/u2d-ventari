@@ -91,7 +91,6 @@ class ClientTest extends AbstractTestBase
     {
         $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
         $request = $client->getEventParticipants();
-        $this->assertEquals(true, true);
         $this->assertInternalType('array', $request);
         $request = $client->getEventParticipants(4);
         $this->assertInternalType('array', $request);
@@ -103,6 +102,20 @@ class ClientTest extends AbstractTestBase
         $exceptionCode    = 0000;
         $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
         $this->assertEquals($exceptionMessage, $testClass->getMessage());
+    }
+
+    public function testGetEventParticipantStatus(): void
+    {
+        $client = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request = $client->getEventParticipantStatus('1080', [4,5,6]);
+        $this->assertInternalType('array', $request);
+    }
+
+    public function testGetAllParticipants(): void
+    {
+        $client = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request = $client->getAllParticipants();
+        $this->assertInternalType('array', $request);
     }
 
     public function requestProvider(): array
