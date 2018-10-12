@@ -2,6 +2,7 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
+use PHP_CodeSniffer\Exceptions\RuntimeException;
 use Tollwerk\Ventari\Application\Factory\ParticipantFactory;
 use Tollwerk\Ventari\Domain\Model\Participant;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
@@ -43,6 +44,7 @@ class ParticipantTest extends AbstractTestBase
             $refinedValue = $factory->accessRefineValue($key, $value);
             $testClass->$setter($refinedValue);
             $getter = 'get'.ucfirst($property);
+            echo $getter.PHP_EOL;
             $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
             $this->assertEquals($refinedValue, $testClass->$getter());
         }
@@ -53,12 +55,9 @@ class ParticipantTest extends AbstractTestBase
         return [
             [
                 array(
+                    'id' => 5,
                     'personId' => 123,
-                    'fields' => array(
-                        'anzParamId' => 7,
-                        'value' => 'email@server.net'
-                    ),
-                    'id' => 5
+                    'email' => 'email@server.net'
                 )
             ]
         ];
