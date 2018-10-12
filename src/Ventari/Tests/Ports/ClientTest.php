@@ -87,15 +87,15 @@ class ClientTest extends AbstractTestBase
         $this->assertInternalType('array', $request);
     }
 
-//    public function testGetEventParticipants(): void
-//    {
-//        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
-//        $request = $client->getEventParticipants();
-//        $this->assertEquals(true, true);
-//        $this->assertInternalType('array', $request);
-//        $request = $client->getEventParticipants(4);
-//        $this->assertInternalType('array', $request);
-//    }
+    public function testGetEventParticipants(): void
+    {
+        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $request = $client->getEventParticipants();
+        $this->assertEquals(true, true);
+        $this->assertInternalType('array', $request);
+        $request = $client->getEventParticipants(4);
+        $this->assertInternalType('array', $request);
+    }
 
     public function testRuntimeException(): void
     {
