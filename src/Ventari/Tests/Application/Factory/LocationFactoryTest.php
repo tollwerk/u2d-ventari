@@ -13,16 +13,12 @@ class LocationFactoryTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new LocationFactory();
-    }
-
     /**
      * Test the Instance of LocationFactory
      */
     public function testConstructor(): void
     {
+        self::$testClass = new LocationFactory();
         $this->assertInstanceOf(LocationFactory::class, self::$testClass);
     }
 
@@ -30,6 +26,8 @@ class LocationFactoryTest extends AbstractTestBase
      * Test createFromJson
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider
      * @throws \Exception
@@ -45,20 +43,22 @@ class LocationFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
+     * @depends testConstructor
+     *
      * @dataProvider jsonInputProvider
      */
     public function testRefineValue($input): void
     {
         $intProps = self::$testClass->accessIntProperties();
-        $this->assertInternalType('array', $intProps);
+        $this->assertIsArray($intProps);
         $input = json_decode(json_encode($input));
 
         foreach ($input as $key => $value) {
             $actual = self::$testClass->accessRefineValue($key, $value);
             if (in_array($key, $intProps)) {
-                $this->assertInternalType('int', $actual);
+                $this->assertIsInt($actual);
             } else {
-                $this->assertInternalType('string', $actual);
+                $this->assertIsString($actual);
             }
         }
 

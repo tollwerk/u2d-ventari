@@ -16,15 +16,10 @@ class EventLinkTraitTest extends AbstractTestBase
      */
     public $testTrait;
 
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(EventLinkTrait::class);
-    }
-
     public function testFacebookEvent(): void
     {
         $expectedString = 'expectedString';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setFacebookEvent($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -36,7 +31,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testTwitter(): void
     {
         $expectedString = '@johndoe1';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setTwitter($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -48,7 +43,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testXingEvent(): void
     {
         $expectedString = 'https://xing.de/event/0112358132134';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setXingEvent($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -60,7 +55,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testLivestreamEmbed(): void
     {
         $expectedString = '0112358132134';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setLivestreamEmbed($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -72,7 +67,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testLivestream(): void
     {
         $expectedString = 'https://live.stream.de';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setLivestream($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -84,7 +79,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testTicketUrl(): void
     {
         $expectedString = 'https://ticket.service.com/?eventID=1235813';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setTicketUrl($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -96,7 +91,7 @@ class EventLinkTraitTest extends AbstractTestBase
     public function testWebsite(): void
     {
         $expectedString = 'https://event.website.de';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventLinkTrait::class);
         $mock->setWebsite($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')

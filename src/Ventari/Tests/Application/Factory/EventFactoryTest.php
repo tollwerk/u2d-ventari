@@ -13,16 +13,12 @@ class EventFactoryTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new EventFactory();
-    }
-
     /**
      * Test the Instance of EventFactory
      */
     public function testConstructor(): void
     {
+        self::$testClass = new EventFactory();
         $this->assertInstanceOf(EventFactory::class, self::$testClass);
     }
 
@@ -30,6 +26,8 @@ class EventFactoryTest extends AbstractTestBase
      * Test createFromJson
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider
      * @throws \Exception
@@ -45,21 +43,23 @@ class EventFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
+     * @depends testConstructor
+     *
      * @dataProvider jsonInputProvider
      */
     public function testRefineValue($input): void
     {
         $dateProps = self::$testClass->accessDateProperties();
-        $this->assertInternalType('array', $dateProps);
+        $this->assertIsArray($dateProps);
         $input = json_decode(json_encode($input));
 
         foreach ($input as $key => $value) {
             $actual = self::$testClass->accessRefineValue($key, $value);
             if (in_array($key, $dateProps)) {
 //                $this->assertInstanceOf(\DateTime::class, $actual);
-                $this->assertInternalType('array', $actual);
+                $this->assertIsArray($actual);
             } else {
-                $this->assertInternalType('string', $actual);
+                $this->assertIsString($actual);
             }
         }
     }

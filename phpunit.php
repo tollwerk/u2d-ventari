@@ -23,3 +23,5 @@ if (!file_exists($autoloader)) {
     exit(1);
 }
 require $autoloader;
+
+\Dotenv\Dotenv::create(__DIR__)->load();

@@ -13,16 +13,12 @@ class SpeakerFactoryTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new SpeakerFactory();
-    }
-
     /**
      * Test the Instance of SpeakerFactory
      */
     public function testConstructor(): void
     {
+        self::$testClass = new SpeakerFactory();
         $this->assertInstanceOf(SpeakerFactory::class, self::$testClass);
     }
 
@@ -30,6 +26,8 @@ class SpeakerFactoryTest extends AbstractTestBase
      * Test createFromJson
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider
      * @throws \Exception
@@ -44,6 +42,8 @@ class SpeakerFactoryTest extends AbstractTestBase
      * Test refineValue
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider
      */

@@ -6,10 +6,10 @@ use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 /**
- * Class AbstractPort
+ * Class Client
  * @package Tollwerk\Ventari\Infrastructure
  */
-class AbstractPort
+class Client
 {
     /**
      * HTTP client
@@ -35,12 +35,15 @@ class AbstractPort
     /**
      * Client constructor
      *
-     * @param string $method        Request method
-     * @param string $api           API URL
-     * @param array $authentication Authentication credentials
      */
-    public function __construct(string $method, string $api, array $authentication)
+    public function __construct()
     {
+        $method           = getenv('VENTARI_API_METHOD');
+        $api              = getenv('VENTARI_API_URL');
+        $authentication   = [
+            'username' => getenv('VENTARI_API_USERNAME'),
+            'password' => getenv('VENTARI_API_PASSWORD')
+        ];
         $this->client     = new HttpClient($method, $api, $authentication);
         $this->handler    = new CurlClient($method, $api, $authentication);
         $this->dispatcher = new DispatchController();
@@ -218,6 +221,7 @@ class AbstractPort
      * @param string $participantEmail
      *
      * @return array|null
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function getRegisteredEvents(string $participantEmail): ?array
     {

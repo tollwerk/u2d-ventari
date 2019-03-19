@@ -16,11 +16,6 @@ class EventDateTraitTest extends AbstractTestBase
      */
     public $testTrait;
 
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(EventDateTrait::class);
-    }
-
     public function testStartDateTime(): void
     {
         $expectedDate = new \DateTime('@0');
@@ -32,7 +27,7 @@ class EventDateTraitTest extends AbstractTestBase
             'hour' => $expectedDate->format('G'),
             'minute' => (int) ltrim($expectedDate->format('i'), '0')
         ];
-        $mock         = $this->testTrait;
+        $mock         = $this->getMockForTrait(EventDateTrait::class);
         $mock->setStartDateTime($modifiers);
         $mock->expects($this->any())
              ->method('abstractMethodForDate')
@@ -51,7 +46,7 @@ class EventDateTraitTest extends AbstractTestBase
             'hour' => $expectedDate->format('G'),
             'minute' => (int) ltrim($expectedDate->format('i'), '0')
         ];
-        $mock         = $this->testTrait;
+        $mock         = $this->getMockForTrait(EventDateTrait::class);
         $mock->setEndDateTime($modifiers);
         $mock->expects($this->any())
              ->method('abstractMethodForDate')

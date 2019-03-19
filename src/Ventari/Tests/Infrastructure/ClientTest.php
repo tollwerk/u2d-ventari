@@ -2,38 +2,46 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use Tollwerk\Ventari\Infrastructure\AbstractPort;
+use Tollwerk\Ventari\Infrastructure\Client;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
-class AbstractPortTest extends AbstractTestBase
+class ClientTest extends AbstractTestBase
 {
     /**
-     * @var AbstractPort $testClass
+     * @var Client $testClass
      */
     protected static $testClass;
-
-    public static function setUpBeforeClass()
-    {
-        $config          = require \dirname(__DIR__,
-                4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-        self::$testClass = new AbstractPort($config['method'], $config['api'], $config['authentication']);
-    }
 
     /**
      * Test Constructor
      */
     public function testConstructor(): void
     {
+        self::$testClass = new Client();
         $this->assertClassHasAttribute('client', \get_class(self::$testClass));
         $this->assertClassHasAttribute('dispatcher', \get_class(self::$testClass));
     }
 
+    /**
+     * Test make request method
+     *
+     * @depends testConstructor
+     *
+     * @throws \Exception
+     */
     public function testMakeRequest(): void
     {
-        $requestReponse = self::$testClass->accessMakeRequest('views/agenda', []);
-        $this->assertInternalType('array', $requestReponse);
+        $requestResponse = self::$testClass->accessMakeRequest('views/agenda', []);
+        $this->assertIsArray($requestResponse);
     }
 
+    /**
+     * Test make request method with exception
+     *
+     * @depends testConstructor
+     *
+     * @throws \Exception
+     */
     public function testMakeRequestException(): void
     {
         $this->expectException(\RuntimeException::class);

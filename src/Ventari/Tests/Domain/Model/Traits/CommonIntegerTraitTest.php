@@ -11,17 +11,10 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
  */
 class CommonIntegerTraitTest extends AbstractTestBase
 {
-    public $testTrait;
-
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(CommonIntegerTrait::class);
-    }
-
     public function testEventVentariId(): void
     {
         $expectedValue = 112358;
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(CommonIntegerTrait::class);
         $mock->setEventVentariId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')

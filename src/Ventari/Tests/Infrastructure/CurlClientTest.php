@@ -17,36 +17,39 @@ class CurlClientTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        /**
-         * Local Config File
-         */
-        $config = require \dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-
-        self::$testClass = new CurlClient($config['method'], $config['api'], $config['authentication']);
-    }
-
     /**
      * Test Constructor
      */
     public function testConstructor(): void
     {
-        $httpClient = self::$testClass;
+        self::$testClass = new CurlClient(
+            getenv('VENTARI_API_METHOD'),
+            getenv('VENTARI_API_URL'),
+            [
+                'username' => getenv('VENTARI_API_USERNAME'),
+                'password' => getenv('VENTARI_API_PASSWORD')
+            ]
+        );
+
         /**
          * Testing the Constructor
          */
-        $this->assertClassHasAttribute('guzzle', \get_class($httpClient));
-        $this->assertClassHasAttribute('method', \get_class($httpClient));
-        $this->assertClassHasAttribute('baseUrl', \get_class($httpClient));
-        $this->assertClassHasAttribute('authentication', \get_class($httpClient));
+        $this->assertClassHasAttribute('guzzle', \get_class(self::$testClass));
+        $this->assertClassHasAttribute('method', \get_class(self::$testClass));
+        $this->assertClassHasAttribute('baseUrl', \get_class(self::$testClass));
+        $this->assertClassHasAttribute('authentication', \get_class(self::$testClass));
     }
 
     /**
+     * Test request dispatcher
+     *
      * @param $function
      * @param $params
      *
+     * @depends      testConstructor
+     *
      * @dataProvider requestProvider
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function testDispatchRequest($function, $params): void
     {
@@ -56,6 +59,8 @@ class CurlClientTest extends AbstractTestBase
 
     /**
      * Test Exception for Request
+     *
+     * @depends testConstructor
      */
     public function testDispatchRequestException(): void
     {
@@ -69,6 +74,8 @@ class CurlClientTest extends AbstractTestBase
 
     /**
      * Test Exception for Response
+     *
+     * @depends testConstructor
      */
     public function testDispatchResponseException(): void
     {
@@ -77,7 +84,9 @@ class CurlClientTest extends AbstractTestBase
     }
 
     /**
+     * Test submission dispatcher
      *
+     * @depends testConstructor
      */
     public function testDispatchSubmission(): void
     {

@@ -13,12 +13,6 @@ class EventTest extends AbstractTestBase
      */
     public $eventApi;
 
-    protected function setUp()
-    {
-        $factory        = new EventFactory();
-        $this->eventApi = $factory->accessEventApi();
-    }
-
     /**
      * Test Class Properties
      *
@@ -30,6 +24,7 @@ class EventTest extends AbstractTestBase
     {
         $testClass = new Event();
         $factory   = new EventFactory();
+        $this->eventApi = $factory->accessEventApi();
 
         foreach ($input as $key => $value) {
             if (isset($this->eventApi[$key])) {
@@ -50,7 +45,7 @@ class EventTest extends AbstractTestBase
             if (!\is_object($testClass->$getter())) {
                 $this->assertEquals($refinedValue, $testClass->$getter());
             } else {
-                $this->assertInternalType('object', $testClass->$getter());
+                $this->assertIsObject($testClass->$getter());
             }
         }
     }

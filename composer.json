@@ -6,14 +6,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Philip Saa",
-            "email": "philip@tollwerk.de",
+            "name": "tollwerk GmbH",
+            "email": "info@tollwerk.de",
             "homepage": "https://tollwerk.de",
             "role": "Developer"
         }
     ],
     "support": {
-        "email": "philip@tollwerk.de",
+        "email": "info@tollwerk.de",
         "source": "https://github.com/tollwerk/u2d-ventari",
         "issues": "https://github.com/tollwerk/u2d-ventari/issues"
     },
@@ -29,7 +29,7 @@
     "require": {
         "php": ">=7.2",
         "guzzlehttp/guzzle": "^6.3",
-        "php-coveralls/php-coveralls": "^2.1"
+        "vlucas/phpdotenv": "^3.3"
     },
     "autoload": {
         "psr-4": {
@@ -44,9 +44,10 @@
         "test": "@phpunit"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
         "clue/graph-composer": "dev-master",
-        "phpunit/phpunit": "^7.2",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "^8.0",
+        "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.3"
     }
 }

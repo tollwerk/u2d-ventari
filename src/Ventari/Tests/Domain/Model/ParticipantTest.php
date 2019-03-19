@@ -13,12 +13,6 @@ class ParticipantTest extends AbstractTestBase
      */
     public $participantApi;
 
-    protected function setUp()
-    {
-        $factory = new ParticipantFactory();
-        $this->participantApi = $factory->accessParticipantApi();
-    }
-
     /**
      * Test Class Properties
      *
@@ -30,6 +24,7 @@ class ParticipantTest extends AbstractTestBase
     {
         $testClass = new Participant();
         $factory = new ParticipantFactory();
+        $this->participantApi = $factory->accessParticipantApi();
 
         foreach ($input as $key => $value) {
             if (isset($this->participantApi[$key])) {
@@ -39,11 +34,9 @@ class ParticipantTest extends AbstractTestBase
 
             $setter = 'set'.ucfirst($property);
             $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
-
             $refinedValue = $factory->accessRefineValue($key, $value);
             $testClass->$setter($refinedValue);
             $getter = 'get'.ucfirst($property);
-            echo $getter.PHP_EOL;
             $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
             $this->assertEquals($refinedValue, $testClass->$getter());
         }

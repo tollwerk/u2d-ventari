@@ -3,7 +3,7 @@
 [![Build Status][travis-image]][travis-url] [![Coverage Status](https://coveralls.io/repos/github/tollwerk/u2d-ventari/badge.svg?branch=master)](https://coveralls.io/github/tollwerk/u2d-ventari?branch=master)
  [![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url] [![Code Climate][codeclimate-image]][codeclimate-url]  [![Clear architecture][clear-architecture-image]][clear-architecture-url]
 
-> U2D Ventari client
+> U2D Ventari API client in PHP
 
 ## Documentation
 
@@ -33,7 +33,7 @@ If you discover any security related issues, please email philip@tollwerk.de ins
 
 ## Credits
 
-- [Philip Saa][author-url]
+- [tollwerk GmbH][author-url]
 - [All Contributors](../../contributors)
 
 ## License

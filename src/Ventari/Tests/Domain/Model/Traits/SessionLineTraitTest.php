@@ -13,15 +13,10 @@ class SessionLineTraitTest extends AbstractTestBase
 {
     public $testTrait;
 
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(SessionLineTrait::class);
-    }
-
     public function testLineId(): void
     {
         $expectedValue = 112358;
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(SessionLineTrait::class);
         $mock->setLineId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -33,7 +28,7 @@ class SessionLineTraitTest extends AbstractTestBase
     public function testLineName(): void
     {
         $expectedString = 'Gallery 3';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(SessionLineTrait::class);
         $mock->setLineName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')

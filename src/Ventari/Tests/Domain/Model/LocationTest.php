@@ -17,12 +17,6 @@ class LocationTest extends AbstractTestBase
      */
     public $locationApi;
 
-    protected function setUp()
-    {
-        $factory           = new LocationFactory();
-        $this->locationApi = $factory->accessLocationApi();
-    }
-
     /**
      * Test Class Properties
      *
@@ -34,6 +28,7 @@ class LocationTest extends AbstractTestBase
     {
         $testClass = new Location();
         $factory   = new LocationFactory();
+        $this->locationApi = $factory->accessLocationApi();
 
         foreach ($input as $key => $value) {
             if (isset($this->locationApi[$key])) {

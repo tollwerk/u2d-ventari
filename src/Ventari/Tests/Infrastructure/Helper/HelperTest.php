@@ -7,20 +7,11 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class HelperTest extends AbstractTestBase
 {
-    /**
-     * @var Helper $testClass
-     */
-    protected static $testClass;
-
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new Helper();
-    }
-
     public function testQueryBuilder(): void
     {
+        $testClass = new Helper();
         $expected = 'filterActiveEvents=1&filterFields={"pa_email":"email@server.net"}';
-        $actual   = self::$testClass::queryBuilder([
+        $actual   = $testClass::queryBuilder([
             'filterActiveEvents' => 1,
             'filterFields'       => [
                 'pa_email' => 'email@server.net',
@@ -32,8 +23,9 @@ class HelperTest extends AbstractTestBase
 
     public function testCreateFrontendLink(): void
     {
+        $testClass = new Helper();
         $expected = '/tms/frontend/index.cfm?l=1123&id=112&sp_id=1&dat_h=ASDFQWERZXCV';
-        $actual   = self::$testClass::createFrontendLink(1123,112,'ASDFQWERZXCV',1);
+        $actual   = $testClass::createFrontendLink(1123,112,'ASDFQWERZXCV',1);
         $this->assertEquals($expected, $actual);
     }
 

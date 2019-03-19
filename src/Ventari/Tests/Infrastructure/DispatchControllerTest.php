@@ -14,24 +14,15 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class DispatchControllerTest extends AbstractTestBase
 {
     /**
-     * @var DispatchController $testClass
-     */
-    public static $testClass;
-
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new DispatchController();
-    }
-
-    /**
      * Test the BaseController
      */
     public function testDispatch(): void
     {
+        $testClass = new DispatchController();
         $json = file_get_contents(\dirname(__DIR__, 4).DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'fixture'.DIRECTORY_SEPARATOR.'Events.json');
         $json = json_decode($json)->responseData;
-        $this->assertInstanceOf(DispatchController::class, self::$testClass);
-        $response = self::$testClass->dispatch('events', $json);
+        $this->assertInstanceOf(DispatchController::class, $testClass);
+        $response = $testClass->dispatch('events', $json);
         foreach ($response as $item) {
             $this->assertInstanceOf(Event::class, $item);
         }

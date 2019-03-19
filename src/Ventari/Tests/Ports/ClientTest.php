@@ -9,17 +9,6 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class ClientTest extends AbstractTestBase
 {
     /**
-     * @var array
-     */
-    protected static $config;
-
-    public static function setUpBeforeClass()
-    {
-        self::$config = require \dirname(__DIR__,
-                4).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config-public.php';
-    }
-
-    /**
      * Test Make Request
      * @var $function string
      * @var $params   array
@@ -30,7 +19,7 @@ class ClientTest extends AbstractTestBase
     public function testMakeRequest($function, $params): void
     {
         $request = null;
-        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client  = new Client();
 
 
         if ($function === 'events') {
@@ -45,55 +34,49 @@ class ClientTest extends AbstractTestBase
         if ($function === 'views/speakers') {
             $request = $client->getSpeakers($params);
         }
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testRequestFile(): void
     {
         $request = null;
-        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client  = new Client();
         $request = $client->getFile('hash1234');
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testGetSpeakerPhoto(): void
     {
         $request = null;
-        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client  = new Client();
         $request = $client->getSpeakerPhoto('186');
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testRegisterForEvent(): void
     {
         $participantEmail = 'email@server.net';
         $eventId          = 1123;
-        $client           = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client           = new Client();
         $request          = $client->registerForEvent($participantEmail, $eventId);
 
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testGetRegisteredEvents(): void
     {
-        $this->expectException(RuntimeException::class);
-        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client  = new Client();
         $request = $client->getRegisteredEvents('email@server.net ');
-        $this->assertInternalType('array', $request);
-
-        $this->expectException(RuntimeException::class);
-        $client  = new Client(self::$config['method'], 'bad.server.net', self::$config['authentication']);
-        $request = $client->getRegisteredEvents('email@server.net ');
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testGetEventParticipants(): void
     {
-        $client  = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client  = new Client();
         $request = $client->getEventParticipants();
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
         $request = $client->getEventParticipants(4);
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testRuntimeException(): void
@@ -106,16 +89,16 @@ class ClientTest extends AbstractTestBase
 
     public function testGetEventParticipantStatus(): void
     {
-        $client = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client = new Client();
         $request = $client->getEventParticipantStatus('1080', [4,5,6]);
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function testGetAllParticipants(): void
     {
-        $client = new Client(self::$config['method'], self::$config['api'], self::$config['authentication']);
+        $client = new Client();
         $request = $client->getAllParticipants();
-        $this->assertInternalType('array', $request);
+        $this->assertIsArray($request);
     }
 
     public function requestProvider(): array

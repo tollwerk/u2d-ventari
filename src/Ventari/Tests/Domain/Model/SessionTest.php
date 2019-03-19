@@ -17,12 +17,6 @@ class SessionTest extends AbstractTestBase
      */
     public $sessionApi;
 
-    protected function setUp()
-    {
-        $factory          = new SessionFactory();
-        $this->sessionApi = $factory->accessSessionApi();
-    }
-
     /**
      * Test Class Properties
      *
@@ -34,6 +28,7 @@ class SessionTest extends AbstractTestBase
     {
         $testClass = new Session();
         $factory = new SessionFactory();
+        $this->sessionApi = $factory->accessSessionApi();
 
         foreach ($input as $key => $value){
             if (isset($this->sessionApi[$key])) {

@@ -14,12 +14,6 @@ class SpeakerTest extends AbstractTestBase
 {
     public $speakerApi;
 
-    protected function setUp()
-    {
-        $factory          = new SpeakerFactory();
-        $this->speakerApi = $factory->accessSpeakerApi();
-    }
-
     /**
      * Test Class Properties
      *
@@ -31,6 +25,7 @@ class SpeakerTest extends AbstractTestBase
     {
         $testClass = new Speaker();
         $factory   = new SpeakerFactory();
+        $this->speakerApi = $factory->accessSpeakerApi();
 
         foreach ($input as $key => $value) {
             if (isset($this->speakerApi[$key])) {

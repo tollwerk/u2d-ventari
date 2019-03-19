@@ -13,19 +13,16 @@ class AbstractModelTest extends AbstractTestBase
 {
     public $testClass;
 
-    protected function setUp()
-    {
-        $this->testClass = $this->getMockForAbstractClass(AbstractModel::class);
-    }
-
     public function testVentariId(): void
     {
+        $this->testClass = $this->getMockForAbstractClass(AbstractModel::class);
         $expectedValue = 1235813;
         $this->testClass->setVentariId($expectedValue);
         $this->assertEquals($expectedValue, $this->testClass->getVentariId());
     }
     public function testHidden(): void
     {
+        $this->testClass = $this->getMockForAbstractClass(AbstractModel::class);
         $expectedValue = false;
         $this->testClass->setHidden($expectedValue);
         $this->assertEquals($expectedValue, $this->testClass->isHidden());

@@ -12,21 +12,19 @@ class SessionFactoryTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new SessionFactory();
-    }
-
     /**
      * Test the Instance of SessionFactory
      */
     public function testConstructor(): void
     {
+        self::$testClass = new SessionFactory();
         $this->assertInstanceOf(SessionFactory::class, self::$testClass);
     }
 
     /**
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @throws \Exception
      * @dataProvider jsonInputProvider
@@ -40,6 +38,8 @@ class SessionFactoryTest extends AbstractTestBase
 
     /**
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider
      */

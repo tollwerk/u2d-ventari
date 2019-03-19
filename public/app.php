@@ -16,9 +16,7 @@ if (file_exists(dirname(__DIR__, 1).'/vendor/autoload.php')) {
         <div class="content">
             <?php
             $params = $_GET;
-            $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'config/config.php';
-
-            $App = new Tollwerk\Ventari\Ports\Client($config['method'], $config['api'], $config['authentication']);
+            $App = new Tollwerk\Ventari\Ports\Client();
 
             $Events = $App->getEvents(['statusIds' => 6]);
             echo '<div class="column">';

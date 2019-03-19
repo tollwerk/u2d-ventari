@@ -13,15 +13,10 @@ class SessionCategoryTraitTest extends AbstractTestBase
 {
     public $testTrait;
 
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(SessionCategoryTrait::class);
-    }
-
     public function testCategoryColor(): void
     {
         $expectedString = '#EEE8AA';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(SessionCategoryTrait::class);
         $mock->setCategoryColor($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -33,7 +28,7 @@ class SessionCategoryTraitTest extends AbstractTestBase
     public function testCategoryId(): void
     {
         $expectedValue = 112358;
-        $mock          = $this->testTrait;
+        $mock          = $this->getMockForTrait(SessionCategoryTrait::class);
         $mock->setCategoryId($expectedValue);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -45,7 +40,7 @@ class SessionCategoryTraitTest extends AbstractTestBase
     public function testCategoryName(): void
     {
         $expectedString = 'Introduction';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(SessionCategoryTrait::class);
         $mock->setCategoryName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')

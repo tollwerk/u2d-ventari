@@ -16,15 +16,10 @@ class EventContactTraitTest extends AbstractTestBase
      */
     public $testTrait;
 
-    protected function setUp()
-    {
-        $this->testTrait = $this->getMockForTrait(EventContactTrait::class);
-    }
-
     public function testOrganizerEmail(): void
     {
         $expectedString = 'email@server.com';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerEmail($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -36,7 +31,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerFacebook(): void
     {
         $expectedString = 'https://facebook.com/EventPage';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerFacebook($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -48,7 +43,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerInstagram(): void
     {
         $expectedString = 'https://instagram.com/EventAccount';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerInstagram($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -60,7 +55,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerOtherLink(): void
     {
         $expectedString = 'http://other.link';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerOtherLink($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -72,7 +67,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerWebsite(): void
     {
         $expectedString = 'http://event.link';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerWebsite($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -84,7 +79,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerLogo(): void
     {
         $expectedString = 'https://server.com/resources/logo.svg';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerLogo($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -96,7 +91,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerName(): void
     {
         $expectedString = 'John Doe';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerName($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')
@@ -108,7 +103,7 @@ class EventContactTraitTest extends AbstractTestBase
     public function testOrganizerTwitter(): void
     {
         $expectedString = '@johndoe1';
-        $mock           = $this->testTrait;
+        $mock           = $this->getMockForTrait(EventContactTrait::class);
         $mock->setOrganizerTwitter($expectedString);
         $mock->expects($this->any())
              ->method('abstractMethod')

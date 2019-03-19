@@ -3,7 +3,6 @@
 /doc
 /vendor
 /composer.lock
-/config/config.php
-/config/nueww.postman_collection.json
-/config/nueww.postman_collection_20180808.json
 /public/.well-known
+.env
+.phpunit.result.cache

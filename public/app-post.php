@@ -191,11 +191,7 @@ $eventId          = isset($_POST["event"]) ? $_POST["event"] : "1876";
 
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $config = require dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'config/config.php';
-                        $App    = new \Tollwerk\Ventari\Ports\Client(
-                            $config['method'],
-                            $config['api'],
-                            $config['authentication']
-                        );
+                        $App    = new \Tollwerk\Ventari\Ports\Client();
 
                         try {
                             if ($_GET['function'] === 'registerForEvent') {

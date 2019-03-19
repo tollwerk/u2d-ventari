@@ -58,7 +58,11 @@ class CurlClient implements CurlClientInterface
 
         $this->method         = $method;
         $this->baseUrl        = $baseUrl;
-        $this->authentication = ['auth' => [$authentication['username'], $authentication['password']]];
+        $this->authentication = [
+            'auth' => [
+                $authentication['username'], $authentication['password']
+            ]
+        ];
     }
 
     /**
@@ -68,6 +72,7 @@ class CurlClient implements CurlClientInterface
      * @param array $params
      *
      * @return \stdClass
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dispatchRequest(string $request, array $params): \stdClass
     {
@@ -85,8 +90,6 @@ class CurlClient implements CurlClientInterface
             ]);
             $body = $res->getBody();
         } catch (RequestException $exception) {
-            echo 'RequestException'.PHP_EOL;
-
             throw new RuntimeException(
                 RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
                 PHP_EOL.Psr7\str($exception->getRequest()),
@@ -98,8 +101,6 @@ class CurlClient implements CurlClientInterface
         try {
             $dispatchResponse = json_decode((string)$body)->responseData;
         } catch (\RuntimeException $exception) {
-            echo '\RuntimeException'.PHP_EOL;
-
             throw new RuntimeException(
                 RuntimeException::METHOD_CURLCLIENT_STR.' : '.
                 $exception->getCode(),

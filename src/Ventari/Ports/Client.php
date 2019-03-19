@@ -2,15 +2,14 @@
 
 namespace Tollwerk\Ventari\Ports;
 
-use PHPUnit\Runner\Exception;
-use Tollwerk\Ventari\Infrastructure\AbstractPort;
+use Tollwerk\Ventari\Infrastructure\Client as InfrastructureClient;
 
 
 /**
  * Class Client
  * @package Tollwerk\Ventari\Ports
  */
-class Client extends AbstractPort
+class Client extends InfrastructureClient
 {
     /**
      * Return all events

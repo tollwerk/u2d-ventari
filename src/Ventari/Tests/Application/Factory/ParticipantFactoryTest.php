@@ -13,13 +13,12 @@ class ParticipantFactoryTest extends AbstractTestBase
      */
     public static $testClass;
 
-    public static function setUpBeforeClass()
-    {
-        self::$testClass = new ParticipantFactory();
-    }
-
+    /**
+     * Test the constructor
+     */
     public function testConstructor(): void
     {
+        self::$testClass = new ParticipantFactory();
         $this->assertInstanceOf(ParticipantFactory::class, self::$testClass);
     }
 
@@ -27,6 +26,8 @@ class ParticipantFactoryTest extends AbstractTestBase
      * Test createFromJson
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider1
      * @throws \Exception
@@ -41,6 +42,8 @@ class ParticipantFactoryTest extends AbstractTestBase
      * Test refineValue
      *
      * @param $input
+     *
+     * @depends testConstructor
      *
      * @dataProvider jsonInputProvider2
      */

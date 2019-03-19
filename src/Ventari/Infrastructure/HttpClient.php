@@ -4,7 +4,6 @@ namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
@@ -46,11 +45,17 @@ class HttpClient implements HttpClientInterface
     {
         $this->guzzle = new Client([
             'headers' => ['User-Agent' => 'Ventari WebService'],
+            'verify'  => false
         ]);
 
         $this->method         = $method;
         $this->baseUrl        = $baseUrl;
-        $this->authentication = ['auth' => [$authentication['username'], $authentication['password']]];
+        $this->authentication = [
+            'auth' => [
+                $authentication['username'],
+                $authentication['password']
+            ]
+        ];
     }
 
     /**
