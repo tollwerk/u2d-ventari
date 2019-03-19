@@ -1,25 +1,61 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Infrastructure
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Infrastructure;
 
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 /**
- * Class Client
- * @package Tollwerk\Ventari\Infrastructure
+ * Client
+ *
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Infrastructure
  */
 class Client
 {
     /**
-     * HTTP client
+     * Client
      *
      * @var HttpClient $client
      */
     protected $client;
 
     /**
-     * CURL client
+     * Handler
      *
      * @var CurlClient $handler
      */
@@ -33,8 +69,7 @@ class Client
     protected $dispatcher;
 
     /**
-     * Client constructor
-     *
+     * Client constructor.
      */
     public function __construct()
     {
@@ -111,16 +146,14 @@ class Client
      * @param int $eventId
      *
      * @return array|null
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function registerForEvent(string $participantEmail, int $eventId): ?array
     {
         $clientResponse = null;
-        /**
-         * TODO: Improve integration of baseUrl
-         */
-        $baseUrl  = 'https://events.nuernberg.digital';
-        $response = null;
-        $email    = '';
+        $baseUrl        = getenv('VENTARI_API_URL');
+        $response       = null;
+        $email          = '';
         /**
          * STEP 1. Request Participant Record with EventId
          */
@@ -178,7 +211,6 @@ class Client
             }
 
             if ($clientResponse->resultCount !== 0) {
-//                $filter['personId'] = $clientResponse->participants[0]->personId;
                 $filter['personId'] = $ventariPersonId;
             }
 
@@ -186,7 +218,7 @@ class Client
              * About to make submission with or without the personId
              */
             $submission = $this->handler->dispatchSubmission('participants', $filter);
-            $response   = $submission->participants[0];
+            $response = $submission->participants[0];
         }
 
 
@@ -265,18 +297,6 @@ class Client
     {
         $eventIds         = [];
         $participantCount = [];
-//        $statusIds        = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-
-
-        /**
-         * Check if the submitted status is valid
-         */
-//        if (in_array($status, $statusIds, true)) {
-//            throw new RuntimeException(
-//                sprintf(RuntimeException::METHOD_EVENTPARTICIPANTS_STR, $status),
-//                RuntimeException::METHOD_EVENTPARTICIPANTS
-//            );
-//        }
 
         /**
          * Try to Request All Events
@@ -376,5 +396,4 @@ class Client
     {
         return $this->makeRequest($arg1, $arg2);
     }
-
 }

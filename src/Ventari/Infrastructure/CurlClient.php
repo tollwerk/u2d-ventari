@@ -1,5 +1,39 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Infrastructure
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
@@ -12,37 +46,43 @@ use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 
 /**
- * Class CurlClient
- * @package Tollwerk\Ventari\Infrastructure
+ * Curl Client
+ *
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Infrastructure
  */
 class CurlClient implements CurlClientInterface
 {
     /**
-     * Guzzle Client
+     * Guzzle client
+     *
      * @var \GuzzleHttp\Client $guzzle
      */
     protected $guzzle;
 
     /**
-     * Guzzle Client's Request Method
+     * Guzzle client request method
+     *
      * @var string
      */
     protected $method;
 
     /**
-     * Guzzle Client's REST URL
+     * Guzzle client base url
+     *
      * @var string
      */
     protected $baseUrl;
 
     /**
-     * Authentication Array
+     * Authentication array
+     *
      * @var array
      */
     protected $authentication;
 
     /**
-     * CurlClient constructor.
+     * Curl Client constructor.
      *
      * @param string $method
      * @param string $baseUrl
@@ -60,7 +100,8 @@ class CurlClient implements CurlClientInterface
         $this->baseUrl        = $baseUrl;
         $this->authentication = [
             'auth' => [
-                $authentication['username'], $authentication['password']
+                $authentication['username'],
+                $authentication['password']
             ]
         ];
     }
@@ -68,10 +109,10 @@ class CurlClient implements CurlClientInterface
     /**
      * Dispatch Curl Request
      *
-     * @param string $request
-     * @param array $params
+     * @param string $request Request path
+     * @param array $params   Request parameters
      *
-     * @return \stdClass
+     * @return \stdClass Response of dispatched request
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dispatchRequest(string $request, array $params): \stdClass
@@ -114,10 +155,10 @@ class CurlClient implements CurlClientInterface
     /**
      * Dispatch Curl Submission
      *
-     * @param string $request
-     * @param array $params
+     * @param string $request Request path
+     * @param array $params   Request parameters
      *
-     * @return \stdClass
+     * @return \stdClass Response from dispatched submission
      */
     public function dispatchSubmission(string $request, array $params): \stdClass
     {
@@ -139,59 +180,5 @@ class CurlClient implements CurlClientInterface
         $json   = json_decode($result);
 
         return $json->responseData;
-//        try {
-//            $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/', [
-//                'curl' => [
-//                    CURLOPT_USERPWD        => $this->authentication['auth'][0].':'.$this->authentication['auth'][1],
-//                    CURLOPT_POST           => 1,
-//                    CURLOPT_POSTFIELDS     => $requestData,
-//                    CURLOPT_HTTPHEADER     => array('Content-Type:application/json'),
-//                    CURLOPT_TIMEOUT        => 30,
-//                    CURLOPT_SSL_VERIFYPEER => false,
-//                    CURLOPT_RETURNTRANSFER => true,
-//
-//                ]
-//            ]);
-//            $body = $res->getBody();
-//        } catch (RequestException $exception) {
-//            echo 'RequestException'.PHP_EOL;
-//
-//            if ($exception->hasResponse()) {
-//                echo Psr7\str($exception->getRequest());
-//            }
-//
-//            throw new RuntimeException(
-//                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
-//                PHP_EOL.Psr7\str($exception->getRequest()),
-//                RuntimeException::METHOD_CURLCLIENT
-//            );
-//
-//        } catch (GuzzleException $exception) {
-//            echo 'GuzzleException'.PHP_EOL;
-//
-//            throw new RuntimeException(
-//                RuntimeException::DEPENDENCY_EXCEPTION_STR.' : '.$exception->getCode().
-//                PHP_EOL.$exception->getMessage(),
-//                RuntimeException::DEPENDENCY_EXCEPTION
-//            );
-//        }
-//
-//        try {
-//            $dispatchReponse = json_decode((string)$body)->responseData;
-//        } catch (RequestException $exception) {
-//            echo 'RequestException'.PHP_EOL;
-//
-//            if ($exception->hasResponse()) {
-//                echo Psr7\str($exception->getRequest());
-//            }
-//
-//            throw new RuntimeException(
-//                RuntimeException::METHOD_CURLCLIENT_STR.' : '.$exception->getCode().
-//                PHP_EOL.$exception->getMessage(),
-//                RuntimeException::METHOD_CURLCLIENT
-//            );
-//        }
-//
-//        return $dispatchReponse;
     }
 }

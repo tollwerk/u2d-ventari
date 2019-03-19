@@ -1,5 +1,39 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Application\Contract\FactoryInterface;
@@ -9,7 +43,8 @@ use Tollwerk\Ventari\Domain\Model\Session;
 /**
  * Session Factory
  *
- * @package Tollwerk\Ventari\Application\Factory
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
  */
 class SessionFactory implements FactoryInterface
 {
@@ -30,6 +65,11 @@ class SessionFactory implements FactoryInterface
         'sessionEnd',
     ];
 
+    /**
+     * Session API
+     *
+     * @var array
+     */
     protected static $sessionApi = [
         // AbstractModel
         'sessionId'            => 'ventariId',
@@ -55,6 +95,25 @@ class SessionFactory implements FactoryInterface
     ];
 
     /**
+     * Refine a value based on its property
+     *
+     * @param string $property Property name
+     * @param mixed $value     Property value
+     *
+     * @return mixed
+     * @throws \Exception If a date property cannot get parsed
+     */
+    protected static function refineValue(string $property, $value)
+    {
+        $refinedValue = $value;
+        if (\in_array($property, self::$timeProperties)) {
+            $refinedValue = new \DateTime(str_replace(',', '', $value));
+        }
+
+        return $refinedValue;
+    }
+
+    /**
      * Create a Session from a JSON object
      *
      * @param \stdClass $json JSON object
@@ -78,34 +137,34 @@ class SessionFactory implements FactoryInterface
     }
 
     /**
-     * Refine a value based on its property
+     * Refine value method for unit test
      *
-     * @param string $property  Property name
-     * @param string|int $value Property value
+     * @param string $prop
+     * @param $val
      *
-     * @return mixed Refined property value
-     * @throws \Exception If a date property cannot get parsed
+     * @return mixed
+     * @throws \Exception
      */
-    protected static function refineValue(string $property, $value)
-    {
-        $refinedValue = $value;
-        if (\in_array($property, self::$timeProperties)) {
-            $refinedValue = new \DateTime(str_replace(',', '', $value));
-        }
-
-        return $refinedValue;
-    }
-
     public function accessRefineValue(string $prop, $val)
     {
         return $this->refineValue($prop, $val);
     }
 
+    /**
+     * Date properties method for unit test
+     *
+     * @return array
+     */
     public function accessDateProperties(): array
     {
         return self::$timeProperties;
     }
 
+    /**
+     * Session API method for unit test
+     *
+     * @return array
+     */
     public function accessSessionApi(): array
     {
         return self::$sessionApi;

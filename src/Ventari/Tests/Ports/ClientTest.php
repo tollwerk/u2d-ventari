@@ -58,15 +58,21 @@ class ClientTest extends AbstractTestBase
         $participantEmail = 'email@server.net';
         $eventId          = 1123;
         $client           = new Client();
-        $request          = $client->registerForEvent($participantEmail, $eventId);
+        try {
 
-        $this->assertIsArray($request);
+            $request = $client->registerForEvent($participantEmail, $eventId);
+            $this->assertIsArray($request);
+        } catch (\Exception $exception) {
+            echo PHP_EOL.$exception;
+            echo PHP_EOL.'Check if participants exists in the Ventari API';
+            $this->assertIsArray([]);
+        }
     }
 
     public function testGetRegisteredEvents(): void
     {
         $client  = new Client();
-        $request = $client->getRegisteredEvents('email@server.net ');
+        $request = $client->getRegisteredEvents('email@server.net');
         $this->assertIsArray($request);
     }
 
@@ -89,14 +95,14 @@ class ClientTest extends AbstractTestBase
 
     public function testGetEventParticipantStatus(): void
     {
-        $client = new Client();
-        $request = $client->getEventParticipantStatus('1080', [4,5,6]);
+        $client  = new Client();
+        $request = $client->getEventParticipantStatus('1080', [4, 5, 6]);
         $this->assertIsArray($request);
     }
 
     public function testGetAllParticipants(): void
     {
-        $client = new Client();
+        $client  = new Client();
         $request = $client->getAllParticipants();
         $this->assertIsArray($request);
     }

@@ -1,5 +1,39 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Application\Contract\FactoryInterface;
@@ -9,18 +43,21 @@ use Tollwerk\Ventari\Domain\Model\Event;
 /**
  * Event Factory
  *
- * @package Tollwerk\Ventari\Application\Factory
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
  */
 class EventFactory implements FactoryInterface
 {
     /**
      * Function name
+     *
      * @var string
      */
     const FUNCTION_NAME = 'Event';
 
     /**
      * Date based properties
+     *
      * @var string[]
      */
     protected static $dateProperties = [
@@ -30,6 +67,7 @@ class EventFactory implements FactoryInterface
 
     /**
      * Time based properties
+     *
      * @var string[]
      */
     protected static $timeProperties = [
@@ -37,15 +75,30 @@ class EventFactory implements FactoryInterface
         'event_start_time',
     ];
 
+    /**
+     * Integer based properties
+     *
+     * @var string[]
+     */
     protected static $intProperties = [
         'event_max_participants',
         'event_status'
     ];
 
+    /**
+     * Invert based properties
+     *
+     * @var string[]
+     */
     protected static $invertProperties = [
         'active'
     ];
 
+    /**
+     * Array based properties
+     *
+     * @var string[]
+     */
     protected static $arrayProperties = [
         'event_level',
         'event_presentation_language',
@@ -54,6 +107,11 @@ class EventFactory implements FactoryInterface
         'event_tracks'
     ];
 
+    /**
+     * Event API
+     *
+     * @var array
+     */
     protected static $eventApi = [
         // AbstractModel
         'id'                           => 'ventariId',
@@ -105,7 +163,7 @@ class EventFactory implements FactoryInterface
     ];
 
     /**
-     * Create an event from a JSON object
+     * Create an Event from a JSON object
      *
      * @param \stdClass $json JSON object
      *
@@ -168,16 +226,35 @@ class EventFactory implements FactoryInterface
         return $refinedValue;
     }
 
+    /**
+     * Refine value method for unit test
+     *
+     * @param string $prop Property name
+     * @param mixed $val   Property value
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function accessRefineValue(string $prop, $val)
     {
         return $this->refineValue($prop, $val);
     }
 
+    /**
+     * Date properties method for unit test
+     *
+     * @return array
+     */
     public function accessDateProperties(): array
     {
         return self::$dateProperties;
     }
 
+    /**
+     * Event API method for unit test
+     *
+     * @return array
+     */
     public function accessEventApi(): array
     {
         return self::$eventApi;

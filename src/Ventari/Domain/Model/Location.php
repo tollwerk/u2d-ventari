@@ -1,13 +1,49 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Domain\Model
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Domain\Model;
 
 use Tollwerk\Ventari\Domain\Contract\LocationInterface;
 use Tollwerk\Ventari\Domain\Model\Traits\CommonIntegerTrait;
 
 /**
- * Class Location
- * @package Tollwerk\Ventari\Domain\Model
+ * Location
+ *
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Domain\Model
  */
 class Location extends AbstractModel implements LocationInterface
 {
@@ -18,59 +54,86 @@ class Location extends AbstractModel implements LocationInterface
 
 
     /**
+     * Street address
+     *
      * @var string
      */
     protected $streetAddress = '';
 
     /**
+     * Phone
+     *
      * @var string
      */
     protected $phone = '';
 
     /**
+     * Postal code
+     *
      * @var int
      */
     protected $postalCode = 0;
 
     /**
+     * Name
+     *
      * @var string
      */
     protected $name = '';
 
     /**
+     * Locality
+     *
      * @var string
      */
     protected $locality = '';
 
     /**
+     * Room
+     *
+     *
      * @var string
      */
     protected $room = '';
 
     /**
+     * Fax
+     *
      * @var string
      */
     protected $fax = '';
 
     /**
+     * Email
+     *
      * @var string
      */
     protected $email = '';
 
     /**
+     * Company Id
+     *
      * @var int
      */
     protected $companyId = 0;
+
     /**
+     * Longitude
+     *
      * @var float
      */
     protected $longitude = 0;
+
     /**
+     * Latitude
+     *
      * @var float
      */
     protected $latitude = 0;
 
     /**
+     * Return the street address
+     *
      * @return string
      */
     public function getStreetAddress(): string
@@ -79,6 +142,7 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the street address
      * @param string $streetAddress
      */
     public function setStreetAddress(string $streetAddress): void
@@ -87,6 +151,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the phone
+     *
      * @return string
      */
     public function getPhone(): string
@@ -95,6 +161,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the phone
+     *
      * @param string $phone
      */
     public function setPhone(string $phone): void
@@ -103,6 +171,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the postal code
+     *
      * @return int
      */
     public function getPostalCode(): int
@@ -111,6 +181,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the postal code
+     *
      * @param int $postalCode
      */
     public function setPostalCode(int $postalCode): void
@@ -119,6 +191,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the name
+     *
      * @return string
      */
     public function getName(): string
@@ -127,6 +201,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the name
+     *
      * @param string $name
      */
     public function setName(string $name): void
@@ -135,6 +211,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the locality
+     *
      * @return string
      */
     public function getLocality(): string
@@ -143,6 +221,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the locality
+     *
      * @param string $locality
      */
     public function setLocality(string $locality): void
@@ -151,6 +231,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the room
+     *
      * @return string
      */
     public function getRoom(): string
@@ -159,6 +241,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the room
+     *
      * @param string $room
      */
     public function setRoom(string $room): void
@@ -167,6 +251,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the fax
+     *
      * @return string
      */
     public function getFax(): string
@@ -175,6 +261,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the fax
+     *
      * @param string $fax
      */
     public function setFax(string $fax): void
@@ -183,6 +271,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the email
+     *
      * @return string
      */
     public function getEmail(): string
@@ -191,6 +281,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the email
+     *
      * @param string $email
      */
     public function setEmail(string $email): void
@@ -199,6 +291,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the company id
+     *
      * @return int
      */
     public function getCompanyId(): int
@@ -207,6 +301,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the company id
+     *
      * @param int $companyId
      */
     public function setCompanyId(int $companyId): void
@@ -215,6 +311,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the longitude
+     *
      * @return float
      */
     public function getLongitude(): float
@@ -223,6 +321,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the longitude
+     *
      * @param float $longitude
      */
     public function setLongitude(float $longitude): void
@@ -231,6 +331,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Return the latitude
+     *
      * @return float
      */
     public function getLatitude(): float
@@ -239,6 +341,8 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
+     * Set the latitude
+     *
      * @param float $latitude
      */
     public function setLatitude(float $latitude): void
@@ -246,10 +350,10 @@ class Location extends AbstractModel implements LocationInterface
         $this->latitude = $latitude;
     }
 
-
-    public function abstractMethod(): string
+    /**
+     * Abstract method for unit test
+     */
+    public function abstractMethod()
     {
-        // TODO: Implement abstractMethod() method.
     }
-
 }

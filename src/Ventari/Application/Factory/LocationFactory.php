@@ -1,5 +1,39 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Application\Factory;
 
 use Tollwerk\Ventari\Application\Contract\FactoryInterface;
@@ -9,7 +43,8 @@ use Tollwerk\Ventari\Domain\Model\Location;
 /**
  * Location Factory
  *
- * @package Tollwerk\Ventari\Application\Factory
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Application\Factory
  */
 class LocationFactory implements FactoryInterface
 {
@@ -21,7 +56,9 @@ class LocationFactory implements FactoryInterface
     const FUNCTION_NAME = 'Location';
 
     /**
-     * @var array
+     * Integer based properties
+     *
+     * @var string[]
      */
     protected static $intProperties = [
         'hotelId',
@@ -32,13 +69,20 @@ class LocationFactory implements FactoryInterface
     ];
 
     /**
-     * @var array
+     * Float based properties
+     *
+     * @var string[]
      */
     protected static $floatProperties = [
         'longitude',
         'latitude'
     ];
 
+    /**
+     * Location API
+     *
+     * @var array
+     */
     protected static $locationApi = [
         // AbstractModel
         'hotelId' => 'ventariId',
@@ -82,6 +126,14 @@ class LocationFactory implements FactoryInterface
         return $location;
     }
 
+    /**
+     * Refine a value based on its property
+     *
+     * @param string $property Property name
+     * @param mixed $value Property value
+     *
+     * @return mixed Refined property value
+     */
     protected static function refineValue(string $property, $value)
     {
         $refinedValue = $value;
@@ -97,16 +149,34 @@ class LocationFactory implements FactoryInterface
         return $refinedValue;
     }
 
+    /**
+     * Refine value method for unit test
+     *
+     * @param string $prop Property name
+     * @param mixed $val Property value
+     *
+     * @return mixed
+     */
     public function accessRefineValue(string $prop, $val)
     {
         return $this->refineValue($prop, $val);
     }
 
+    /**
+     * Integer properties method for unit test
+     *
+     * @return array
+     */
     public function accessIntProperties(): array
     {
         return self::$intProperties;
     }
 
+    /**
+     * Location API method for unit test
+     *
+     * @return array
+     */
     public function accessLocationApi(): array
     {
         return self::$locationApi;

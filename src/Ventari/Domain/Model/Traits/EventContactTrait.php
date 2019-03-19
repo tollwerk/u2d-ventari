@@ -1,54 +1,108 @@
 <?php
 
+/**
+ * u2d-ventari
+ *
+ * @category   Tollwerk
+ * @package    Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Domain\Model\Traits
+ * @author     Philip Saa <philip@tollwerk.de> / @cowglow
+ * @copyright  Copyright © 2019 Philip Saa <philip@tollwerk.de> / @cowglow
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+/***********************************************************************************
+ *  The MIT License (MIT)
+ *
+ *  Copyright © 2019 Philip Saa <philip@tollwerk.de>
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of
+ *  this software and associated documentation files (the "Software"), to deal in
+ *  the Software without restriction, including without limitation the rights to
+ *  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ *  the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ***********************************************************************************/
+
 namespace Tollwerk\Ventari\Domain\Model\Traits;
 
 /**
- * Trait EventContactTrait
- * @package Tollwerk\Ventari\Domain\Model\Traits
+ * Event Contact Trait
+ *
+ * @package Tollwerk\Ventari
+ * @subpackage Tollwerk\Ventari\Domain\Model\Traits
  */
 trait EventContactTrait
 {
     /**
+     * Organizer email
+     *
      * @var string
      */
     protected $organizerEmail = '';
 
     /**
+     * Organizer Facebook link
+     *
      * @var string
      */
     protected $organizerFacebook = '';
 
     /**
+     * Organizer Instagram link
+     *
      * @var string
      */
     protected $organizerInstagram = '';
 
     /**
+     * Organizer other link
+     *
      * @var string
      */
     protected $organizerOtherLink = '';
 
     /**
+     * Organizer website link
+     *
      * @var string
      */
     protected $organizerWebsite = '';
 
     /**
+     * Organizer logo
+     *
      * @var string
      */
     protected $organizerLogo = '';
 
     /**
+     * Organizer name
+     *
      * @var string
      */
     protected $organizerName = '';
 
     /**
+     * Organizer Twitter link
+     *
      * @var string
      */
     protected $organizerTwitter = '';
 
     /**
+     * Return the organizer email
+     *
      * @return string
      */
     public function getOrganizerEmail(): string
@@ -57,6 +111,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer email
+     *
      * @param string $organizerEmail
      */
     public function setOrganizerEmail(string $organizerEmail): void
@@ -65,6 +121,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer Facebook link
+     *
      * @return string
      */
     public function getOrganizerFacebook(): string
@@ -73,6 +131,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer Facebook link
+     *
      * @param string $organizerFacebook
      */
     public function setOrganizerFacebook(string $organizerFacebook): void
@@ -81,6 +141,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer Instagram link
+     *
      * @return string
      */
     public function getOrganizerInstagram(): string
@@ -89,6 +151,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer Instagram link
+     *
      * @param string $organizerInstagram
      */
     public function setOrganizerInstagram(string $organizerInstagram): void
@@ -97,6 +161,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer other link
+     *
      * @return string
      */
     public function getOrganizerOtherLink(): string
@@ -105,6 +171,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer other link
+     *
      * @param string $organizerOtherLink
      */
     public function setOrganizerOtherLink(string $organizerOtherLink): void
@@ -113,6 +181,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer website link
+     *
      * @return string
      */
     public function getOrganizerWebsite(): string
@@ -121,6 +191,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer website link
+     *
      * @param string $organizerWebsite
      */
     public function setOrganizerWebsite(string $organizerWebsite): void
@@ -129,6 +201,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer logo
+     *
      * @return string
      */
     public function getOrganizerLogo(): string
@@ -137,6 +211,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer logo
+     *
      * @param string $organizerLogo
      */
     public function setOrganizerLogo(string $organizerLogo): void
@@ -145,6 +221,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer name
+     *
      * @return string
      */
     public function getOrganizerName(): string
@@ -153,6 +231,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer name
+     *
      * @param string $organizerName
      */
     public function setOrganizerName(string $organizerName): void
@@ -161,6 +241,8 @@ trait EventContactTrait
     }
 
     /**
+     * Return the organizer Twitter link
+     *
      * @return string
      */
     public function getOrganizerTwitter(): string
@@ -169,6 +251,8 @@ trait EventContactTrait
     }
 
     /**
+     * Set the organizer Twitter link
+     *
      * @param string $organizerTwitter
      */
     public function setOrganizerTwitter(string $organizerTwitter): void
@@ -176,5 +260,10 @@ trait EventContactTrait
         $this->organizerTwitter = $organizerTwitter;
     }
 
+    /**
+     * Abstract method for unit test
+     *
+     * @return string
+     */
     abstract public function abstractMethod(): string;
 }
