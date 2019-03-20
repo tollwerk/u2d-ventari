@@ -38,7 +38,7 @@ If you discover any security related issues, please email philip@tollwerk.de ins
 
 ## License
 
-Copyright © 2018 [Philip Saa][author-url] / philip@tollwerk.de. Licensed under the terms of the [MIT license](LICENSE).
+Copyright © 2018 [tollwerk GmbH][author-url] / info@tollwerk.de. Licensed under the terms of the [MIT license](LICENSE).
 
 
 [travis-image]: https://secure.travis-ci.org/tollwerk/u2d-ventari.svg
