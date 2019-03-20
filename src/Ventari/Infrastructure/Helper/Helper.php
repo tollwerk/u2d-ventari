@@ -73,7 +73,7 @@ class Helper
                 $output .= '}';
             }
 
-            if (count($params) !== $index) {
+            if ($index < count($params)) {
                 $output .= '&';
             }
         }

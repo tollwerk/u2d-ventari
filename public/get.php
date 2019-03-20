@@ -66,13 +66,6 @@ if (strpos($request_uri, 'bad')) {
     return;
 }
 
-// TODO POST METHOD FOR TESTING
-//if (strpos($_SERVER['REQUEST_URI'], 'participants/filterEventId=1123')) {
-//    require 'fixture'.DIRECTORY_SEPARATOR.'ParticipantRegistration.json';
-//
-//    return;
-//}
-
 echo json_encode([
     'message' => 'Bad Route:',
     'input'   => $_SERVER['REQUEST_URI']
