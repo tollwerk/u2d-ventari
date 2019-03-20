@@ -95,25 +95,6 @@ class SessionFactory implements FactoryInterface
     ];
 
     /**
-     * Refine a value based on its property
-     *
-     * @param string $property Property name
-     * @param mixed $value     Property value
-     *
-     * @return mixed
-     * @throws \Exception If a date property cannot get parsed
-     */
-    protected static function refineValue(string $property, $value)
-    {
-        $refinedValue = $value;
-        if (\in_array($property, self::$timeProperties)) {
-            $refinedValue = new \DateTime(str_replace(',', '', $value));
-        }
-
-        return $refinedValue;
-    }
-
-    /**
      * Create a Session from a JSON object
      *
      * @param \stdClass $json JSON object
@@ -137,36 +118,21 @@ class SessionFactory implements FactoryInterface
     }
 
     /**
-     * Refine value method for unit test
+     * Refine a value based on its property
      *
-     * @param string $prop
-     * @param $val
+     * @param string $property Property name
+     * @param mixed $value     Property value
      *
      * @return mixed
-     * @throws \Exception
+     * @throws \Exception If a date property cannot get parsed
      */
-    public function accessRefineValue(string $prop, $val)
+    protected static function refineValue(string $property, $value)
     {
-        return $this->refineValue($prop, $val);
-    }
+        $refinedValue = $value;
+        if (\in_array($property, self::$timeProperties)) {
+            $refinedValue = new \DateTime(str_replace(',', '', $value));
+        }
 
-    /**
-     * Date properties method for unit test
-     *
-     * @return array
-     */
-    public function accessDateProperties(): array
-    {
-        return self::$timeProperties;
-    }
-
-    /**
-     * Session API method for unit test
-     *
-     * @return array
-     */
-    public function accessSessionApi(): array
-    {
-        return self::$sessionApi;
+        return $refinedValue;
     }
 }

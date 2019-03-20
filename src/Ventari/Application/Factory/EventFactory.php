@@ -225,38 +225,4 @@ class EventFactory implements FactoryInterface
 
         return $refinedValue;
     }
-
-    /**
-     * Refine value method for unit test
-     *
-     * @param string $prop Property name
-     * @param mixed $val   Property value
-     *
-     * @return mixed
-     * @throws \Exception
-     */
-    public function accessRefineValue(string $prop, $val)
-    {
-        return $this->refineValue($prop, $val);
-    }
-
-    /**
-     * Date properties method for unit test
-     *
-     * @return array
-     */
-    public function accessDateProperties(): array
-    {
-        return self::$dateProperties;
-    }
-
-    /**
-     * Event API method for unit test
-     *
-     * @return array
-     */
-    public function accessEventApi(): array
-    {
-        return self::$eventApi;
-    }
 }

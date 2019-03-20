@@ -27,7 +27,7 @@ class SessionFactoryTest extends AbstractTestBase
      * @depends testConstructor
      *
      * @throws \Exception
-     * @dataProvider jsonInputProvider
+     * @dataProvider getCreateFromJsonData
      */
     public function testCreateFromJson($input): void
     {
@@ -36,25 +36,7 @@ class SessionFactoryTest extends AbstractTestBase
 //        $this->assertInstanceOf(ModelInterface::class, $actual);
     }
 
-    /**
-     * @param $input
-     *
-     * @depends testConstructor
-     *
-     * @dataProvider jsonInputProvider
-     */
-    public function testRefineValue($input): void
-    {
-        foreach ($input as $key => $value) {
-            $actual = self::$testClass->accessRefineValue($key, $value);
-
-            if (\in_array($key, self::$testClass->accessDateProperties())) {
-                $this->assertInstanceOf(\DateTime::class, $actual);
-            }
-        }
-    }
-
-    public function jsonInputProvider(): array
+    public function getCreateFromJsonData(): array
     {
         return [
             [

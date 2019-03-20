@@ -43,5 +43,4 @@ namespace Tollwerk\Ventari\Application\Exception;
  */
 class RuntimeException extends \Tollwerk\Ventari\Domain\Exception\RuntimeException
 {
-
 }

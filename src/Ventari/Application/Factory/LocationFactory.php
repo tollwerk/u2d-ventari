@@ -148,37 +148,4 @@ class LocationFactory implements FactoryInterface
 
         return $refinedValue;
     }
-
-    /**
-     * Refine value method for unit test
-     *
-     * @param string $prop Property name
-     * @param mixed $val Property value
-     *
-     * @return mixed
-     */
-    public function accessRefineValue(string $prop, $val)
-    {
-        return $this->refineValue($prop, $val);
-    }
-
-    /**
-     * Integer properties method for unit test
-     *
-     * @return array
-     */
-    public function accessIntProperties(): array
-    {
-        return self::$intProperties;
-    }
-
-    /**
-     * Location API method for unit test
-     *
-     * @return array
-     */
-    public function accessLocationApi(): array
-    {
-        return self::$locationApi;
-    }
 }

@@ -29,51 +29,23 @@ class EventFactoryTest extends AbstractTestBase
      *
      * @depends testConstructor
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getCreateFromJsonData
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass::createFromJson($input);
+        $actual = self::$testClass::createFromJson([$input]);
         $this->assertInstanceOf(Event::class, $actual);
     }
 
-    /**
-     * Test refineValue
-     *
-     * @param $input
-     *
-     * @depends testConstructor
-     *
-     * @dataProvider jsonInputProvider
-     */
-    public function testRefineValue($input): void
-    {
-        $dateProps = self::$testClass->accessDateProperties();
-        $this->assertIsArray($dateProps);
-        $input = json_decode(json_encode($input));
-
-        foreach ($input as $key => $value) {
-            $actual = self::$testClass->accessRefineValue($key, $value);
-            if (in_array($key, $dateProps)) {
-//                $this->assertInstanceOf(\DateTime::class, $actual);
-                $this->assertIsArray($actual);
-            } else {
-                $this->assertIsString($actual);
-            }
-        }
-    }
-
-    public function jsonInputProvider(): array
+    public function getCreateFromJsonData(): array
     {
         return [
             [
-                array(
-                    'event_name'       => 'Test Event Name',
-                    'event_start_date' => '2018-10-03',
-                    'frontendLink'     => 'https://www.domain.com',
-                    'event_id'         => '1029'
-                )
+                'event_name'       => 'Test Event Name',
+                'event_start_date' => '2018-10-03',
+                'frontendLink'     => 'https://www.domain.com',
+                'event_id'         => '1029'
             ]
         ];
     }

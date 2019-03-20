@@ -125,27 +125,4 @@ class SpeakerFactory implements FactoryInterface
         }
         return $refinedValue;
     }
-
-    /**
-     * Refine value method for unit test
-     *
-     * @param string $prop
-     * @param $val
-     *
-     * @return mixed
-     */
-    public function accessRefineValue(string $prop, $val)
-    {
-        return $this->refineValue($prop, $val);
-    }
-
-    /**
-     * Speaker API method for unit test
-     *
-     * @return array
-     */
-    public function accessSpeakerApi(): array
-    {
-        return self::$speakerApi;
-    }
 }

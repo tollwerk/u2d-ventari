@@ -29,7 +29,7 @@ class LocationFactoryTest extends AbstractTestBase
      *
      * @depends testConstructor
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getCreateFromJsonData
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
@@ -38,33 +38,7 @@ class LocationFactoryTest extends AbstractTestBase
         $this->assertInstanceOf(Location::class, $actualJson);
     }
 
-    /**
-     * Test refineValue
-     *
-     * @param $input
-     *
-     * @depends testConstructor
-     *
-     * @dataProvider jsonInputProvider
-     */
-    public function testRefineValue($input): void
-    {
-        $intProps = self::$testClass->accessIntProperties();
-        $this->assertIsArray($intProps);
-        $input = json_decode(json_encode($input));
-
-        foreach ($input as $key => $value) {
-            $actual = self::$testClass->accessRefineValue($key, $value);
-            if (in_array($key, $intProps)) {
-                $this->assertIsInt($actual);
-            } else {
-                $this->assertIsString($actual);
-            }
-        }
-
-    }
-
-    public function jsonInputProvider(): array
+    public function getCreateFromJsonData(): array
     {
         return [
             [

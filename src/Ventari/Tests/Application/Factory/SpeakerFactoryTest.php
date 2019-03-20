@@ -29,7 +29,7 @@ class SpeakerFactoryTest extends AbstractTestBase
      *
      * @depends testConstructor
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getCreateFromJsonData
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
@@ -38,24 +38,7 @@ class SpeakerFactoryTest extends AbstractTestBase
         $this->assertInstanceOf(Speaker::class, $actual);
     }
 
-    /**
-     * Test refineValue
-     *
-     * @param $input
-     *
-     * @depends testConstructor
-     *
-     * @dataProvider jsonInputProvider
-     */
-    public function testRefinedValue($input): void
-    {
-        foreach ($input as $key => $value) {
-            $actual = self::$testClass->accessRefineValue($key, $value);
-            $this->assertEquals($value, $actual);
-        }
-    }
-
-    public function jsonInputProvider(): array
+    public function getCreateFromJsonData(): array
     {
         return [
             [
