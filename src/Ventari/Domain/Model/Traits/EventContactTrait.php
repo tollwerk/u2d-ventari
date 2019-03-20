@@ -259,11 +259,4 @@ trait EventContactTrait
     {
         $this->organizerTwitter = $organizerTwitter;
     }
-
-    /**
-     * Abstract method for unit test
-     *
-     * @return string
-     */
-    abstract public function abstractMethod(): string;
 }

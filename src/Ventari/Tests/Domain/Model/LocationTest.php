@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
-use Tollwerk\Ventari\Application\Factory\LocationFactory;
 use Tollwerk\Ventari\Domain\Model\Location;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -13,63 +12,42 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class LocationTest extends AbstractTestBase
 {
     /**
-     * @var array
-     */
-    public $locationApi;
-
-    /**
-     * Test Class Properties
+     * Test Location
      *
-     * @param $input
+     * @param $property
+     * @param $value
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getLocationData
      */
-    public function testClass($input): void
+    public function testLocation($property, $value): void
     {
-        $testClass = new Location();
-        $factory   = new LocationFactory();
-        $this->locationApi = $factory->accessLocationApi();
+        $location = new Location();
 
-        foreach ($input as $key => $value) {
-            if (isset($this->locationApi[$key])) {
-                $property = $this->locationApi[$key];
-            } else {
-                $property = $this->locationApi['hotelId'];
-            }
-            $this->assertClassHasAttribute($property, Location::class);
+        $setter = 'set'.ucfirst($property);
+        $getter = 'get'.ucfirst($property);
 
-            $setter = 'set'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
-
-            $refinedValue = $factory->accessRefineValue($key, $value);
-            $testClass->$setter($refinedValue);
-            $getter = 'get'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
-            $this->assertEquals($refinedValue, $testClass->$getter());
-        }
+        $location->$setter($value);
+        $this->assertEquals($value, $location->$getter());
     }
 
-    public function jsonInputProvider(): array
+    public function getLocationData(): array
     {
         return [
-            [
-                array(
-                    'hotelId'        => 3,
-                    'hotelTelephone' => '091123759913',
-                    'rowNum'         => 1,
-                    'hotelZip'       => 90489,
-                    'hotelName'      => 'up2date solutions GmbH',
-                    'longitude'      => 11.087469,
-                    'eventId'        => 1801,
-                    'hotelCity'      => 'Nürnberg',
-                    'hotelFax'       => '091123759913',
-                    'hotelAddress'   => 'Prinzregentenufer 3',
-                    'hotelRoom'      => '',
-                    'companyId'      => 1,
-                    'latitude'       => 49.45334,
-                    'hotelEmail'     => 'info@up2date-solutions.de'
-                )
-            ]
+            /* Common Integer Trait */
+            ['eventVentariId', 0],
+
+            /* Model specific properties */
+            ['streetAddress', ''],
+            ['phone', ''],
+            ['postalCode', 0],
+            ['name', ''],
+            ['locality', ''],
+            ['room', ''],
+            ['fax', ''],
+            ['email', ''],
+            ['companyId', 0],
+            ['longitude', 0],
+            ['latitude', 0]
         ];
     }
 }

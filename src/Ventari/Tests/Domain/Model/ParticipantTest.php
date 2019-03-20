@@ -2,56 +2,35 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
-use Tollwerk\Ventari\Application\Factory\ParticipantFactory;
 use Tollwerk\Ventari\Domain\Model\Participant;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ParticipantTest extends AbstractTestBase
 {
     /**
-     * @var array
-     */
-    public $participantApi;
-
-    /**
-     * Test Class Properties
+     * Test participant
      *
-     * @param $input
+     * @param $property
+     * @param $value
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getParticipantData
      */
-    public function testClass($input): void
+    public function testParticipant($property, $value): void
     {
-        $testClass = new Participant();
-        $factory = new ParticipantFactory();
-        $this->participantApi = $factory->accessParticipantApi();
+        $participant = new Participant();
 
-        foreach ($input as $key => $value) {
-            if (isset($this->participantApi[$key])) {
-                $property = $this->participantApi[$key];
-            }
-            $this->assertClassHasAttribute($property, Participant::class);
+        $setter = 'set'.ucfirst($property);
+        $getter = 'get'.ucfirst($property);
 
-            $setter = 'set'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
-            $refinedValue = $factory->accessRefineValue($key, $value);
-            $testClass->$setter($refinedValue);
-            $getter = 'get'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
-            $this->assertEquals($refinedValue, $testClass->$getter());
-        }
+        $participant->$setter($value);
+        $this->assertEquals($value, $participant->$getter());
     }
 
-    public function jsonInputProvider(): array
+    public function getParticipantData(): array
     {
         return [
-            [
-                array(
-                    'id' => 5,
-                    'personId' => 123,
-                    'email' => 'email@server.net'
-                )
-            ]
+            ['personId', 123],
+            ['email', 'email@server.net']
         ];
     }
 }

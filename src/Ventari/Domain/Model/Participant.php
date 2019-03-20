@@ -99,11 +99,4 @@ class Participant extends AbstractModel implements ParticipantInterface
     {
         $this->email = $email;
     }
-
-    /**
-     * Abstract method for unit test
-     */
-    public function abstractMethod()
-    {
-    }
 }

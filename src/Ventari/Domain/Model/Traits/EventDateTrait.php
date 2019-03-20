@@ -129,9 +129,4 @@ trait EventDateTrait
                 '0')) : $modifiers['minute'])
         );
     }
-
-    /**
-     * Abstract method for unit test
-     */
-    abstract public function abstractMethodForDate(): void;
 }

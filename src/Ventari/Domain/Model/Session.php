@@ -201,11 +201,4 @@ class Session extends AbstractModel implements SessionInterface
     {
         $this->room = $room;
     }
-
-    /**
-     * Abstract method for unit test
-     */
-    public function abstractMethod()
-    {
-    }
 }

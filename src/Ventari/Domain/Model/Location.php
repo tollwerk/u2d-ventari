@@ -72,7 +72,7 @@ class Location extends AbstractModel implements LocationInterface
      *
      * @var int
      */
-    protected $postalCode = 0;
+    protected $postalCode = null;
 
     /**
      * Name
@@ -115,21 +115,21 @@ class Location extends AbstractModel implements LocationInterface
      *
      * @var int
      */
-    protected $companyId = 0;
+    protected $companyId = null;
 
     /**
      * Longitude
      *
      * @var float
      */
-    protected $longitude = 0;
+    protected $longitude = null;
 
     /**
      * Latitude
      *
      * @var float
      */
-    protected $latitude = 0;
+    protected $latitude = null;
 
     /**
      * Return the street address
@@ -348,12 +348,5 @@ class Location extends AbstractModel implements LocationInterface
     public function setLatitude(float $latitude): void
     {
         $this->latitude = $latitude;
-    }
-
-    /**
-     * Abstract method for unit test
-     */
-    public function abstractMethod()
-    {
     }
 }

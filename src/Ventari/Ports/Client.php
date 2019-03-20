@@ -191,7 +191,6 @@ class Client extends InfrastructureClient
      *
      * @return array|null
      * @api
-     * @throws \Exception
      */
     public function getAllParticipants(): ?array
     {

@@ -12,7 +12,6 @@
     <logging>
         <log type="coverage-xml" target="build/coverage"/>
     </logging>
-
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>

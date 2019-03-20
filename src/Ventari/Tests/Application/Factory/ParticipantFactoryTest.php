@@ -27,76 +27,39 @@ class ParticipantFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
-     * @depends testConstructor
+     * @depends      testConstructor
      *
-     * @dataProvider jsonInputProvider1
+     * @dataProvider getCreateFromJsonData
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass::createFromJson($input);
+        $actual = self::$testClass::createFromJson([$input]);
         $this->assertInstanceOf(Participant::class, $actual);
     }
 
-    /**
-     * Test refineValue
-     *
-     * @param $input
-     *
-     * @depends testConstructor
-     *
-     * @dataProvider jsonInputProvider2
-     */
-    public function testRefinedValue($input): void
-    {
-        foreach ($input as $key => $value) {
-            $actual = self::$testClass->accessRefineValue($key, $value);
-            $this->assertEquals($value, $actual);
-        }
-    }
-
-    public function jsonInputProvider1(): array
+    public function getCreateFromJsonData(): array
     {
         return [
             [
-                array(
-                    'personId' => 123,
-                    'fields'   => array(
-                        (object)array(
-                            'anzParamId' => 7,
-                            'value'      => 'email@server.net'
-                        )
-                    ),
-                    'id'       => 5
-                )
-            ],[
-                array(
-                    'personId' => '',
-                    'fields'   => array(
-                        (object)array(
-                            'anzParamId' => 7,
-                            'value'      => 'email@server.net'
-                        )
-                    ),
-                    'id'       => 5
-                )
-            ]
-        ];
-    }
-    public function jsonInputProvider2(): array
-    {
-        return [
+                'personId' => 123,
+                'fields'   => array(
+                    (object)array(
+                        'anzParamId' => 7,
+                        'value'      => 'email@server.net'
+                    )
+                ),
+                'id'       => 5
+            ],
             [
-                array(
-                    'personId' => 123,
-                    'fields'   => array(
-                        (object)array(
-                            'anzParamId' => 7,
-                            'value'      => 'email@server.net'
-                        )
-                    ),
-                    'id'       => 5
-                )
+                'personId' => '',
+                'fields'   => array(
+                    (object)array(
+                        'anzParamId' => 7,
+                        'value'      => 'email@server.net'
+                    )
+                ),
+                'id'       => 5
             ]
         ];
     }

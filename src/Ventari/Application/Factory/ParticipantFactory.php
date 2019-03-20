@@ -142,27 +142,4 @@ class ParticipantFactory implements FactoryInterface
 
         return $refinedValue;
     }
-
-    /**
-     * Refine value method for unit test
-     *
-     * @param string $prop Property name
-     * @param mixed $val Property value
-     *
-     * @return mixed
-     */
-    public function accessRefineValue(string $prop, $val)
-    {
-        return $this->refineValue($prop, $val);
-    }
-
-    /**
-     * Participant API method for unit test
-     *
-     * @return array
-     */
-    public function accessParticipantApi(): array
-    {
-        return self::$participantApi;
-    }
 }

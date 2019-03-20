@@ -294,11 +294,4 @@ class Speaker extends AbstractModel implements SpeakerInterface
     {
         $this->title = $title;
     }
-
-    /**
-     * Abstract method for unit test
-     */
-    public function abstractMethod()
-    {
-    }
 }

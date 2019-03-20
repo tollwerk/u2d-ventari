@@ -97,11 +97,4 @@ trait SessionLineTrait
     {
         $this->lineName = $lineName;
     }
-
-    /**
-     * Abstract method for unit test
-     *
-     * @return mixed
-     */
-    abstract public function abstractMethod();
 }

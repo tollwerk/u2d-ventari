@@ -150,14 +150,14 @@ class Event extends AbstractModel implements EventInterface
      *
      * @var int
      */
-    protected $status = '';
+    protected $status = null;
 
     /**
      * Target group
      *
      * @var array
      */
-    protected $targetgroup = [];
+    protected $targetGroup = [];
 
     /**
      * Track
@@ -465,7 +465,7 @@ class Event extends AbstractModel implements EventInterface
      */
     public function getTargetgroup(): array
     {
-        return $this->targetgroup;
+        return $this->targetGroup;
     }
 
     /**
@@ -474,9 +474,9 @@ class Event extends AbstractModel implements EventInterface
      *
      * @param array $targetgroup
      */
-    public function setTargetgroup(array $targetgroup): void
+    public function setTargetGroup(array $targetGroup): void
     {
-        $this->targetgroup = $targetgroup;
+        $this->targetGroup = $targetGroup;
     }
 
     /**
@@ -517,19 +517,5 @@ class Event extends AbstractModel implements EventInterface
     public function setRegistration(string $registration): void
     {
         $this->registration = $registration;
-    }
-
-    /**
-     * Abstract method for unit test
-     */
-    public function abstractMethod()
-    {
-    }
-
-    /**
-     * Abstract method for date for unit test
-     */
-    public function abstractMethodForDate()
-    {
     }
 }

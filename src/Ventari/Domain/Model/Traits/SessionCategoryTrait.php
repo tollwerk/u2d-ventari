@@ -123,11 +123,4 @@ trait SessionCategoryTrait
     {
         $this->categoryName = $categoryName;
     }
-
-    /**
-     * Abstract method for unit test
-     *
-     * @return mixed
-     */
-    abstract public function abstractMethod();
 }

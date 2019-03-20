@@ -70,11 +70,4 @@ trait CommonIntegerTrait
     {
         $this->eventVentariId = $eventVentariId;
     }
-
-    /**
-     * Abstract method for unit test
-     *
-     * @return mixed
-     */
-    abstract public function abstractMethod();
 }

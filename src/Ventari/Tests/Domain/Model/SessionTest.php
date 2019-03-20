@@ -2,7 +2,6 @@
 
 namespace Tollwerk\Ventari\Tests\Domain\Model;
 
-use Tollwerk\Ventari\Application\Factory\SessionFactory;
 use Tollwerk\Ventari\Domain\Model\Session;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
@@ -13,62 +12,46 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 class SessionTest extends AbstractTestBase
 {
     /**
-     * @var array
-     */
-    public $sessionApi;
-
-    /**
-     * Test Class Properties
+     * Test Session
      *
-     * @param $input
+     * @param $property
+     * @param $value
      *
-     * @dataProvider jsonInputProvider
+     * @dataProvider getSessionData
+     * @throws \Exception
      */
-    public function testClass($input): void
+    public function testSession($property, $value): void
     {
-        $testClass = new Session();
-        $factory = new SessionFactory();
-        $this->sessionApi = $factory->accessSessionApi();
+        $session = new Session();
 
-        foreach ($input as $key => $value){
-            if (isset($this->sessionApi[$key])) {
-                $property = $this->sessionApi[$key];
-            } else {
-                $property = $this->sessionApi['sessionName'];
-            }
-            $this->assertClassHasAttribute($property, Session::class);
+        $setter = 'set'.ucfirst($property);
+        $getter = 'get'.ucfirst($property);
 
-            $setter = 'set'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $setter), $this->equalTo(true));
-
-            $refinedValue = $factory->accessRefineValue($key, $value);
-            $testClass->$setter($refinedValue);
-            $getter = 'get'.ucfirst($property);
-            $this->assertThat(method_exists($testClass, $getter), $this->equalTo(true));
-            $this->assertEquals($refinedValue, $testClass->$getter());
-        }
+        $session->$setter($value);
+        $this->assertEquals($value, $session->$getter());
     }
 
-    public function jsonInputProvider(): array
+    public function getSessionData(): array
     {
         return [
-            [
-                array(
-                    'sessionRemark'        => '',
-                    'rowNum'               => 2,
-                    'sessionId'            => 535,
-                    'sessionCategoryColor' => '#EEE8AA',
-                    'sessionName'          => 'Musterevent NUEWW',
-                    'eventId'              => 1802,
-                    'sessionCategoryId'    => 1,
-                    'sessionCategoryName'  => 'Programmpunkt',
-                    'sessionLineName'      => 'Schiene 1',
-                    'sessionEnd'           => 'October, 12 2018 17:30:00',
-                    'sessionLineId'        => 2,
-                    'sessionRoom'          => '',
-                    'sessionStart'         => 'October, 12 2018 09:00:00'
-                )
-            ]
+            /* Common integer trait */
+            ['eventVentariId', 0],
+
+            /* Session category trait */
+            ['categoryColor', ''],
+            ['categoryId', 0],
+            ['categoryName', ''],
+
+            /* Session line trait */
+            ['lineId', 0],
+            ['lineName', ''],
+
+            /* Model specific properties */
+            ['name', ''],
+            ['remark', ''],
+            ['startDateTime', new \DateTime('@0')],
+            ['endDateTime', new \DateTime('@0')],
+            ['room', '']
         ];
     }
 }
