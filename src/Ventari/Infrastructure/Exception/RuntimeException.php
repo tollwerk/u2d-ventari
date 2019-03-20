@@ -44,4 +44,89 @@ namespace Tollwerk\Ventari\Infrastructure\Exception;
  */
 class RuntimeException extends \Tollwerk\Ventari\Application\Exception\RuntimeException
 {
+    /**
+     * HttpClient method
+     *
+     * @var int
+     */
+    public const METHOD_HTTPCLIENT = 3002;
+
+    /**
+     * HttpClient method
+     *
+     * @var string
+     */
+    public const METHOD_HTTPCLIENT_STR = 'Ventari Request Failed via HttpClient';
+
+    /**
+     * CurlClient method
+     * @var int
+     */
+    public const METHOD_CURLCLIENT = 3004;
+
+    /**
+     * CurlClient Method
+     *
+     * @var string
+     */
+    public const METHOD_CURLCLIENT_STR = 'Ventari Request Failed via CurlClient';
+
+    /**
+     * GuzzleException
+     *
+     * @var int
+     */
+    public const DEPENDENCY_EXCEPTION = 9999;
+
+    /**
+     * GuzzleException
+     *
+     * @var string
+     */
+    public const DEPENDENCY_EXCEPTION_STR = 'Guzzle Exception Caught';
+
+    /**
+     * Person Id missing
+     *
+     * @var int
+     */
+    public const RESPONSE_PERSONID = 9998;
+
+    /**
+     * Person Id missing
+     *
+     * @var string
+     */
+    public const RESPONSE_PERSONID_STR = 'Missing Value: "%s"';
+
+
+    /**
+     * Participant Status Id
+     *
+     * @var int
+     */
+    public const METHOD_EVENTPARTICIPANTS = 4013;
+
+    /**
+     * Participant Status Id
+     * @var string
+     */
+    public const METHOD_EVENTPARTICIPANTS_STR = 'Incorrect Status Id: "%s"';
+
+    /**
+     * @var null|Throwable
+     */
+    private $previous;
+
+    /**
+     * RuntimeException constructor.
+     *
+     * @param string $message
+     * @param int $code
+     * @param Throwable|null $previous
+     */
+    public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 }

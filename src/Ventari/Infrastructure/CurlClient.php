@@ -43,7 +43,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use Tollwerk\Ventari\Domain\Contract\CurlClientInterface;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
 /**
  * Curl Client

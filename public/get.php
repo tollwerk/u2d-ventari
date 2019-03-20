@@ -25,12 +25,6 @@ if (strpos($request_uri, 'files/hash1234')) {
     return;
 }
 
-if (strpos($request_uri, 'files/empty')) {
-    require 'fixture'.DIRECTORY_SEPARATOR.'Files-Empty.json';
-
-    return;
-}
-
 if (strpos($request_uri, 'views/speakers')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'Speakers.json';
 

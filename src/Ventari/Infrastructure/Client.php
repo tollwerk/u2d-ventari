@@ -37,7 +37,7 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
 /**
  * Client
@@ -113,16 +113,14 @@ class Client
      *
      * @param string $id File ID
      *
-     * @return array|null File
+     * @return array File
      */
-    protected function getFile(string $id): ?array
+    protected function getFile(string $id): array
     {
         $files = $this->client->dispatchRequest('files/'.$id, [])->files;
         if (count($files)) {
             return (array)array_shift($files);
         }
-
-        return null;
     }
 
     /**

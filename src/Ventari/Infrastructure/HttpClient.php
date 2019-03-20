@@ -39,7 +39,7 @@ namespace Tollwerk\Ventari\Infrastructure;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
 /**
  * Http Client

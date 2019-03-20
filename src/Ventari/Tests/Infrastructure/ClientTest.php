@@ -3,7 +3,7 @@
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
 use Tollwerk\Ventari\Ports\Client as PortsClient;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
@@ -30,17 +30,6 @@ class ClientTest extends AbstractTestBase
      * TODO: getEventParticipants       - Exceptions
      * TODO: getEventParticipantStatus  - Exceptions
      */
-
-    /**
-     * Test get file null return
-     *
-     * @depends testClient
-     */
-    public function testGetFileNullReturn(): void
-    {
-        $request = self::$testClient->getFile('empty');
-        $this->assertNull($request);
-    }
 
     /**
      * Test register for event exceptions
