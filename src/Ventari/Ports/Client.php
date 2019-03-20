@@ -107,10 +107,10 @@ class Client extends InfrastructureClient
      *
      * @param string $id File ID
      *
-     * @return array File
+     * @return array|null File
      * @api
      */
-    public function getFile(string $id): array
+    public function getFile(string $id): ?array
     {
         return parent::getFile($id);
     }

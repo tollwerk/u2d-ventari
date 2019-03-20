@@ -24,14 +24,14 @@ class SessionFactoryTest extends AbstractTestBase
     /**
      * @param $input
      *
-     * @depends testConstructor
+     * @depends      testConstructor
      *
      * @throws \Exception
      * @dataProvider getCreateFromJsonData
      */
     public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass::createFromJson($input);
+        $actual = self::$testClass::createFromJson([$input]);
         $this->assertObjectNotHasAttribute('$setter', $actual);
 //        $this->assertInstanceOf(ModelInterface::class, $actual);
     }
@@ -40,21 +40,19 @@ class SessionFactoryTest extends AbstractTestBase
     {
         return [
             [
-                array(
-                    'sessionRemark'        => "",
-                    'rowNum'               => 1,
-                    'sessionId'            => 534,
-                    'sessionCategoryColor' => "#EEE8AA",
-                    'sessionName'          => "Musterevent NUEWW",
-                    'eventId'              => 1801,
-                    'sessionCategoryId'    => 1,
-                    'sessionCategoryName'  => "Programmpunkt",
-                    'sessionLineName'      => "Schiene 1",
-                    'sessionEnd'           => "October, 22 2018 17:30:00",
-                    'sessionSignposting'   => "",
-                    'sessionLineId'        => 1,
-                    'sessionStart'         => "October, 22 2018 09:00:00"
-                )
+                'sessionRemark'        => "",
+                'rowNum'               => 1,
+                'sessionId'            => 534,
+                'sessionCategoryColor' => "#EEE8AA",
+                'sessionName'          => "Musterevent NUEWW",
+                'eventId'              => 1801,
+                'sessionCategoryId'    => 1,
+                'sessionCategoryName'  => "Programmpunkt",
+                'sessionLineName'      => "Schiene 1",
+                'sessionEnd'           => "October, 22 2018 17:30:00",
+                'sessionSignposting'   => "",
+                'sessionLineId'        => 1,
+                'sessionStart'         => "October, 22 2018 09:00:00"
             ]
         ];
     }

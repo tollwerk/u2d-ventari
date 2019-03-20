@@ -2,49 +2,69 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use Tollwerk\Ventari\Infrastructure\Client;
+use Tollwerk\Ventari\Ports\Client as PortsClient;
+use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
 {
     /**
-     * @var Client $testClass
+     * @var PortsClient $testClient
      */
-    protected static $testClass;
+    protected static $testClient;
 
     /**
-     * Test Constructor
+     * Test infrastructure client via the ports client
      */
-    public function testConstructor(): void
+    public function testClient(): void
     {
-        self::$testClass = new Client();
-        $this->assertClassHasAttribute('client', \get_class(self::$testClass));
-        $this->assertClassHasAttribute('dispatcher', \get_class(self::$testClass));
+        self::$testClient = new PortsClient();
+
+        $this->assertClassHasAttribute('client', \get_class(self::$testClient));
+        $this->assertClassHasAttribute('handler', get_class(self::$testClient));
+        $this->assertClassHasAttribute('dispatcher', \get_class(self::$testClient));
+    }
+    /**
+     * TODO: makeRequest                - Exception
+     * TODO: registerForEvent           - Exceptions
+     * TODO: getEventParticipants       - Exceptions
+     * TODO: getEventParticipantStatus  - Exceptions
+     */
+
+    /**
+     * Test get file null return
+     *
+     * @depends testClient
+     */
+    public function testGetFileNullReturn(): void
+    {
+        $request = self::$testClient->getFile('empty');
+        $this->assertNull($request);
     }
 
     /**
-     * Test make request method
+     * Test register for event exceptions
      *
-     * @depends testConstructor
-     *
-     * @throws \Exception
+     * @depends testClient
      */
-    public function testMakeRequest(): void
+    public function testRegisterForEvent(): void
     {
-        $requestResponse = self::$testClass->accessMakeRequest('views/agenda', []);
-        $this->assertIsArray($requestResponse);
+        $this->expectException(RuntimeException::class);
+
+        $participantEmail = 'email@domain.com';
+        $eventId          = 9;
+        self::$testClient->registerForEvent($participantEmail, $eventId);
     }
 
-    /**
-     * Test make request method with exception
-     *
-     * @depends testConstructor
-     *
-     * @throws \Exception
-     */
-    public function testMakeRequestException(): void
+/*
+    public function testRuntimeException(): void
     {
-        $this->expectException(\RuntimeException::class);
-        self::$testClass->accessMakeRequest('bad/response', []);
+        $exceptionMessage = 'RuntimeException Tester';
+        $exceptionCode    = 0000;
+        $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
+        $this->assertEquals($exceptionMessage, $testClass->getMessage());
     }
+*/
+
+
 }

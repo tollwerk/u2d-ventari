@@ -27,14 +27,14 @@ class SpeakerFactoryTest extends AbstractTestBase
      *
      * @param $input
      *
-     * @depends testConstructor
+     * @depends      testConstructor
      *
      * @dataProvider getCreateFromJsonData
      * @throws \Exception
      */
     public function testCreateFromJson($input): void
     {
-        $actual = self::$testClass::createFromJson($input);
+        $actual = self::$testClass::createFromJson([$input]);
         $this->assertInstanceOf(Speaker::class, $actual);
     }
 
@@ -42,19 +42,17 @@ class SpeakerFactoryTest extends AbstractTestBase
     {
         return [
             [
-                array(
-                    'position'   => "Position",
-                    'speakerId'  => 175,
-                    'salutation' => "Herr",
-                    'lastname'   => "Mustermann",
-                    'eventId'    => 1801,
-                    'title'      => "Dr.",
-                    'firstname'  => "Max",
-                    'photo'      => 1,
-                    'remark'     => "Bemerkung",
-                    'type'       => "Referent",
-                    'company'    => "u2d"
-                )
+                'position'   => "Position",
+                'speakerId'  => 175,
+                'salutation' => "Herr",
+                'lastname'   => "Mustermann",
+                'eventId'    => 1801,
+                'title'      => "Dr.",
+                'firstname'  => "Max",
+                'photo'      => 1,
+                'remark'     => "Bemerkung",
+                'type'       => "Referent",
+                'company'    => "u2d"
             ]
         ];
     }

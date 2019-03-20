@@ -34,7 +34,7 @@ class LocationFactoryTest extends AbstractTestBase
      */
     public function testCreateFromJson($input): void
     {
-        $actualJson = self::$testClass->createFromJson($input);
+        $actualJson = self::$testClass->createFromJson([$input]);
         $this->assertInstanceOf(Location::class, $actualJson);
     }
 
@@ -42,18 +42,16 @@ class LocationFactoryTest extends AbstractTestBase
     {
         return [
             [
-                array(
-                    'hotelId'        => 3,
-                    'hotelAddress'   => "Prinzregentenufer 3",
-                    'hotelTelephone' => "",
-                    'rowNum'         => 1,
-                    'hotelZip'       => 90489,
-                    'hotelName'      => "up2date solutions GmbH",
-                    'eventId'        => 1801,
-                    'hotelCity'      => "Nürnberg",
-                    'hotelFax'       => "091123759913",
-                    'hotelEmail'     => "info@up2date-solutions.de"
-                )
+                'hotelId'        => 3,
+                'hotelAddress'   => "Prinzregentenufer 3",
+                'hotelTelephone' => "",
+                'rowNum'         => 1,
+                'hotelZip'       => 90489,
+                'hotelName'      => "up2date solutions GmbH",
+                'eventId'        => 1801,
+                'hotelCity'      => "Nürnberg",
+                'hotelFax'       => "091123759913",
+                'hotelEmail'     => "info@up2date-solutions.de"
             ]
         ];
     }

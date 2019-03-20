@@ -19,8 +19,14 @@ if (strpos($request_uri, 'views/agenda')) {
     return;
 }
 
-if (strpos($request_uri, 'files')) {
+if (strpos($request_uri, 'files/hash1234')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Files.json';
+
+    return;
+}
+
+if (strpos($request_uri, 'files/empty')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'Files-Empty.json';
 
     return;
 }
@@ -31,7 +37,18 @@ if (strpos($request_uri, 'views/speakers')) {
     return;
 }
 
-if (strpos($request_uri, 'participants/?filterEventId=') || strpos($request_uri, 'participants/?filterActiveEvents=1')) {
+if (strpos($request_uri, 'participants/?filterEventId=9')) {
+    require 'fixture'.DIRECTORY_SEPARATOR.'Participant-Empty.json';
+
+    return;
+}
+
+if (strpos($request_uri, 'participants/?filterEventId=9&filterFields={"pa_email":"email@domain.com"}')) {
+    return;
+}
+
+if (strpos($request_uri, 'participants/?filterEventId=') || strpos($request_uri,
+        'participants/?filterActiveEvents=1')) {
     require 'fixture'.DIRECTORY_SEPARATOR.'Participant.json';
 
     return;
@@ -58,5 +75,5 @@ if (strpos($request_uri, 'bad')) {
 
 echo json_encode([
     'message' => 'Bad Route:',
-    'input' => $_SERVER['REQUEST_URI']
+    'input'   => $_SERVER['REQUEST_URI']
 ]);

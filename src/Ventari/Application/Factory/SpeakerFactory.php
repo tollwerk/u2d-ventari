@@ -60,7 +60,17 @@ class SpeakerFactory implements FactoryInterface
      *
      * @var string[]
      */
-    protected static $stringProperties = [];
+    protected static $stringProperties = [
+        'company',
+        'email',
+        'firstname',
+        'lastname',
+        'photo',
+        'position',
+        'remark',
+        'salutation',
+        'title'
+    ];
 
     /**
      * Speaker API
@@ -113,7 +123,7 @@ class SpeakerFactory implements FactoryInterface
      * Refine a value based on its property
      *
      * @param string $property Property name
-     * @param string $value Property value
+     * @param string $value    Property value
      *
      * @return mixed Refined property value
      */
@@ -123,6 +133,7 @@ class SpeakerFactory implements FactoryInterface
         if (\in_array($property, self::$stringProperties)) {
             $refinedValue = $value;
         }
+
         return $refinedValue;
     }
 }

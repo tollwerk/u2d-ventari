@@ -382,18 +382,4 @@ class Client
 
         return $eventStatusIds;
     }
-
-    /**
-     * For Testing Purposes Only
-     *
-     * @param $arg1
-     * @param $arg2
-     *
-     * @return array
-     * @throws \Exception
-     */
-    public function accessMakeRequest($arg1, $arg2): array
-    {
-        return $this->makeRequest($arg1, $arg2);
-    }
 }

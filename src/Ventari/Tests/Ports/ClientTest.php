@@ -85,14 +85,6 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
-    public function testRuntimeException(): void
-    {
-        $exceptionMessage = 'RuntimeException Tester';
-        $exceptionCode    = 0000;
-        $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
-        $this->assertEquals($exceptionMessage, $testClass->getMessage());
-    }
-
     public function testGetEventParticipantStatus(): void
     {
         $client  = new Client();
