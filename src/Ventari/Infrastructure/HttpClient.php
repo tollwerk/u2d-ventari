@@ -117,17 +117,22 @@ class HttpClient implements HttpClientInterface
         /**
          * Attempt to make Request
          */
+        // TODO: remove when done
+//        echo '<pre><a href="'.$this->baseUrl.'/'.$request.'/'.$query.'" target="rest">'.$this->baseUrl.'/'.$request.'/'.$query.'</a></pre>';
+
         try {
             $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query,
                 $this->authentication);
             $body = $res->getBody();
         } catch (GuzzleException $exception) {
+            // TODO: remove when done
+//            echo '<pre>'.$exception->getMessage().'</pre>';
+
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
                 PHP_EOL.$exception->getMessage(),
                 RuntimeException::METHOD_HTTPCLIENT
             );
-
         }
 
         /**

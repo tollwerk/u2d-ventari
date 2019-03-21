@@ -2,9 +2,9 @@
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    require_once 'get.php';
+    require_once './routes/routes-get.php';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'post.php';
+    require_once './routes/routes-post.php';
 }

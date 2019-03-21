@@ -1,0 +1,64 @@
+{
+  "responseData": {
+    "resultCount": 4,
+    "speakers": [
+      {
+        "position": "Position",
+        "speakerId": 175,
+        "rowNum": 1,
+        "salutation": "Herr",
+        "lastname": "Mustermann",
+        "eventId": 1801,
+        "title": "Dr.",
+        "firstname": "Max",
+        "photo": 1,
+        "remark": "Bemerkung",
+        "type": "Referent",
+        "company": "u2d"
+      },
+      {
+        "position": "anthropomorphe Ente",
+        "speakerId": 186,
+        "rowNum": 2,
+        "salutation": "Herr",
+        "lastname": "Duck",
+        "eventId": 1876,
+        "title": "",
+        "firstname": "Donald",
+        "photo": 1,
+        "remark": "Der Name tauchte das erste Mal 1931 in einem Bilderbuch namens The Adventures of Mickey Mouse auf. Donald war darin jedoch nicht zu sehen.\r\n\r\nAm 9. Juni 1934 erschien Die kluge kleine Henne (The Wise Little Hen), der erste Zeichentrickfilm mit Donald Duck, in dem er aber nur eine Nebenfigur ist. Danach folgten weitere Nebenrollen in den Micky-Maus-Trickfilmen, bis Donald seine eigene Reihe bekam. Der erste Kurzfilm dieser Reihe, Don Donald, wurde am 9. Januar 1937 uraufgeführt. In dies",
+        "type": "Referent",
+        "company": "Disney Studios"
+      },
+      {
+        "position": "anthropomorphe Maus",
+        "speakerId": 194,
+        "rowNum": 3,
+        "salutation": "Herr",
+        "lastname": "Mouse",
+        "eventId": 1876,
+        "title": "",
+        "firstname": "Micky",
+        "photo": 0,
+        "remark": "Obwohl Micky Maus, den sein Schöpfer anfangs Mortimer Mouse nennen wollte, bereits in dem Stummfilm Plane Crazy auftauchte, erreichte er seine große Bekanntheit erst durch den Film Steamboat Willie, der am 18. November 1928 im New Yorker Colony Theatre uraufgeführt wurde. Dieses Datum gilt auch als Geburtstag von Micky Maus. Bereits in Steamboat Willie tauchte auch Mickys späterer Widersacher Black Pete (Kater Karlo) auf.",
+        "type": "Referent",
+        "company": "UB Iwerks"
+      },
+      {
+        "position": "Superheld",
+        "speakerId": 204,
+        "rowNum": 4,
+        "salutation": "Herr",
+        "lastname": "Duck",
+        "eventId": 1877,
+        "title": "",
+        "firstname": "Donald",
+        "photo": 1,
+        "remark": "Sed porttitor lectus nibh. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.",
+        "type": "Referent",
+        "company": "Up2date"
+      }
+    ]
+  },
+  "responseStatus": 200
+}
