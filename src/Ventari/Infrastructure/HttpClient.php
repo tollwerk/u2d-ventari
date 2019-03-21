@@ -125,9 +125,6 @@ class HttpClient implements HttpClientInterface
                 $this->authentication);
             $body = $res->getBody();
         } catch (GuzzleException $exception) {
-            // TODO: remove when done
-//            echo '<pre>'.$exception->getMessage().'</pre>';
-
             throw new RuntimeException(
                 RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
                 PHP_EOL.$exception->getMessage(),

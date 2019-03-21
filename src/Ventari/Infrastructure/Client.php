@@ -36,8 +36,8 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
-use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
+use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 
 /**
  * Client
@@ -216,7 +216,7 @@ class Client
              * About to make submission with or without the personId
              */
             $submission = $this->handler->dispatchSubmission('participants', $filter);
-            $response = $submission->participants[0];
+            $response   = $submission->participants[0];
         }
 
 
