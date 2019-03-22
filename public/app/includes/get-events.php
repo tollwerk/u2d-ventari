@@ -1,8 +1,14 @@
+<div class="column">
+    <h2>Events</h2>
+    <br>
 <?php
-$Events = $App->getEvents(['statusIds' => 1]);
-echo '<div class="column">';
-echo '<strong>Events</strong>';
-echo '<br><br>';
+try {
+    $App = new Tollwerk\Ventari\Ports\Client();
+    $Events = $App->getEvents(['statusIds' => 1]);
+} catch (RuntimeException $exception) {
+    throw new RuntimeException($exception->getMessage(), $exception->getCode());
+}
+
 foreach ($Events as $event) {
     echo '<a href="https://events.nueww.de/rest/events/'.$event->getVentariId().'" target="_api">';
     if ($event->getOrganizerLogo() !== '') {
@@ -15,4 +21,5 @@ foreach ($Events as $event) {
     echo '</a>';
     echo '<br>';
 }
-echo '</div>';
+?>
+</div>

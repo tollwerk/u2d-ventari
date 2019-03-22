@@ -1,114 +1,103 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #4d4d4d;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 100%;
+	margin: 0;
+	background-color: #4d4d4d;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 header {
-    color: #fff;
-    padding: 1.3em 1.3em;
-    background-color: #000;
+	margin: 1.3em;
+	padding: 1.3em;
+	background-color: #000;
+	display: flex;
 }
 
-header h1 {
-    display: inline-block;
-}
-
-header form {
-    padding-top: 3em;
-    display: inline-block;
-    float: right;
+header div {
+	width: 100%;
 }
 
 footer {
-    padding: 0.3em 1.3em;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: grey;
-    color: black;
+	padding: 0.3em 1.3em;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: grey;
+	color: black;
 }
 
 pre {
-    font-size: 1rem;
-    color: lawngreen;
+	font-size: 1em;
+	color: lawngreen;
 }
 
 blockquote {
-    color: white;
-    background-color: black;
-    line-height: 1.2;
-    word-wrap: break-word;
+	margin: 0 0 2.6em 0;
+	padding: 1.3em;
+	color: white;
+	background-color: black;
+	line-height: 1.2;
+	word-wrap: break-word;
 }
-form {
-    display: flex;
-    flex-wrap: wrap;
-}
+
 input, select {
-    padding-left:0.3em;
-    margin-right: 1.3em;
-    height: 30px;
-    width: 15rem;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    border-top: none;
-    border-bottom: 1px solid purple;
+	padding-left: 0.3em;
+	margin-right: 1.3em;
+	height: 3.3em;
+	border-radius: 5px;
+	border: 1px solid transparent;
+	border-top: none;
+	border-bottom: 1px solid purple;
+	font-size: 1.5em;
 }
 
 input[type=submit] {
-    margin-top: 15px;
-    color: purple;
-    background-color: mediumvioletred;
-    width:100%;
+	margin-top: 15px;
+	color: purple;
+	background-color: mediumvioletred;
+	width: 100%;
 }
 
-input[type="checkbox"]
-{
-    vertical-align:top;
-    background-color:green;
-    width:1em;
-    height: 1em;
+input[type="checkbox"] {
+	vertical-align: top;
+	background-color: green;
+	width: 1em;
+	height: 1em;
 }
+
+.headerLink {
+	color: white;
+	padding: 1rem;
+	text-decoration: none;
+	border: thick solid white;
+}
+
+.headerLink:hover {
+	color: black;
+	background-color: white;
+	border: thick solid rebeccapurple;
+}
+
+.headerLink:visited {
+	color: white;
+}
+
 .content {
-    font-size: 1em;
-}
-
-.column {
-    float: left;
-    width: 26%;
-    padding: 1em;
-    margin-left: 3em;
-    margin-right: 1em;
-    background: purple;
+	padding: 0.3em 1.3em;
+	font-size: 1em;
 }
 
 .responsive {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+	width: 100%;
+	max-width: 400px;
+	height: auto;
 }
 
 .formField {
-    margin: 2px;
-    width: 100%;
+	margin: 2px;
+	width: 100%;
 }
 
 label {
-    color: white;
-}
-
-a {
-    display: flex;
-    color: white;
-    padding: 1rem;
-    text-decoration: none;
-    border: thick solid white;
-}
-
-a:hover {
-    color: rebeccapurple;
-    background-color: white;
-    border: thick solid rebeccapurple;
+	color: white;
 }

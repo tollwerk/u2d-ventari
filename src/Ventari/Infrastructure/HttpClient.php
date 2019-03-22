@@ -87,8 +87,11 @@ class HttpClient implements HttpClientInterface
     public function __construct(string $method, string $baseUrl, array $authentication)
     {
         $this->guzzle = new Client([
-            'headers' => ['User-Agent' => 'Ventari WebService'],
-            'verify'  => false
+            'headers' => [
+                'User-Agent' => 'Ventari WebService',
+                'Accept'     => 'application/json',
+            ],
+            'verify'  => false, // Use in dev only
         ]);
 
         $this->method         = $method;

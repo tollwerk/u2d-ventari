@@ -1,12 +1,15 @@
+<div class="column">
+    <h2>Speakers</h2>
+    <br>
 <?php
-$Speakers = $App->getSpeakers();
-echo '<div class="column">';
-echo '<strong>Speakers</strong>';
-echo '<br><br>';
+try {
+    $App = new Tollwerk\Ventari\Ports\Client();
+    $Speakers = $App->getSpeakers();
+} catch (RuntimeException $exception) {
+    throw new RuntimeException($exception->getMessage(), $exception->getCode());
+}
+
 foreach ($Speakers as $speaker) {
-//                echo '<blockquote>';
-//                print_r($speaker);
-//                echo '</blockquote>';
     if ($speaker->hasPhoto()) {
         $SpeakerId = $speaker->getVentariId();
         $File      = $App->getSpeakerPhoto($SpeakerId);
@@ -18,4 +21,5 @@ foreach ($Speakers as $speaker) {
     }
     echo '<br><br>';
 }
-echo '</div>';
+?>
+</div>
