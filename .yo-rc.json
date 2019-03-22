@@ -20,8 +20,8 @@
     "namespace": "Tollwerk",
     "module": "Ventari",
     "php": ">=7.2",
-    "authorName": "Philip Saa",
-    "authorEmail": "philip@tollwerk.de",
+    "authorName": "tollwerk GmbH",
+    "authorEmail": "info@tollwerk.de",
     "authorWebsite": "https://tollwerk.de"
   }
 }
