@@ -29,7 +29,7 @@ Found a bug or have a feature request? [Please have a look at the known issues](
 
 ## Security
 
-If you discover any security related issues, please email philip@tollwerk.de instead of using the issue tracker.
+If you discover any security related issues, please email info@tollwerk.de instead of using the issue tracker.
 
 ## Credits
 
