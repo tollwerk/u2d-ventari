@@ -37,31 +37,24 @@ if (file_exists(dirname(__DIR__, 2).'/vendor/autoload.php')) {
 }
 //Load the .env file into application
 \Dotenv\Dotenv::create(dirname(__DIR__, 2))->load();
+
+//Define parameters
+$hasParams     = (count($_GET) > 0);
+$appMethod     = (isset($_GET['method'])) ? $_GET['method'] : '';
+$appFunction   = (isset($_GET['function'])) ? $_GET['function'] : '';
+$VentariClient = new Tollwerk\Ventari\Ports\Client();
 ?>
 
 <?php include 'assets/partials/header.php'; ?>
 <?php include 'assets/partials/menu.php'; ?>
 
-    <div class="content">
-        <?php
-        $hasParams = (count($_GET) > 0);
-        $method    = (isset($_GET['method'])) ? $_GET['method'] : '';
-        $function  = (isset($_GET['function'])) ? $_GET['function'] : '';
-
-        if ($hasParams) {
-            $VentariClient = new Tollwerk\Ventari\Ports\Client();
-
-            ?>
-            <blockquote>
-                <?php
-                if ($method === 'get') {
-                    require 'includes/app-get.php';
-                } elseif ($method === 'post') {
-                    require 'includes/app-post.php';
-                }
-                ?>
-            </blockquote>
-        <?php } ?>
+    <div class="content"><?php if ($hasParams) { ?>
+            <blockquote><?php if ($appMethod === 'get') {
+                require 'includes/app-get.php';
+            } elseif ($appMethod === 'post') {
+                $filename = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $appFunction));
+                require 'includes/'.$filename.'.php';
+            } ?></blockquote><?php } ?>
     </div>
 
 <?php include 'assets/partials/footer.php'; ?>

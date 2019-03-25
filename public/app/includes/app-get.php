@@ -1,5 +1,5 @@
 <?php
-$response = $VentariClient->$function();
+$response = $VentariClient->$appFunction();
 $resIndex = 1;
 foreach ($response as $res) {
     echo '<pre>';

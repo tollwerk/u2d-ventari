@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
-    let forms = document.querySelectorAll('form');
+    let forms = document.querySelectorAll('form.selector');
     if (forms) {
         for (let ii = 0; ii < forms.length; ii++) {
             let targetForm = forms[ii];

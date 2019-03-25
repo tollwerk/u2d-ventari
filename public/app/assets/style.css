@@ -43,7 +43,7 @@ blockquote {
 input, select {
 	padding-left: 0.3em;
 	margin-right: 1.3em;
-	height: 3.3em;
+	height: 2.6em;
 	border-radius: 5px;
 	border: 1px solid transparent;
 	border-top: none;
@@ -52,10 +52,10 @@ input, select {
 }
 
 input[type=submit] {
-	margin-top: 15px;
 	color: purple;
 	background-color: mediumvioletred;
-	width: 100%;
+	width: 81%;
+	height: 2.8em;
 }
 
 input[type="checkbox"] {
@@ -91,6 +91,12 @@ input[type="checkbox"] {
 	width: 100%;
 	max-width: 400px;
 	height: auto;
+}
+
+.formFields {
+	display: inline-flex;
+	width: 100%;
+	vertical-align: baseline;
 }
 
 .formField {

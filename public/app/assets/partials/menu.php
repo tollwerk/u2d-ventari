@@ -4,14 +4,14 @@ $dropdown     = [
         'getEvents',
         'getSpeakers',
         'getLocations',
+        'getAllParticipants',
         'getSessions'
     ],
     'post' => [
-        'registerForEvent',
-        'getRegisteredEvents',
-        'getAllParticipants',
+        'getEventParticipantStatus',
         'getEventParticipants',
-        'getEventParticipantStatus'
+        'getRegisteredEvents',
+        'registerForEvent'
     ]
 ];
 $testFunction = (isset($_GET['function'])) ? $_GET['function'] : '';
@@ -23,7 +23,7 @@ $testFunction = (isset($_GET['function'])) ? $_GET['function'] : '';
     <div style="display: inline-flex;">
         <?php
         foreach ($dropdown as $type => $functions) {
-            echo '<form action="" method="'.$type.'">';
+            echo '<form class="selector" action="" method="'.$type.'">';
             echo '<select>';
             echo '<option value="null">Select '.strtoupper($type).' method</option>';
             foreach ($functions as $function) {

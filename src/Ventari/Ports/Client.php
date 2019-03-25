@@ -103,6 +103,17 @@ class Client extends InfrastructureClient
     }
 
     /**
+     * Return all Participants
+     *
+     * @return array|null
+     * @api
+     */
+    public function getAllParticipants(): ?array
+    {
+        return parent::makeRequest('participants', ['filterActiveEvents' => true]);
+    }
+
+    /**
      * Return a file
      *
      * @param string $id File ID
@@ -184,16 +195,5 @@ class Client extends InfrastructureClient
     public function getEventParticipantStatus(int $eventId, array $statusIds = []): ?array
     {
         return parent::getEventParticipantStatus($eventId, $statusIds);
-    }
-
-    /**
-     * Return all Participants
-     *
-     * @return array|null
-     * @api
-     */
-    public function getAllParticipants(): ?array
-    {
-        return parent::makeRequest('participants', ['filterActiveEvents' => true]);
     }
 }
