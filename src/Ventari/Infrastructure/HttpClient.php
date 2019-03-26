@@ -37,7 +37,7 @@
 namespace Tollwerk\Ventari\Infrastructure;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use Tollwerk\Ventari\Domain\Contract\HttpClientInterface;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 
@@ -86,10 +86,14 @@ class HttpClient implements HttpClientInterface
      */
     public function __construct(string $method, string $baseUrl, array $authentication)
     {
+//        $origin = (isset($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
+        $origin = 'http://foo.bar';
+
         $this->guzzle = new Client([
             'headers' => [
                 'User-Agent' => 'Ventari WebService',
                 'Accept'     => 'application/json',
+                'Origin'     => $origin
             ],
             'verify'  => false, // Use in dev only
         ]);
@@ -121,18 +125,20 @@ class HttpClient implements HttpClientInterface
          * Attempt to make Request
          */
         // TODO: remove when done
-//        echo '<pre><a href="'.$this->baseUrl.'/'.$request.'/'.$query.'" target="rest">'.$this->baseUrl.'/'.$request.'/'.$query.'</a></pre>';
+//        echo '<a href="'.$this->baseUrl.'/'.$request.'/'.$query.'" target="rest">'.$this->baseUrl.'/'.$request.'/'.$query.'</a><br/>';
 
         try {
             $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query,
                 $this->authentication);
             $body = $res->getBody();
-        } catch (GuzzleException $exception) {
-            throw new RuntimeException(
-                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
-                PHP_EOL.$exception->getMessage(),
-                RuntimeException::METHOD_HTTPCLIENT
-            );
+//        } catch (GuzzleException $exception) {
+//            throw new RuntimeException(
+//                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
+//                PHP_EOL.$exception->getMessage(),
+//                RuntimeException::METHOD_HTTPCLIENT
+//            );
+        } catch (RequestException $exception) {
+            $body = $exception->getResponse();
         }
 
         /**

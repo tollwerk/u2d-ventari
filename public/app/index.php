@@ -45,16 +45,20 @@ $appFunction   = (isset($_GET['function'])) ? $_GET['function'] : '';
 $VentariClient = new Tollwerk\Ventari\Ports\Client();
 ?>
 
-<?php include 'assets/partials/header.php'; ?>
-<?php include 'assets/partials/menu.php'; ?>
+<?php include 'assets/partial-header.php'; ?>
+<?php include 'assets/partial-menu.php'; ?>
 
-    <div class="content"><?php if ($hasParams) { ?>
-            <blockquote><?php if ($appMethod === 'get') {
-                require 'includes/app-get.php';
-            } elseif ($appMethod === 'post') {
-                $filename = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $appFunction));
-                require 'includes/'.$filename.'.php';
-            } ?></blockquote><?php } ?>
+    <div class="content">
+        <?php if ($hasParams) { ?>
+            <blockquote>
+                <?php if ($appMethod === 'get') {
+                    require 'includes/app-get.php';
+                } elseif ($appMethod === 'post') {
+                    $filename = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $appFunction));
+                    require 'includes/'.$filename.'.php';
+                } ?>
+            </blockquote>
+        <?php } ?>
     </div>
 
-<?php include 'assets/partials/footer.php'; ?>
+<?php include 'assets/partial-footer.php'; ?>

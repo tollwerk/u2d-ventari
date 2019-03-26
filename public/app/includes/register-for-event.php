@@ -11,7 +11,7 @@ $eventId          = isset($_POST['event']) ? $_POST['event'] : '1876';
                        placeholder="Attendee Email Address">
             </div>
             <div class="formField">
-            <label for="event">Event:</label>
+                <label for="event">Event:</label>
                 <input type="text" id="event" name="event" value="<?php echo $eventId; ?>"
                        placeholder="Event Id">
             </div>
@@ -19,6 +19,7 @@ $eventId          = isset($_POST['event']) ? $_POST['event'] : '1876';
         </div>
     </form>
     <hr>
+    <span>[ personId, email, tmsLink ]</span>
 <?php
 if ($hasPostParams) {
     $response = [$VentariClient->$appFunction((string)$participantEmail, (int)$eventId)];

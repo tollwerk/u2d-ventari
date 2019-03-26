@@ -1,6 +1,5 @@
 <?php
 $hasPostParams        = (count($_POST) > 0);
-$participantEmail     = isset($_POST['email']) ? $_POST['email'] : 'tester@tollwerk.de';
 $eventId              = isset($_POST['event']) ? $_POST['event'] : '1876';
 $participantStatusIds = isset($_POST['participantStatusIds']) ? $_POST['participantStatusIds'] : [];
 
@@ -11,7 +10,6 @@ function isChecked($statusId)
     }
 }
 
-;
 ?>
     <form action="" method="post">
         <div class="formFields">
@@ -113,6 +111,7 @@ function isChecked($statusId)
         </div>
     </form>
     <hr>
+    <span>[ statusId ] => count</span>
 <?php
 if ($hasPostParams) {
     $response = $VentariClient->$appFunction($eventId, $participantStatusIds);

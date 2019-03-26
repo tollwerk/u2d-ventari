@@ -1,7 +1,6 @@
 <?php
 $hasPostParams    = (count($_POST) > 0);
 $participantEmail = isset($_POST['email']) ? $_POST['email'] : 'tester@tollwerk.de';
-$eventId          = isset($_POST['event']) ? $_POST['event'] : "1876";
 ?>
     <form action="" method="post">
         <div class="formFields">
@@ -14,9 +13,10 @@ $eventId          = isset($_POST['event']) ? $_POST['event'] : "1876";
         </div>
     </form>
     <hr>
+    <span>[ eventId ] => [ statusId, tmsLink ]</span>
 <?php
 if ($hasPostParams) {
-    $response = $VentariClient->$appFunction((string)$participantEmail);
+    $response = [$VentariClient->$appFunction((string)$participantEmail)];
     $resIndex = 1;
     foreach ($response as $res) {
         echo '<pre>';

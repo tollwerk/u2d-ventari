@@ -1,7 +1,9 @@
 <?php
 if (isset($_SERVER['REQUEST_URI'])) {
-    // Fixture file path
-    $fixtureFileName = '';
+    // Data file path
+    $dataFileName = '';
+    // Directory name
+    $dataDirectory = 'json';
 
     // String to array
     $requestUri = array_diff(array_filter(explode('/', $_SERVER['REQUEST_URI'])), ['?']);
@@ -15,8 +17,8 @@ if (isset($_SERVER['REQUEST_URI'])) {
 
             if (is_bool(strpos($path, '?'))) {
                 // Append fixture file path string
-                $fixtureFileName .= $path;
-                $fixtureFileName .= ($pathIndex < count($requestUri)) ? '-' : '';
+                $dataFileName .= $path;
+                $dataFileName .= ($pathIndex < count($requestUri)) ? '-' : '';
             } else {
                 // Shish kebab the query string
                 parse_str(str_replace('?', '', $path), $queryString);
@@ -27,31 +29,29 @@ if (isset($_SERVER['REQUEST_URI'])) {
 
                     if (is_bool(strpos($value, '{'))) {
                         // Normal query (key => value)
-                        $fixtureFileName .= $query.'-'.substr($value, 0, 1);
+                        $dataFileName .= $query.'-'.substr($value, 0, 1);
                     } else {
                         // Abnormal query (key => object)
-                        $fixtureFileName .= ($queryIndex < count($queryString)) ? '-' : '';
+                        $dataFileName .= ($queryIndex < count($queryString)) ? '-' : '';
                     }
                 }
             }
 
             // Connect of end the fixture file path string
-            $fixtureFileName .= ($pathIndex < count($requestUri)) ? '' : '.json';
+            $dataFileName .= ($pathIndex < count($requestUri)) ? '' : '.json';
         }
     }
 
     // Fixture file
-    $fixtureFilePath = dirname(__DIR__).DIRECTORY_SEPARATOR.'fixtures'.DIRECTORY_SEPARATOR.$fixtureFileName;
+    $dataFilePath = dirname(__DIR__).DIRECTORY_SEPARATOR.$dataDirectory.DIRECTORY_SEPARATOR.$dataFileName;
 
-    if (is_file($fixtureFilePath) && file_exists($fixtureFilePath)) {
-        require $fixtureFilePath;
-
-        return;
+    if (is_file($dataFilePath) && file_exists($dataFilePath)) {
+        echo file_get_contents($dataFilePath);
     } else {
         echo json_encode([
             'message'  => 'Bad Route:',
             'input'    => $_SERVER['REQUEST_URI'],
-            'filepath' => $fixtureFilePath,
+            'filepath' => $dataFilePath,
             'paths'    => $requestUri
         ]);
     }
