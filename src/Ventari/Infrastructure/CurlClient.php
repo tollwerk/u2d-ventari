@@ -93,16 +93,17 @@ class CurlClient implements CurlClientInterface
         $handler      = new CurlHandler();
         $stack        = HandlerStack::create($handler);
         $this->guzzle = new Client([
-            'handler' => $stack
+            'handler' => $stack,
+            'auth'     => [
+                $authentication['username'], $authentication['password']
+            ]
         ]);
 
         $this->method         = $method;
         $this->baseUrl        = $baseUrl;
         $this->authentication = [
-            'auth' => [
-                $authentication['username'],
-                $authentication['password']
-            ]
+            $authentication['username'],
+            $authentication['password']
         ];
     }
 
@@ -123,7 +124,7 @@ class CurlClient implements CurlClientInterface
         try {
             $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query, [
                 'curl' => [
-                    CURLOPT_USERPWD        => $this->authentication['auth'][0].':'.$this->authentication['auth'][1],
+                    CURLOPT_USERPWD        => $this->authentication[0].':'.$this->authentication[1],
                     CURLOPT_TIMEOUT        => 30,
                     CURLOPT_SSL_VERIFYPEER => false,
                     CURLOPT_RETURNTRANSFER => true
@@ -168,7 +169,7 @@ class CurlClient implements CurlClientInterface
 
         $process = curl_init($this->baseUrl.'/'.$request.'/');
 
-        curl_setopt($process, CURLOPT_USERPWD, $this->authentication['auth'][0].':'.$this->authentication['auth'][1]);
+        curl_setopt($process, CURLOPT_USERPWD, $this->authentication[0].':'.$this->authentication[1]);
         curl_setopt($process, CURLOPT_POST, 1);
         curl_setopt($process, CURLOPT_POSTFIELDS, $requestData);
         curl_setopt($process, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));

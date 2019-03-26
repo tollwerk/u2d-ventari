@@ -2,14 +2,14 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use Tollwerk\Ventari\Ports\Client as PortsClient;
+use Tollwerk\Ventari\Ports\Client as PortClient;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
 {
     /**
-     * @var PortsClient $testClient
+     * @var PortClient $testClient
      */
     protected static $testClient;
 
@@ -18,7 +18,7 @@ class ClientTest extends AbstractTestBase
      */
     public function testClient(): void
     {
-        self::$testClient = new PortsClient();
+        self::$testClient = new PortClient();
 
         $this->assertClassHasAttribute('client', \get_class(self::$testClient));
         $this->assertClassHasAttribute('handler', get_class(self::$testClient));
