@@ -93,7 +93,7 @@ class HttpClient implements HttpClientInterface
             'headers' => [
                 'User-Agent' => 'Ventari WebService',
                 'Accept'     => 'application/json',
-                'Origin'     => $origin
+//                'Origin'     => $origin
             ],
             'verify'  => false, // Use in dev only
         ]);
@@ -131,12 +131,12 @@ class HttpClient implements HttpClientInterface
             $res  = $this->guzzle->request($this->method, $this->baseUrl.'/'.$request.'/'.$query,
                 $this->authentication);
             $body = $res->getBody();
-//        } catch (GuzzleException $exception) {
-//            throw new RuntimeException(
-//                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
-//                PHP_EOL.$exception->getMessage(),
-//                RuntimeException::METHOD_HTTPCLIENT
-//            );
+        } catch (GuzzleException $exception) {
+            throw new RuntimeException(
+                RuntimeException::METHOD_HTTPCLIENT_STR.' : '.$exception->getCode().
+                PHP_EOL.$exception->getMessage(),
+                RuntimeException::METHOD_HTTPCLIENT
+            );
         } catch (RequestException $exception) {
             $body = $exception->getResponse();
         }

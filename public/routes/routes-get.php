@@ -16,7 +16,7 @@ if (isset($_SERVER['REQUEST_URI'])) {
         if (!empty($path)) {
 
             if (is_bool(strpos($path, '?'))) {
-                // Append fixture file path string
+                // Append data file path string
                 $dataFileName .= $path;
                 $dataFileName .= ($pathIndex < count($requestUri)) ? '-' : '';
             } else {
@@ -37,12 +37,12 @@ if (isset($_SERVER['REQUEST_URI'])) {
                 }
             }
 
-            // Connect of end the fixture file path string
+            // Connect of end the data file path string
             $dataFileName .= ($pathIndex < count($requestUri)) ? '' : '.json';
         }
     }
 
-    // Fixture file
+    // Data file
     $dataFilePath = dirname(__DIR__).DIRECTORY_SEPARATOR.$dataDirectory.DIRECTORY_SEPARATOR.$dataFileName;
 
     if (is_file($dataFilePath) && file_exists($dataFilePath)) {
