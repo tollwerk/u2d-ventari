@@ -30,24 +30,36 @@ class LocationTest extends AbstractTestBase
         $this->assertEquals($value, $location->$getter());
     }
 
+    /**
+     * Location data provider
+     *
+     * @return array
+     */
     public function getLocationData(): array
     {
         return [
             /* Common Integer Trait */
             ['eventVentariId', 0],
 
+            /* Ventari ID */
+            ['ventariId', 361],
+
             /* Model specific properties */
-            ['streetAddress', ''],
-            ['phone', ''],
-            ['postalCode', 0],
-            ['name', ''],
-            ['locality', ''],
-            ['room', ''],
-            ['fax', ''],
-            ['email', ''],
-            ['companyId', 0],
+            ['streetAddress', 'Klingenhofstrasse 5'],
+            ['phone', '+49 911 123456'],
+            ['postalCode', 90411],
+            ['name', 'tollwerkstatt'],
+            ['locality', 'Nürnberg'],
+            ['fax', '+49 911 123456'],
+            ['email', 'events@tollwerkstatt.de'],
             ['longitude', 0],
-            ['latitude', 0]
+            ['latitude', 0],
+            ['url', 'https://example.com'],
+            ['summary', 'Veranstaltungsbereich der Web- und Werbeagentur tollwerk'],
+            [
+                'description',
+                'Stück für Stück entsteht in Nürnberg seit April 2016 eine neue Plattform für kreative Tech-Events: Die tollwerkstatt. Ziel des ehrgeizigen Projekts ist es, der lokalen IT- und Open-Source-Community einen Ort für regelmäßige Treffen und offenen Wissensaustausch zu bieten.'
+            ],
         ];
     }
 }

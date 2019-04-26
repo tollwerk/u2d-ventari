@@ -39,7 +39,7 @@ namespace Tollwerk\Ventari\Domain\Model\Traits;
 /**
  * Common Integer Trait
  *
- * @package Tollwerk\Ventari
+ * @package    Tollwerk\Ventari
  * @subpackage Tollwerk\Ventari\Domain\Model\Traits
  */
 trait CommonIntegerTrait

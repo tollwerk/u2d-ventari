@@ -1,68 +1,88 @@
 {
-  "responseData": {
-    "locations": [
-      {
-        "hotelId": 3,
-        "hotelTelephone": "091123759913",
-        "rowNum": 1,
-        "hotelZip": 90489,
-        "hotelName": "up2date solutions GmbH",
-        "longitude": 11.087469,
-        "eventId": 1801,
-        "hotelCity": "Nürnberg",
-        "hotelFax": "091123759913",
-        "hotelAddress": "Prinzregentenufer 3",
-        "companyId": 1,
-        "latitude": 49.453340,
-        "hotelEmail": "info@up2date-solutions.de"
-      },
-      {
-        "hotelId": 4,
-        "hotelTelephone": "",
-        "rowNum": 2,
-        "hotelZip": 90402,
-        "hotelName": "Design Offices Nürnberg City",
-        "longitude": 11.082861,
-        "eventId": 1810,
-        "hotelCity": "Nürnberg",
-        "hotelFax": "",
-        "hotelAddress": "Königstorgraben 11",
-        "companyId": 2,
-        "latitude": 49.448569,
-        "hotelEmail": "nuernberg.city@designoffices.de"
-      },
-      {
-        "hotelId": 5,
-        "hotelTelephone": "091123759913",
-        "rowNum": 3,
-        "hotelZip": 90489,
-        "hotelName": "up2date solutions GmbH",
-        "longitude": 11.087469,
-        "eventId": 1876,
-        "hotelCity": "Nürnberg",
-        "hotelFax": "091123759913",
-        "hotelAddress": "Prinzregentenufer 3 0",
-        "companyId": 1,
-        "latitude": 49.453340,
-        "hotelEmail": "info@up2date-solutions.de"
-      },
-      {
-        "hotelId": 6,
-        "hotelTelephone": "",
-        "rowNum": 4,
-        "hotelZip": 90402,
-        "hotelName": "Design Offices Nürnberg City",
-        "longitude": 11.082861,
-        "eventId": 1884,
-        "hotelCity": "Nürnberg",
-        "hotelFax": "",
-        "hotelAddress": "Königstorgraben 11",
-        "companyId": 2,
-        "latitude": 49.448569,
-        "hotelEmail": "nuernberg.city@designoffices.de"
-      }
-    ],
-    "resultCount": 4
-  },
-  "responseStatus": 200
+    "responseData": {
+        "locations": [
+            {
+                "locationId": 361,
+                "locationUrl": "",
+                "locationStreet": "Klingenhofstrasse 5",
+                "locationRemark": "Stück für Stück entsteht in Nürnberg seit April 2016 eine neue Plattform für kreative Tech-Events: Die tollwerkstatt. Ziel des ehrgeizigen Projekts ist es, der lokalen IT- und Open-Source-Community einen Ort für regelmäßige Treffen und offenen Wissensaustausch zu bieten.",
+                "eventId": 3473,
+                "locationLongitude": 11.1067807,
+                "locationPhone": "",
+                "locationLatitude": 49.4751594,
+                "locationCity": "Nürnberg",
+                "locationName": "tollwerkstatt",
+                "locationZip": 90411,
+                "locationSummary": "Veranstaltungsbereich der Web- und Werbeagentur tollwerk",
+                "locationFax": "",
+                "locationEmail": ""
+            },
+            {
+                "locationId": 364,
+                "locationUrl": "",
+                "locationStreet": "Keßlerplatz 12",
+                "locationRemark": "",
+                "eventId": 3474,
+                "locationLongitude": 11.089439,
+                "locationPhone": "",
+                "locationLatitude": 49.453688,
+                "locationCity": "Nürnberg",
+                "locationName": "Technische Hochschule Nürnberg – Keßlerplatz",
+                "locationZip": 90489,
+                "locationSummary": "",
+                "locationFax": "",
+                "locationEmail": ""
+            },
+            {
+                "locationId": 351,
+                "locationUrl": "",
+                "locationStreet": "Schwabacher Str. 512",
+                "locationRemark": "\"Ein Fablab ist genau das, was der Name sagt: ein Ort an dem gebaut (Fabrik), aber auch getüftelt wird (Labor). Das Besondere an einem Fablab ist allerdings, dass es jeder frei benutzen kann - vom kleinen Matz bis zum gestandenen Ingenieur. Egal ob Mode oder Elektronik-Gadgets, ob Einsteigerprojekt oder Entwicklung auf professionellem Niveau, das Fablab bietet die passende Umgebung.\r\n \r\nAuf über 200m² sind verschiedene Bereiche mit speziellen, erstaunlichen und ganz gewöhnlichen Werkzeugen und Maschinen untergebracht. Publikumslieblinge sind nach wie vor Lasercutter und 3D-Drucker.\r\n \r\nIn unserem Material-Shop könnt ihr wichtige Materialen für euer Projekt kaufen.\"",
+                "eventId": 3477,
+                "locationLongitude": 10.992660,
+                "locationPhone": "",
+                "locationLatitude": 49.437787,
+                "locationCity": "Fürth",
+                "locationName": "FabLab Nürnberg",
+                "locationZip": 90763,
+                "locationSummary": "",
+                "locationFax": "",
+                "locationEmail": ""
+            },
+            {
+                "locationId": 5023,
+                "locationUrl": "",
+                "locationStreet": "Fürther Str. 244d",
+                "locationRemark": "",
+                "eventId": 3478,
+                "locationLongitude": "",
+                "locationPhone": "",
+                "locationLatitude": "",
+                "locationCity": "Nürnberg",
+                "locationName": "Kulturwerkstatt „Auf AEG“",
+                "locationZip": 90429,
+                "locationSummary": "",
+                "locationFax": "",
+                "locationEmail": ""
+            },
+            {
+                "locationId": 494,
+                "locationUrl": "",
+                "locationStreet": "Laufamholzstraße 116",
+                "locationRemark": "",
+                "eventId": 3480,
+                "locationLongitude": "",
+                "locationPhone": "",
+                "locationLatitude": "",
+                "locationCity": "Nürnberg",
+                "locationName": "extend.u",
+                "locationZip": 90482,
+                "locationSummary": "",
+                "locationFax": "",
+                "locationEmail": ""
+            }
+        ],
+        "resultCount": 5
+    },
+    "responseStatus": 200
 }

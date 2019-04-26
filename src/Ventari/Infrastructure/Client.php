@@ -91,7 +91,7 @@ class Client
      * @param array $params    Request parameters
      *
      * @return array Response
-     * @throws \Exception
+     * @throws Exception
      */
     protected function makeRequest(string $function, array $params): array
     {
@@ -118,9 +118,8 @@ class Client
     protected function getFile(string $id): array
     {
         $files = $this->client->dispatchRequest('files/'.$id, [])->files;
-        if (count($files)) {
-            return (array)array_shift($files);
-        }
+
+        return count($files) ? (array)array_shift($files) : [];
     }
 
     /**
@@ -219,7 +218,6 @@ class Client
             $response   = $submission->participants[0];
         }
 
-
         if (!isset($response->personId)) {
             throw new RuntimeException(
                 sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
@@ -301,7 +299,7 @@ class Client
          */
         try {
             $events = $this->client->dispatchRequest('events', []);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             echo $exception;
             throw new RuntimeException($exception->getMessage(), '4010');
         }
@@ -363,7 +361,7 @@ class Client
 
         try {
             $dispatchResponse = $this->client->dispatchRequest('participants', ['filterEventId' => $eventId]);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             echo $exception;
             throw new RuntimeException($exception->getMessage(), '4013');
         }

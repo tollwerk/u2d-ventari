@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 #    AuthType Basic
-#    AuthName "Password Protected Area"
+#    AuthName "My Protected Area"
 #    AuthUserFile .htpasswd
 #    Require valid-user
 

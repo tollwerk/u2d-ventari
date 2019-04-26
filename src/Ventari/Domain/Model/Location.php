@@ -52,7 +52,6 @@ class Location extends AbstractModel implements LocationInterface
      */
     use CommonIntegerTrait;
 
-
     /**
      * Street address
      *
@@ -89,14 +88,6 @@ class Location extends AbstractModel implements LocationInterface
     protected $locality = '';
 
     /**
-     * Room
-     *
-     *
-     * @var string
-     */
-    protected $room = '';
-
-    /**
      * Fax
      *
      * @var string
@@ -109,13 +100,6 @@ class Location extends AbstractModel implements LocationInterface
      * @var string
      */
     protected $email = '';
-
-    /**
-     * Company Id
-     *
-     * @var int
-     */
-    protected $companyId = null;
 
     /**
      * Longitude
@@ -132,6 +116,27 @@ class Location extends AbstractModel implements LocationInterface
     protected $latitude = null;
 
     /**
+     * Location URL
+     *
+     * @var string
+     */
+    protected $url = '';
+
+    /**
+     * Location summary
+     *
+     * @var string
+     */
+    protected $summary = '';
+
+    /**
+     * Location description
+     *
+     * @var string
+     */
+    protected $description = '';
+
+    /**
      * Return the street address
      *
      * @return string
@@ -143,6 +148,7 @@ class Location extends AbstractModel implements LocationInterface
 
     /**
      * Set the street address
+     *
      * @param string $streetAddress
      */
     public function setStreetAddress(string $streetAddress): void
@@ -231,26 +237,6 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
-     * Return the room
-     *
-     * @return string
-     */
-    public function getRoom(): string
-    {
-        return $this->room;
-    }
-
-    /**
-     * Set the room
-     *
-     * @param string $room
-     */
-    public function setRoom(string $room): void
-    {
-        $this->room = $room;
-    }
-
-    /**
      * Return the fax
      *
      * @return string
@@ -291,26 +277,6 @@ class Location extends AbstractModel implements LocationInterface
     }
 
     /**
-     * Return the company id
-     *
-     * @return int
-     */
-    public function getCompanyId(): int
-    {
-        return $this->companyId;
-    }
-
-    /**
-     * Set the company id
-     *
-     * @param int $companyId
-     */
-    public function setCompanyId(int $companyId): void
-    {
-        $this->companyId = $companyId;
-    }
-
-    /**
      * Return the longitude
      *
      * @return float
@@ -325,9 +291,9 @@ class Location extends AbstractModel implements LocationInterface
      *
      * @param float $longitude
      */
-    public function setLongitude(float $longitude): void
+    public function setLongitude($longitude): void
     {
-        $this->longitude = $longitude;
+        $this->longitude = floatval($longitude);
     }
 
     /**
@@ -345,8 +311,68 @@ class Location extends AbstractModel implements LocationInterface
      *
      * @param float $latitude
      */
-    public function setLatitude(float $latitude): void
+    public function setLatitude($latitude): void
     {
-        $this->latitude = $latitude;
+        $this->latitude = floatval($latitude);
+    }
+
+    /**
+     * Return the location URL
+     *
+     * @return string Location URL
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set the location URL
+     *
+     * @param string $url Location URL
+     */
+    public function setUrl(string $url): void
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * Return the location summary
+     *
+     * @return string Location summary
+     */
+    public function getSummary(): string
+    {
+        return $this->summary;
+    }
+
+    /**
+     * Set the location summary
+     *
+     * @param string $summary Location summary
+     */
+    public function setSummary(string $summary): void
+    {
+        $this->summary = $summary;
+    }
+
+    /**
+     * Return the Location description
+     *
+     * @return string Location description
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the Location description
+     *
+     * @param string $description Location description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 }

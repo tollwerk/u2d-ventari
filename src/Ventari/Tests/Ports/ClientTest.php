@@ -2,19 +2,19 @@
 
 namespace Tollwerk\Ventari\Tests\Ports;
 
+use Exception;
 use Tollwerk\Ventari\Ports\Client;
-use Tollwerk\Ventari\Ports\Exception\RuntimeException;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
 {
     /**
      * Test Make Request
-     * @var $function string
+     * @throws Exception
      * @var $params   array
      *
      * @dataProvider requestProvider
-     * @throws \Exception
+     * @var $function string
      */
     public function testMakeRequest($function, $params): void
     {
@@ -37,6 +37,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test requesting a file
+     */
     public function testRequestFile(): void
     {
         $request = null;
@@ -45,6 +48,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test requesting a speaker photo
+     */
     public function testGetSpeakerPhoto(): void
     {
         $request = null;
@@ -53,6 +59,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test registering for an event
+     */
     public function testRegisterForEvent(): void
     {
         $participantEmail = 'email@server.net';
@@ -62,13 +71,16 @@ class ClientTest extends AbstractTestBase
 
             $request = $client->registerForEvent($participantEmail, $eventId);
             $this->assertIsArray($request);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             echo PHP_EOL.$exception;
             echo PHP_EOL.'Check if participants exists in the Ventari API';
             $this->assertIsArray([]);
         }
     }
 
+    /**
+     * Test requesting all registered events
+     */
     public function testGetRegisteredEvents(): void
     {
         $client  = new Client();
@@ -76,6 +88,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test requesting all event participants
+     */
     public function testGetEventParticipants(): void
     {
         $client  = new Client();
@@ -85,6 +100,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test requesting the participant status
+     */
     public function testGetEventParticipantStatus(): void
     {
         $client  = new Client();
@@ -92,6 +110,9 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Test requesting all participants
+     */
     public function testGetAllParticipants(): void
     {
         $client  = new Client();
@@ -99,6 +120,11 @@ class ClientTest extends AbstractTestBase
         $this->assertIsArray($request);
     }
 
+    /**
+     * Data provider
+     *
+     * @return array
+     */
     public function requestProvider(): array
     {
         return [

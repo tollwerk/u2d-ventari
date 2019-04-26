@@ -85,22 +85,22 @@ class LocationFactory implements FactoryInterface
      */
     protected static $locationApi = [
         // AbstractModel
-        'hotelId' => 'ventariId',
+        'locationId' => 'ventariId',
 
         // CommonInteger Trait
-        'eventId' => 'eventVentariId', // <-- We need this to associate this with an event
+        'eventId'    => 'eventVentariId', // <-- We need this to associate this with an event
 
-        'hotelAddress'   => 'streetAddress',
-        'hotelTelephone' => 'phone',
-        'hotelZip'       => 'postalCode',
-        'hotelName'      => 'name',
-        'hotelCity'      => 'locality',
-        'hotelFax'       => 'fax',
-        'hotelEmail'     => 'email',
-        'companyId'      => 'companyId',
-        'longitude'      => 'longitude',
-        'latitude'       => 'latitude',
-        'hotelRoom'      => 'room'
+        'locationStreet'    => 'streetAddress',
+        'locationPhone'     => 'phone',
+        'locationZip'       => 'postalCode',
+        'locationName'      => 'name',
+        'locationCity'      => 'locality',
+        'locationFax'       => 'fax',
+        'locationEmail'     => 'email',
+        'locationLongitude' => 'longitude',
+        'locationLatitude'  => 'latitude',
+        'locationRemark'    => 'description',
+        'locationSummary'   => 'summary',
     ];
 
     /**
@@ -117,7 +117,7 @@ class LocationFactory implements FactoryInterface
         foreach ($json as $key => $value) {
             if (!empty(self::$locationApi[$key])) {
                 $setter = 'set'.ucfirst(self::$locationApi[$key]);
-                if (\is_callable([$location, $setter], true)) {
+                if (is_callable([$location, $setter], true)) {
                     $location->$setter(self::refineValue($key, $value));
                 }
             }
@@ -130,7 +130,7 @@ class LocationFactory implements FactoryInterface
      * Refine a value based on its property
      *
      * @param string $property Property name
-     * @param mixed $value Property value
+     * @param mixed $value     Property value
      *
      * @return mixed Refined property value
      */
@@ -138,11 +138,11 @@ class LocationFactory implements FactoryInterface
     {
         $refinedValue = $value;
 
-        if (\in_array($property, self::$intProperties, true)) {
+        if (in_array($property, self::$intProperties, true)) {
             $refinedValue = (int)$value;
         }
 
-        if (\in_array($property, self::$floatProperties, true)) {
+        if (in_array($property, self::$floatProperties, true)) {
             $refinedValue = (float)$value;
         }
 

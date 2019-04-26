@@ -2,8 +2,8 @@
 
 namespace Tollwerk\Ventari\Tests\Infrastructure;
 
-use Tollwerk\Ventari\Ports\Client as PortClient;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
+use Tollwerk\Ventari\Ports\Client as PortClient;
 use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class ClientTest extends AbstractTestBase
@@ -20,9 +20,9 @@ class ClientTest extends AbstractTestBase
     {
         self::$testClient = new PortClient();
 
-        $this->assertClassHasAttribute('client', \get_class(self::$testClient));
+        $this->assertClassHasAttribute('client', get_class(self::$testClient));
         $this->assertClassHasAttribute('handler', get_class(self::$testClient));
-        $this->assertClassHasAttribute('dispatcher', \get_class(self::$testClient));
+        $this->assertClassHasAttribute('dispatcher', get_class(self::$testClient));
     }
     /**
      * TODO: makeRequest                - Exception
@@ -44,16 +44,4 @@ class ClientTest extends AbstractTestBase
         $eventId          = 9;
         self::$testClient->registerForEvent($participantEmail, $eventId);
     }
-
-/*
-    public function testRuntimeException(): void
-    {
-        $exceptionMessage = 'RuntimeException Tester';
-        $exceptionCode    = 0000;
-        $testClass        = new RuntimeException($exceptionMessage, $exceptionCode);
-        $this->assertEquals($exceptionMessage, $testClass->getMessage());
-    }
-*/
-
-
 }

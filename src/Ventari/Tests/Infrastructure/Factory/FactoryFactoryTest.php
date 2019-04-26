@@ -11,24 +11,24 @@ use Tollwerk\Ventari\Tests\AbstractTestBase;
 
 class FactoryFactoryTest extends AbstractTestBase
 {
-
     /**
+     * Test factory creation
+     *
+     * @param string $function Function name
+     * @param string $class    Expected class name
+     *
      * @dataProvider factoryNames
      */
-    public function testCreateFromFunction($input): void
+    public function testCreateFromFunction(string $function, string $class): void
     {
         $testClass = new FactoryFactory();
-
-        $expected = $testClass::createFromFunction($input[0]);
-        $this->assertEquals($expected, EventFactory::class);
-
-        $expected = $testClass::createFromFunction($input[1]);
-        $this->assertEquals($expected, LocationFactory::class);
-
-        $expected = $testClass::createFromFunction($input[2]);
-        $this->assertEquals($expected, SessionFactory::class);
+        $expected  = $testClass::createFromFunction($function);
+        $this->assertEquals($class, $expected);
     }
 
+    /**
+     * Test creating the factories
+     */
     public function testCreateFromFunctionException(): void
     {
         $testClass = new FactoryFactory();
@@ -36,10 +36,17 @@ class FactoryFactoryTest extends AbstractTestBase
         $testClass::createFromFunction('bad_function_name');
     }
 
+    /**
+     * Factory name provider
+     *
+     * @return array Factory names
+     */
     public function factoryNames(): array
     {
         return [
-            [['Event', 'Location', 'Session']],
+            [EventFactory::FUNCTION_NAME, EventFactory::class],
+            [LocationFactory::FUNCTION_NAME, LocationFactory::class],
+            [SessionFactory::FUNCTION_NAME, SessionFactory::class],
         ];
     }
 }
