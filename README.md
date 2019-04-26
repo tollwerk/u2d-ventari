@@ -38,8 +38,7 @@ If you discover any security related issues, please email info@tollwerk.de inste
 
 ## License
 
-Copyright © 2018 [tollwerk GmbH][author-url] / info@tollwerk.de. Licensed under the terms of the [MIT license](LICENSE).
-
+Copyright © 2019 [tollwerk GmbH][author-url] / info@tollwerk.de. Licensed under the terms of the [MIT license](LICENSE).
 
 [travis-image]: https://secure.travis-ci.org/tollwerk/u2d-ventari.svg
 [travis-url]: https://travis-ci.org/tollwerk/u2d-ventari
