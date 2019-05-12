@@ -52,7 +52,7 @@ interface CurlClientInterface
      *
      * @return mixed Response from dispatched request
      */
-    public function dispatchRequest(string $request, array $params);
+    public function dispatchRequest(string $request, array $params): ?\stdClass;
 
     /**
      * Dispatch submission
@@ -62,5 +62,5 @@ interface CurlClientInterface
      *
      * @return mixed Response from dispatched submission
      */
-    public function dispatchSubmission(string $request, array $params);
+    public function dispatchSubmission(string $request, array $params): ?\stdClass;
 }

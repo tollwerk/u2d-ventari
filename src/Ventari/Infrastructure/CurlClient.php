@@ -116,7 +116,7 @@ class CurlClient implements CurlClientInterface
      * @return \stdClass Response of dispatched request
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function dispatchRequest(string $request, array $params): \stdClass
+    public function dispatchRequest(string $request, array $params): ?\stdClass
     {
         $res   = null;
         $query = '?'.Helper::queryBuilder($params);
@@ -161,7 +161,7 @@ class CurlClient implements CurlClientInterface
      *
      * @return \stdClass Response from dispatched submission
      */
-    public function dispatchSubmission(string $request, array $params): \stdClass
+    public function dispatchSubmission(string $request, array $params): ?\stdClass
     {
         $res = null;
 
