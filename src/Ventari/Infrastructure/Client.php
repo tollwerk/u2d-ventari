@@ -139,13 +139,14 @@ class Client
     /**
      * Register for Event
      *
-     * @param string $participantEmail
-     * @param int $eventId
+     * @param string $participantEmail Participant email address
+     * @param int $eventId Event ID
+     * @param int $status Participation status
      *
      * @return array|null
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function registerForEvent(string $participantEmail, int $eventId): ?array
+    protected function registerForEvent(string $participantEmail, int $eventId, int $status): ?array
     {
         $clientResponse = null;
         $baseUrl        = getenv('VENTARI_API_URL');
@@ -193,13 +194,6 @@ class Client
                 $ventariPersonId = $clientResponse->participants[0]->personId;
             }
 
-            $filter = [
-                'eventId' => $eventId,
-                'fields'  => [
-                    'pa_email' => $participantEmail,
-                ]
-            ];
-
             if ($ventariPersonId === '') {
                 throw new RuntimeException(
                     sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId is Empty string for '.$participantEmail),
@@ -207,14 +201,23 @@ class Client
                 );
             }
 
+            // Prepare the update parameters
+            $parameters = [
+                'eventId' => $eventId,
+                'fields'  => [
+                    'pa_email' => $participantEmail,
+                ],
+                'status' => $status
+            ];
+
             if ($clientResponse->resultCount !== 0) {
-                $filter['personId'] = $ventariPersonId;
+                $parameters['personId'] = $ventariPersonId;
             }
 
             /**
              * About to make submission with or without the personId
              */
-            $submission = $this->handler->dispatchSubmission('participants', $filter);
+            $submission = $this->handler->dispatchSubmission('participants', $parameters);
             $response   = $submission->participants[0];
         }
 
