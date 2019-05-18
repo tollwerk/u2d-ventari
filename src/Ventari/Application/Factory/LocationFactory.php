@@ -61,10 +61,10 @@ class LocationFactory implements FactoryInterface
      * @var string[]
      */
     protected static $intProperties = [
-        'hotelId',
+        'locationId',
         'rowNum',
         'eventId',
-        'hotelZip',
+        'locationZip',
         'companyId'
     ];
 
