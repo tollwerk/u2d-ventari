@@ -156,6 +156,20 @@ class Client extends InfrastructureClient
     }
 
     /**
+     * Unregister from an event
+     *
+     * @param string $participantEmail Participant email address
+     * @param int $eventId             Event ID
+     *
+     * @return bool Success
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function unregisterFromEvent(string $participantEmail, int $eventId): bool
+    {
+        return parent::unregisterFromEvent($participantEmail, $eventId);
+    }
+
+    /**
      * Return all registered|active events
      *
      * @param string $participantEmail

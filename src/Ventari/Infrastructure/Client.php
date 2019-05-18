@@ -67,6 +67,24 @@ class Client
      * @var DispatchController $dispatcher
      */
     protected $dispatcher;
+    /**
+     * Participant statuses
+     */
+    const PARTICIPANT_NEW = 0;
+    const PARTICIPANT_INVITED = 1;
+    const PARTICIPANT_HAS_CONFIRMED_NO_DHG = 3;
+    const PARTICIPANT_HAS_CONFIRMED = 4;
+    const PARTICIPANT_WITHDRAWN = 5;
+    const PARTICIPANT_WITHDRAWN_AFTER_CONFIRMATION = 6;
+    const PARTICIPANT_PARTICIPATED = 7;
+    const PARTICIPANT_NO_SHOW = 8;
+    const PARTICIPANT_WAITING_LIST = 9;
+    const PARTICIPANT_EARMARKED = 10;
+    const PARTICIPANT_NOMINATED_LATER_ON = 11;
+    const PARTICIPANT_REJECTED = 12;
+    const PARTICIPANT_DATE_ASSIGNED = 13;
+    const PARTICIPANT_WAS_APPROVED = 14;
+    const PARTICIPANT_VA_CREATED = 15;
 
     /**
      * Client constructor.
@@ -140,8 +158,8 @@ class Client
      * Register for Event
      *
      * @param string $participantEmail Participant email address
-     * @param int $eventId Event ID
-     * @param int $status Participation status
+     * @param int $eventId             Event ID
+     * @param int $status              Participation status
      *
      * @return array|null
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -207,7 +225,7 @@ class Client
                 'fields'  => [
                     'pa_email' => $participantEmail,
                 ],
-                'status' => $status
+                'status'  => $status
             ];
 
             if ($clientResponse->resultCount !== 0) {
@@ -244,6 +262,53 @@ class Client
             'email'    => $email,
             'link'     => $baseUrl.$link
         ];
+    }
+
+    /**
+     * Unregister from an event
+     *
+     * @param string $participantEmail Participant email address
+     * @param int $eventId             Event ID
+     *
+     * @return bool Success
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function unregisterFromEvent(string $participantEmail, int $eventId): bool
+    {
+        // Query the participant
+        try {
+            $clientResponse = $this->handler->dispatchRequest('participants', [
+                'filterEventId' => $eventId,
+                'filterFields'  => [
+                    'pa_email' => $participantEmail,
+                ],
+            ]);
+            if ($clientResponse && isset($clientResponse->resultCount) && $clientResponse->resultCount) {
+                $participant = $clientResponse->participants[0];
+                $parameters  = [
+                    'eventId' => $eventId,
+                    'fields'  => [
+                        'pa_email' => $participantEmail,
+                    ],
+                    'status'  => ($participant->status == static::PARTICIPANT_WAITING_LIST)
+                        ? static::PARTICIPANT_WITHDRAWN : static::PARTICIPANT_WITHDRAWN_AFTER_CONFIRMATION,
+                ];
+
+                if (isset($participant->personId)) {
+                    $parameters['personId'] = $participant->personId;
+                }
+
+                // Update participant
+                $response = $this->handler->dispatchSubmission('participants/'.$participant->id, $parameters);
+
+                return $response && isset($response->resultCount) && intval($response->resultCount);
+            }
+
+        } catch (RuntimeException $exception) {
+            // Skip
+        }
+
+        return false;
     }
 
     /**
