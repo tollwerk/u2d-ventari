@@ -173,100 +173,83 @@ class Client
         int $status,
         array $additionalFields = []
     ): ?array {
-        $clientResponse = null;
-        $baseUrl        = getenv('VENTARI_API_URL');
-        $response       = null;
-        $email          = '';
-
-        // STEP 1. Request Participant Record with EventId
         try {
-            $clientResponse = $this->handler->dispatchRequest('participants', [
+            $parameters = [
+                'eventId' => $eventId,
+                'fields'  => array_merge($additionalFields, ['pa_email' => $participantEmail]),
+                'status'  => $status
+            ];
+
+            // STEP 1. Request Participant Record with EventId
+            $response = $this->handler->dispatchRequest('participants', [
                 'filterEventId' => $eventId,
-                'filterFields'  => [
-                    'pa_email' => $participantEmail,
-                ],
+                'filterFields'  => ['pa_email' => $participantEmail],
             ]);
-        } catch (Exception $exception) {
-            throw new RuntimeException($exception->getMessage(), $exception->getCode());
-        }
 
-        // STEP 2. Confirm if the participant is already registered
-        if ($clientResponse->resultCount) {
-            // STEP 2.a - Return participant's record
-            $response = $clientResponse->participants[0];
+            // STEP 2. If the participant is already registered: send an update
+            if ($response->resultCount) {
+                // Update participant
+                $response = $this->handler->dispatchSubmission(
+                    'participants/'.current($response->participants)->id,
+                    $parameters
+                );
 
-        } else {
-            // STEP 2.b - Request Record of Participant
-            try {
-                $clientResponse = $this->handler->dispatchRequest('participants', [
-                    'filterActiveEvents' => 1,
-                    'filterFields'       => [
-                        'pa_email' => $participantEmail
-                    ]
-                ]);
-            } catch (Exception $exception) {
-                throw new RuntimeException($exception->getMessage(), $exception->getCode());
-            }
-
-            // STEP 3 Throw Exception when Participant ID is missing from request
-            if (!isset($clientResponse->participants[0]->personId)) {
-                $ventariPersonId = 0;
+                // Else: create new participant
             } else {
-                $ventariPersonId = $clientResponse->participants[0]->personId;
+                // STEP 2.b - Request participant record
+                $response = $this->handler->dispatchRequest('participants', [
+                    'filterActiveEvents' => 1,
+                    'filterFields'       => ['pa_email' => $participantEmail]
+                ]);
+
+                // STEP 3 Throw Exception when Participant ID is missing from request
+                $ventariPersonId = isset(current($response->participants)->personId) ? current($response->participants)->personId : 0;
+                if ($ventariPersonId === '') {
+                    throw new RuntimeException(
+                        sprintf(RuntimeException::RESPONSE_PERSONID_STR,
+                            'PersonId is empty string for '.$participantEmail),
+                        RuntimeException::RESPONSE_PERSONID
+                    );
+                }
+
+                if ($response->resultCount !== 0) {
+                    $parameters['personId'] = $ventariPersonId;
+                }
+
+                // Create a participant
+                $response = $this->handler->dispatchSubmission('participants', $parameters);
             }
 
-            if ($ventariPersonId === '') {
+            // If we didn't get a valid recipient
+            $participant = ($response && isset($response->resultCount) && $response->resultCount) ? current($response->participants) : null;
+            if (!$participant) {
                 throw new RuntimeException(
-                    sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId is Empty string for '.$participantEmail),
+                    sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
                     RuntimeException::RESPONSE_PERSONID
                 );
             }
 
-            // Prepare the update parameters
-            $parameters = [
-                'eventId' => $eventId,
-                'fields'  => array_merge(
-                    $additionalFields,
-                    ['pa_email' => $participantEmail]
-                ),
-                'status'  => $status
+            $email = '';
+            foreach ($participant->fields as $field) {
+                if ($field->token === 'pa_email') {
+                    $email = $field->value;
+                    break;
+                }
+            }
+
+            return [
+                'personId' => $participant->personId,
+                'email'    => $email,
+                'link'     => getenv('VENTARI_API_URL').Helper::createFrontendLink(
+                        $participant->eventId,
+                        $participant->id,
+                        $participant->hash,
+                        $participant->languageId
+                    )
             ];
-
-            if ($clientResponse->resultCount !== 0) {
-                $parameters['personId'] = $ventariPersonId;
-            }
-
-            // Submit with or without the personId
-            try {
-                $response = $this->handler->dispatchSubmission('participants', $parameters)->participants[0];
-            } catch (Exception $exception) {
-                throw new RuntimeException($exception->getMessage(), $exception->getCode());
-            }
+        } catch (Exception $exception) {
+            throw new RuntimeException($exception->getMessage(), $exception->getCode());
         }
-
-        if (!isset($response->personId)) {
-            throw new RuntimeException(
-                sprintf(RuntimeException::RESPONSE_PERSONID_STR, 'PersonId'),
-                RuntimeException::RESPONSE_PERSONID
-            );
-        }
-
-        foreach ($response->fields as $field) {
-            if ($field->token === 'pa_email') {
-                $email = $field->value;
-            }
-        }
-
-        /**
-         * The FE Link required the ID property. Not the personId
-         */
-        $link = Helper::createFrontendLink($response->eventId, $response->id, $response->hash, $response->languageId);
-
-        return [
-            'personId' => $response->personId,
-            'email'    => $email,
-            'link'     => $baseUrl.$link
-        ];
     }
 
     /**
@@ -326,7 +309,6 @@ class Client
     protected function getRegisteredEvents(string $participantEmail): ?array
     {
         $_events = [];
-        $baseUrl = 'https://events.nuernberg.digital';
         $filter  = [
             'filterActiveEvents' => 1,
             'filterFields'       => [
@@ -346,7 +328,7 @@ class Client
                 );
                 $_events[$event->eventId] = [
                     'status' => $event->status,
-                    'link'   => $baseUrl.$link
+                    'link'   => getenv('VENTARI_API_URL').$link
                 ];
             }
         }
