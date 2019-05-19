@@ -245,7 +245,8 @@ class Client
                         $participant->id,
                         $participant->hash,
                         $participant->languageId
-                    )
+                    ),
+                'status'   => $participant->status
             ];
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode());
@@ -289,7 +290,8 @@ class Client
                 // Update participant
                 $response = $this->handler->dispatchSubmission('participants/'.$participant->id, $parameters);
 
-                return $response && isset($response->resultCount) && intval($response->resultCount);
+                return ($response && isset($response->resultCount) && intval($response->resultCount)) ?
+                    current($response->participants)->status : self::PARTICIPANT_WITHDRAWN;
             }
         } catch (Exception $exception) {
             throw new RuntimeException($exception->getMessage(), $exception->getCode());
