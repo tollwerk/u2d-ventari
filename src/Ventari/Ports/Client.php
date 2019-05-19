@@ -142,17 +142,22 @@ class Client extends InfrastructureClient
     /**
      * Register for Event
      *
-     * @param string $participantEmail
-     * @param int $eventId
-     * @param int $status Participation status
+     * @param string $participantEmail Participant email address
+     * @param int $eventId             Event ID
+     * @param int $status              Participation status
+     * @param array $additionalFields  Additional fields
      *
      * @return array|null
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @api
      */
-    public function registerForEvent(string $participantEmail, int $eventId, int $status): ?array
-    {
-        return parent::registerForEvent($participantEmail, $eventId, $status);
+    public function registerForEvent(
+        string $participantEmail,
+        int $eventId,
+        int $status,
+        array $additionalFields = []
+    ): ?array {
+        return parent::registerForEvent($participantEmail, $eventId, $status, $additionalFields);
     }
 
     /**

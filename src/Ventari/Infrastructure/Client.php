@@ -36,6 +36,8 @@
 
 namespace Tollwerk\Ventari\Infrastructure;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Tollwerk\Ventari\Infrastructure\Exception\RuntimeException;
 use Tollwerk\Ventari\Infrastructure\Helper\Helper;
 
@@ -160,19 +162,23 @@ class Client
      * @param string $participantEmail Participant email address
      * @param int $eventId             Event ID
      * @param int $status              Participation status
+     * @param array $additionalFields  Additional fields
      *
      * @return array|null
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
-    protected function registerForEvent(string $participantEmail, int $eventId, int $status): ?array
-    {
+    protected function registerForEvent(
+        string $participantEmail,
+        int $eventId,
+        int $status,
+        array $additionalFields = []
+    ): ?array {
         $clientResponse = null;
         $baseUrl        = getenv('VENTARI_API_URL');
         $response       = null;
         $email          = '';
-        /**
-         * STEP 1. Request Participant Record with EventId
-         */
+
+        // STEP 1. Request Participant Record with EventId
         try {
             $clientResponse = $this->handler->dispatchRequest('participants', [
                 'filterEventId' => $eventId,
@@ -180,32 +186,29 @@ class Client
                     'pa_email' => $participantEmail,
                 ],
             ]);
-        } catch (RuntimeException $exception) {
-            echo $exception->getMessage();
+        } catch (Exception $exception) {
+            throw new RuntimeException($exception->getMessage(), $exception->getCode());
         }
 
-        /**
-         * STEP 2. Confirm if the participant is already registered
-         */
+        // STEP 2. Confirm if the participant is already registered
         if ($clientResponse->resultCount) {
-            /**
-             * STEP 2.a - Return participant's record
-             */
+            // STEP 2.a - Return participant's record
             $response = $clientResponse->participants[0];
-        } else {
-            /**
-             * STEP 2.b - Request Record of Participant
-             */
-            $clientResponse = $this->handler->dispatchRequest('participants', [
-                'filterActiveEvents' => 1,
-                'filterFields'       => [
-                    'pa_email' => $participantEmail
-                ]
-            ]);
 
-            /**
-             * STEP 3 Throw Exception when Participant ID is missing from request
-             */
+        } else {
+            // STEP 2.b - Request Record of Participant
+            try {
+                $clientResponse = $this->handler->dispatchRequest('participants', [
+                    'filterActiveEvents' => 1,
+                    'filterFields'       => [
+                        'pa_email' => $participantEmail
+                    ]
+                ]);
+            } catch (Exception $exception) {
+                throw new RuntimeException($exception->getMessage(), $exception->getCode());
+            }
+
+            // STEP 3 Throw Exception when Participant ID is missing from request
             if (!isset($clientResponse->participants[0]->personId)) {
                 $ventariPersonId = 0;
             } else {
@@ -222,9 +225,10 @@ class Client
             // Prepare the update parameters
             $parameters = [
                 'eventId' => $eventId,
-                'fields'  => [
-                    'pa_email' => $participantEmail,
-                ],
+                'fields'  => array_merge(
+                    $additionalFields,
+                    ['pa_email' => $participantEmail]
+                ),
                 'status'  => $status
             ];
 
@@ -232,11 +236,12 @@ class Client
                 $parameters['personId'] = $ventariPersonId;
             }
 
-            /**
-             * About to make submission with or without the personId
-             */
-            $submission = $this->handler->dispatchSubmission('participants', $parameters);
-            $response   = $submission->participants[0];
+            // Submit with or without the personId
+            try {
+                $response = $this->handler->dispatchSubmission('participants', $parameters)->participants[0];
+            } catch (Exception $exception) {
+                throw new RuntimeException($exception->getMessage(), $exception->getCode());
+            }
         }
 
         if (!isset($response->personId)) {
@@ -271,7 +276,7 @@ class Client
      * @param int $eventId             Event ID
      *
      * @return bool Success
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function unregisterFromEvent(string $participantEmail, int $eventId): bool
     {
@@ -303,9 +308,8 @@ class Client
 
                 return $response && isset($response->resultCount) && intval($response->resultCount);
             }
-
-        } catch (RuntimeException $exception) {
-            // Skip
+        } catch (Exception $exception) {
+            throw new RuntimeException($exception->getMessage(), $exception->getCode());
         }
 
         return false;
@@ -317,7 +321,7 @@ class Client
      * @param string $participantEmail
      *
      * @return array|null
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function getRegisteredEvents(string $participantEmail): ?array
     {
