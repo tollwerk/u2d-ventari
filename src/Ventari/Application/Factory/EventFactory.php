@@ -124,7 +124,7 @@ class EventFactory implements FactoryInterface
         'event_contact_other_links'    => 'organizerOtherLink', // <--
         'event_contact_website'        => 'organizerWebsite', // <--
         'event_contact_logo'           => 'organizerLogo',
-        'event_contact_name'           => 'organizerName',
+        'event_contact_company'        => 'organizerName',
         'event_contact_twitter_handle' => 'organizerTwitter',
 
         // EventDate Traits
