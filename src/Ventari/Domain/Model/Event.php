@@ -125,11 +125,11 @@ class Event extends AbstractModel implements EventInterface
     protected $maxParticipants = 0;
 
     /**
-     * Waitinglist active
+     * Waitinglist status
      *
-     * @var bool
+     * @var int
      */
-    protected $waitinglistActive = false;
+    protected $waitinglistStatus = 0;
 
     /**
      * Name
@@ -386,23 +386,23 @@ class Event extends AbstractModel implements EventInterface
     }
 
     /**
-     * Return whether there's a waiting list
+     * Return the waiting list status
      *
-     * @return bool Active waiting list
+     * @return int Waiting list status
      */
-    public function isWaitinglistActive(): bool
+    public function getWaitinglistStatus(): int
     {
-        return $this->waitinglistActive;
+        return $this->waitinglistStatus;
     }
 
     /**
-     * Set whether there's a waiting list
+     * Set the waiting list status
      *
-     * @param bool $waitinglistActive Active waiting list
+     * @param int $waitinglistStatus Waiting list status
      */
-    public function setWaitinglistActive(bool $waitinglistActive): void
+    public function setWaitinglistStatus(int $waitinglistStatus): void
     {
-        $this->waitinglistActive = $waitinglistActive;
+        $this->waitinglistStatus = $waitinglistStatus;
     }
 
     /**
