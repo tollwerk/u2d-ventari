@@ -125,6 +125,13 @@ class Event extends AbstractModel implements EventInterface
     protected $maxParticipants = 0;
 
     /**
+     * Waitinglist active
+     *
+     * @var bool
+     */
+    protected $waitinglistActive = false;
+
+    /**
      * Name
      *
      * @var string
@@ -376,6 +383,26 @@ class Event extends AbstractModel implements EventInterface
     public function setMaxParticipants(int $maxParticipants): void
     {
         $this->maxParticipants = $maxParticipants;
+    }
+
+    /**
+     * Return whether there's a waiting list
+     *
+     * @return bool Active waiting list
+     */
+    public function isWaitinglistActive(): bool
+    {
+        return $this->waitinglistActive;
+    }
+
+    /**
+     * Set whether there's a waiting list
+     *
+     * @param bool $waitinglistActive Active waiting list
+     */
+    public function setWaitinglistActive(bool $waitinglistActive): void
+    {
+        $this->waitinglistActive = $waitinglistActive;
     }
 
     /**
