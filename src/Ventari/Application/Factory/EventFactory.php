@@ -154,7 +154,7 @@ class EventFactory implements FactoryInterface
         'event_image'                  => 'image',
         'event_level'                  => 'level',
         'event_max_participants'       => 'maxParticipants',
-        'event_waitinglist_active'     => 'waitinglistActive',
+        'event_waitinglist_active'     => 'waitinglistStatus',
         'event_name'                   => 'name',
         'event_other_tags'             => 'tags',
         'event_presentation_language'  => 'presentationLanguage',
